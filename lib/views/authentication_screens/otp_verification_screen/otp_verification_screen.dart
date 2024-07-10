@@ -32,7 +32,6 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
         countdown.cancel();
         return;
       }
-      print(countdown.tick);
       context.read<CountdownTimer>().decreaseTime();
     });
   }
