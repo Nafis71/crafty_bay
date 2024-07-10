@@ -54,7 +54,10 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                   descriptionText: AppStrings.otpVerificationScreenDescription,
                   formWidget: Padding(
                     padding: EdgeInsets.symmetric(
-                        horizontal: (deviceOrientation == Orientation.portrait) ? 40 : 180, vertical: 10),
+                        horizontal: (deviceOrientation == Orientation.portrait)
+                            ? 40
+                            : 180,
+                        vertical: 10),
                     child: PinCodeTextField(
                         keyboardType: TextInputType.number,
                         pinTheme: PinCodeTheme.getPinTheme(context),
@@ -70,7 +73,10 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                             text: TextSpan(
                               children: [
                                 TextSpan(
-                                    text: AppStrings.otpExpirationText,style:Theme.of(context).textTheme.titleMedium),
+                                    text: AppStrings.otpExpirationText,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleMedium),
                                 TextSpan(
                                   text: " ${viewModel.timeLeft}s",
                                   style: TextStyle(
@@ -83,7 +89,20 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                             ),
                           ),
                           const Gap(10),
-                          const Text(AppStrings.otpResendButtonText),
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            onTap: (){
+
+                            },
+                            child: Text(
+                              AppStrings.otpResendButtonText,
+                              style: TextStyle(
+                                color: (viewModel.timeLeft == 0)
+                                    ? AppColor.appPrimaryColor
+                                    : null,
+                              ),
+                            ),
+                          ),
                         ],
                       );
                     },
@@ -100,6 +119,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
       ),
     );
   }
+
   @override
   void dispose() {
     timer.cancel();
