@@ -1,4 +1,6 @@
+import 'package:crafty_bay/themes/app_theme.dart';
 import 'package:crafty_bay/utils/app_routes.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 
 class CraftyBay extends StatelessWidget {
@@ -9,9 +11,13 @@ class CraftyBay extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: AppRoutes.splashScreen,
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
       onGenerateRoute: (RouteSettings routeSettings) {
         return AppRoutes.generateRoutes(routeSettings);
       },
+      themeMode: ThemeMode.light,
+      theme: AppTheme.getLightTheme(),
     );
   }
 }
