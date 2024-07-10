@@ -28,7 +28,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   void initiateTimer() {
     context.read<CountdownTimer>().resetTime();
     timer = Timer.periodic(const Duration(seconds: 1), (countdown) {
-      if (countdown.tick > 60) {
+      if (countdown.tick > 120) {
         countdown.cancel();
         return;
       }
