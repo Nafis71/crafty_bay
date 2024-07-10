@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
+import '../../../utils/app_routes.dart';
 import '../../../utils/app_strings.dart';
 
 class OtpVerificationScreen extends StatefulWidget {
@@ -52,8 +53,8 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                   titleText: AppStrings.otpVerificationScreenTitle,
                   descriptionText: AppStrings.otpVerificationScreenDescription,
                   formWidget: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 10),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: (deviceOrientation == Orientation.portrait) ? 40 : 180, vertical: 10),
                     child: PinCodeTextField(
                         keyboardType: TextInputType.number,
                         pinTheme: PinCodeTheme.getPinTheme(context),
@@ -88,6 +89,9 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                     },
                   ),
                   deviceOrientation: deviceOrientation,
+                  onButtonPressed: () {
+                    Navigator.pushNamed(context, AppRoutes.profileDetailScreen);
+                  },
                 ),
               ],
             ),
@@ -95,5 +99,10 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
         ),
       ),
     );
+  }
+  @override
+  void dispose() {
+    timer.cancel();
+    super.dispose();
   }
 }

@@ -12,7 +12,7 @@ class CraftyBay extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context)=> CountdownTimer()),
+        ChangeNotifierProvider(create: (context)=> CountdownTimer(),lazy: true,),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

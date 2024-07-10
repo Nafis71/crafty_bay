@@ -12,7 +12,7 @@ class AppTextTheme{
       color: AppColor.titleTextColorLight,
     ),
     titleMedium:  getDefaultStyle().copyWith(
-      fontSize: 14,
+      fontSize: 15,
     )
   );
 

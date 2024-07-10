@@ -5,9 +5,9 @@ class PinCodeTheme{
   static PinTheme getPinTheme(BuildContext context)=> PinTheme(
       shape: PinCodeFieldShape.box,
       borderRadius: BorderRadius.circular(5),
-      fieldWidth: 60,
+      fieldWidth: 50,
       fieldHeight: 58,
-      fieldOuterPadding: const EdgeInsets.all(5),
+      fieldOuterPadding: const EdgeInsets.symmetric(horizontal:5),
       activeColor: Theme.of(context).primaryColor,
       selectedColor: Theme.of(context).primaryColor,
       errorBorderColor: Colors.red,

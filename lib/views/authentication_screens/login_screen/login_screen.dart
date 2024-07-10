@@ -1,4 +1,5 @@
 import 'package:crafty_bay/themes/app_color.dart';
+import 'package:crafty_bay/utils/app_routes.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:crafty_bay/views/widgets/authentication_layout.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
               descriptionText: AppStrings.loginScreenDescription,
               formWidget: Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 child: Form(
                   key: _formKey,
                   child: Column(
@@ -43,6 +44,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               deviceOrientation: deviceOrientation,
+              onButtonPressed: () {
+                Navigator.pushNamed(context, AppRoutes.otpVerificationScreen);
+              },
             ),
           ),
         ),

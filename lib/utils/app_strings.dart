@@ -7,7 +7,7 @@ class AppStrings {
   static const String loginScreenButtonText = "Next";
   static const String otpVerificationScreenTitle = "Enter OTP Code";
   static const String otpVerificationScreenDescription =
-      "A 4 Digit OTP code has been sent";
+      "A 4 digit OTP code has been sent";
   static const String otpExpirationText = "This code will expire in";
   static const String otpResendButtonText = "Resend Code";
 }

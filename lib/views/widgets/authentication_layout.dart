@@ -13,13 +13,16 @@ class AuthenticationLayout extends StatelessWidget {
   final Widget formWidget;
   final Orientation deviceOrientation;
   final Widget? bottomWidget;
+  final Function onButtonPressed;
 
   const AuthenticationLayout(
       {super.key,
       required this.titleText,
       required this.descriptionText,
       required this.formWidget,
-      required this.deviceOrientation, this.bottomWidget});
+      required this.deviceOrientation,
+      this.bottomWidget,
+      required this.onButtonPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -38,20 +41,21 @@ class AuthenticationLayout extends StatelessWidget {
         const Gap(10),
         formWidget,
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: SizedBox(
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, AppRoutes.otpVerificationScreen);
+                onButtonPressed();
               },
               child: const Text(AppStrings.loginScreenButtonText),
             ),
           ),
         ),
-        if(bottomWidget != null)  const Gap(30),
-        if(bottomWidget!= null) bottomWidget!,
-        if (deviceOrientation != Orientation.landscape && bottomWidget ==null) const Gap(120)
+        if (bottomWidget != null) const Gap(30),
+        if (bottomWidget != null) bottomWidget!,
+        if (deviceOrientation != Orientation.landscape && bottomWidget == null)
+          const Gap(120)
       ],
     );
   }
