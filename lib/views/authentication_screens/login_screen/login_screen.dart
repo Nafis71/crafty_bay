@@ -12,7 +12,15 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  late final GlobalKey<FormState> _formKey;
+  late final TextEditingController _emailTEController;
+
+  @override
+  void initState() {
+    _emailTEController = TextEditingController();
+    _formKey = GlobalKey<FormState>();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,5 +62,10 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+  @override
+  void dispose() {
+    _emailTEController.dispose();
+    super.dispose();
   }
 }
