@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:provider/provider.dart';
-
 import '../../utils/app_assets.dart';
-import '../../utils/app_routes.dart';
 import '../../utils/app_strings.dart';
 import '../../wrappers/svg_image_loader.dart';
 
@@ -14,15 +11,18 @@ class AuthenticationLayout extends StatelessWidget {
   final Orientation deviceOrientation;
   final Widget? bottomWidget;
   final Function onButtonPressed;
+  final String? buttonText;
 
-  const AuthenticationLayout(
-      {super.key,
-      required this.titleText,
-      required this.descriptionText,
-      required this.formWidget,
-      required this.deviceOrientation,
-      this.bottomWidget,
-      required this.onButtonPressed});
+  const AuthenticationLayout({
+    super.key,
+    required this.titleText,
+    required this.descriptionText,
+    required this.formWidget,
+    required this.deviceOrientation,
+    this.bottomWidget,
+    required this.onButtonPressed,
+    this.buttonText,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,11 @@ class AuthenticationLayout extends StatelessWidget {
               onPressed: () {
                 onButtonPressed();
               },
-              child: const Text(AppStrings.loginScreenButtonText),
+              child: Text(
+                (buttonText == null)
+                    ? AppStrings.loginScreenButtonText
+                    : buttonText!,
+              ),
             ),
           ),
         ),

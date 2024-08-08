@@ -1,6 +1,6 @@
-import 'package:flutter/foundation.dart';
+import 'package:get/get.dart';
 
-class CountdownTimer extends ChangeNotifier{
+class CountdownTimer extends GetxController{
   int _timeLeft = 120;
 
   int get timeLeft => _timeLeft;
@@ -13,7 +13,7 @@ class CountdownTimer extends ChangeNotifier{
 
   void decreaseTime(){
     _timeLeft--;
-    notifyListeners();
+    update();
   }
 
 }

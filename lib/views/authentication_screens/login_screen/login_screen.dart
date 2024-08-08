@@ -37,7 +37,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         keyboardType: TextInputType.emailAddress,
                         cursorColor: AppColor.appPrimaryColor,
                         decoration: const InputDecoration(
-                            hintText: AppStrings.emailTextFieldHintText),
+                          hintText: AppStrings.emailTextFieldHintText,
+                        ),
                       ),
                     ],
                   ),

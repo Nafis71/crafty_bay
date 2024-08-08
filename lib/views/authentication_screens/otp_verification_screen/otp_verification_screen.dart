@@ -5,8 +5,8 @@ import 'package:crafty_bay/views/authentication_screens/otp_verification_screen/
 import 'package:crafty_bay/views/widgets/authentication_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:provider/provider.dart';
 import '../../../utils/app_routes.dart';
 import '../../../utils/app_strings.dart';
 
@@ -27,13 +27,13 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   }
 
   void initiateTimer() {
-    context.read<CountdownTimer>().resetTime();
+    Get.find<CountdownTimer>().resetTime();
     timer = Timer.periodic(const Duration(seconds: 1), (countdown) {
       if (countdown.tick > 120) {
         countdown.cancel();
         return;
       }
-      context.read<CountdownTimer>().decreaseTime();
+      Get.find<CountdownTimer>().decreaseTime();
     });
   }
 
@@ -59,14 +59,15 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                             : 180,
                         vertical: 10),
                     child: PinCodeTextField(
-                        keyboardType: TextInputType.number,
-                        pinTheme: PinCodeTheme.getPinTheme(context),
-                        onCompleted: (pin) {},
-                        appContext: context,
-                        length: 4),
+                      keyboardType: TextInputType.number,
+                      pinTheme: PinCodeTheme.getPinTheme(context),
+                      onCompleted: (pin) {},
+                      appContext: context,
+                      length: 4,
+                    ),
                   ),
-                  bottomWidget: Consumer<CountdownTimer>(
-                    builder: (_, viewModel, __) {
+                  bottomWidget: GetBuilder<CountdownTimer>(
+                    builder: (viewModel) {
                       return Column(
                         children: [
                           RichText(
@@ -91,9 +92,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                           const Gap(10),
                           InkWell(
                             splashColor: Colors.transparent,
-                            onTap: (){
-
-                            },
+                            onTap: () {},
                             child: Text(
                               AppStrings.otpResendButtonText,
                               style: TextStyle(

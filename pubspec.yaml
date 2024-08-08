@@ -22,7 +22,7 @@ dependencies:
   widget_and_text_animator: ^1.1.5
   pin_code_fields: ^8.0.1
   device_preview: ^1.2.0
-  provider: ^6.1.2
+  get: ^4.6.6
 
 
 dev_dependencies:
