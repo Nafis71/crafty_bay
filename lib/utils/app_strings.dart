@@ -1,4 +1,8 @@
 class AppStrings {
+  //network errors
+  static const String unknownError = "Something went wrong, please try again!";
+  static const String networkError = "Network Error, Check your internet connection.";
+
   //login Screen
   static const String appVersion = "Version 1.0";
   static const String loginScreenTitle = "Welcome Back";
