@@ -1,6 +1,6 @@
 import 'package:crafty_bay/themes/app_color.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
-import 'package:crafty_bay/views/widgets/authentication_layout.dart';
+import 'package:crafty_bay/features/widgets/authentication_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

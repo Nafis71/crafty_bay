@@ -1,19 +1,25 @@
 import 'package:crafty_bay/themes/app_color.dart';
 import 'package:flutter/material.dart';
 
-class AppTextFieldStyle{
+class AppTextFieldStyle {
   static InputDecorationTheme getTextFieldTheme() => InputDecorationTheme(
-    isDense: true,
-    hintStyle:  TextStyle(
-      color: Colors.grey.shade400,
-      fontFamily: "Poppins",
-      fontWeight: FontWeight.normal
-    ),
-    enabledBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: AppColor.appPrimaryColor, width: 1)
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: AppColor.appPrimaryColor,width: 2)
-    )
-  );
+        isDense: true,
+        hintStyle: TextStyle(
+          color: Colors.grey.shade400,
+          fontFamily: "Poppins",
+          fontWeight: FontWeight.normal,
+        ),
+        enabledBorder:
+            getOutlineInputBorder(width: 1, color: AppColor.appPrimaryColor),
+        focusedBorder:
+            getOutlineInputBorder(width: 2, color: AppColor.appPrimaryColor),
+        errorBorder: getOutlineInputBorder(width: 2, color: Colors.red),
+        focusedErrorBorder: getOutlineInputBorder(width: 2, color: Colors.red),
+      );
+
+  static OutlineInputBorder getOutlineInputBorder(
+      {required double width, required Color color}) {
+    return OutlineInputBorder(
+        borderSide: BorderSide(color: color, width: width));
+  }
 }

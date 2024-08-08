@@ -1,3 +1,4 @@
+import 'package:crafty_bay/features/widgets/circular_loading.dart';
 import 'package:crafty_bay/themes/app_color.dart';
 import 'package:crafty_bay/utils/app_assets.dart';
 import 'package:crafty_bay/utils/app_routes.dart';
@@ -44,9 +45,7 @@ class _SplashScreenState extends State<SplashScreen> {
               padding: const EdgeInsets.only(bottom: 20),
               child: Column(
                 children: [
-                  CircularProgressIndicator(
-                    color: AppColor.appPrimaryColor,
-                  ),
+                  const CircularLoading(),
                   const Gap(20),
                    Text(AppStrings.appVersion, style: Theme.of(context).textTheme.bodyMedium,)
                 ],

@@ -18,6 +18,11 @@ class AppStrings {
   static const String otpExpirationText = "This code will expire in";
   static const String otpResendButtonText = "Resend Code";
 
+
+  //login screen
+  static const String invalidEmailAddress = "Invalid Email Address";
+  static const String emptyEmailAddress = "Email address is required";
+
   //profile details screen
   static const String profileDetailsScreenTitle = "Complete Profile";
   static const String profileDetailsScreenDescription = "Get started with us with your details";

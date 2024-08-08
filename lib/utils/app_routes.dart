@@ -1,7 +1,7 @@
-import 'package:crafty_bay/views/authentication_screens/login_screen/login_screen.dart';
-import 'package:crafty_bay/views/authentication_screens/otp_verification_screen/otp_verification_screen.dart';
-import 'package:crafty_bay/views/authentication_screens/profile_detail_screen/profile_detail_screen.dart';
-import 'package:crafty_bay/views/splash_screen/splash_screen.dart';
+import 'package:crafty_bay/features/authentication_screens/login_screen/login_screen.dart';
+import 'package:crafty_bay/features/authentication_screens/otp_verification_screen/otp_verification_screen.dart';
+import 'package:crafty_bay/features/authentication_screens/profile_detail_screen/profile_detail_screen.dart';
+import 'package:crafty_bay/features/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppRoutes {

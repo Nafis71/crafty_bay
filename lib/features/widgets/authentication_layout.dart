@@ -1,5 +1,8 @@
+import 'package:crafty_bay/features/authentication_screens/view_model/auth_view_model.dart';
+import 'package:crafty_bay/features/widgets/circular_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import '../../utils/app_assets.dart';
 import '../../utils/app_strings.dart';
 import '../../wrappers/svg_image_loader.dart';
@@ -44,15 +47,22 @@ class AuthenticationLayout extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: SizedBox(
             width: double.infinity,
-            child: ElevatedButton(
-              onPressed: () {
-                onButtonPressed();
-              },
-              child: Text(
-                (buttonText == null)
-                    ? AppStrings.loginScreenButtonText
-                    : buttonText!,
-              ),
+            child: GetBuilder<AuthViewModel>(
+              builder: (authViewModel) {
+                if(authViewModel.isBusy){
+                  return const Center(child: CircularLoading(),);
+                }
+                return ElevatedButton(
+                  onPressed: () {
+                    onButtonPressed();
+                  },
+                  child: Text(
+                    (buttonText == null)
+                        ? AppStrings.loginScreenButtonText
+                        : buttonText!,
+                  ),
+                );
+              }
             ),
           ),
         ),

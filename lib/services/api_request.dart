@@ -7,14 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 
 class ApiRequest {
-  static ApiRequest? _instance;
   Object? _finalResponse;
-
-  ApiRequest._();
-
-  factory ApiRequest() {
-    return _instance ??= ApiRequest._();
-  }
 
   Future<Object> getRequest(
       {required String url, Map<String, String>? headers}) async {

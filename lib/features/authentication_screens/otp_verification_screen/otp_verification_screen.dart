@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:crafty_bay/themes/app_color.dart';
 import 'package:crafty_bay/themes/pin_code_theme.dart';
-import 'package:crafty_bay/views/authentication_screens/otp_verification_screen/countdown_timer.dart';
-import 'package:crafty_bay/views/widgets/authentication_layout.dart';
+import 'package:crafty_bay/features/authentication_screens/otp_verification_screen/countdown_timer.dart';
+import 'package:crafty_bay/features/widgets/authentication_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
