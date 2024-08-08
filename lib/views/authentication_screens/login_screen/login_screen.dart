@@ -18,6 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     Orientation deviceOrientation = MediaQuery.of(context).orientation;
     return Scaffold(
+      appBar: AppBar(),
       resizeToAvoidBottomInset: false,
       body: Container(
         margin: const EdgeInsets.all(20),

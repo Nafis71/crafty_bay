@@ -42,6 +42,9 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
     Orientation deviceOrientation = MediaQuery.of(context).orientation;
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+      ),
       body: Container(
         margin: const EdgeInsets.all(20),
         child: Center(
@@ -74,17 +77,18 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                             text: TextSpan(
                               children: [
                                 TextSpan(
-                                    text: AppStrings.otpExpirationText,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleMedium),
+                                  text: AppStrings.otpExpirationText,
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
+                                ),
                                 TextSpan(
                                   text: " ${viewModel.timeLeft}s",
-                                  style: TextStyle(
-                                    fontFamily: "Poppins",
-                                    fontWeight: FontWeight.bold,
-                                    color: AppColor.appPrimaryColor,
-                                  ),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleMedium!
+                                      .copyWith(
+                                        color: AppColor.appPrimaryColor,
+                                        fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
@@ -108,7 +112,8 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                   ),
                   deviceOrientation: deviceOrientation,
                   onButtonPressed: () {
-                    Navigator.pushNamed(context, AppRoutes.profileDetailScreen);
+                    Navigator.pushReplacementNamed(
+                        context, AppRoutes.profileDetailScreen);
                   },
                 ),
               ],
