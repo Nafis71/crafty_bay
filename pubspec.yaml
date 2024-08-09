@@ -25,6 +25,8 @@ dependencies:
   get: ^4.6.6
   http: ^1.2.2
   floating_snackbar: ^1.0.5
+  shared_preferences: ^2.3.1
+  jwt_decoder: ^2.0.1
 
 
 dev_dependencies:

@@ -10,6 +10,8 @@ class AppStrings {
       "Please Enter Your Email Address";
   static const String emailTextFieldHintText = "Email Address";
   static const String loginScreenButtonText = "Next";
+  static const String invalidEmailAddress = "Invalid Email Address";
+  static const String emptyEmailAddress = "Email address is required";
 
   //otp screen
   static const String otpVerificationScreenTitle = "Enter OTP Code";
@@ -17,11 +19,10 @@ class AppStrings {
       "A 4 digit OTP code has been sent";
   static const String otpExpirationText = "This code will expire in";
   static const String otpResendButtonText = "Resend Code";
+  static const String invalidOTP = "Invalid OTP, please try again!";
+  static const String invalidOTPErrorText = "Invalid OTP";
+  static const String emptyOTP = "A 4 digit OTP is required";
 
-
-  //login screen
-  static const String invalidEmailAddress = "Invalid Email Address";
-  static const String emptyEmailAddress = "Email address is required";
 
   //profile details screen
   static const String profileDetailsScreenTitle = "Complete Profile";

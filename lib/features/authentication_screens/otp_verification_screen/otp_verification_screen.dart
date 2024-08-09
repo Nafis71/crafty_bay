@@ -1,8 +1,11 @@
 import 'dart:async';
+import 'package:crafty_bay/features/authentication_screens/view_model/auth_view_model.dart';
 import 'package:crafty_bay/themes/app_color.dart';
 import 'package:crafty_bay/themes/pin_code_theme.dart';
 import 'package:crafty_bay/features/authentication_screens/otp_verification_screen/countdown_timer.dart';
 import 'package:crafty_bay/features/widgets/authentication_layout.dart';
+import 'package:crafty_bay/utils/form_validation.dart';
+import 'package:crafty_bay/wrappers/app_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -11,7 +14,9 @@ import '../../../utils/app_routes.dart';
 import '../../../utils/app_strings.dart';
 
 class OtpVerificationScreen extends StatefulWidget {
-  const OtpVerificationScreen({super.key});
+  final String emailAddress;
+
+  const OtpVerificationScreen({super.key, required this.emailAddress});
 
   @override
   State<OtpVerificationScreen> createState() => _OtpVerificationScreenState();
@@ -19,9 +24,13 @@ class OtpVerificationScreen extends StatefulWidget {
 
 class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   late Timer timer;
+  late final TextEditingController _otpTEController;
+  late final GlobalKey<FormState> _formKey;
 
   @override
   void initState() {
+    _otpTEController = TextEditingController();
+    _formKey = GlobalKey<FormState>();
     super.initState();
     initiateTimer();
   }
@@ -61,16 +70,26 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                             ? 40
                             : 180,
                         vertical: 10),
-                    child: PinCodeTextField(
-                      keyboardType: TextInputType.number,
-                      pinTheme: PinCodeTheme.getPinTheme(context),
-                      onCompleted: (pin) {},
-                      appContext: context,
-                      length: 4,
+                    child: Form(
+                      key: _formKey,
+                      child: PinCodeTextField(
+                        controller: _otpTEController,
+                        keyboardType: TextInputType.number,
+                        pinTheme: PinCodeTheme.getPinTheme(context),
+                        onCompleted: (pin) {
+                          if (_formKey.currentState!.validate()) {
+                            _verifyOTP(Get.find<AuthViewModel>());
+                          }
+                        },
+                        cursorColor: AppColor.appPrimaryColor,
+                        appContext: context,
+                        validator: FormValidation.validateOTP,
+                        length: 4,
+                      ),
                     ),
                   ),
                   bottomWidget: GetBuilder<CountdownTimer>(
-                    builder: (viewModel) {
+                    builder: (timer) {
                       return Column(
                         children: [
                           RichText(
@@ -82,13 +101,14 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                                       Theme.of(context).textTheme.titleMedium,
                                 ),
                                 TextSpan(
-                                  text: " ${viewModel.timeLeft}s",
+                                  text: " ${timer.timeLeft}s",
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleMedium!
                                       .copyWith(
                                         color: AppColor.appPrimaryColor,
-                                        fontWeight: FontWeight.bold),
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                 ),
                               ],
                             ),
@@ -96,11 +116,17 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                           const Gap(10),
                           InkWell(
                             splashColor: Colors.transparent,
-                            onTap: () {},
+                            onTap: () {
+                              if(timer.timeLeft != 0){
+                                return;
+                              }
+                              initiateTimer();
+                              Get.find<AuthViewModel>().sendOTP(widget.emailAddress,isResending: true);
+                            },
                             child: Text(
                               AppStrings.otpResendButtonText,
                               style: TextStyle(
-                                color: (viewModel.timeLeft == 0)
+                                color: (timer.timeLeft == 0)
                                     ? AppColor.appPrimaryColor
                                     : null,
                               ),
@@ -112,8 +138,9 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                   ),
                   deviceOrientation: deviceOrientation,
                   onButtonPressed: () {
-                    Navigator.pushReplacementNamed(
-                        context, AppRoutes.profileDetailScreen);
+                    if (_formKey.currentState!.validate()) {
+                      _verifyOTP(Get.find<AuthViewModel>());
+                    }
                   },
                 ),
               ],
@@ -124,9 +151,31 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
     );
   }
 
+  Future<void> _verifyOTP(AuthViewModel authViewModel) async {
+    if(Get.find<CountdownTimer>().timeLeft == 0){
+      AppSnackBar.show(
+          message: AppStrings.invalidOTP, context: context, isError: true);
+      return;
+    }
+    bool status = await authViewModel.verifyOTP(
+        widget.emailAddress, _otpTEController.text);
+    if (status && mounted && !authViewModel.hasUserData) {
+      Get.offNamed(AppRoutes.profileDetailScreen);
+      return;
+    }
+    if (status && mounted && authViewModel.hasUserData) {
+      //will type later
+    }
+    if (!status && mounted) {
+      AppSnackBar.show(
+          message: AppStrings.invalidOTP, context: context, isError: true);
+    }
+  }
+
   @override
   void dispose() {
     timer.cancel();
+    _otpTEController.dispose();
     super.dispose();
   }
 }

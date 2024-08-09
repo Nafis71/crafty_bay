@@ -11,4 +11,14 @@ class FormValidation{
     }
     return null;
   }
+
+  static String? validateOTP(String? otp){
+    if(otp == null || otp.isEmpty){
+      return AppStrings.emptyOTP;
+    }
+    if(!RegEx.digitRegEx.hasMatch(otp)){
+      return AppStrings.invalidOTPErrorText;
+    }
+    return null;
+  }
 }

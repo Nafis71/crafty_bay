@@ -14,7 +14,10 @@ class AppRoutes {
     Map<String, WidgetBuilder> routes = {
       AppRoutes.splashScreen: (context) => const SplashScreen(),
       AppRoutes.loginScreen: (context) => const LoginScreen(),
-      AppRoutes.otpVerificationScreen: (context) => const OtpVerificationScreen(),
+      AppRoutes.otpVerificationScreen: (context) {
+        String emailAddress = routeSettings.arguments as String;
+        return  OtpVerificationScreen(emailAddress: emailAddress,);
+      },
       AppRoutes.profileDetailScreen: (context) => const ProfileDetailScreen(),
     };
     WidgetBuilder? builder = routes[routeSettings.name];

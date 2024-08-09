@@ -11,6 +11,7 @@ class PinCodeTheme{
       activeColor: Theme.of(context).primaryColor,
       selectedColor: Theme.of(context).primaryColor,
       errorBorderColor: Colors.red,
+      errorBorderWidth: 1.5,
       selectedBorderWidth: 1.5,
       activeBorderWidth: 1.5,
       inactiveBorderWidth: 1.5,

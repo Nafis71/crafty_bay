@@ -63,7 +63,9 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               deviceOrientation: deviceOrientation,
               onButtonPressed: () {
-                _sendOTP(Get.find<AuthViewModel>());
+                if(_formKey.currentState!.validate()){
+                  _sendOTP(Get.find<AuthViewModel>());
+                }
               },
             ),
           ),
@@ -75,16 +77,16 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<void> _sendOTP(AuthViewModel authViewModel)async{
     bool status = await authViewModel.sendOTP(_emailTEController.text.trim());
     if(status && mounted){
-      Navigator.pushNamed(context, AppRoutes.otpVerificationScreen);
+      Get.toNamed(AppRoutes.otpVerificationScreen,arguments: _emailTEController.text.trim());
       return;
     }
     Failure failureResponse = authViewModel.response as Failure;
     if((failureResponse.statusCode == 601 || failureResponse.statusCode == 600) && mounted){
-      AppSnackBar.show(message: failureResponse.errorMessage.toString(), context: context);
+      AppSnackBar.show(message: failureResponse.errorMessage.toString(), context: context,isError: true);
       return;
     }
     if(mounted){
-      AppSnackBar.show(message: AppStrings.unknownError, context: context);
+      AppSnackBar.show(message: AppStrings.unknownError, context: context,isError: true);
     }
   }
 

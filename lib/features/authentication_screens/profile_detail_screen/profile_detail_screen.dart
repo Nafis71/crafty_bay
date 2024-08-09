@@ -48,101 +48,99 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
       ),
       body: Container(
         margin: const EdgeInsets.all(20),
-        child: Center(
-          child: SingleChildScrollView(
-            child: AuthenticationLayout(
-              titleText: AppStrings.profileDetailsScreenTitle,
-              descriptionText: AppStrings.profileDetailsScreenDescription,
-              formWidget: Padding(
-                padding: const EdgeInsets.all(20),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      TextFormField(
-                        controller: _firstNameTEController,
-                        keyboardType: TextInputType.text,
-                        cursorColor: AppColor.appPrimaryColor,
-                        decoration: const InputDecoration(
-                          hintText: AppStrings.firstNameHintText,
-                        ),
-                        onFieldSubmitted: (value) {
-                          FocusScope.of(context)
-                              .requestFocus(_lastNameFocusNode);
-                        },
+        child: SingleChildScrollView(
+          child: AuthenticationLayout(
+            titleText: AppStrings.profileDetailsScreenTitle,
+            descriptionText: AppStrings.profileDetailsScreenDescription,
+            formWidget: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    TextFormField(
+                      controller: _firstNameTEController,
+                      keyboardType: TextInputType.text,
+                      cursorColor: AppColor.appPrimaryColor,
+                      decoration: const InputDecoration(
+                        hintText: AppStrings.firstNameHintText,
                       ),
-                      const SizedBox(
-                        height: 15,
+                      onFieldSubmitted: (value) {
+                        FocusScope.of(context)
+                            .requestFocus(_lastNameFocusNode);
+                      },
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    TextFormField(
+                      controller: _lastNameTEController,
+                      focusNode: _lastNameFocusNode,
+                      keyboardType: TextInputType.text,
+                      cursorColor: AppColor.appPrimaryColor,
+                      decoration: const InputDecoration(
+                        hintText: AppStrings.lastNameHintText,
                       ),
-                      TextFormField(
-                        controller: _lastNameTEController,
-                        focusNode: _lastNameFocusNode,
-                        keyboardType: TextInputType.text,
-                        cursorColor: AppColor.appPrimaryColor,
-                        decoration: const InputDecoration(
-                          hintText: AppStrings.lastNameHintText,
-                        ),
-                        onFieldSubmitted: (value) {
-                          FocusScope.of(context)
-                              .requestFocus(_mobileFocusNode);
-                        },
+                      onFieldSubmitted: (value) {
+                        FocusScope.of(context)
+                            .requestFocus(_mobileFocusNode);
+                      },
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    TextFormField(
+                      controller: _mobileTEController,
+                      focusNode: _mobileFocusNode,
+                      keyboardType: TextInputType.number,
+                      cursorColor: AppColor.appPrimaryColor,
+                      decoration: const InputDecoration(
+                        hintText: AppStrings.mobileHintText,
                       ),
-                      const SizedBox(
-                        height: 15,
+                      onFieldSubmitted: (value) {
+                        FocusScope.of(context)
+                            .requestFocus(_cityFocusNode);
+                      },
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    TextFormField(
+                      controller: _cityTEController,
+                      focusNode: _cityFocusNode,
+                      keyboardType: TextInputType.text,
+                      cursorColor: AppColor.appPrimaryColor,
+                      decoration: const InputDecoration(
+                        hintText: AppStrings.cityHintText,
                       ),
-                      TextFormField(
-                        controller: _mobileTEController,
-                        focusNode: _mobileFocusNode,
-                        keyboardType: TextInputType.number,
-                        cursorColor: AppColor.appPrimaryColor,
-                        decoration: const InputDecoration(
-                          hintText: AppStrings.mobileHintText,
-                        ),
-                        onFieldSubmitted: (value) {
-                          FocusScope.of(context)
-                              .requestFocus(_cityFocusNode);
-                        },
+                      onFieldSubmitted: (value) {
+                        FocusScope.of(context)
+                            .requestFocus(_shippingAddressFocusNode);
+                      },
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    TextFormField(
+                      controller: _shippingAddressTEController,
+                      focusNode: _shippingAddressFocusNode,
+                      keyboardType: TextInputType.multiline,
+                      cursorColor: AppColor.appPrimaryColor,
+                      maxLines: 3,
+                      decoration: const InputDecoration(
+                        hintText: AppStrings.shippingAddressHintText,
                       ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      TextFormField(
-                        controller: _cityTEController,
-                        focusNode: _cityFocusNode,
-                        keyboardType: TextInputType.text,
-                        cursorColor: AppColor.appPrimaryColor,
-                        decoration: const InputDecoration(
-                          hintText: AppStrings.cityHintText,
-                        ),
-                        onFieldSubmitted: (value) {
-                          FocusScope.of(context)
-                              .requestFocus(_shippingAddressFocusNode);
-                        },
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      TextFormField(
-                        controller: _shippingAddressTEController,
-                        focusNode: _shippingAddressFocusNode,
-                        keyboardType: TextInputType.text,
-                        cursorColor: AppColor.appPrimaryColor,
-                        maxLines: 3,
-                        decoration: const InputDecoration(
-                          hintText: AppStrings.shippingAddressHintText,
-                        ),
-                        onFieldSubmitted: (value) {
-                          FocusScope.of(context).unfocus();
-                        },
-                      ),
-                    ],
-                  ),
+                      onFieldSubmitted: (value) {
+                        FocusScope.of(context).unfocus();
+                      },
+                    ),
+                  ],
                 ),
               ),
-              deviceOrientation: deviceOrientation,
-              buttonText: AppStrings.profileDetailsButtonText,
-              onButtonPressed: () {},
             ),
+            deviceOrientation: deviceOrientation,
+            buttonText: AppStrings.profileDetailsButtonText,
+            onButtonPressed: () {},
           ),
         ),
       ),
