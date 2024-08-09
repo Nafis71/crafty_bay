@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 class InitiateController extends Bindings{
   @override
   void dependencies() {
-    Get.put(CountdownTimer());
-    Get.put(AuthViewModel());
+    Get.lazyPut(()=>CountdownTimer());
+    Get.lazyPut(()=>AuthViewModel());
   }
 
 }
