@@ -5,13 +5,14 @@ class SvgImageLoader extends StatelessWidget {
   final String assetLocation;
   final BoxFit boxFit;
   final double? width, height;
+  final Color? color;
 
   const SvgImageLoader(
       {super.key,
       required this.assetLocation,
       required this.boxFit,
       this.height,
-      this.width});
+      this.width, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +21,7 @@ class SvgImageLoader extends StatelessWidget {
       fit: boxFit,
       width: width,
       height: height,
+      color: color,
     );
   }
 }

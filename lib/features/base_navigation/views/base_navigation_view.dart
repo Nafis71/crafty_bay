@@ -1,3 +1,5 @@
+import 'package:crafty_bay/utils/app_assets.dart';
+import 'package:crafty_bay/wrappers/svg_image_loader.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -23,48 +25,79 @@ class _BaseNavigationViewState extends State<BaseNavigationView> {
           highlightColor: Colors.transparent,
         ),
         child: BottomNavigationBar(
-          iconSize: 36,
           useLegacyColorScheme: false,
           backgroundColor: Colors.white,
-          elevation: 10,
+          elevation: 15,
           type: BottomNavigationBarType.fixed,
           selectedItemColor: Theme.of(context).primaryColor,
+          unselectedItemColor: Colors.grey,
           selectedLabelStyle:
               const TextStyle(fontSize: 11, fontFamily: "Poppins"),
+          unselectedFontSize: 11,
           onTap: (index) {
             if (index == 0) {}
           },
-          items: const [
+          items: [
             BottomNavigationBarItem(
-                icon: Column(
-                  children: [
-                    Icon(EvaIcons.homeOutline),
-                    Gap(3),
-                  ],
+                icon: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 3),
+                  child: Column(
+                    children: [
+                      SvgImageLoader(
+                        assetLocation: AppAssets.homeIcon,
+                        boxFit: BoxFit.cover,
+                        width: 35,
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    ],
+                  ),
                 ),
                 label: "Home"),
-            BottomNavigationBarItem(
-                icon: Column(
-                  children: [
-                    Icon(EvaIcons.gridOutline),
-                    Gap(3),
-                  ],
+            const BottomNavigationBarItem(
+                icon: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 3),
+                  child: Column(
+                    children: [
+                      SvgImageLoader(
+                        assetLocation: AppAssets.categoryIcon,
+                        boxFit: BoxFit.contain,
+                        width: 33,
+                        color: Colors.grey,
+                      ),
+                    ],
+                  ),
                 ),
                 label: "Category"),
-            BottomNavigationBarItem(
-                icon: Column(
-                  children: [
-                    Icon(Icons.shopping_basket_outlined),
-                    Gap(3),
-                  ],
+            const BottomNavigationBarItem(
+                icon: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 3),
+                  child: Column(
+                    children: [
+                      SvgImageLoader(
+                        assetLocation: AppAssets.cartIcon,
+                        boxFit: BoxFit.contain,
+                        width: 33,
+                        color: Colors.grey,
+                      ),
+                      Gap(3),
+                    ],
+                  ),
                 ),
                 label: "Cart"),
-            BottomNavigationBarItem(
-                icon: Column(
-                  children: [
-                    Icon(EvaIcons.giftOutline),
-                    Gap(3),
-                  ],
+            const BottomNavigationBarItem(
+                icon: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 3),
+                  child: Column(
+                    children: [
+                      SvgImageLoader(
+                        assetLocation: AppAssets.giftIcon,
+                        boxFit: BoxFit.contain,
+                        width: 33,
+                        color: Colors.grey,
+                      ),
+                      Gap(3),
+                    ],
+                  ),
                 ),
                 label: "Wish"),
           ],
