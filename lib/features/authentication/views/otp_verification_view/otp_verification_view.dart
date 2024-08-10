@@ -1,8 +1,7 @@
 import 'dart:async';
-import 'package:crafty_bay/features/authentication_screens/view_model/auth_view_model.dart';
+import 'package:crafty_bay/features/authentication/view_model/auth_view_model.dart';
 import 'package:crafty_bay/themes/app_color.dart';
 import 'package:crafty_bay/themes/pin_code_theme.dart';
-import 'package:crafty_bay/features/authentication_screens/otp_verification_screen/countdown_timer.dart';
 import 'package:crafty_bay/features/widgets/authentication_layout.dart';
 import 'package:crafty_bay/utils/form_validation.dart';
 import 'package:crafty_bay/wrappers/app_snack_bar.dart';
@@ -10,19 +9,21 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import '../../../utils/app_routes.dart';
-import '../../../utils/app_strings.dart';
 
-class OtpVerificationScreen extends StatefulWidget {
+import '../../../../utils/app_routes.dart';
+import '../../../../utils/app_strings.dart';
+import 'countdown_timer.dart';
+
+class OtpVerificationView extends StatefulWidget {
   final String emailAddress;
 
-  const OtpVerificationScreen({super.key, required this.emailAddress});
+  const OtpVerificationView({super.key, required this.emailAddress});
 
   @override
-  State<OtpVerificationScreen> createState() => _OtpVerificationScreenState();
+  State<OtpVerificationView> createState() => _OtpVerificationViewState();
 }
 
-class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
+class _OtpVerificationViewState extends State<OtpVerificationView> {
   late Timer timer;
   late final TextEditingController _otpTEController;
   late final GlobalKey<FormState> _formKey;
@@ -160,7 +161,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
     bool status = await authViewModel.verifyOTP(
         widget.emailAddress, _otpTEController.text);
     if (status && mounted && !authViewModel.hasUserData) {
-      Get.offNamed(AppRoutes.profileDetailScreen);
+      Get.offNamed(AppRoutes.profileDetailView);
       return;
     }
     if (status && mounted && authViewModel.hasUserData) {
@@ -175,7 +176,6 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   @override
   void dispose() {
     timer.cancel();
-    _otpTEController.dispose();
     super.dispose();
   }
 }

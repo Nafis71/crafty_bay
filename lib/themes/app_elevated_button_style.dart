@@ -5,6 +5,7 @@ class AppElevatedButtonStyle{
  static ElevatedButtonThemeData getElevatedButton()=> ElevatedButtonThemeData(
    style: ElevatedButton.styleFrom(
      minimumSize: const Size(double.infinity, 48),
+     elevation: 0,
      backgroundColor: AppColor.appPrimaryColor,
      foregroundColor: Colors.white,
      shape: RoundedRectangleBorder(

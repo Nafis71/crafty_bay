@@ -1,17 +1,17 @@
 import 'package:crafty_bay/themes/app_color.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:crafty_bay/features/widgets/authentication_layout.dart';
+import 'package:crafty_bay/utils/form_validation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-class ProfileDetailScreen extends StatefulWidget {
-  const ProfileDetailScreen({super.key});
+class ProfileDetailView extends StatefulWidget {
+  const ProfileDetailView({super.key});
 
   @override
-  State<ProfileDetailScreen> createState() => _ProfileDetailScreenState();
+  State<ProfileDetailView> createState() => _ProfileDetailViewState();
 }
 
-class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
+class _ProfileDetailViewState extends State<ProfileDetailView> {
   late final TextEditingController _firstNameTEController;
   late final TextEditingController _lastNameTEController;
   late final TextEditingController _mobileTEController;
@@ -69,6 +69,8 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
                         FocusScope.of(context)
                             .requestFocus(_lastNameFocusNode);
                       },
+                      validator: FormValidation.validateFirstName,
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
                     ),
                     const SizedBox(
                       height: 15,
@@ -85,6 +87,8 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
                         FocusScope.of(context)
                             .requestFocus(_mobileFocusNode);
                       },
+                      validator: FormValidation.validateLastName,
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
                     ),
                     const SizedBox(
                       height: 15,
@@ -101,6 +105,8 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
                         FocusScope.of(context)
                             .requestFocus(_cityFocusNode);
                       },
+                      validator: FormValidation.validateMobile,
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
                     ),
                     const SizedBox(
                       height: 15,
@@ -117,6 +123,8 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
                         FocusScope.of(context)
                             .requestFocus(_shippingAddressFocusNode);
                       },
+                      validator: FormValidation.validateCity,
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
                     ),
                     const SizedBox(
                       height: 15,
@@ -133,6 +141,8 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
                       onFieldSubmitted: (value) {
                         FocusScope.of(context).unfocus();
                       },
+                      validator: FormValidation.validateShippingAddress,
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
                     ),
                   ],
                 ),
@@ -140,7 +150,11 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
             ),
             deviceOrientation: deviceOrientation,
             buttonText: AppStrings.profileDetailsButtonText,
-            onButtonPressed: () {},
+            onButtonPressed: () {
+              if(_formKey.currentState!.validate()){
+
+              }
+            },
           ),
         ),
       ),

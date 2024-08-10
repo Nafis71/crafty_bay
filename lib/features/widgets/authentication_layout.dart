@@ -1,4 +1,4 @@
-import 'package:crafty_bay/features/authentication_screens/view_model/auth_view_model.dart';
+import 'package:crafty_bay/features/authentication/view_model/auth_view_model.dart';
 import 'package:crafty_bay/features/widgets/circular_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';

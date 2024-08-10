@@ -1,24 +1,26 @@
-import 'package:crafty_bay/features/authentication_screens/login_screen/login_screen.dart';
-import 'package:crafty_bay/features/authentication_screens/otp_verification_screen/otp_verification_screen.dart';
-import 'package:crafty_bay/features/authentication_screens/profile_detail_screen/profile_detail_screen.dart';
-import 'package:crafty_bay/features/splash_screen/splash_screen.dart';
+import 'package:crafty_bay/features/authentication/views/login_view/login_view.dart';
+import 'package:crafty_bay/features/authentication/views/otp_verification_view/otp_verification_view.dart';
+import 'package:crafty_bay/features/authentication/views/profile_detail_view/profile_detail_screen.dart';
 import 'package:flutter/material.dart';
+import '../features/onboarding/views/splash_view/splash_view.dart';
 
 class AppRoutes {
-  static const String splashScreen = "splashScreen";
-  static const String loginScreen = "loginScreen";
-  static const String otpVerificationScreen = "otpVerificationScreen";
-  static const String profileDetailScreen = "profileDetailScreen";
+  static const String splashView = "splashScreen";
+  static const String loginView = "loginScreen";
+  static const String otpVerificationView = "otpVerificationScreen";
+  static const String profileDetailView = "profileDetailScreen";
 
   static MaterialPageRoute? generateRoutes(RouteSettings routeSettings) {
     Map<String, WidgetBuilder> routes = {
-      AppRoutes.splashScreen: (context) => const SplashScreen(),
-      AppRoutes.loginScreen: (context) => const LoginScreen(),
-      AppRoutes.otpVerificationScreen: (context) {
+      AppRoutes.splashView: (context) => const SplashView(),
+      AppRoutes.loginView: (context) => const LoginView(),
+      AppRoutes.otpVerificationView: (context) {
         String emailAddress = routeSettings.arguments as String;
-        return  OtpVerificationScreen(emailAddress: emailAddress,);
+        return OtpVerificationView(
+          emailAddress: emailAddress,
+        );
       },
-      AppRoutes.profileDetailScreen: (context) => const ProfileDetailScreen(),
+      AppRoutes.profileDetailView: (context) => const ProfileDetailView(),
     };
     WidgetBuilder? builder = routes[routeSettings.name];
     return (builder != null) ? MaterialPageRoute(builder: builder) : null;

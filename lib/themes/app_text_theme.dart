@@ -6,14 +6,12 @@ class AppTextTheme{
   static TextTheme getTextThemeLight() => TextTheme(
     bodyMedium: getDefaultStyle(),
     titleLarge: getDefaultStyle().copyWith(
-      fontSize: 34,
+      fontSize: 30,
       fontFamily: "Poppins Medium",
       fontWeight: FontWeight.bold,
       color: AppColor.titleTextColorLight,
     ),
-    titleMedium:  getDefaultStyle().copyWith(
-      fontSize: 15,
-    )
+    titleMedium:  getDefaultStyle()
   );
 
   static TextStyle getDefaultStyle() => const TextStyle(

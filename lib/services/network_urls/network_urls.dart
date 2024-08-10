@@ -3,4 +3,5 @@ class NetworkUrls{
   static const String userLogin = "$baseUrl/UserLogin";
   static const String verifyLogin = "$baseUrl/VerifyLogin";
   static const String readProfile = "$baseUrl/ReadProfile";
+  static const String createProfile = "$baseUrl/CreateProfile";
 }

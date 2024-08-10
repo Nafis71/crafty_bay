@@ -2,21 +2,21 @@ import 'package:crafty_bay/services/response/failure.dart';
 import 'package:crafty_bay/themes/app_color.dart';
 import 'package:crafty_bay/utils/app_routes.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
-import 'package:crafty_bay/features/authentication_screens/view_model/auth_view_model.dart';
+import 'package:crafty_bay/features/authentication/view_model/auth_view_model.dart';
 import 'package:crafty_bay/features/widgets/authentication_layout.dart';
 import 'package:crafty_bay/utils/form_validation.dart';
 import 'package:crafty_bay/wrappers/app_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class LoginView extends StatefulWidget {
+  const LoginView({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<LoginView> createState() => _LoginViewState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginViewState extends State<LoginView> {
   late final GlobalKey<FormState> _formKey;
   late final TextEditingController _emailTEController;
 
@@ -77,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<void> _sendOTP(AuthViewModel authViewModel)async{
     bool status = await authViewModel.sendOTP(_emailTEController.text.trim());
     if(status && mounted){
-      Get.toNamed(AppRoutes.otpVerificationScreen,arguments: _emailTEController.text.trim());
+      Get.toNamed(AppRoutes.otpVerificationView,arguments: _emailTEController.text.trim());
       return;
     }
     Failure failureResponse = authViewModel.response as Failure;

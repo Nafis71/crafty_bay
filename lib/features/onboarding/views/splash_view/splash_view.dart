@@ -1,24 +1,23 @@
 import 'package:crafty_bay/features/widgets/circular_loading.dart';
-import 'package:crafty_bay/themes/app_color.dart';
 import 'package:crafty_bay/utils/app_assets.dart';
 import 'package:crafty_bay/utils/app_routes.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:crafty_bay/wrappers/svg_image_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:widget_and_text_animator/widget_and_text_animator.dart';
-import 'package:get/get.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+class SplashView extends StatefulWidget {
+  const SplashView({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<SplashView> createState() => _SplashViewState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     super.initState();
@@ -31,14 +30,14 @@ class _SplashScreenState extends State<SplashScreen> {
     String? token = localStorage.getString("token");
     if (token == null || JwtDecoder.isExpired(token)) {
       Future.delayed(const Duration(seconds: 4), () {
-        Get.offNamed(AppRoutes.loginScreen);
+        Get.offNamed(AppRoutes.loginView);
       });
       return;
     }
     bool? hasUserData = localStorage.getBool("hasUserData");
     if (hasUserData == null || !hasUserData) {
       Future.delayed(const Duration(seconds: 4), () {
-        Get.offNamed(AppRoutes.profileDetailScreen);
+        Get.offNamed(AppRoutes.profileDetailView);
       });
     }
   }

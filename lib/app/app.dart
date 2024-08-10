@@ -14,7 +14,7 @@ class CraftyBay extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       initialBinding: InitiateController(),
-      initialRoute: AppRoutes.splashScreen,
+      initialRoute: AppRoutes.splashView,
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
       onGenerateRoute: (RouteSettings routeSettings) {

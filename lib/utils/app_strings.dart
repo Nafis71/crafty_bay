@@ -28,10 +28,15 @@ class AppStrings {
   static const String profileDetailsScreenTitle = "Complete Profile";
   static const String profileDetailsScreenDescription = "Get started with us with your details";
   static const String firstNameHintText = "First Name";
+  static const String emptyFirstName = "First name is required";
   static const String lastNameHintText  = "Last Name";
+  static const String emptyLastName = "Last name is required";
   static const String mobileHintText = "Mobile";
+  static const String emptyMobile = "Mobile number is required";
   static const String cityHintText = "City";
+  static const String emptyCity = "City is required";
   static const String shippingAddressHintText = "Shipping Address";
+  static const String emptyShippingAddress = "Shipping address is required";
   static const String invalidFirstNameText = "Invalid First Name";
   static const String invalidLastNameText = "Invalid Last Name";
   static const String invalidMobileText = "Invalid Mobile Number";
