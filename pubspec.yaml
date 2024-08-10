@@ -27,6 +27,8 @@ dependencies:
   floating_snackbar: ^1.0.5
   shared_preferences: ^2.3.1
   jwt_decoder: ^2.0.1
+  eva_icons_flutter: ^3.1.0
+  font_awesome_flutter: ^10.7.0
 
 
 dev_dependencies:
