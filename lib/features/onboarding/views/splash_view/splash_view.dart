@@ -2,12 +2,11 @@ import 'package:crafty_bay/features/widgets/circular_loading.dart';
 import 'package:crafty_bay/utils/app_assets.dart';
 import 'package:crafty_bay/utils/app_routes.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
+import 'package:crafty_bay/view_models/profile_view_model.dart';
 import 'package:crafty_bay/wrappers/svg_image_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:jwt_decoder/jwt_decoder.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:widget_and_text_animator/widget_and_text_animator.dart';
 
 class SplashView extends StatefulWidget {
@@ -21,25 +20,7 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     super.initState();
-
-    checkToken();
-  }
-
-  Future<void> checkToken() async {
-    SharedPreferences localStorage = await SharedPreferences.getInstance();
-    String? token = localStorage.getString("token");
-    if (token == null || JwtDecoder.isExpired(token)) {
-      Future.delayed(const Duration(seconds: 4), () {
-        Get.offNamed(AppRoutes.loginView);
-      });
-      return;
-    }
-    bool? hasUserData = localStorage.getBool("hasUserData");
-    if (hasUserData == null || !hasUserData) {
-      Future.delayed(const Duration(seconds: 4), () {
-        Get.offNamed(AppRoutes.profileDetailView);
-      });
-    }
+    handleUserAuthentication();
   }
 
   @override
@@ -76,5 +57,27 @@ class _SplashViewState extends State<SplashView> {
         ),
       ),
     );
+  }
+
+  Future<void> handleUserAuthentication() async {
+    bool isTokenExpired = await Get.find<ProfileViewModel>().validateToken();
+    if (isTokenExpired) {
+      Future.delayed(const Duration(seconds: 4), () {
+        Get.offNamed(AppRoutes.loginView);
+      });
+      return;
+    }
+    bool isUserDataAvailable =
+    await Get.find<ProfileViewModel>().checkUserData();
+    if (!isUserDataAvailable) {
+      Future.delayed(const Duration(seconds: 4), () {
+        Get.offNamed(AppRoutes.profileDetailView);
+      });
+      return;
+    }
+    await Get.find<ProfileViewModel>().loadUserDataFromStorage();
+    Future.delayed(const Duration(seconds: 4), () {
+      Get.offNamed(AppRoutes.baseNavigationView);
+    });
   }
 }

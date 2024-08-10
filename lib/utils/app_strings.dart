@@ -43,4 +43,5 @@ class AppStrings {
   static const String invalidCityText = "Invalid City Name";
   static const String invalidShippingAddress = "Invalid Shipping Address";
   static const String profileDetailsButtonText = "Complete";
+  static const String createProfileFailure = "Failed to create your profile,try again";
 }

@@ -40,6 +40,7 @@ class AuthViewModel extends GetxController {
       String token = jsonData['data'];
       SharedPreferences localStorage = await SharedPreferences.getInstance();
       localStorage.setString("token", token);
+      Get.find<ProfileViewModel>().setToken = token;
       bool status = await Get.find<ProfileViewModel>().readProfile(response!, token);
       _hasUserData = status;
       localStorage.setBool("hasUserData", status);

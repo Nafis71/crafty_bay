@@ -1,5 +1,6 @@
 import 'package:crafty_bay/features/authentication/view_model/auth_view_model.dart';
 import 'package:crafty_bay/features/widgets/circular_loading.dart';
+import 'package:crafty_bay/view_models/profile_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -15,6 +16,7 @@ class AuthenticationLayout extends StatelessWidget {
   final Widget? bottomWidget;
   final Function onButtonPressed;
   final String? buttonText;
+  final bool? isProfileDetailView;
 
   const AuthenticationLayout({
     super.key,
@@ -25,6 +27,7 @@ class AuthenticationLayout extends StatelessWidget {
     this.bottomWidget,
     required this.onButtonPressed,
     this.buttonText,
+    this.isProfileDetailView,
   });
 
   @override
@@ -47,23 +50,23 @@ class AuthenticationLayout extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: SizedBox(
             width: double.infinity,
-            child: GetBuilder<AuthViewModel>(
-              builder: (authViewModel) {
-                if(authViewModel.isBusy){
-                  return const Center(child: CircularLoading(),);
-                }
-                return ElevatedButton(
-                  onPressed: () {
-                    onButtonPressed();
-                  },
-                  child: Text(
-                    (buttonText == null)
-                        ? AppStrings.loginScreenButtonText
-                        : buttonText!,
-                  ),
-                );
-              }
-            ),
+            child: (isProfileDetailView == null)
+                ? GetBuilder<AuthViewModel>(builder: (authViewModel) {
+                    if (authViewModel.isBusy) {
+                      return const Center(
+                        child: CircularLoading(),
+                      );
+                    }
+                    return elevatedButton();
+                  })
+                : GetBuilder<ProfileViewModel>(builder: (profileViewModel) {
+                    if (profileViewModel.isBusy) {
+                      return const Center(
+                        child: CircularLoading(),
+                      );
+                    }
+                    return elevatedButton();
+                  }),
           ),
         ),
         if (bottomWidget != null) const Gap(30),
@@ -71,6 +74,17 @@ class AuthenticationLayout extends StatelessWidget {
         if (deviceOrientation != Orientation.landscape && bottomWidget == null)
           const Gap(120)
       ],
+    );
+  }
+
+  Widget elevatedButton() {
+    return ElevatedButton(
+      onPressed: () {
+        onButtonPressed();
+      },
+      child: Text(
+        (buttonText == null) ? AppStrings.loginScreenButtonText : buttonText!,
+      ),
     );
   }
 }
