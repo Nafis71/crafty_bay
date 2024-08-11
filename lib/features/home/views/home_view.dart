@@ -1,4 +1,13 @@
+import 'package:crafty_bay/features/home/widgets/app_search_bar.dart';
+import 'package:crafty_bay/features/home/widgets/carousel_indicator.dart';
+import 'package:crafty_bay/features/home/widgets/offer_carousel.dart';
+import 'package:crafty_bay/themes/app_color.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
+import 'package:gap/gap.dart';
+
+import '../../../widgets/crafty_app_bar.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -10,8 +19,27 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-
+    return Scaffold(
+      appBar: craftyAppBar(),
+      body: Container(
+        margin: const EdgeInsets.all(10),
+        child:  SingleChildScrollView(
+          child: Column(
+            children: [
+              const AppSearchBar(),
+              const Gap(5),
+              const OfferCarousel(),
+              const Gap(8),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(4, (index){
+                  return CarouselIndicator(index: index,);
+                }),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

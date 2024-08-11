@@ -14,7 +14,6 @@ class _BaseNavigationViewState extends State<BaseNavigationView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: GetBuilder<BaseNavigationViewModel>(
         builder: (baseNavigationViewModel) {
           return PageView.builder(

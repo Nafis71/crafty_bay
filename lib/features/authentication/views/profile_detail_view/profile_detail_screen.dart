@@ -2,7 +2,7 @@ import 'package:crafty_bay/services/response/failure.dart';
 import 'package:crafty_bay/themes/app_color.dart';
 import 'package:crafty_bay/utils/app_routes.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
-import 'package:crafty_bay/features/widgets/authentication_layout.dart';
+import 'package:crafty_bay/widgets/authentication_layout.dart';
 import 'package:crafty_bay/utils/form_validation.dart';
 import 'package:crafty_bay/view_models/profile_view_model.dart';
 import 'package:crafty_bay/wrappers/app_snack_bar.dart';

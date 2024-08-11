@@ -4,20 +4,25 @@ import 'package:flutter/material.dart';
 
 class AppTextTheme{
   static TextTheme getTextThemeLight() => TextTheme(
-    bodyMedium: getDefaultStyle(),
+    bodyMedium: getDefaultStyle().copyWith(
+      color: Colors.grey
+    ),
     titleLarge: getDefaultStyle().copyWith(
       fontSize: 30,
       fontFamily: "Poppins Medium",
       fontWeight: FontWeight.bold,
       color: AppColor.titleTextColorLight,
     ),
-    titleMedium:  getDefaultStyle()
+    titleMedium:  getDefaultStyle().copyWith(
+      fontSize: 18,
+      fontWeight: FontWeight.bold,
+    )
   );
 
   static TextStyle getDefaultStyle() => const TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w500,
     fontFamily: "Poppins",
-    color: Colors.grey,
+    color: Colors.white,
   );
 }

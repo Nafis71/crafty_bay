@@ -1,4 +1,4 @@
-import 'package:crafty_bay/features/widgets/circular_loading.dart';
+import 'package:crafty_bay/widgets/circular_loading.dart';
 import 'package:crafty_bay/utils/app_assets.dart';
 import 'package:crafty_bay/utils/app_routes.dart';
 import 'package:crafty_bay/utils/app_strings.dart';

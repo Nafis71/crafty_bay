@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:crafty_bay/features/authentication/view_model/auth_view_model.dart';
 import 'package:crafty_bay/themes/app_color.dart';
 import 'package:crafty_bay/themes/pin_code_theme.dart';
-import 'package:crafty_bay/features/widgets/authentication_layout.dart';
+import 'package:crafty_bay/widgets/authentication_layout.dart';
 import 'package:crafty_bay/utils/form_validation.dart';
 import 'package:crafty_bay/wrappers/app_snack_bar.dart';
 import 'package:flutter/material.dart';
