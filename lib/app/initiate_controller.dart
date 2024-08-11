@@ -1,4 +1,5 @@
 import 'package:crafty_bay/features/authentication/view_model/auth_view_model.dart';
+import 'package:crafty_bay/features/base_navigation/view_model/base_navigation_view_model.dart';
 import 'package:crafty_bay/view_models/profile_view_model.dart';
 import 'package:get/get.dart';
 
@@ -10,6 +11,7 @@ class InitiateController extends Bindings{
     Get.lazyPut(()=>CountdownTimer());
     Get.lazyPut(()=>AuthViewModel());
     Get.lazyPut(()=>ProfileViewModel());
+    Get.lazyPut(()=>BaseNavigationViewModel());
   }
 
 }
