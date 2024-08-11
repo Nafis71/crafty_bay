@@ -1,5 +1,4 @@
 import 'package:crafty_bay/themes/app_color.dart';
-import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 
 class AppTextTheme{
