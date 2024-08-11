@@ -1,3 +1,4 @@
+import 'package:crafty_bay/services/prefetch_service.dart';
 import 'package:crafty_bay/widgets/circular_loading.dart';
 import 'package:crafty_bay/utils/app_assets.dart';
 import 'package:crafty_bay/utils/app_routes.dart';
@@ -61,6 +62,7 @@ class _SplashViewState extends State<SplashView> {
 
   Future<void> handleUserAuthentication() async {
     bool isTokenExpired = await Get.find<ProfileViewModel>().validateToken();
+    await PrefetchService.prefetchProductSliderList();
     if (isTokenExpired) {
       Future.delayed(const Duration(seconds: 4), () {
         Get.offNamed(AppRoutes.loginView);
@@ -70,14 +72,10 @@ class _SplashViewState extends State<SplashView> {
     bool isUserDataAvailable =
     await Get.find<ProfileViewModel>().checkUserData();
     if (!isUserDataAvailable) {
-      Future.delayed(const Duration(seconds: 4), () {
-        Get.offNamed(AppRoutes.profileDetailView);
-      });
+      Get.offNamed(AppRoutes.profileDetailView);
       return;
     }
     await Get.find<ProfileViewModel>().loadUserDataFromStorage();
-    Future.delayed(const Duration(seconds: 4), () {
-      Get.offNamed(AppRoutes.baseNavigationView);
-    });
+    Get.offNamed(AppRoutes.baseNavigationView);
   }
 }

@@ -1,6 +1,7 @@
 import 'package:crafty_bay/features/home/widgets/app_search_bar.dart';
 import 'package:crafty_bay/features/home/widgets/carousel_indicator.dart';
 import 'package:crafty_bay/features/home/widgets/offer_carousel.dart';
+import 'package:crafty_bay/features/home/widgets/section_header.dart';
 import 'package:crafty_bay/themes/app_color.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -22,9 +23,10 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       appBar: craftyAppBar(),
       body: Container(
-        margin: const EdgeInsets.all(10),
-        child:  SingleChildScrollView(
+        margin: const EdgeInsets.all(8),
+        child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const AppSearchBar(),
               const Gap(5),
@@ -32,10 +34,14 @@ class _HomeViewState extends State<HomeView> {
               const Gap(8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(4, (index){
-                  return CarouselIndicator(index: index,);
+                children: List.generate(4, (index) {
+                  return CarouselIndicator(
+                    index: index,
+                  );
                 }),
-              )
+              ),
+              const Gap(30),
+              SectionHeader(sectionTitle: "All Categories", onTap: () {})
             ],
           ),
         ),

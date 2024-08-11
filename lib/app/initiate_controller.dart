@@ -13,7 +13,7 @@ class InitiateController extends Bindings{
     Get.lazyPut(()=>AuthViewModel());
     Get.lazyPut(()=>ProfileViewModel());
     Get.lazyPut(()=>BaseNavigationViewModel());
-    Get.lazyPut(()=>HomeViewModel());
+    Get.put(HomeViewModel());
   }
 
 }

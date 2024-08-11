@@ -11,10 +11,16 @@ class AppTextTheme{
       fontSize: 30,
       fontFamily: "Poppins Medium",
       fontWeight: FontWeight.bold,
-      color: AppColor.titleTextColorLight,
+      color: AppColor.titleLargeTextColorLight,
     ),
-    titleMedium:  getDefaultStyle().copyWith(
-      fontSize: 18,
+    titleMedium: getDefaultStyle().copyWith(
+      fontSize: 22,
+      fontWeight: FontWeight.bold,
+      fontFamily: "Poppins Medium",
+      color: AppColor.titleMediumTextColorLight,
+    ),
+    labelMedium:  getDefaultStyle().copyWith(
+      fontSize: 17,
       fontWeight: FontWeight.bold,
     )
   );
