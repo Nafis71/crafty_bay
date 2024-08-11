@@ -45,10 +45,15 @@ class _BaseNavigationViewState extends State<BaseNavigationView> {
             type: BottomNavigationBarType.fixed,
             selectedItemColor: Theme.of(context).primaryColor,
             unselectedItemColor: Colors.grey,
-            selectedLabelStyle:
-                const TextStyle(fontSize: 11, fontFamily: "Poppins"),
-            unselectedLabelStyle:
-                const TextStyle(fontSize: 11, fontFamily: "Poppins"),
+            selectedLabelStyle: const TextStyle(
+              fontSize: 11,
+              fontFamily: "Poppins",
+              fontWeight: FontWeight.bold,
+            ),
+            unselectedLabelStyle: const TextStyle(
+              fontSize: 11,
+              fontFamily: "Poppins",
+            ),
             onTap: (index) {
               baseNavigationViewModel.setIndex = index;
             },
@@ -62,7 +67,9 @@ class _BaseNavigationViewState extends State<BaseNavigationView> {
                           assetLocation: AppAssets.homeIcon,
                           boxFit: BoxFit.cover,
                           width: 35,
-                          color: (baseNavigationViewModel.index == 0) ? Theme.of(context).primaryColor : Colors.grey,
+                          color: (baseNavigationViewModel.index == 0)
+                              ? Theme.of(context).primaryColor
+                              : Colors.grey,
                         ),
                       ],
                     ),
@@ -77,7 +84,9 @@ class _BaseNavigationViewState extends State<BaseNavigationView> {
                           assetLocation: AppAssets.categoryIcon,
                           boxFit: BoxFit.contain,
                           width: 33,
-                          color: (baseNavigationViewModel.index == 1) ? Theme.of(context).primaryColor : Colors.grey,
+                          color: (baseNavigationViewModel.index == 1)
+                              ? Theme.of(context).primaryColor
+                              : Colors.grey,
                         ),
                       ],
                     ),
@@ -92,7 +101,9 @@ class _BaseNavigationViewState extends State<BaseNavigationView> {
                         assetLocation: AppAssets.cartIcon,
                         boxFit: BoxFit.contain,
                         width: 33,
-                        color: (baseNavigationViewModel.index == 2) ? Theme.of(context).primaryColor : Colors.grey,
+                        color: (baseNavigationViewModel.index == 2)
+                            ? Theme.of(context).primaryColor
+                            : Colors.grey,
                       ),
                     ],
                   ),
@@ -108,7 +119,9 @@ class _BaseNavigationViewState extends State<BaseNavigationView> {
                         assetLocation: AppAssets.giftIcon,
                         boxFit: BoxFit.contain,
                         width: 33,
-                        color: (baseNavigationViewModel.index == 3) ? Theme.of(context).primaryColor : Colors.grey,
+                        color: (baseNavigationViewModel.index == 3)
+                            ? Theme.of(context).primaryColor
+                            : Colors.grey,
                       ),
                     ],
                   ),
