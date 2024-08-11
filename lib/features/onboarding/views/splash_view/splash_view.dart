@@ -62,7 +62,10 @@ class _SplashViewState extends State<SplashView> {
 
   Future<void> handleUserAuthentication() async {
     bool isTokenExpired = await Get.find<ProfileViewModel>().validateToken();
-    await PrefetchService.prefetchProductSliderList();
+    await Future.wait([
+      PrefetchService.prefetchProductSliderList(),
+      PrefetchService.prefetchCategoryList(),
+    ]);
     if (isTokenExpired) {
       Future.delayed(const Duration(seconds: 4), () {
         Get.offNamed(AppRoutes.loginView);
@@ -70,7 +73,7 @@ class _SplashViewState extends State<SplashView> {
       return;
     }
     bool isUserDataAvailable =
-    await Get.find<ProfileViewModel>().checkUserData();
+        await Get.find<ProfileViewModel>().checkUserData();
     if (!isUserDataAvailable) {
       Get.offNamed(AppRoutes.profileDetailView);
       return;

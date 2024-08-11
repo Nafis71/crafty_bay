@@ -16,7 +16,7 @@ BottomNavigationBarItem getBottomNavigationBarItem({
             SvgImageLoader(
               assetLocation: iconPath,
               boxFit: BoxFit.cover,
-              width: 35,
+              width: 32,
               color:
                   (index == targetIndex) ? Theme.of(context).primaryColor : Colors.grey,
             ),

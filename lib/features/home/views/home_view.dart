@@ -1,5 +1,6 @@
 import 'package:crafty_bay/features/home/widgets/app_search_bar.dart';
 import 'package:crafty_bay/features/home/widgets/carousel_indicator.dart';
+import 'package:crafty_bay/features/home/widgets/category_card.dart';
 import 'package:crafty_bay/features/home/widgets/offer_carousel.dart';
 import 'package:crafty_bay/features/home/widgets/section_header.dart';
 import 'package:crafty_bay/themes/app_color.dart';
@@ -41,7 +42,9 @@ class _HomeViewState extends State<HomeView> {
                 }),
               ),
               const Gap(30),
-              SectionHeader(sectionTitle: "All Categories", onTap: () {})
+              SectionHeader(sectionTitle: "All Categories", onTap: () {}),
+              const Gap(10),
+              const CategoryCard(),
             ],
           ),
         ),

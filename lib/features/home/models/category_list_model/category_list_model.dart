@@ -1,17 +1,17 @@
-import 'package:crafty_bay/features/home/models/product_data.dart';
+import 'category_data.dart';
 
-class ProductSlider {
+class CategoryModel {
   String? msg;
-  List<ProductSliderData>? data;
+  List<CategoryData>? data;
 
-  ProductSlider({this.msg, this.data});
+  CategoryModel({this.msg, this.data});
 
-  ProductSlider.fromJson(Map<String, dynamic> json) {
+  CategoryModel.fromJson(Map<String, dynamic> json) {
     msg = json['msg'];
     if (json['data'] != null) {
-      data = <ProductSliderData>[];
+      data = <CategoryData>[];
       json['data'].forEach((v) {
-        data!.add(ProductSliderData.fromJson(v));
+        data!.add(CategoryData.fromJson(v));
       });
     }
   }

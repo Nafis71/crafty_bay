@@ -5,4 +5,7 @@ class PrefetchService{
   static Future<void> prefetchProductSliderList() async{
     await Get.find<HomeViewModel>().getProductSliderList();
   }
+  static Future<void> prefetchCategoryList() async{
+    await Get.find<HomeViewModel>().getCategoryList();
+  }
 }

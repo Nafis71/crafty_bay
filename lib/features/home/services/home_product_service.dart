@@ -11,4 +11,8 @@ class HomeProductService extends ApiRequest {
   Future<Object> getProductSliderList() async {
     return getRequest(url: NetworkUrls.productSlider);
   }
+
+  Future<Object> getCategoryList() async{
+    return getRequest(url: NetworkUrls.categoryList);
+  }
 }
