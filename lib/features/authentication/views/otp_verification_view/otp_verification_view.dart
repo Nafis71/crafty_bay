@@ -99,13 +99,13 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
                                 TextSpan(
                                   text: AppStrings.otpExpirationText,
                                   style:
-                                      Theme.of(context).textTheme.titleMedium,
+                                      Theme.of(context).textTheme.bodyMedium,
                                 ),
                                 TextSpan(
                                   text: " ${timer.timeLeft}s",
                                   style: Theme.of(context)
                                       .textTheme
-                                      .titleMedium!
+                                      .bodyMedium!
                                       .copyWith(
                                         color: AppColor.appPrimaryColor,
                                         fontWeight: FontWeight.bold,

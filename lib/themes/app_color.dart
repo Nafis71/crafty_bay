@@ -8,4 +8,5 @@ class AppColor{
   static Color titleMediumTextColorLight = const Color(0xFF505050);
   static Color appBarActionButtonColor = const Color(0xFFF3F3F3);
   static Color searchBarBackgroundColor = const Color(0xFFF3F3F3);
+  static Color ratingIconColor = const Color(0xFFF9D858);
 }

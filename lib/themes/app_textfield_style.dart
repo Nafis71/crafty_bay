@@ -8,6 +8,7 @@ class AppTextFieldStyle {
           color: Colors.grey.shade400,
           fontFamily: "Poppins",
           fontWeight: FontWeight.normal,
+          fontSize: 14
         ),
         enabledBorder:
             getOutlineInputBorder(width: 1, color: AppColor.appPrimaryColor),

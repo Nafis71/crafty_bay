@@ -1,14 +1,18 @@
 import 'package:crafty_bay/themes/app_color.dart';
 import 'package:crafty_bay/utils/app_assets.dart';
+import 'package:crafty_bay/wrappers/svg_image_loader.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 AppBar craftyAppBar({String? title}) {
   return AppBar(
-    title: (title == null) ? Image.asset(AppAssets.logo_nav,fit: BoxFit.cover,width: 145,) : Text(title),
+    title: (title == null)
+        ? const SvgImageLoader(
+            assetLocation: AppAssets.logoNav, boxFit: BoxFit.contain,width: 150,)
+        : Text(title),
     centerTitle: false,
-    actions:  [
+    actions: [
       actionItem(CupertinoIcons.person),
       const Gap(10),
       actionItem(CupertinoIcons.phone),
@@ -19,9 +23,12 @@ AppBar craftyAppBar({String? title}) {
   );
 }
 
-CircleAvatar actionItem(IconData icon){
+CircleAvatar actionItem(IconData icon) {
   return CircleAvatar(
     backgroundColor: AppColor.appBarActionButtonColor,
-    child: Icon(icon,color: Colors.grey,),
+    child: Icon(
+      icon,
+      color: Colors.grey,
+    ),
   );
 }
