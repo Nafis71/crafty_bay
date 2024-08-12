@@ -45,6 +45,7 @@ class _HomeViewState extends State<HomeView> {
               SectionHeader(sectionTitle: "All Categories", onTap: () {}),
               const Gap(10),
               const CategoryCard(),
+              //
             ],
           ),
         ),
