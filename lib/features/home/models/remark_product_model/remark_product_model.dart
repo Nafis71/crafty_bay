@@ -1,15 +1,17 @@
+import 'package:crafty_bay/features/home/models/remark_product_model/remark_product_data.dart';
+
 class RemarkProductModel {
   String? msg;
-  List<RemarkProductModel>? data;
+  List<RemarkProductData>? data;
 
   RemarkProductModel({this.msg, this.data});
 
   RemarkProductModel.fromJson(Map<String, dynamic> json) {
     msg = json['msg'];
     if (json['data'] != null) {
-      data = <RemarkProductModel>[];
+      data = <RemarkProductData>[];
       json['data'].forEach((v) {
-        data!.add(RemarkProductModel.fromJson(v));
+        data!.add(RemarkProductData.fromJson(v));
       });
     }
   }

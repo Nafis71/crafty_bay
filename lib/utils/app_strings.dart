@@ -44,4 +44,12 @@ class AppStrings {
   static const String invalidShippingAddress = "Invalid Shipping Address";
   static const String profileDetailsButtonText = "Complete";
   static const String createProfileFailure = "Failed to create your profile,try again";
+
+
+  //home screen
+  static const String homeCategoryHeader = "All Categories";
+  static const String homePopularHeader = "Popular";
+  static const String homeSpecialHeader = "Special";
+  static const String homeNewHeader = "New";
+  static const String homeSeeAllButtonText = "See All";
 }

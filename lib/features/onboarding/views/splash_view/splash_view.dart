@@ -65,6 +65,9 @@ class _SplashViewState extends State<SplashView> {
     await Future.wait([
       PrefetchService.prefetchProductSliderList(),
       PrefetchService.prefetchCategoryList(),
+      PrefetchService.prefetchPopularProductData(),
+      PrefetchService.prefetchSpecialProductData(),
+      PrefetchService.prefetchNewProductData(),
     ]);
     if (isTokenExpired) {
       Future.delayed(const Duration(seconds: 4), () {

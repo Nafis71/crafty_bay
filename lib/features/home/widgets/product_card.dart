@@ -1,15 +1,20 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:crafty_bay/features/home/view_model/home_view_model.dart';
 import 'package:crafty_bay/themes/app_color.dart';
+import 'package:crafty_bay/widgets/circular_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({super.key});
+  final List<dynamic> productList;
+
+  const ProductCard({super.key, required this.productList});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,
+      height: 205,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
@@ -46,8 +51,12 @@ class ProductCard extends StatelessWidget {
                         ),
                         alignment: Alignment.center,
                         child: CachedNetworkImage(
-                            imageUrl:
-                                "https://photo.teamrabbil.com/images/2023/04/04/product.png"),
+                          imageUrl: "https://photo.teamrabbil.com/images/2023/04/04/product.png",
+                          fit: BoxFit.contain,
+                          placeholder: (context,_){
+                            return const CircularLoading();
+                          },
+                        ),
                       ),
                     ),
                     Expanded(
@@ -59,43 +68,59 @@ class ProductCard extends StatelessWidget {
                             Text(
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
-                              "New Year Special Shoe 30",
+                              productList[index].title,
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium!
-                                  .copyWith(fontSize: 10, color: Colors.grey.shade600,fontWeight: FontWeight.bold),
+                                  .copyWith(
+                                      fontSize: 10,
+                                      color: Colors.grey.shade600,
+                                      fontWeight: FontWeight.bold),
                             ),
                             const Gap(3),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  "\$100",
+                                  "\$${productList[index].price}",
                                   style: Theme.of(context)
                                       .textTheme
                                       .bodyMedium!
-                                      .copyWith(fontSize: 13, color: Theme.of(context).primaryColor,fontWeight: FontWeight.bold),
+                                      .copyWith(
+                                          fontSize: 13,
+                                          color: Theme.of(context).primaryColor,
+                                          fontWeight: FontWeight.bold),
                                 ),
-                                 Row(
-                                   children: [
-                                     Icon(Icons.star,size: 18,color: AppColor.ratingIconColor,),
-                                     Text(
-                                       "4.8",
-                                       style: Theme.of(context)
-                                           .textTheme
-                                           .bodyMedium!
-                                           .copyWith(fontSize: 12, color: Colors.grey.shade600,),
-                                     ),
-                                   ],
-                                 ),
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.star,
+                                      size: 18,
+                                      color: AppColor.ratingIconColor,
+                                    ),
+                                    Text(
+                                      productList[index].star.toStringAsFixed(1),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium!
+                                          .copyWith(
+                                            fontSize: 12,
+                                            color: Colors.grey.shade600,
+                                          ),
+                                    ),
+                                  ],
+                                ),
                                 Card(
                                   color: Theme.of(context).primaryColor,
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(3)
-                                  ),
+                                      borderRadius: BorderRadius.circular(3)),
                                   child: const Padding(
                                     padding: EdgeInsets.all(3.0),
-                                    child: Icon(Icons.favorite_outline_rounded,color: Colors.white,size: 15,),
+                                    child: Icon(
+                                      Icons.favorite_outline_rounded,
+                                      color: Colors.white,
+                                      size: 15,
+                                    ),
                                   ),
                                 )
                               ],
@@ -113,7 +138,7 @@ class ProductCard extends StatelessWidget {
         separatorBuilder: (context, index) {
           return const Gap(20);
         },
-        itemCount: 3,
+        itemCount: productList.length,
       ),
     );
   }

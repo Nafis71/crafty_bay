@@ -8,4 +8,13 @@ class PrefetchService{
   static Future<void> prefetchCategoryList() async{
     await Get.find<HomeViewModel>().getCategoryList();
   }
+  static Future<void> prefetchPopularProductData() async{
+    await Get.find<HomeViewModel>().getPopularProduct();
+  }
+  static Future<void> prefetchSpecialProductData() async{
+    await Get.find<HomeViewModel>().getSpecialProduct();
+  }
+  static Future<void> prefetchNewProductData() async{
+    await Get.find<HomeViewModel>().getNewProduct();
+  }
 }

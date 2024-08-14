@@ -1,3 +1,4 @@
+import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -22,14 +23,14 @@ class SectionHeader extends StatelessWidget {
               splashColor: Colors.transparent,
               onTap: ()=> onTap(),
               child: Text(
-                "See All",
+                AppStrings.homeSeeAllButtonText,
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: Theme.of(context).primaryColor,
                       fontSize: 15,
                     ),
               ),
             ),
-            const Gap(10)
+            const Gap(5)
           ],
         ),
       ],
