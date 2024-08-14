@@ -6,4 +6,5 @@ class NetworkUrls{
   static const String createProfile = "$baseUrl/CreateProfile";
   static const String productSlider = "$baseUrl/ListProductSlider";
   static const String categoryList = "$baseUrl/CategoryList";
+  static const String listProductByRemark = "$baseUrl/ListProductByRemark";
 }

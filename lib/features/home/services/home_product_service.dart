@@ -15,4 +15,8 @@ class HomeProductService extends ApiRequest {
   Future<Object> getCategoryList() async{
     return getRequest(url: NetworkUrls.categoryList);
   }
+
+  Future<Object> listProductByRemark(String remark) async{
+    return getRequest(url: "${NetworkUrls.listProductByRemark}/$remark");
+  }
 }
