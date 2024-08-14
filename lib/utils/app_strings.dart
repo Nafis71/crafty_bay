@@ -1,7 +1,8 @@
 class AppStrings {
   //network errors
   static const String unknownError = "Something went wrong, please try again!";
-  static const String networkError = "Network Error, Check your internet connection.";
+  static const String networkError =
+      "Network Error, Check your internet connection.";
 
   //login Screen
   static const String appVersion = "Version 1.0";
@@ -23,13 +24,13 @@ class AppStrings {
   static const String invalidOTPErrorText = "Invalid OTP";
   static const String emptyOTP = "A 4 digit OTP is required";
 
-
   //profile details screen
   static const String profileDetailsScreenTitle = "Complete Profile";
-  static const String profileDetailsScreenDescription = "Get started with us with your details";
+  static const String profileDetailsScreenDescription =
+      "Get started with us with your details";
   static const String firstNameHintText = "First Name";
   static const String emptyFirstName = "First name is required";
-  static const String lastNameHintText  = "Last Name";
+  static const String lastNameHintText = "Last Name";
   static const String emptyLastName = "Last name is required";
   static const String mobileHintText = "Mobile";
   static const String emptyMobile = "Mobile number is required";
@@ -43,8 +44,8 @@ class AppStrings {
   static const String invalidCityText = "Invalid City Name";
   static const String invalidShippingAddress = "Invalid Shipping Address";
   static const String profileDetailsButtonText = "Complete";
-  static const String createProfileFailure = "Failed to create your profile,try again";
-
+  static const String createProfileFailure =
+      "Failed to create your profile,try again";
 
   //home screen
   static const String homeCategoryHeader = "All Categories";

@@ -43,7 +43,9 @@ class _OfferCarouselState extends State<OfferCarousel> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          Get.find<HomeViewModel>().productSliderList[index].title!,
+                          Get.find<HomeViewModel>()
+                              .productSliderList[index]
+                              .title!,
                           style: Theme.of(context).textTheme.labelMedium,
                         ),
                         const Gap(10),
@@ -53,7 +55,8 @@ class _OfferCarouselState extends State<OfferCarousel> {
                           child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.white,
-                                  foregroundColor: Theme.of(context).primaryColor,
+                                  foregroundColor:
+                                      Theme.of(context).primaryColor,
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .bodyMedium!
@@ -70,7 +73,6 @@ class _OfferCarouselState extends State<OfferCarousel> {
                   ],
                 ),
               ),
-
             ],
           ),
         );

@@ -9,7 +9,10 @@ AppBar craftyAppBar({String? title}) {
   return AppBar(
     title: (title == null)
         ? const SvgImageLoader(
-            assetLocation: AppAssets.logoNav, boxFit: BoxFit.contain,width: 150,)
+            assetLocation: AppAssets.logoNav,
+            boxFit: BoxFit.contain,
+            width: 150,
+          )
         : Text(title),
     centerTitle: false,
     actions: [

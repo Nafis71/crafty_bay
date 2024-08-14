@@ -2,7 +2,7 @@ import 'package:crafty_bay/services/api_request.dart';
 
 import '../../../services/network_urls/network_urls.dart';
 
-class ProfileDetailService extends ApiRequest{
+class ProfileDetailService extends ApiRequest {
   Future<Object> readProfile(String token) async {
     return await getRequest(
         url: NetworkUrls.readProfile, headers: {"token": token});

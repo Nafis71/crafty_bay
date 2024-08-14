@@ -2,16 +2,11 @@ import 'package:crafty_bay/features/home/view_model/home_view_model.dart';
 import 'package:crafty_bay/features/home/widgets/app_search_bar.dart';
 import 'package:crafty_bay/features/home/widgets/carousel_indicator.dart';
 import 'package:crafty_bay/features/home/widgets/category_card.dart';
-import 'package:crafty_bay/features/home/widgets/product_layout_section.dart';
 import 'package:crafty_bay/features/home/widgets/offer_carousel.dart';
 import 'package:crafty_bay/features/home/widgets/product_card.dart';
-import 'package:crafty_bay/features/home/widgets/section_header.dart';
-import 'package:crafty_bay/services/network_urls/network_urls.dart';
-import 'package:crafty_bay/themes/app_color.dart';
+import 'package:crafty_bay/features/home/widgets/product_layout_section.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 

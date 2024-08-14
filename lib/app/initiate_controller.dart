@@ -6,14 +6,13 @@ import 'package:get/get.dart';
 
 import '../features/authentication/views/otp_verification_view/countdown_timer.dart';
 
-class InitiateController extends Bindings{
+class InitiateController extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(()=>CountdownTimer());
-    Get.lazyPut(()=>AuthViewModel());
-    Get.lazyPut(()=>ProfileViewModel());
-    Get.lazyPut(()=>BaseNavigationViewModel());
+    Get.lazyPut(() => CountdownTimer());
+    Get.lazyPut(() => AuthViewModel());
+    Get.lazyPut(() => ProfileViewModel());
+    Get.lazyPut(() => BaseNavigationViewModel());
     Get.put(HomeViewModel());
   }
-
 }

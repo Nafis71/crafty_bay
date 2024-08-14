@@ -2,9 +2,9 @@ import 'package:crafty_bay/services/response/failure.dart';
 import 'package:crafty_bay/themes/app_color.dart';
 import 'package:crafty_bay/utils/app_routes.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
-import 'package:crafty_bay/widgets/authentication_layout.dart';
 import 'package:crafty_bay/utils/form_validation.dart';
 import 'package:crafty_bay/view_models/profile_view_model.dart';
+import 'package:crafty_bay/widgets/authentication_layout.dart';
 import 'package:crafty_bay/wrappers/app_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -46,9 +46,7 @@ class _ProfileDetailViewState extends State<ProfileDetailView> {
 
   @override
   Widget build(BuildContext context) {
-    Orientation deviceOrientation = MediaQuery
-        .of(context)
-        .orientation;
+    Orientation deviceOrientation = MediaQuery.of(context).orientation;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -74,8 +72,7 @@ class _ProfileDetailViewState extends State<ProfileDetailView> {
                         hintText: AppStrings.firstNameHintText,
                       ),
                       onFieldSubmitted: (value) {
-                        FocusScope.of(context)
-                            .requestFocus(_lastNameFocusNode);
+                        FocusScope.of(context).requestFocus(_lastNameFocusNode);
                       },
                       validator: FormValidation.validateFirstName,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -92,8 +89,7 @@ class _ProfileDetailViewState extends State<ProfileDetailView> {
                         hintText: AppStrings.lastNameHintText,
                       ),
                       onFieldSubmitted: (value) {
-                        FocusScope.of(context)
-                            .requestFocus(_mobileFocusNode);
+                        FocusScope.of(context).requestFocus(_mobileFocusNode);
                       },
                       validator: FormValidation.validateLastName,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -110,8 +106,7 @@ class _ProfileDetailViewState extends State<ProfileDetailView> {
                         hintText: AppStrings.mobileHintText,
                       ),
                       onFieldSubmitted: (value) {
-                        FocusScope.of(context)
-                            .requestFocus(_cityFocusNode);
+                        FocusScope.of(context).requestFocus(_cityFocusNode);
                       },
                       validator: FormValidation.validateMobile,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -170,22 +165,29 @@ class _ProfileDetailViewState extends State<ProfileDetailView> {
   }
 
   Future<void> createProfile(ProfileViewModel profileViewModel) async {
-    bool status = await profileViewModel.createProfile(firstName: _firstNameTEController.text.trim(),
-        lastName: _lastNameTEController.text.trim(),
-        mobile: _mobileTEController.text.trim(),
-        city: _cityTEController.text.trim(),
-        shippingAddress: _shippingAddressTEController.text.trim(),
-        );
-    if(!status && mounted){
+    bool status = await profileViewModel.createProfile(
+      firstName: _firstNameTEController.text.trim(),
+      lastName: _lastNameTEController.text.trim(),
+      mobile: _mobileTEController.text.trim(),
+      city: _cityTEController.text.trim(),
+      shippingAddress: _shippingAddressTEController.text.trim(),
+    );
+    if (!status && mounted) {
       Failure failure = profileViewModel.response as Failure;
-      if(failure.statusCode == 600 || failure.statusCode == 601){
-        AppSnackBar.show(message: failure.errorMessage.toString(), context: context, isError: true);
+      if (failure.statusCode == 600 || failure.statusCode == 601) {
+        AppSnackBar.show(
+            message: failure.errorMessage.toString(),
+            context: context,
+            isError: true);
         return;
       }
-      AppSnackBar.show(message: AppStrings.createProfileFailure, context: context, isError: true);
+      AppSnackBar.show(
+          message: AppStrings.createProfileFailure,
+          context: context,
+          isError: true);
       return;
     }
-    Get.offNamedUntil(AppRoutes.baseNavigationView, (route)=> false);
+    Get.offNamedUntil(AppRoutes.baseNavigationView, (route) => false);
   }
 
   @override

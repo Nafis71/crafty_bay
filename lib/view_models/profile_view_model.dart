@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:crafty_bay/features/authentication/services/profile_detail_service.dart';
 import 'package:crafty_bay/models/user_model/user_model.dart';
 import 'package:get/get.dart';
@@ -6,9 +7,8 @@ import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../services/response/success.dart';
-import '../utils/app_routes.dart';
 
-class ProfileViewModel extends GetxController{
+class ProfileViewModel extends GetxController {
   late UserModel _userModel;
   Object? response;
   bool _responseStatus = false;
@@ -16,24 +16,25 @@ class ProfileViewModel extends GetxController{
   String _token = "";
 
   bool get isBusy => _isBusy;
-  String get token=> _token;
 
-  set setIsBusy(bool value){
+  String get token => _token;
+
+  set setIsBusy(bool value) {
     _isBusy = value;
     update();
   }
 
-  set setToken(String token){
+  set setToken(String token) {
     _token = token;
   }
 
   UserModel get userModel => _userModel;
 
-  set setUserData(UserModel userModel){
+  set setUserData(UserModel userModel) {
     _userModel = userModel;
   }
 
-  Future<bool> validateToken() async{
+  Future<bool> validateToken() async {
     SharedPreferences localStorage = await SharedPreferences.getInstance();
     String? token = localStorage.getString("token");
     if (token == null || JwtDecoder.isExpired(token)) {
@@ -43,7 +44,7 @@ class ProfileViewModel extends GetxController{
     return false;
   }
 
-  Future<bool> checkUserData() async{
+  Future<bool> checkUserData() async {
     SharedPreferences localStorage = await SharedPreferences.getInstance();
     bool? hasUserData = localStorage.getBool("hasUserData");
     if (hasUserData == null || !hasUserData) {
@@ -52,7 +53,7 @@ class ProfileViewModel extends GetxController{
     return true;
   }
 
-  Future<void> loadUserDataFromStorage() async{
+  Future<void> loadUserDataFromStorage() async {
     SharedPreferences localStorage = await SharedPreferences.getInstance();
     _userModel = UserModel.fromJson(
       jsonDecode(
@@ -65,8 +66,8 @@ class ProfileViewModel extends GetxController{
     response = await ProfileDetailService().readProfile(token);
     if (response is Success) {
       Map<String, dynamic> jsonData =
-      (response).response as Map<String, dynamic>;
-      List<Map<String,dynamic>> userData = jsonData['data'];
+          (response).response as Map<String, dynamic>;
+      List<Map<String, dynamic>> userData = jsonData['data'];
       if (userData.isNotEmpty) {
         UserModel userModel = UserModel.fromJson(userData[0]);
         SharedPreferences localStorage = await SharedPreferences.getInstance();
@@ -94,10 +95,11 @@ class ProfileViewModel extends GetxController{
       "shippingAddress": shippingAddress
     };
     response = await ProfileDetailService().createProfile(_token, json);
-    if(response is Success){
+    if (response is Success) {
       SharedPreferences localStorage = await SharedPreferences.getInstance();
       localStorage.setBool("hasUserData", true);
-      Map<String,dynamic> jsonData = (response as Success).response as Map<String,dynamic>;
+      Map<String, dynamic> jsonData =
+          (response as Success).response as Map<String, dynamic>;
       UserModel userModel = UserModel.fromJson(jsonData['data']);
       await saveUserData(userModel, localStorage);
       _responseStatus = true;
@@ -106,7 +108,8 @@ class ProfileViewModel extends GetxController{
     return _responseStatus;
   }
 
-  Future<void> saveUserData(UserModel userModel, SharedPreferences localStorage) async{
+  Future<void> saveUserData(
+      UserModel userModel, SharedPreferences localStorage) async {
     localStorage.setString("userData", jsonEncode(userModel.toJson()));
     _userModel = userModel;
   }

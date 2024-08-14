@@ -1,10 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:crafty_bay/features/home/view_model/home_view_model.dart';
 import 'package:crafty_bay/themes/app_color.dart';
 import 'package:crafty_bay/widgets/circular_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:get/get.dart';
 
 class ProductCard extends StatelessWidget {
   final List<dynamic> productList;
@@ -51,9 +49,10 @@ class ProductCard extends StatelessWidget {
                         ),
                         alignment: Alignment.center,
                         child: CachedNetworkImage(
-                          imageUrl: "https://photo.teamrabbil.com/images/2023/04/04/product.png",
+                          imageUrl:
+                              "https://photo.teamrabbil.com/images/2023/04/04/product.png",
                           fit: BoxFit.contain,
-                          placeholder: (context,_){
+                          placeholder: (context, _) {
                             return const CircularLoading();
                           },
                         ),
@@ -99,7 +98,9 @@ class ProductCard extends StatelessWidget {
                                       color: AppColor.ratingIconColor,
                                     ),
                                     Text(
-                                      productList[index].star.toStringAsFixed(1),
+                                      productList[index]
+                                          .star
+                                          .toStringAsFixed(1),
                                       style: Theme.of(context)
                                           .textTheme
                                           .bodyMedium!

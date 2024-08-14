@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../wrappers/svg_image_loader.dart';
 
 BottomNavigationBarItem getBottomNavigationBarItem({
@@ -17,8 +18,9 @@ BottomNavigationBarItem getBottomNavigationBarItem({
               assetLocation: iconPath,
               boxFit: BoxFit.cover,
               width: 32,
-              color:
-                  (index == targetIndex) ? Theme.of(context).primaryColor : Colors.grey,
+              color: (index == targetIndex)
+                  ? Theme.of(context).primaryColor
+                  : Colors.grey,
             ),
           ],
         ),

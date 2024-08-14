@@ -5,21 +5,21 @@ import 'package:crafty_bay/features/wish_list/views/wish_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class BaseNavigationViewModel extends GetxController{
+class BaseNavigationViewModel extends GetxController {
   int _index = 0;
-  final List<Widget> _views =[
+  final List<Widget> _views = [
     const HomeView(),
     const CategoryView(),
     const CartView(),
     const WishListView(),
   ];
+
   int get index => _index;
 
-  List<Widget> get views=> _views;
+  List<Widget> get views => _views;
 
-  set setIndex(int index){
+  set setIndex(int index) {
     _index = index;
     update();
   }
-
 }

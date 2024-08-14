@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
+
 import '../../../utils/app_assets.dart';
 import '../view_model/base_navigation_view_model.dart';
 import 'bottom_navigation_bar_item.dart';

@@ -6,7 +6,8 @@ class SectionHeader extends StatelessWidget {
   final String sectionTitle;
   final Function onTap;
 
-  const SectionHeader({super.key, required this.sectionTitle, required this.onTap});
+  const SectionHeader(
+      {super.key, required this.sectionTitle, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class SectionHeader extends StatelessWidget {
           children: [
             InkWell(
               splashColor: Colors.transparent,
-              onTap: ()=> onTap(),
+              onTap: () => onTap(),
               child: Text(
                 AppStrings.homeSeeAllButtonText,
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(

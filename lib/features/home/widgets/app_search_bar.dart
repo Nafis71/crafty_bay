@@ -27,9 +27,9 @@ class AppSearchBar extends StatelessWidget {
             Text(
               "Search",
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                fontSize: 15,
-                color: Colors.grey,
-              ),
+                    fontSize: 15,
+                    color: Colors.grey,
+                  ),
             ),
           ],
         ),

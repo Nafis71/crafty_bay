@@ -11,14 +11,14 @@ class UserModel {
 
   UserModel(
       {this.id,
-        this.firstName,
-        this.lastName,
-        this.mobile,
-        this.city,
-        this.shippingAddress,
-        this.email,
-        this.createdAt,
-        this.updatedAt});
+      this.firstName,
+      this.lastName,
+      this.mobile,
+      this.city,
+      this.shippingAddress,
+      this.email,
+      this.createdAt,
+      this.updatedAt});
 
   UserModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];

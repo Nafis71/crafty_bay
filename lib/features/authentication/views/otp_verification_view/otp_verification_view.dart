@@ -1,9 +1,10 @@
 import 'dart:async';
+
 import 'package:crafty_bay/features/authentication/view_model/auth_view_model.dart';
 import 'package:crafty_bay/themes/app_color.dart';
 import 'package:crafty_bay/themes/pin_code_theme.dart';
-import 'package:crafty_bay/widgets/authentication_layout.dart';
 import 'package:crafty_bay/utils/form_validation.dart';
+import 'package:crafty_bay/widgets/authentication_layout.dart';
 import 'package:crafty_bay/wrappers/app_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -98,8 +99,7 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
                               children: [
                                 TextSpan(
                                   text: AppStrings.otpExpirationText,
-                                  style:
-                                      Theme.of(context).textTheme.bodyMedium,
+                                  style: Theme.of(context).textTheme.bodyMedium,
                                 ),
                                 TextSpan(
                                   text: " ${timer.timeLeft}s",
@@ -118,11 +118,13 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
                           InkWell(
                             splashColor: Colors.transparent,
                             onTap: () {
-                              if(timer.timeLeft != 0){
+                              if (timer.timeLeft != 0) {
                                 return;
                               }
                               initiateTimer();
-                              Get.find<AuthViewModel>().sendOTP(widget.emailAddress,isResending: true);
+                              Get.find<AuthViewModel>().sendOTP(
+                                  widget.emailAddress,
+                                  isResending: true);
                             },
                             child: Text(
                               AppStrings.otpResendButtonText,
@@ -153,7 +155,7 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
   }
 
   Future<void> _verifyOTP(AuthViewModel authViewModel) async {
-    if(Get.find<CountdownTimer>().timeLeft == 0){
+    if (Get.find<CountdownTimer>().timeLeft == 0) {
       AppSnackBar.show(
           message: AppStrings.invalidOTP, context: context, isError: true);
       return;

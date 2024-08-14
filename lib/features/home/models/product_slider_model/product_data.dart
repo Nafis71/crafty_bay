@@ -9,12 +9,12 @@ class ProductSliderData {
 
   ProductSliderData(
       {this.id,
-        this.title,
-        this.shortDes,
-        this.image,
-        this.productId,
-        this.createdAt,
-        this.updatedAt});
+      this.title,
+      this.shortDes,
+      this.image,
+      this.productId,
+      this.createdAt,
+      this.updatedAt});
 
   ProductSliderData.fromJson(Map<String, dynamic> json) {
     id = json['id'];

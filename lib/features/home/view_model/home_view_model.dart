@@ -25,7 +25,9 @@ class HomeViewModel extends GetxController {
   List<CategoryData> get categoryList => _categoryList;
 
   List<RemarkProductData> get popularProductList => _popularProductList;
+
   List<RemarkProductData> get specialProductList => _specialProductList;
+
   List<RemarkProductData> get newProductList => _newProductList;
 
   set setCarouselIndex(int index) {
@@ -55,28 +57,33 @@ class HomeViewModel extends GetxController {
     }
   }
 
-  Future<void> getPopularProduct() async{
-    RemarkProductModel? remarkProductModel = await getProductByRemark("popular");
-    if(remarkProductModel!=null){
+  Future<void> getPopularProduct() async {
+    RemarkProductModel? remarkProductModel =
+        await getProductByRemark("popular");
+    if (remarkProductModel != null) {
       _popularProductList = await getProductList(remarkProductModel);
     }
   }
-  Future<void> getSpecialProduct() async{
-    RemarkProductModel? remarkProductModel = await getProductByRemark("special");
-    if(remarkProductModel!=null){
+
+  Future<void> getSpecialProduct() async {
+    RemarkProductModel? remarkProductModel =
+        await getProductByRemark("special");
+    if (remarkProductModel != null) {
       _specialProductList = await getProductList(remarkProductModel);
     }
   }
-  Future<void> getNewProduct() async{
+
+  Future<void> getNewProduct() async {
     RemarkProductModel? remarkProductModel = await getProductByRemark("new");
-    if(remarkProductModel!=null){
+    if (remarkProductModel != null) {
       _newProductList = await getProductList(remarkProductModel);
     }
   }
 
-  Future<List<RemarkProductData>> getProductList(RemarkProductModel remarkProductModel) async{
-    List<RemarkProductData> productData =[];
-    for(RemarkProductData popularProductData in remarkProductModel.data!){
+  Future<List<RemarkProductData>> getProductList(
+      RemarkProductModel remarkProductModel) async {
+    List<RemarkProductData> productData = [];
+    for (RemarkProductData popularProductData in remarkProductModel.data!) {
       productData.add(popularProductData);
     }
     return productData;

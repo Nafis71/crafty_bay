@@ -1,10 +1,10 @@
+import 'package:crafty_bay/features/authentication/view_model/auth_view_model.dart';
 import 'package:crafty_bay/services/response/failure.dart';
 import 'package:crafty_bay/themes/app_color.dart';
 import 'package:crafty_bay/utils/app_routes.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
-import 'package:crafty_bay/features/authentication/view_model/auth_view_model.dart';
-import 'package:crafty_bay/widgets/authentication_layout.dart';
 import 'package:crafty_bay/utils/form_validation.dart';
+import 'package:crafty_bay/widgets/authentication_layout.dart';
 import 'package:crafty_bay/wrappers/app_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -63,7 +63,7 @@ class _LoginViewState extends State<LoginView> {
               ),
               deviceOrientation: deviceOrientation,
               onButtonPressed: () {
-                if(_formKey.currentState!.validate()){
+                if (_formKey.currentState!.validate()) {
                   _sendOTP(Get.find<AuthViewModel>());
                 }
               },
@@ -74,19 +74,26 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 
-  Future<void> _sendOTP(AuthViewModel authViewModel)async{
+  Future<void> _sendOTP(AuthViewModel authViewModel) async {
     bool status = await authViewModel.sendOTP(_emailTEController.text.trim());
-    if(status && mounted){
-      Get.toNamed(AppRoutes.otpVerificationView,arguments: _emailTEController.text.trim());
+    if (status && mounted) {
+      Get.toNamed(AppRoutes.otpVerificationView,
+          arguments: _emailTEController.text.trim());
       return;
     }
     Failure failureResponse = authViewModel.response as Failure;
-    if((failureResponse.statusCode == 601 || failureResponse.statusCode == 600) && mounted){
-      AppSnackBar.show(message: failureResponse.errorMessage.toString(), context: context,isError: true);
+    if ((failureResponse.statusCode == 601 ||
+            failureResponse.statusCode == 600) &&
+        mounted) {
+      AppSnackBar.show(
+          message: failureResponse.errorMessage.toString(),
+          context: context,
+          isError: true);
       return;
     }
-    if(mounted){
-      AppSnackBar.show(message: AppStrings.unknownError, context: context,isError: true);
+    if (mounted) {
+      AppSnackBar.show(
+          message: AppStrings.unknownError, context: context, isError: true);
     }
   }
 

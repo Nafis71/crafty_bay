@@ -41,7 +41,8 @@ class AuthViewModel extends GetxController {
       SharedPreferences localStorage = await SharedPreferences.getInstance();
       localStorage.setString("token", token);
       Get.find<ProfileViewModel>().setToken = token;
-      bool status = await Get.find<ProfileViewModel>().readProfile(response!, token);
+      bool status =
+          await Get.find<ProfileViewModel>().readProfile(response!, token);
       _hasUserData = status;
       localStorage.setBool("hasUserData", status);
       _responseStatus = true;
@@ -49,6 +50,4 @@ class AuthViewModel extends GetxController {
     setIsBusy = false;
     return _responseStatus;
   }
-
-
 }

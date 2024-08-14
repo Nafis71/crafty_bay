@@ -1,9 +1,10 @@
 import 'package:crafty_bay/features/authentication/view_model/auth_view_model.dart';
-import 'package:crafty_bay/widgets/circular_loading.dart';
 import 'package:crafty_bay/view_models/profile_view_model.dart';
+import 'package:crafty_bay/widgets/circular_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+
 import '../../utils/app_assets.dart';
 import '../../utils/app_strings.dart';
 import '../../wrappers/svg_image_loader.dart';
