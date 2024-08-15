@@ -1,10 +1,12 @@
 import 'package:crafty_bay/features/home/view_model/home_view_model.dart';
+import 'package:crafty_bay/features/home/views/all_product_view.dart';
 import 'package:crafty_bay/features/home/widgets/app_search_bar.dart';
 import 'package:crafty_bay/features/home/widgets/carousel_indicator.dart';
 import 'package:crafty_bay/features/home/widgets/category_card.dart';
 import 'package:crafty_bay/features/home/widgets/offer_carousel.dart';
 import 'package:crafty_bay/features/home/widgets/product_card.dart';
 import 'package:crafty_bay/features/home/widgets/product_layout_section.dart';
+import 'package:crafty_bay/utils/app_routes.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -52,9 +54,16 @@ class _HomeViewState extends State<HomeView> {
               ),
               const Gap(30),
               if (homeViewModel.categoryList.isNotEmpty)
-                const ProductLayoutSection(
+                ProductLayoutSection(
                   sectionTitle: AppStrings.homeCategoryHeader,
-                  cardWidget: CategoryCard(),
+                  cardWidget: const CategoryCard(),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AllProductView(
+                                elementList: homeViewModel.categoryList)));
+                  },
                 ),
               const Gap(20),
               if (homeViewModel.popularProductList.isNotEmpty)
@@ -63,6 +72,7 @@ class _HomeViewState extends State<HomeView> {
                   cardWidget: ProductCard(
                     productList: homeViewModel.popularProductList,
                   ),
+                  onTap: () {},
                 ),
               const Gap(20),
               if (homeViewModel.specialProductList.isNotEmpty)
@@ -71,6 +81,7 @@ class _HomeViewState extends State<HomeView> {
                   cardWidget: ProductCard(
                     productList: homeViewModel.specialProductList,
                   ),
+                  onTap: () {},
                 ),
               const Gap(20),
               if (homeViewModel.newProductList.isNotEmpty)
@@ -79,6 +90,7 @@ class _HomeViewState extends State<HomeView> {
                   cardWidget: ProductCard(
                     productList: homeViewModel.newProductList,
                   ),
+                  onTap: () {},
                 ),
             ],
           ),

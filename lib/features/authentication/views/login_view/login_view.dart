@@ -77,7 +77,7 @@ class _LoginViewState extends State<LoginView> {
   Future<void> _sendOTP(AuthViewModel authViewModel) async {
     bool status = await authViewModel.sendOTP(_emailTEController.text.trim());
     if (status && mounted) {
-      Get.toNamed(AppRoutes.otpVerificationView,
+      Navigator.pushNamed(context, AppRoutes.otpVerificationView,
           arguments: _emailTEController.text.trim());
       return;
     }

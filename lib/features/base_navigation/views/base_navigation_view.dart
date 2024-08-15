@@ -1,6 +1,8 @@
 import 'package:crafty_bay/features/base_navigation/view_model/base_navigation_view_model.dart';
+import 'package:crafty_bay/features/base_navigation/views/tab_view.dart';
 import 'package:crafty_bay/features/base_navigation/widgets/bottom_navigation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class BaseNavigationView extends StatefulWidget {
@@ -11,22 +13,38 @@ class BaseNavigationView extends StatefulWidget {
 }
 
 class _BaseNavigationViewState extends State<BaseNavigationView> {
+  bool _isFirstRouteInCurrentTab = true;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: GetBuilder<BaseNavigationViewModel>(
+    return GetBuilder<BaseNavigationViewModel>(
         builder: (baseNavigationViewModel) {
-          return PageView.builder(
-            onPageChanged: (int index) {
-              baseNavigationViewModel.setIndex = index;
-            },
-            itemBuilder: (context, index) {
-              return baseNavigationViewModel.views[index];
-            },
-          );
+      return PopScope(
+        onPopInvokedWithResult: (isPop, result) async {
+          _isFirstRouteInCurrentTab = !await baseNavigationViewModel
+              .navigatorKeys[baseNavigationViewModel.index]!.currentState!
+              .maybePop();
+          if (_isFirstRouteInCurrentTab) {
+            if (baseNavigationViewModel.index != 0) {
+              baseNavigationViewModel.setIndex = 0;
+              return;
+            }else{
+              if(!isPop){
+                SystemNavigator.pop();
+              }
+            }
+          }
         },
-      ),
-      bottomNavigationBar: const BottomNavigation(),
-    );
+        canPop: false,
+        child: Scaffold(
+          body: TabView(
+            currentIndex: baseNavigationViewModel.index,
+            navigatorState: baseNavigationViewModel
+                .navigatorKeys[baseNavigationViewModel.index]!,
+          ),
+          bottomNavigationBar: const BottomNavigation(),
+        ),
+      );
+    });
   }
 }

@@ -13,10 +13,18 @@ class BaseNavigationViewModel extends GetxController {
     const CartView(),
     const WishListView(),
   ];
+  final Map<int, GlobalKey<NavigatorState>> _navigatorKeys = {
+    0 : GlobalKey<NavigatorState>(),
+    1 : GlobalKey<NavigatorState>(),
+    2 : GlobalKey<NavigatorState>(),
+    3 : GlobalKey<NavigatorState>(),
+  };
 
   int get index => _index;
 
   List<Widget> get views => _views;
+
+  Map<int, GlobalKey<NavigatorState>> get navigatorKeys => _navigatorKeys;
 
   set setIndex(int index) {
     _index = index;

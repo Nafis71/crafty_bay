@@ -187,7 +187,10 @@ class _ProfileDetailViewState extends State<ProfileDetailView> {
           isError: true);
       return;
     }
-    Get.offNamedUntil(AppRoutes.baseNavigationView, (route) => false);
+    if (mounted) {
+      Navigator.pushNamedAndRemoveUntil(
+          context, AppRoutes.baseNavigationView, (route) => false);
+    }
   }
 
   @override

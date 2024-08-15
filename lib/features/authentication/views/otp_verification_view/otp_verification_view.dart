@@ -163,7 +163,7 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
     bool status = await authViewModel.verifyOTP(
         widget.emailAddress, _otpTEController.text);
     if (status && mounted && !authViewModel.hasUserData) {
-      Get.offNamed(AppRoutes.profileDetailView);
+      Navigator.pushReplacementNamed(context, AppRoutes.profileDetailView);
       return;
     }
     if (status && mounted && authViewModel.hasUserData) {
