@@ -1,3 +1,4 @@
+import 'package:crafty_bay/features/category/view_model/category_view_model.dart';
 import 'package:crafty_bay/features/home/view_model/home_view_model.dart';
 import 'package:get/get.dart';
 
@@ -7,7 +8,7 @@ class PrefetchService {
   }
 
   static Future<void> prefetchCategoryList() async {
-    await Get.find<HomeViewModel>().getCategoryList();
+    await Get.find<CategoryViewModel>().getCategoryList();
   }
 
   static Future<void> prefetchPopularProductData() async {

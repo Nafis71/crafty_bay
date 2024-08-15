@@ -15,9 +15,9 @@ AppBar craftyAppBar({String? title, BuildContext? context}) {
           )
         : Row(
             children: [
-              InkWell(
+              if(context!= null) InkWell(
                 splashColor: Colors.transparent,
-                onTap: () => Navigator.pop(context!),
+                onTap: () => Navigator.pop(context),
                 child: const Icon(
                   Icons.arrow_back_ios,
                   weight: 0.4,

@@ -8,8 +8,12 @@ class AppbarStyle {
         surfaceTintColor: Colors.white,
         toolbarHeight: 70,
         shadowColor: Colors.black.withOpacity(0.1),
-        titleTextStyle: const TextStyle(
-            fontSize: 16, color: Colors.black, fontFamily: "Poppins"),
+        titleTextStyle: TextStyle(
+          fontSize: 16,
+          color: Colors.black.withOpacity(0.6),
+          fontFamily: "Poppins",
+          fontWeight: FontWeight.bold,
+        ),
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: AppColor.appPrimaryColor,
         ),
