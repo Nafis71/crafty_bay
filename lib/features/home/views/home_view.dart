@@ -37,7 +37,7 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       appBar: craftyAppBar(),
       body: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+        margin: const EdgeInsets.only(left: 8, right: 8),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
