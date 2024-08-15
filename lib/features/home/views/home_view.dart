@@ -1,3 +1,4 @@
+import 'package:crafty_bay/features/home/models/remark_product_model/remark_product_data.dart';
 import 'package:crafty_bay/features/home/view_model/home_view_model.dart';
 import 'package:crafty_bay/features/home/views/all_product_view.dart';
 import 'package:crafty_bay/features/home/widgets/app_search_bar.dart';
@@ -57,44 +58,77 @@ class _HomeViewState extends State<HomeView> {
                 ProductLayoutSection(
                   sectionTitle: AppStrings.homeCategoryHeader,
                   cardWidget: const CategoryCard(),
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AllProductView(
-                                elementList: homeViewModel.categoryList)));
-                  },
+                  onTap: () {},
                 ),
               const Gap(20),
               if (homeViewModel.popularProductList.isNotEmpty)
                 ProductLayoutSection(
                   sectionTitle: AppStrings.homePopularHeader,
-                  cardWidget: ProductCard(
-                    productList: homeViewModel.popularProductList,
-                  ),
-                  onTap: () {},
+                  cardWidget: getProductCard(homeViewModel.popularProductList),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AllProductView(
+                          elementList: homeViewModel.popularProductList,
+                          appBarTitle: AppStrings.homePopularHeader,
+                        ),
+                      ),
+                    );
+                  },
                 ),
               const Gap(20),
               if (homeViewModel.specialProductList.isNotEmpty)
                 ProductLayoutSection(
                   sectionTitle: AppStrings.homeSpecialHeader,
-                  cardWidget: ProductCard(
-                    productList: homeViewModel.specialProductList,
-                  ),
-                  onTap: () {},
+                  cardWidget: getProductCard(homeViewModel.specialProductList),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AllProductView(
+                          elementList: homeViewModel.specialProductList,
+                          appBarTitle: AppStrings.homeSpecialHeader,
+                        ),
+                      ),
+                    );
+                  },
                 ),
               const Gap(20),
               if (homeViewModel.newProductList.isNotEmpty)
                 ProductLayoutSection(
                   sectionTitle: AppStrings.homeNewHeader,
-                  cardWidget: ProductCard(
-                    productList: homeViewModel.newProductList,
-                  ),
-                  onTap: () {},
+                  cardWidget: getProductCard(homeViewModel.newProductList),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AllProductView(
+                          elementList: homeViewModel.newProductList,
+                          appBarTitle: AppStrings.homeNewHeader,
+                        ),
+                      ),
+                    );
+                  },
                 ),
             ],
           ),
         ),
+      ),
+    );
+  }
+  Widget getProductCard(List<RemarkProductData> productList){
+    return SizedBox(
+      height: 205,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) {
+          return ProductCard(productList: productList[index]);
+        },
+        separatorBuilder: (context, index) {
+          return const Gap(20);
+        },
+        itemCount: productList.length,
       ),
     );
   }

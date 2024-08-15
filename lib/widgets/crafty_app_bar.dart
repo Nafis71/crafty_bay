@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-AppBar craftyAppBar({String? title}) {
+AppBar craftyAppBar({String? title, BuildContext? context}) {
   return AppBar(
     title: (title == null)
         ? const SvgImageLoader(
@@ -13,16 +13,33 @@ AppBar craftyAppBar({String? title}) {
             boxFit: BoxFit.contain,
             width: 150,
           )
-        : Text(title),
+        : Row(
+            children: [
+              InkWell(
+                splashColor: Colors.transparent,
+                onTap: () => Navigator.pop(context!),
+                child: const Icon(
+                  Icons.arrow_back_ios,
+                  weight: 0.4,
+                ),
+              ),
+              const Gap(5),
+              Text(title),
+            ],
+          ),
+    elevation: (title == null) ? 0 : 5,
     centerTitle: false,
-    actions: [
-      actionItem(CupertinoIcons.person),
-      const Gap(10),
-      actionItem(CupertinoIcons.phone),
-      const Gap(10),
-      actionItem(Icons.notifications_active_outlined),
-      const Gap(10),
-    ],
+    automaticallyImplyLeading: false,
+    actions: (title == null)
+        ? [
+            actionItem(CupertinoIcons.person),
+            const Gap(10),
+            actionItem(CupertinoIcons.phone),
+            const Gap(10),
+            actionItem(Icons.notifications_active_outlined),
+            const Gap(10),
+          ]
+        : null,
   );
 }
 
