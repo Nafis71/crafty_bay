@@ -7,7 +7,6 @@ import 'package:crafty_bay/features/home/widgets/category_card.dart';
 import 'package:crafty_bay/features/home/widgets/offer_carousel.dart';
 import 'package:crafty_bay/features/home/widgets/product_card.dart';
 import 'package:crafty_bay/features/home/widgets/product_layout_section.dart';
-import 'package:crafty_bay/utils/app_routes.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
