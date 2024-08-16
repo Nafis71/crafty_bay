@@ -1,6 +1,8 @@
 import 'package:crafty_bay/common/widgets/circular_loading.dart';
 import 'package:crafty_bay/features/product_details/view_models/product_view_model.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_body.dart';
+import 'package:crafty_bay/features/product_details/widgets/product_description.dart';
+import 'package:crafty_bay/features/product_details/widgets/product_footer.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_header.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_variation.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_image_carousel.dart';
@@ -44,21 +46,40 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
               ],
             );
           }
-          return SingleChildScrollView(
+          return SizedBox(
+            height: MediaQuery.of(context).size.height,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
               children: [
-                ProductHeader(
-                  deviceOrientation: deviceOrientation,
-                  productViewModel: productViewModel,
+                Expanded(
+                  flex: 8,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        ProductHeader(
+                          deviceOrientation: deviceOrientation,
+                          productViewModel: productViewModel,
+                        ),
+                        const Gap(10),
+                        ProductBody(product: productViewModel.productData!),
+                        const Gap(15),
+                        ProductVariation(
+                          productSizes: productViewModel.productSizeList,
+                          productColors: productViewModel.productColorList,
+                        ),
+                        const Gap(20),
+                        ProductDescription(
+                          description:
+                          productViewModel.productData!.shortDes.toString(),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-                const Gap(10),
-                ProductBody(product: productViewModel.productData!),
-                const Gap(10),
-                ProductVariation(
-                  productSizes: productViewModel.productSizeList,
-                  productColors: productViewModel.productColorList,
-                ),
+                Flexible(
+                    flex: 1,
+                    child: ProductFooter())
               ],
             ),
           );

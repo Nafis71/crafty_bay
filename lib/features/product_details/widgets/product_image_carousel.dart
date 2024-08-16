@@ -34,7 +34,7 @@ class ProductImageCarousel extends StatelessWidget {
       },
       options: CarouselOptions(
         viewportFraction: 1,
-        aspectRatio: (orientation == Orientation.portrait) ? 1.2 : 1.8,
+        aspectRatio: (orientation == Orientation.portrait) ? 1.3 : 1.8,
         initialPage: 0,
         indicatorMargin: 25,
         slideIndicator: CircularSlideIndicator(

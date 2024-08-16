@@ -8,7 +8,7 @@ class StackedAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      top: 60,
+      top: 50,
       left: 20,
       child: Row(
         children: [

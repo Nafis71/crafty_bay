@@ -49,7 +49,7 @@ class ProductBody extends StatelessWidget {
               ),
             ],
           ),
-          const Gap(5),
+          const Gap(1),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
