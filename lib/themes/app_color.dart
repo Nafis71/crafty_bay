@@ -9,4 +9,5 @@ class AppColor {
   static Color appBarActionButtonColor = const Color(0xFFF3F3F3);
   static Color searchBarBackgroundColor = const Color(0xFFF3F3F3);
   static Color ratingIconColor = const Color(0xFFF9D858);
+  static Color productCarouselBackgroundColor = const Color(0xFFF3F3F3);
 }

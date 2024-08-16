@@ -15,7 +15,7 @@ class _OfferCarouselState extends State<OfferCarousel> {
   @override
   Widget build(BuildContext context) {
     return FlutterCarousel.builder(
-      itemCount: 4,
+      itemCount: Get.find<HomeViewModel>().productSliderList.length,
       itemBuilder: (context, index, pageViewIndex) {
         return Card(
           color: Theme.of(context).primaryColor,
@@ -78,16 +78,17 @@ class _OfferCarouselState extends State<OfferCarousel> {
         );
       },
       options: CarouselOptions(
-          height: 180,
-          viewportFraction: 1,
-          enableInfiniteScroll: true,
-          autoPlay: true,
-          autoPlayInterval: const Duration(seconds: 3),
-          indicatorMargin: 10,
-          showIndicator: false,
-          onPageChanged: (index, _) {
-            Get.find<HomeViewModel>().setCarouselIndex = index;
-          }),
+        height: 180,
+        viewportFraction: 1,
+        enableInfiniteScroll: true,
+        autoPlay: true,
+        autoPlayInterval: const Duration(seconds: 3),
+        indicatorMargin: 10,
+        showIndicator: false,
+        onPageChanged: (index, _) {
+          Get.find<HomeViewModel>().setCarouselIndex = index;
+        },
+      ),
     );
   }
 }

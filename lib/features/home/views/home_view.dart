@@ -48,11 +48,14 @@ class _HomeViewState extends State<HomeView> {
               const Gap(8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(4, (index) {
-                  return CarouselIndicator(
-                    index: index,
-                  );
-                }),
+                children: List.generate(
+                  homeViewModel.productSliderList.length,
+                  (index) {
+                    return CarouselIndicator(
+                      index: index,
+                    );
+                  },
+                ),
               ),
               const Gap(30),
               if (Get.find<CategoryViewModel>().categoryList.isNotEmpty)

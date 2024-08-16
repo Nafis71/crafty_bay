@@ -19,9 +19,9 @@ class ApiRequest {
       _finalResponse =
           Failure(statusCode: 601, errorMessage: AppStrings.networkError);
     } catch (exception) {
+      _finalResponse =
+          Failure(statusCode: 600, errorMessage: AppStrings.unknownError);
       if (kDebugMode) {
-        _finalResponse =
-            Failure(statusCode: 600, errorMessage: AppStrings.unknownError);
         debugPrint(exception.toString());
       }
     }
@@ -44,9 +44,9 @@ class ApiRequest {
       _finalResponse =
           Failure(statusCode: 601, errorMessage: AppStrings.networkError);
     } catch (exception) {
+      _finalResponse =
+          Failure(statusCode: 600, errorMessage: AppStrings.unknownError);
       if (kDebugMode) {
-        _finalResponse =
-            Failure(statusCode: 600, errorMessage: AppStrings.unknownError);
         debugPrint(exception.toString());
       }
     }
