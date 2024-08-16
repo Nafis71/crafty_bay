@@ -10,4 +10,5 @@ class AppColor {
   static Color searchBarBackgroundColor = const Color(0xFFF3F3F3);
   static Color ratingIconColor = const Color(0xFFF9D858);
   static Color productCarouselBackgroundColor = const Color(0xFFF3F3F3);
+  static Color quantityDecreaseCardColor = const Color(0xFF7FD2D3);
 }
