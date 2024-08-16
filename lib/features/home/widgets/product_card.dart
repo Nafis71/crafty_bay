@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:crafty_bay/common/widgets/circular_loading.dart';
 import 'package:crafty_bay/themes/app_color.dart';
-import 'package:crafty_bay/widgets/circular_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -45,7 +45,7 @@ class ProductCard extends StatelessWidget {
                   alignment: Alignment.center,
                   child: CachedNetworkImage(
                     imageUrl:
-                    "https://photo.teamrabbil.com/images/2023/04/04/product.png",
+                        "https://photo.teamrabbil.com/images/2023/04/04/product.png",
                     fit: BoxFit.contain,
                     placeholder: (context, _) {
                       return const CircularLoading();
@@ -63,10 +63,7 @@ class ProductCard extends StatelessWidget {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         productList.title,
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyMedium!
-                            .copyWith(
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             fontSize: 10,
                             color: Colors.grey.shade600,
                             fontWeight: FontWeight.bold),
@@ -81,9 +78,9 @@ class ProductCard extends StatelessWidget {
                                 .textTheme
                                 .bodyMedium!
                                 .copyWith(
-                                fontSize: 13,
-                                color: Theme.of(context).primaryColor,
-                                fontWeight: FontWeight.bold),
+                                    fontSize: 13,
+                                    color: Theme.of(context).primaryColor,
+                                    fontWeight: FontWeight.bold),
                           ),
                           Row(
                             children: [
@@ -93,16 +90,14 @@ class ProductCard extends StatelessWidget {
                                 color: AppColor.ratingIconColor,
                               ),
                               Text(
-                                productList
-                                    .star
-                                    .toStringAsFixed(1),
+                                productList.star.toStringAsFixed(1),
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyMedium!
                                     .copyWith(
-                                  fontSize: 12,
-                                  color: Colors.grey.shade600,
-                                ),
+                                      fontSize: 12,
+                                      color: Colors.grey.shade600,
+                                    ),
                               ),
                             ],
                           ),

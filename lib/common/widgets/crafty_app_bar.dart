@@ -15,14 +15,15 @@ AppBar craftyAppBar({String? title, BuildContext? context}) {
           )
         : Row(
             children: [
-              if(context!= null) InkWell(
-                splashColor: Colors.transparent,
-                onTap: () => Navigator.pop(context),
-                child: const Icon(
-                  Icons.arrow_back_ios,
-                  weight: 0.4,
+              if (context != null)
+                InkWell(
+                  splashColor: Colors.transparent,
+                  onTap: () => Navigator.pop(context),
+                  child: const Icon(
+                    Icons.arrow_back_ios,
+                    weight: 0.4,
+                  ),
                 ),
-              ),
               const Gap(5),
               Text(title),
             ],

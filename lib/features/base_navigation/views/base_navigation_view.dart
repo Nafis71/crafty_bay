@@ -28,8 +28,8 @@ class _BaseNavigationViewState extends State<BaseNavigationView> {
             if (baseNavigationViewModel.index != 0) {
               baseNavigationViewModel.setIndex = 0;
               return;
-            }else{
-              if(!isPop){
+            } else {
+              if (!isPop) {
                 SystemNavigator.pop();
               }
             }

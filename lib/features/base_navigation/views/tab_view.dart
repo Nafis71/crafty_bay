@@ -3,7 +3,6 @@ import 'package:crafty_bay/features/category/views/category_view.dart';
 import 'package:crafty_bay/features/home/views/home_view.dart';
 import 'package:crafty_bay/features/wish_list/views/wish_list_view.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class TabView extends StatelessWidget {
   final int currentIndex;
@@ -19,15 +18,15 @@ class TabView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Navigator(
       key: navigatorState,
-      onGenerateRoute: (routeSettings){
-        if(currentIndex == 0){
-          return MaterialPageRoute(builder: (context)=> const HomeView());
-        } else if(currentIndex == 1){
-          return MaterialPageRoute(builder: (context)=> const CategoryView());
-        } else if(currentIndex == 2){
-          return MaterialPageRoute(builder: (context)=> const CartView());
+      onGenerateRoute: (routeSettings) {
+        if (currentIndex == 0) {
+          return MaterialPageRoute(builder: (context) => const HomeView());
+        } else if (currentIndex == 1) {
+          return MaterialPageRoute(builder: (context) => const CategoryView());
+        } else if (currentIndex == 2) {
+          return MaterialPageRoute(builder: (context) => const CartView());
         }
-        return MaterialPageRoute(builder: (context)=> const WishListView());
+        return MaterialPageRoute(builder: (context) => const WishListView());
       },
     );
   }

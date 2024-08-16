@@ -1,4 +1,4 @@
-import 'package:crafty_bay/app/initiate_controller.dart';
+import 'package:crafty_bay/app/initiate_view_model.dart';
 import 'package:crafty_bay/themes/app_theme.dart';
 import 'package:crafty_bay/utils/app_routes.dart';
 import 'package:device_preview/device_preview.dart';
@@ -12,7 +12,7 @@ class CraftyBay extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialBinding: InitiateController(),
+      initialBinding: InitiateViewModel(),
       initialRoute: AppRoutes.splashView,
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,

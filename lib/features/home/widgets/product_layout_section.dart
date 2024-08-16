@@ -8,7 +8,10 @@ class ProductLayoutSection extends StatelessWidget {
   final Function onTap;
 
   const ProductLayoutSection(
-      {super.key, required this.sectionTitle, required this.cardWidget, required this.onTap});
+      {super.key,
+      required this.sectionTitle,
+      required this.cardWidget,
+      required this.onTap});
 
   @override
   Widget build(BuildContext context) {

@@ -1,9 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:crafty_bay/features/category/models/category_data.dart';
-import 'package:crafty_bay/features/home/view_model/home_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:get/get.dart';
 
 class CategoryCard extends StatelessWidget {
   final CategoryData categoryData;

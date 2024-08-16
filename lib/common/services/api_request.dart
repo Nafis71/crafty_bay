@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:crafty_bay/services/response/failure.dart';
-import 'package:crafty_bay/services/response/success.dart';
+import 'package:crafty_bay/common/services/response/failure.dart';
+import 'package:crafty_bay/common/services/response/success.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';

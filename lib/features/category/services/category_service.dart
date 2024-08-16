@@ -1,6 +1,6 @@
-import 'package:crafty_bay/services/api_request.dart';
+import 'package:crafty_bay/common/services/api_request.dart';
 
-import '../../../services/network_urls/network_urls.dart';
+import '../../../common/services/network_urls/network_urls.dart';
 
 class CategoryService extends ApiRequest {
   static CategoryService? _instance;

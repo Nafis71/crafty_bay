@@ -1,6 +1,6 @@
+import 'package:crafty_bay/common/services/response/success.dart';
+import 'package:crafty_bay/common/view_models/profile_view_model.dart';
 import 'package:crafty_bay/features/authentication/services/auth_service.dart';
-import 'package:crafty_bay/services/response/success.dart';
-import 'package:crafty_bay/view_models/profile_view_model.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

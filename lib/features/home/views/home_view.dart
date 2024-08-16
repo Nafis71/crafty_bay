@@ -13,8 +13,8 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../../widgets/category_card.dart';
-import '../../../widgets/crafty_app_bar.dart';
+import '../../../common/widgets/category_card.dart';
+import '../../../common/widgets/crafty_app_bar.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});

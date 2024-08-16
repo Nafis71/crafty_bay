@@ -14,10 +14,10 @@ class BaseNavigationViewModel extends GetxController {
     const WishListView(),
   ];
   final Map<int, GlobalKey<NavigatorState>> _navigatorKeys = {
-    0 : GlobalKey<NavigatorState>(),
-    1 : GlobalKey<NavigatorState>(),
-    2 : GlobalKey<NavigatorState>(),
-    3 : GlobalKey<NavigatorState>(),
+    0: GlobalKey<NavigatorState>(),
+    1: GlobalKey<NavigatorState>(),
+    2: GlobalKey<NavigatorState>(),
+    3: GlobalKey<NavigatorState>(),
   };
 
   int get index => _index;

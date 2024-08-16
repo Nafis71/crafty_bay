@@ -1,5 +1,5 @@
-import 'package:crafty_bay/services/api_request.dart';
-import 'package:crafty_bay/services/network_urls/network_urls.dart';
+import 'package:crafty_bay/common/services/api_request.dart';
+import 'package:crafty_bay/common/services/network_urls/network_urls.dart';
 
 class HomeProductService extends ApiRequest {
   static HomeProductService? _instance;

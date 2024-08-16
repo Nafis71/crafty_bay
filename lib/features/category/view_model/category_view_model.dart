@@ -1,13 +1,14 @@
 import 'package:crafty_bay/features/category/services/category_service.dart';
 import 'package:get/get.dart';
 
-import '../../../services/response/success.dart';
+import '../../../common/services/response/success.dart';
 import '../models/category_data.dart';
 import '../models/category_list_model.dart';
 
-class CategoryViewModel extends GetxController{
+class CategoryViewModel extends GetxController {
   final List<CategoryData> _categoryList = [];
   Object? response;
+
   List<CategoryData> get categoryList => _categoryList;
 
   Future<void> getCategoryList() async {

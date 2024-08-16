@@ -1,7 +1,7 @@
 import 'dart:convert';
 
+import 'package:crafty_bay/common/models/user_model/user_model.dart';
 import 'package:crafty_bay/features/authentication/services/profile_detail_service.dart';
-import 'package:crafty_bay/models/user_model/user_model.dart';
 import 'package:get/get.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:shared_preferences/shared_preferences.dart';

@@ -1,12 +1,10 @@
-import 'package:crafty_bay/features/category/models/category_data.dart';
+import 'package:crafty_bay/common/services/response/success.dart';
 import 'package:crafty_bay/features/home/models/product_slider_model/product_slider.dart';
 import 'package:crafty_bay/features/home/models/remark_product_model/remark_product_data.dart';
 import 'package:crafty_bay/features/home/models/remark_product_model/remark_product_model.dart';
 import 'package:crafty_bay/features/home/services/home_product_service.dart';
-import 'package:crafty_bay/services/response/success.dart';
 import 'package:get/get.dart';
 
-import '../../category/models/category_list_model.dart';
 import '../models/product_slider_model/product_data.dart';
 
 class HomeViewModel extends GetxController {

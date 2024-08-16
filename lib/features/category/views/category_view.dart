@@ -1,7 +1,6 @@
+import 'package:crafty_bay/common/widgets/category_card.dart';
+import 'package:crafty_bay/common/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/features/category/view_model/category_view_model.dart';
-import 'package:crafty_bay/features/home/view_model/home_view_model.dart';
-import 'package:crafty_bay/widgets/category_card.dart';
-import 'package:crafty_bay/widgets/crafty_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
