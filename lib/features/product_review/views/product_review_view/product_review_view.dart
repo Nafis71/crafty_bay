@@ -3,6 +3,7 @@ import 'package:crafty_bay/common/services/response/failure.dart';
 import 'package:crafty_bay/common/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/features/product_review/view_model/product_review_view_model.dart';
 import 'package:crafty_bay/features/product_review/widgets/product_review_card.dart';
+import 'package:crafty_bay/features/product_review/widgets/product_review_footer.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -28,8 +29,10 @@ class _ProductReviewViewState extends State<ProductReviewView> {
     getProductReview();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
+    Orientation orientation = MediaQuery.of(context).orientation;
     return Scaffold(
       appBar: craftyAppBar(
         title: AppStrings.productReviewHeader,
@@ -73,18 +76,31 @@ class _ProductReviewViewState extends State<ProductReviewView> {
               ),
             );
           }
-          return ListView.separated(
-            padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 5),
-            itemCount: productReviewViewModel.productReviewList.length,
-            itemBuilder: (context, index) {
-              return ProductReviewCard(
-                productReviewData:
-                    productReviewViewModel.productReviewList[index],
-              );
-            },
-            separatorBuilder: (context, index) {
-              return const Gap(20);
-            },
+          return Column(
+            children: [
+              Expanded(
+                flex: (orientation == Orientation.portrait) ? 7 : 2,
+                child: ListView.separated(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+                  itemCount: productReviewViewModel.productReviewList.length,
+                  itemBuilder: (context, index) {
+                    return ProductReviewCard(
+                      productReviewData:
+                          productReviewViewModel.productReviewList[index],
+                    );
+                  },
+                  separatorBuilder: (context, index) {
+                    return const Gap(20);
+                  },
+                ),
+              ),
+              Expanded(
+                child: ProductReviewFooter(
+                  totalReview: productReviewViewModel.productReviewList.length,
+                ),
+              )
+            ],
           );
         },
       ),
