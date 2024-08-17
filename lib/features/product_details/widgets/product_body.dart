@@ -1,6 +1,7 @@
 import 'package:crafty_bay/features/product_details/models/product.dart';
 import 'package:crafty_bay/features/product_details/view_models/product_view_model.dart';
 import 'package:crafty_bay/features/product_details/widgets/small_icon_card.dart';
+import 'package:crafty_bay/features/product_review/views/product_review_view/product_review_view.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -88,12 +89,24 @@ class ProductBody extends StatelessWidget {
                 style: Theme.of(context).textTheme.labelSmall!,
               ),
               const Gap(15),
-              Text(
-                AppStrings.productReviewHeader,
-                style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                      color: Theme.of(context).primaryColor,
-                      fontWeight: FontWeight.w600,
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProductReviewView(
+                        productId: product.id!,
+                      ),
                     ),
+                  );
+                },
+                child: Text(
+                  AppStrings.productReviewHeader,
+                  style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                        color: Theme.of(context).primaryColor,
+                        fontWeight: FontWeight.w600,
+                      ),
+                ),
               ),
               const Gap(15),
               const SmallIconCard(

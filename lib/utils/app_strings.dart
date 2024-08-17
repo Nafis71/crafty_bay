@@ -71,4 +71,7 @@ class AppStrings {
   static const String addToCartButtonText = "Add To Cart";
   static const String productReviewHeader = "Reviews";
   static const String stockOutText = "Stock Out";
+
+  //product review screen
+
 }

@@ -12,69 +12,48 @@ class BottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Theme(
-      data: ThemeData(
-        splashColor: Colors.transparent,
-        highlightColor: Colors.transparent,
-      ),
-      child: GetBuilder<BaseNavigationViewModel>(
-          builder: (baseNavigationViewModel) {
-        return BottomNavigationBar(
-          currentIndex: baseNavigationViewModel.index,
-          useLegacyColorScheme: false,
-          backgroundColor: Colors.white,
-          elevation: 40,
-          type: BottomNavigationBarType.fixed,
-          selectedItemColor: Theme.of(context).primaryColor,
-          unselectedItemColor: Colors.grey,
-          selectedLabelStyle: const TextStyle(
-            fontSize: 11,
-            fontFamily: "Poppins",
-            fontWeight: FontWeight.bold,
+    return GetBuilder<BaseNavigationViewModel>(
+        builder: (baseNavigationViewModel) {
+      return BottomNavigationBar(
+        currentIndex: baseNavigationViewModel.index,
+        onTap: (index) {
+          if (baseNavigationViewModel.index == index) {
+            return;
+          }
+          baseNavigationViewModel.setIndex = index;
+          Get.find<ProductViewModel>().resetViewModel();
+        },
+        items: [
+          getBottomNavigationBarItem(
+            index: baseNavigationViewModel.index,
+            targetIndex: 0,
+            context: context,
+            label: AppStrings.homeNavigationTabText,
+            iconPath: AppAssets.homeIcon,
           ),
-          unselectedLabelStyle: const TextStyle(
-            fontSize: 11,
-            fontFamily: "Poppins",
+          getBottomNavigationBarItem(
+            index: baseNavigationViewModel.index,
+            targetIndex: 1,
+            context: context,
+            label: AppStrings.categoryNavigationTabText,
+            iconPath: AppAssets.categoryIcon,
           ),
-          onTap: (index) {
-            if (baseNavigationViewModel.index == index) {
-              return;
-            }
-            baseNavigationViewModel.setIndex = index;
-            Get.find<ProductViewModel>().resetViewModel();
-          },
-          items: [
-            getBottomNavigationBarItem(
-              index: baseNavigationViewModel.index,
-              targetIndex: 0,
-              context: context,
-              label: AppStrings.homeNavigationTabText,
-              iconPath: AppAssets.homeIcon,
-            ),
-            getBottomNavigationBarItem(
-              index: baseNavigationViewModel.index,
-              targetIndex: 1,
-              context: context,
-              label: AppStrings.categoryNavigationTabText,
-              iconPath: AppAssets.categoryIcon,
-            ),
-            getBottomNavigationBarItem(
-              index: baseNavigationViewModel.index,
-              targetIndex: 2,
-              context: context,
-              label: AppStrings.cartNavigationTabText,
-              iconPath: AppAssets.cartIcon,
-            ),
-            getBottomNavigationBarItem(
-              index: baseNavigationViewModel.index,
-              targetIndex: 3,
-              context: context,
-              label: AppStrings.wishListNavigationTabText,
-              iconPath: AppAssets.giftIcon,
-            ),
-          ],
-        );
-      }),
-    );
+          getBottomNavigationBarItem(
+            index: baseNavigationViewModel.index,
+            targetIndex: 2,
+            context: context,
+            label: AppStrings.cartNavigationTabText,
+            iconPath: AppAssets.cartIcon,
+          ),
+          getBottomNavigationBarItem(
+            index: baseNavigationViewModel.index,
+            targetIndex: 3,
+            context: context,
+            label: AppStrings.wishListNavigationTabText,
+            iconPath: AppAssets.giftIcon,
+          ),
+        ],
+      );
+    });
   }
 }

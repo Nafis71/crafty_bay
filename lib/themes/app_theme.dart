@@ -3,6 +3,7 @@ import 'package:crafty_bay/themes/app_elevated_button_style.dart';
 import 'package:crafty_bay/themes/app_text_theme.dart';
 import 'package:crafty_bay/themes/app_textfield_style.dart';
 import 'package:crafty_bay/themes/appbar_style.dart';
+import 'package:crafty_bay/themes/bottom_navigation_theme.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme {
@@ -15,5 +16,9 @@ class AppTheme {
         inputDecorationTheme: AppTextFieldStyle.getTextFieldTheme(),
         elevatedButtonTheme: AppElevatedButtonStyle.getElevatedButton(),
         appBarTheme: AppbarStyle.getLightAppBarTheme(),
+        bottomNavigationBarTheme:
+            BottomNavigationTheme.getBottomNavigationBarLightTheme(),
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
       );
 }

@@ -61,9 +61,3 @@ CircleAvatar actionItem(IconData icon) {
     ),
   );
 }
-
-// int getElevation(String? title, Color? backgroundColor){
-//   if(title == null && backgroundColor == null){
-//     return 0;
-//   }
-// }
