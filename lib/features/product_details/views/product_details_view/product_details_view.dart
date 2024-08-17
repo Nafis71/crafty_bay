@@ -1,3 +1,6 @@
+import 'package:crafty_bay/common/services/internet_service_error.dart';
+import 'package:crafty_bay/common/services/response/failure.dart';
+import 'package:crafty_bay/common/widgets/alternative_widget.dart';
 import 'package:crafty_bay/common/widgets/circular_loading.dart';
 import 'package:crafty_bay/common/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/features/product_details/view_models/product_view_model.dart';
@@ -6,7 +9,9 @@ import 'package:crafty_bay/features/product_details/widgets/product_description.
 import 'package:crafty_bay/features/product_details/widgets/product_footer.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_variation.dart';
 import 'package:crafty_bay/themes/app_color.dart';
+import 'package:crafty_bay/utils/app_assets.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
+import 'package:crafty_bay/wrappers/svg_image_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -29,10 +34,6 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
     super.initState();
   }
 
-  Future<void> loadProductDetails() async {
-    await Get.find<ProductViewModel>().getProductDetails(widget.productId);
-  }
-
   @override
   Widget build(BuildContext context) {
     Orientation deviceOrientation = MediaQuery.of(context).orientation;
@@ -52,6 +53,15 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                 children: [
                   Center(child: CircularLoading()),
                 ],
+              );
+            }
+            if (productViewModel.response is Failure) {
+              return AlternativeWidget(
+                onRefresh: loadProductDetails,
+                child: const SvgImageLoader(
+                  assetLocation: AppAssets.noInternet,
+                  boxFit: BoxFit.contain,
+                ),
               );
             }
             return SizedBox(
@@ -97,5 +107,16 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
         ),
       ),
     );
+  }
+
+  Future<void> loadProductDetails() async {
+    bool status =
+        await Get.find<ProductViewModel>().getProductDetails(widget.productId);
+    if (!status && mounted) {
+      InternetServiceError.showErrorSnackBar(
+        failure: Get.find<ProductViewModel>().response as Failure,
+        context: context,
+      );
+    }
   }
 }
