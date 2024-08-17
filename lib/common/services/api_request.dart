@@ -57,8 +57,15 @@ class ApiRequest {
     if (response.statusCode == 200) {
       return Success(
           response: jsonDecode(response.body), statusCode: response.statusCode);
+    } else if (response.statusCode == 500) {
+      return Failure(
+        statusCode: response.statusCode,
+        errorMessage: AppStrings.internalServerError,
+      );
     }
     return Failure(
-        statusCode: response.statusCode, response: jsonDecode(response.body));
+      statusCode: response.statusCode,
+      response: jsonDecode(response.body),
+    );
   }
 }

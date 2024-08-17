@@ -1,4 +1,4 @@
-import 'category_data.dart';
+import '../category_model/category_data.dart';
 
 class CategoryModel {
   String? msg;

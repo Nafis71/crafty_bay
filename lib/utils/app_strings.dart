@@ -1,8 +1,9 @@
 class AppStrings {
   //network errors
-  static const String unknownError = "Something went wrong, please try again!";
+  static const String unknownError = "Something went wrong, please try again.";
   static const String networkError =
       "Network Error, Check your internet connection.";
+  static const String internalServerError = "Internal Server Error, please try again later.";
 
   //login Screen
   static const String appVersion = "Version 1.0";
@@ -44,8 +45,6 @@ class AppStrings {
   static const String invalidCityText = "Invalid City Name";
   static const String invalidShippingAddress = "Invalid Shipping Address";
   static const String profileDetailsButtonText = "Complete";
-  static const String createProfileFailure =
-      "Failed to create your profile,try again";
 
   //home screen
   static const String homeCategoryHeader = "All Categories";

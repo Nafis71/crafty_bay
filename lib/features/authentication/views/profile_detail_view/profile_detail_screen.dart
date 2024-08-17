@@ -9,6 +9,8 @@ import 'package:crafty_bay/wrappers/app_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../common/services/internet_service_error.dart';
+
 class ProfileDetailView extends StatefulWidget {
   const ProfileDetailView({super.key});
 
@@ -174,17 +176,12 @@ class _ProfileDetailViewState extends State<ProfileDetailView> {
     );
     if (!status && mounted) {
       Failure failure = profileViewModel.response as Failure;
-      if (failure.statusCode == 600 || failure.statusCode == 601) {
-        AppSnackBar.show(
-            message: failure.errorMessage.toString(),
-            context: context,
-            isError: true);
-        return;
-      }
-      AppSnackBar.show(
-          message: AppStrings.createProfileFailure,
+      if (mounted) {
+        InternetServiceError.showErrorSnackBar(
+          failure: failure,
           context: context,
-          isError: true);
+        );
+      }
       return;
     }
     if (mounted) {

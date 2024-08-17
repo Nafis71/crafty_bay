@@ -56,33 +56,35 @@ class _OfferCarouselState extends State<OfferCarousel> {
                           width: 120,
                           height: 35,
                           child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.white,
-                                  foregroundColor:
-                                      Theme.of(context).primaryColor,
-                                  textStyle: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium!
-                                      .copyWith(
-                                        fontSize: 13,
-                                      ),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(7))),
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => ProductDetailsView(
-                                      productId: Get.find<HomeViewModel>()
-                                          .productSliderList[index]
-                                          .productId!,
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.white,
+                                foregroundColor: Theme.of(context).primaryColor,
+                                textStyle: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium!
+                                    .copyWith(
+                                      fontSize: 13,
                                     ),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(7))),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ProductDetailsView(
+                                    productId: Get.find<HomeViewModel>()
+                                        .productSliderList[index]
+                                        .productId!,
                                   ),
-                                ).then((value){
-                                  Get.find<ProductViewModel>().resetViewModel();
-                                });
-                              },
-                              child: const Text(AppStrings.offerCarouselButtonText)),
+                                ),
+                              ).then((value) {
+                                Get.find<ProductViewModel>().resetViewModel();
+                              });
+                            },
+                            child: const Text(
+                              AppStrings.offerCarouselButtonText,
+                            ),
+                          ),
                         )
                       ],
                     ),

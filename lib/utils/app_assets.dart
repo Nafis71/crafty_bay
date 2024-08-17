@@ -3,6 +3,7 @@ class AppAssets {
   static const String imageDirectory = "$baseDirectory/images";
   static const String appLogo = "$imageDirectory/logo.svg";
   static const String logoNav = "$imageDirectory/logo_nav.svg";
+  static const String noInternet = "$imageDirectory/no_internet.svg";
 
   //icon
   static const String iconDirectory = "$baseDirectory/icons";

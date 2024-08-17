@@ -62,7 +62,7 @@ class ProductCard extends StatelessWidget {
                     alignment: Alignment.center,
                     child: CachedNetworkImage(
                       imageUrl:
-                          "https://photo.teamrabbil.com/images/2023/04/04/product.png",
+                          productList.image,
                       fit: BoxFit.contain,
                       placeholder: (context, _) {
                         return const CircularLoading();

@@ -37,13 +37,14 @@ class ProductFooter extends StatelessWidget {
                       style: Theme.of(context)
                           .textTheme
                           .labelSmall!
-                          .copyWith(fontWeight: FontWeight.bold,fontSize: 17),
+                          .copyWith(fontWeight: FontWeight.bold, fontSize: 16),
                     ),
                     Text(
                       "\$${productViewModel.productData!.price}",
                       style: Theme.of(context).textTheme.titleMedium!.copyWith(
                           color: Theme.of(context).primaryColor,
-                          fontWeight: FontWeight.w600,fontSize: 17),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 17),
                     ),
                   ],
                 ),
@@ -58,9 +59,7 @@ class ProductFooter extends StatelessWidget {
                             style: Theme.of(context)
                                 .textTheme
                                 .labelMedium!
-                                .copyWith(
-                                  fontSize: 13,
-                                ),
+                                .copyWith(fontSize: 13),
                           ),
                         )
                       : Row(

@@ -9,6 +9,8 @@ import 'package:crafty_bay/wrappers/app_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../common/services/internet_service_error.dart';
+
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
 
@@ -81,19 +83,12 @@ class _LoginViewState extends State<LoginView> {
           arguments: _emailTEController.text.trim());
       return;
     }
-    Failure failureResponse = authViewModel.response as Failure;
-    if ((failureResponse.statusCode == 601 ||
-            failureResponse.statusCode == 600) &&
-        mounted) {
-      AppSnackBar.show(
-          message: failureResponse.errorMessage.toString(),
-          context: context,
-          isError: true);
-      return;
-    }
+    Failure failure = authViewModel.response as Failure;
     if (mounted) {
-      AppSnackBar.show(
-          message: AppStrings.unknownError, context: context, isError: true);
+      InternetServiceError.showErrorSnackBar(
+        failure: failure,
+        context: context,
+      );
     }
   }
 

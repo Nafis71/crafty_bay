@@ -12,4 +12,8 @@ class CategoryService extends ApiRequest {
   Future<Object> getCategoryList() async {
     return getRequest(url: NetworkUrls.categoryList);
   }
+
+  Future<Object> getProductByCategory(String categoryId) async{
+    return getRequest(url: "${NetworkUrls.listProductByCategory}/$categoryId");
+  }
 }

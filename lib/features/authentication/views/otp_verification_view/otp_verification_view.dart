@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:crafty_bay/common/services/internet_service_error.dart';
+import 'package:crafty_bay/common/services/response/failure.dart';
 import 'package:crafty_bay/common/widgets/authentication_layout.dart';
 import 'package:crafty_bay/features/authentication/view_model/auth_view_model.dart';
 import 'package:crafty_bay/themes/app_color.dart';
@@ -169,9 +171,21 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
     if (status && mounted && authViewModel.hasUserData) {
       //will type later
     }
-    if (!status && mounted) {
+    Failure failure = authViewModel.response as Failure;
+    if (!status &&
+        mounted &&
+        (failure.statusCode != 600 ||
+            failure.statusCode != 601 ||
+            failure.statusCode != 500)) {
       AppSnackBar.show(
           message: AppStrings.invalidOTP, context: context, isError: true);
+      return;
+    }
+    if (mounted) {
+      InternetServiceError.showErrorSnackBar(
+        failure: failure,
+        context: context,
+      );
     }
   }
 
