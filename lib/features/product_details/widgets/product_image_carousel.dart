@@ -28,14 +28,14 @@ class ProductImageCarousel extends StatelessWidget {
                 fit: BoxFit.fill,
                 width: 230,
               ),
-              Gap(40),
+              const Gap(40),
             ],
           ),
         );
       },
       options: CarouselOptions(
         viewportFraction: 1,
-        aspectRatio: (orientation == Orientation.portrait) ? 1.7 : 1.8,
+        aspectRatio: (orientation == Orientation.portrait) ? 1.7 : 3,
         initialPage: 0,
         indicatorMargin: 20,
         slideIndicator: CircularSlideIndicator(

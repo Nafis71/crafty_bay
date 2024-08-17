@@ -62,7 +62,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Expanded(
-                    flex: 7,
+                    flex: (deviceOrientation == Orientation.portrait) ? 7 : 2,
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
@@ -83,7 +83,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                       ),
                     ),
                   ),
-                  const Expanded(
+                  const Flexible(
                     flex: 1,
                     child: ProductFooter(),
                   )

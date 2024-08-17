@@ -53,6 +53,7 @@ class AppStrings {
   static const String homeSpecialHeader = "Special";
   static const String homeNewHeader = "New";
   static const String homeSeeAllButtonText = "See All";
+  static const String offerCarouselButtonText ="Buy Now";
 
   //product details screen
   static const String productDetailsHeader = "Product Details";
