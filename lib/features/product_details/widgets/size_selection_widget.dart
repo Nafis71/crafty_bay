@@ -48,7 +48,7 @@ class SizeSelectionWidget extends StatelessWidget {
             ),
           ),
         ),
-        const Gap(15),
+        const Gap(10),
       ],
     );
   }
