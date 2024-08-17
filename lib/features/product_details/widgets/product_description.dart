@@ -18,7 +18,7 @@ class ProductDescription extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .titleMedium!
-                .copyWith(fontWeight: FontWeight.w600),
+                .copyWith(fontWeight: FontWeight.w600,fontSize: 18),
           ),
           const Gap(5),
           Text(description),

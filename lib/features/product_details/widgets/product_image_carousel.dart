@@ -18,25 +18,26 @@ class ProductImageCarousel extends StatelessWidget {
           decoration: BoxDecoration(
             color: AppColor.productCarouselBackgroundColor,
           ),
-          alignment: Alignment.center,
+          alignment: Alignment.topCenter,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Gap(30),
               CachedNetworkImage(
                 imageUrl:
                     carouselImageList[index],
-                fit: BoxFit.contain,
+                fit: BoxFit.fill,
+                width: 230,
               ),
+              Gap(40),
             ],
           ),
         );
       },
       options: CarouselOptions(
         viewportFraction: 1,
-        aspectRatio: (orientation == Orientation.portrait) ? 1.3 : 1.8,
+        aspectRatio: (orientation == Orientation.portrait) ? 1.7 : 1.8,
         initialPage: 0,
-        indicatorMargin: 25,
+        indicatorMargin: 20,
         slideIndicator: CircularSlideIndicator(
           slideIndicatorOptions: SlideIndicatorOptions(
             currentIndicatorColor: Theme.of(context).primaryColor,

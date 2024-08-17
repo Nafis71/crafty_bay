@@ -35,6 +35,9 @@ class BottomNavigation extends StatelessWidget {
             fontFamily: "Poppins",
           ),
           onTap: (index) {
+            if(baseNavigationViewModel.index == index){
+              return;
+            }
             baseNavigationViewModel.setIndex = index;
             Get.find<ProductViewModel>().resetViewModel();
           },

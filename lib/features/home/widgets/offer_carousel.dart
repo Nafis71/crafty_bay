@@ -1,4 +1,6 @@
 import 'package:crafty_bay/features/home/view_model/home_view_model.dart';
+import 'package:crafty_bay/features/product_details/view_models/product_view_model.dart';
+import 'package:crafty_bay/features/product_details/views/product_details_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:gap/gap.dart';
@@ -65,7 +67,20 @@ class _OfferCarouselState extends State<OfferCarousel> {
                                       ),
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(7))),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ProductDetailsView(
+                                      productId: Get.find<HomeViewModel>()
+                                          .productSliderList[index]
+                                          .productId!,
+                                    ),
+                                  ),
+                                ).then((value){
+                                  Get.find<ProductViewModel>().resetViewModel();
+                                });
+                              },
                               child: const Text("Buy Now")),
                         )
                       ],

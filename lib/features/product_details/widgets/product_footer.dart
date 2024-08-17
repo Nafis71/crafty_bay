@@ -12,7 +12,7 @@ class ProductFooter extends StatelessWidget {
     return GetBuilder<ProductViewModel>(builder: (productViewModel) {
       return Container(
         height: 100,
-        padding: const EdgeInsets.only(top: 10, left: 30, right: 30),
+        padding: const EdgeInsets.only(top: 5, left: 30, right: 30),
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
           color: AppColor.appSecondaryColor,
@@ -37,18 +37,19 @@ class ProductFooter extends StatelessWidget {
                       style: Theme.of(context)
                           .textTheme
                           .labelSmall!
-                          .copyWith(fontWeight: FontWeight.bold),
+                          .copyWith(fontWeight: FontWeight.bold,fontSize: 17),
                     ),
                     Text(
                       "\$${productViewModel.productData!.price}",
                       style: Theme.of(context).textTheme.titleMedium!.copyWith(
                           color: Theme.of(context).primaryColor,
-                          fontWeight: FontWeight.w600),
+                          fontWeight: FontWeight.w600,fontSize: 17),
                     ),
                   ],
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.4,
+                  width: MediaQuery.of(context).size.width * 0.38,
+                  height: 50,
                   child: (productViewModel.productData!.stock != 0)
                       ? ElevatedButton(
                           onPressed: () {},

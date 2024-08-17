@@ -5,7 +5,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-AppBar craftyAppBar({String? title, BuildContext? context}) {
+AppBar craftyAppBar({
+  String? title,
+  BuildContext? context,
+  Color? backgroundColor,
+  double? toolBarHeight,
+}) {
   return AppBar(
     title: (title == null)
         ? const SvgImageLoader(
@@ -28,9 +33,12 @@ AppBar craftyAppBar({String? title, BuildContext? context}) {
               Text(title),
             ],
           ),
-    elevation: (title == null) ? 0 : 5,
+    backgroundColor: (backgroundColor != null) ? backgroundColor : null,
+    surfaceTintColor: (backgroundColor != null) ? backgroundColor : null,
+    elevation: (title == null || backgroundColor != null) ? 0 : 5,
     centerTitle: false,
     automaticallyImplyLeading: false,
+    toolbarHeight: (toolBarHeight!=null)? toolBarHeight : null,
     actions: (title == null)
         ? [
             actionItem(CupertinoIcons.person),
@@ -53,3 +61,9 @@ CircleAvatar actionItem(IconData icon) {
     ),
   );
 }
+
+// int getElevation(String? title, Color? backgroundColor){
+//   if(title == null && backgroundColor == null){
+//     return 0;
+//   }
+// }

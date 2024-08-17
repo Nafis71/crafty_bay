@@ -104,6 +104,5 @@ class ProductViewModel extends GetxController {
     _productColorList.clear();
     selectedSize = 0;
     selectedColor = 0;
-    _productData = null;
   }
 }
