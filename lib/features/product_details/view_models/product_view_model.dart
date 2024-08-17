@@ -15,8 +15,10 @@ class ProductViewModel extends GetxController {
   bool _responseStatus = false;
   int selectedColor = 0;
   int selectedSize = 0;
+  int _productQuantity = 1;
 
   bool get isBusy => _isBusy;
+  int get productQuantity => _productQuantity;
 
   Product? get productData => _productData;
 
@@ -38,6 +40,19 @@ class ProductViewModel extends GetxController {
 
   set setSelectedSize(int index) {
     selectedSize = index;
+    update();
+  }
+
+  void incrementProductQuantity(){
+    _productQuantity++;
+    update();
+  }
+
+  void decrementProductQuantity(){
+    if(_productQuantity == 1){
+      return;
+    }
+    _productQuantity--;
     update();
   }
 
@@ -104,5 +119,6 @@ class ProductViewModel extends GetxController {
     _productColorList.clear();
     selectedSize = 0;
     selectedColor = 0;
+    _productQuantity = 1;
   }
 }

@@ -1,8 +1,11 @@
 import 'package:crafty_bay/features/product_details/models/product.dart';
+import 'package:crafty_bay/features/product_details/view_models/product_view_model.dart';
 import 'package:crafty_bay/features/product_details/widgets/small_icon_card.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
+import 'package:crafty_bay/wrappers/app_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 
 import '../../../themes/app_color.dart';
 
@@ -37,16 +40,35 @@ class ProductBody extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    const SmallIconCard(
-                      icon: Icons.remove,
-                      applyPrimaryColor: false,
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      onTap: () {
+                        Get.find<ProductViewModel>().decrementProductQuantity();
+                      },
+                      child: const SmallIconCard(
+                        icon: Icons.remove,
+                        applyPrimaryColor: false,
+                      ),
                     ),
                     const Gap(2),
-                    Text("01", style: Theme.of(context).textTheme.titleSmall),
+                    GetBuilder<ProductViewModel>(
+                      builder: (productViewModel) {
+                        return Text(
+                          productViewModel.productQuantity.toString(),
+                          style: Theme.of(context).textTheme.titleSmall,
+                        );
+                      },
+                    ),
                     const Gap(2),
-                    const SmallIconCard(
-                      icon: Icons.add,
-                      applyPrimaryColor: true,
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      onTap: () {
+                        Get.find<ProductViewModel>().incrementProductQuantity();
+                      },
+                      child: const SmallIconCard(
+                        icon: Icons.add,
+                        applyPrimaryColor: true,
+                      ),
                     ),
                   ],
                 ),
