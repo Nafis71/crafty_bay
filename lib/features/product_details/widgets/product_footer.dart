@@ -1,5 +1,6 @@
 import 'package:crafty_bay/features/product_details/view_models/product_view_model.dart';
 import 'package:crafty_bay/themes/app_color.dart';
+import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -33,7 +34,7 @@ class ProductFooter extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Price",
+                        AppStrings.productPriceHeader,
                         style: Theme.of(context)
                             .textTheme
                             .labelSmall!
@@ -52,7 +53,7 @@ class ProductFooter extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed: () {},
                       child: Text(
-                        "Add to Cart",
+                        AppStrings.addToCartButtonText,
                         style: Theme.of(context).textTheme.labelMedium!.copyWith(
                               fontSize: 13,
                             ),

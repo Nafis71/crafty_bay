@@ -5,8 +5,6 @@ import 'package:crafty_bay/features/product_details/widgets/product_description.
 import 'package:crafty_bay/features/product_details/widgets/product_footer.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_header.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_variation.dart';
-import 'package:crafty_bay/features/product_details/widgets/product_image_carousel.dart';
-import 'package:crafty_bay/features/product_details/widgets/stacked_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -71,15 +69,16 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                         const Gap(20),
                         ProductDescription(
                           description:
-                          productViewModel.productData!.shortDes.toString(),
+                              productViewModel.productData!.shortDes.toString(),
                         ),
                       ],
                     ),
                   ),
                 ),
-                Flexible(
-                    flex: 1,
-                    child: ProductFooter())
+                const Flexible(
+                  flex: 1,
+                  child: ProductFooter(),
+                )
               ],
             ),
           );

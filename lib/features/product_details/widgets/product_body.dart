@@ -1,5 +1,6 @@
 import 'package:crafty_bay/features/product_details/models/product.dart';
 import 'package:crafty_bay/features/product_details/widgets/small_icon_card.dart';
+import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -64,7 +65,7 @@ class ProductBody extends StatelessWidget {
               ),
               const Gap(15),
               Text(
-                "Reviews",
+                AppStrings.productReviewHeader,
                 style: Theme.of(context).textTheme.labelSmall!.copyWith(
                       color: Theme.of(context).primaryColor,
                       fontWeight: FontWeight.w600,

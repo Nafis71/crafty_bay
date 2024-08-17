@@ -1,6 +1,7 @@
 import 'package:crafty_bay/features/product_details/view_models/product_view_model.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_image_carousel.dart';
 import 'package:crafty_bay/features/product_details/widgets/stacked_app_bar.dart';
+import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 
 class ProductHeader extends StatelessWidget {
@@ -13,7 +14,7 @@ class ProductHeader extends StatelessWidget {
     return Stack(
       children: [
         ProductImageCarousel(orientation: deviceOrientation,carouselImageList: productViewModel.carouselImageList,),
-        const StackedAppBar(title: "Product Details",)
+        const StackedAppBar(title: AppStrings.productDetailsHeader,)
       ],
     );
   }
