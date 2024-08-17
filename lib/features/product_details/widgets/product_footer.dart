@@ -71,7 +71,7 @@ class ProductFooter extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Text(
-                              "Stock out",
+                              AppStrings.stockOutText,
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium!

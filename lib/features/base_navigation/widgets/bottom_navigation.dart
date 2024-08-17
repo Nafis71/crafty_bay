@@ -22,7 +22,7 @@ class BottomNavigation extends StatelessWidget {
           currentIndex: baseNavigationViewModel.index,
           useLegacyColorScheme: false,
           backgroundColor: Colors.white,
-          elevation: 15,
+          elevation: 40,
           type: BottomNavigationBarType.fixed,
           selectedItemColor: Theme.of(context).primaryColor,
           unselectedItemColor: Colors.grey,
