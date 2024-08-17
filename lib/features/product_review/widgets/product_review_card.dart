@@ -17,6 +17,7 @@ class ProductReviewCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
+        border: Border.fromBorderSide(BorderSide(color: Colors.black.withOpacity(0.03))),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.04),

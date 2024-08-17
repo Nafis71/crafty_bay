@@ -48,7 +48,7 @@ class _ProductReviewViewState extends State<ProductReviewView> {
           }
           if (productReviewViewModel.response is Failure) {
             return AlternativeWidget(
-              onRefresh: () {},
+              onRefresh: getProductReview,
               child: const SvgImageLoader(
                 assetLocation: AppAssets.noInternet,
                 boxFit: BoxFit.contain,
@@ -57,7 +57,7 @@ class _ProductReviewViewState extends State<ProductReviewView> {
           }
           if (productReviewViewModel.productReviewList.isEmpty) {
             return AlternativeWidget(
-              onRefresh: () {},
+              onRefresh: getProductReview,
               child: Column(
                 children: [
                   Icon(
@@ -83,7 +83,7 @@ class _ProductReviewViewState extends State<ProductReviewView> {
               );
             },
             separatorBuilder: (context, index) {
-              return const Gap(25);
+              return const Gap(20);
             },
           );
         },

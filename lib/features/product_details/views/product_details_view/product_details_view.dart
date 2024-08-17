@@ -64,6 +64,24 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                 ),
               );
             }
+            if(productViewModel.productData == null){
+              return AlternativeWidget(
+                onRefresh: loadProductDetails,
+                child: Column(
+                  children: [
+                    Icon(
+                      Icons.info_outline_rounded,
+                      color: Theme.of(context).primaryColor,
+                      size: 45,
+                    ),
+                    const Gap(15),
+                    const Text(
+                      "No data found for this product",
+                    ),
+                  ],
+                ),
+              );
+            }
             return SizedBox(
               height: MediaQuery.of(context).size.height,
               child: Column(
