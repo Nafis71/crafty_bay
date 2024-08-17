@@ -54,6 +54,11 @@ class ProductFooter extends StatelessWidget {
                   child: (productViewModel.productData!.stock != 0)
                       ? ElevatedButton(
                           onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
                           child: Text(
                             AppStrings.addToCartButtonText,
                             style: Theme.of(context)

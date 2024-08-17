@@ -169,7 +169,8 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
       return;
     }
     if (status && mounted && authViewModel.hasUserData) {
-      //will type later
+      Navigator.pushReplacementNamed(context, AppRoutes.baseNavigationView);
+      return;
     }
     Failure failure = authViewModel.response as Failure;
     if (!status &&
