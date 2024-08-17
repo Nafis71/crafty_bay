@@ -23,6 +23,7 @@ class ColorSelectionWidget extends StatelessWidget {
             productViewModel.setSelectedColor = index;
           },
           child: CircleAvatar(
+            radius: 18,
             backgroundColor: Color(color),
             child: (index == productViewModel.selectedColor)
                 ? const Icon(

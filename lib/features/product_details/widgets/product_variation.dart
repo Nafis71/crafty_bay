@@ -46,7 +46,7 @@ class ProductVariation extends StatelessWidget {
               ),
             );
           }),
-          const Gap(20),
+          const Gap(15),
           Text(
             AppStrings.productSizeHeader,
             style: Theme.of(context)

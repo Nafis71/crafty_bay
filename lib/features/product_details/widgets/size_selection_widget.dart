@@ -22,8 +22,8 @@ class SizeSelectionWidget extends StatelessWidget {
             productViewModel.setSelectedSize = index;
           },
           child: Container(
-            width: 42,
-            height: 42,
+            width: 38,
+            height: 38,
             decoration: BoxDecoration(
               color: (productViewModel.selectedSize != index)
                   ? Colors.white
