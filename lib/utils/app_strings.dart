@@ -47,6 +47,13 @@ class AppStrings {
   static const String invalidShippingAddress = "Invalid Shipping Address";
   static const String profileDetailsButtonText = "Complete";
 
+
+  //base navigation screen
+  static const String homeNavigationTabText = "Home";
+  static const String categoryNavigationTabText = "Category";
+  static const String cartNavigationTabText = "Cart";
+  static const String wishListNavigationTabText = "Wish";
+
   //home screen
   static const String homeCategoryHeader = "All Categories";
   static const String homePopularHeader = "Popular";

@@ -1,4 +1,5 @@
 import 'package:crafty_bay/features/product_details/view_models/product_view_model.dart';
+import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -47,28 +48,28 @@ class BottomNavigation extends StatelessWidget {
               index: baseNavigationViewModel.index,
               targetIndex: 0,
               context: context,
-              label: "Home",
+              label: AppStrings.homeNavigationTabText,
               iconPath: AppAssets.homeIcon,
             ),
             getBottomNavigationBarItem(
               index: baseNavigationViewModel.index,
               targetIndex: 1,
               context: context,
-              label: "Category",
+              label: AppStrings.categoryNavigationTabText,
               iconPath: AppAssets.categoryIcon,
             ),
             getBottomNavigationBarItem(
               index: baseNavigationViewModel.index,
               targetIndex: 2,
               context: context,
-              label: "Cart",
+              label: AppStrings.cartNavigationTabText,
               iconPath: AppAssets.cartIcon,
             ),
             getBottomNavigationBarItem(
               index: baseNavigationViewModel.index,
               targetIndex: 3,
               context: context,
-              label: "Wish",
+              label: AppStrings.wishListNavigationTabText,
               iconPath: AppAssets.giftIcon,
             ),
           ],
