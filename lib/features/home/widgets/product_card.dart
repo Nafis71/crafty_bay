@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:crafty_bay/common/widgets/circular_loading.dart';
 import 'package:crafty_bay/features/product_details/view_models/product_view_model.dart';
-import 'package:crafty_bay/features/product_details/views/product_details_view.dart';
+import 'package:crafty_bay/features/product_details/views/product_details_view/product_details_view.dart';
 import 'package:crafty_bay/themes/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -61,8 +61,7 @@ class ProductCard extends StatelessWidget {
                     ),
                     alignment: Alignment.center,
                     child: CachedNetworkImage(
-                      imageUrl:
-                          productList.image,
+                      imageUrl: productList.image,
                       fit: BoxFit.contain,
                       placeholder: (context, _) {
                         return const CircularLoading();

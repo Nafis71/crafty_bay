@@ -5,7 +5,8 @@ class SmallIconCard extends StatelessWidget {
   final IconData icon;
   final bool applyPrimaryColor;
 
-  const SmallIconCard({super.key, required this.icon, required this.applyPrimaryColor});
+  const SmallIconCard(
+      {super.key, required this.icon, required this.applyPrimaryColor});
 
   @override
   Widget build(BuildContext context) {

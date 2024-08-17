@@ -14,21 +14,22 @@ class CategoryProductData {
   String? createdAt;
   String? updatedAt;
 
-  CategoryProductData(
-      {this.id,
-        this.title,
-        this.shortDes,
-        this.price,
-        this.discount,
-        this.discountPrice,
-        this.image,
-        this.stock,
-        this.star,
-        this.remark,
-        this.categoryId,
-        this.brandId,
-        this.createdAt,
-        this.updatedAt,});
+  CategoryProductData({
+    this.id,
+    this.title,
+    this.shortDes,
+    this.price,
+    this.discount,
+    this.discountPrice,
+    this.image,
+    this.stock,
+    this.star,
+    this.remark,
+    this.categoryId,
+    this.brandId,
+    this.createdAt,
+    this.updatedAt,
+  });
 
   CategoryProductData.fromJson(Map<String, dynamic> json) {
     id = json['id'];

@@ -1,6 +1,6 @@
 import 'package:crafty_bay/features/home/view_model/home_view_model.dart';
 import 'package:crafty_bay/features/product_details/view_models/product_view_model.dart';
-import 'package:crafty_bay/features/product_details/views/product_details_view.dart';
+import 'package:crafty_bay/features/product_details/views/product_details_view/product_details_view.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';

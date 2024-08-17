@@ -38,7 +38,7 @@ AppBar craftyAppBar({
     elevation: (title == null || backgroundColor != null) ? 0 : 5,
     centerTitle: false,
     automaticallyImplyLeading: false,
-    toolbarHeight: (toolBarHeight!=null)? toolBarHeight : null,
+    toolbarHeight: (toolBarHeight != null) ? toolBarHeight : null,
     actions: (title == null)
         ? [
             actionItem(CupertinoIcons.person),

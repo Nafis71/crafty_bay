@@ -7,6 +7,6 @@ class NetworkUrls {
   static const String productSlider = "$baseUrl/ListProductSlider";
   static const String categoryList = "$baseUrl/CategoryList";
   static const String listProductByRemark = "$baseUrl/ListProductByRemark";
-  static const String productDetailsById ="$baseUrl/ProductDetailsById";
-  static const String listProductByCategory ="$baseUrl/ListProductByCategory";
+  static const String productDetailsById = "$baseUrl/ProductDetailsById";
+  static const String listProductByCategory = "$baseUrl/ListProductByCategory";
 }

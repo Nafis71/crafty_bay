@@ -43,7 +43,8 @@ class CategoryViewModel extends GetxController {
     if (response is Success) {
       CategoryProductModel categoryProductModel = CategoryProductModel.fromJson(
           (response as Success).response as Map<String, dynamic>);
-      for(CategoryProductData categoryProductData in categoryProductModel.categoryProductData!){
+      for (CategoryProductData categoryProductData
+          in categoryProductModel.categoryProductData!) {
         _categoryProductData.add(categoryProductData);
       }
       _responseStatus = true;

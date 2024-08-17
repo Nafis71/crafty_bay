@@ -3,7 +3,8 @@ class AppStrings {
   static const String unknownError = "Something went wrong, please try again.";
   static const String networkError =
       "Network Error, Check your internet connection.";
-  static const String internalServerError = "Internal Server Error, please try again later.";
+  static const String internalServerError =
+      "Internal Server Error, please try again later.";
 
   //login Screen
   static const String appVersion = "Version 1.0";
@@ -52,13 +53,13 @@ class AppStrings {
   static const String homeSpecialHeader = "Special";
   static const String homeNewHeader = "New";
   static const String homeSeeAllButtonText = "See All";
-  static const String offerCarouselButtonText ="Buy Now";
+  static const String offerCarouselButtonText = "Buy Now";
 
   //product details screen
   static const String productDetailsHeader = "Product Details";
   static const String productDescriptionHeader = "Description";
-  static const String productColorHeader ="Color";
-  static const String productSizeHeader ="Size";
+  static const String productColorHeader = "Color";
+  static const String productSizeHeader = "Size";
   static const String productPriceHeader = "Price";
   static const String addToCartButtonText = "Add To Cart";
   static const String productReviewHeader = "Reviews";

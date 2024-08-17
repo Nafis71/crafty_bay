@@ -1,5 +1,6 @@
 import 'package:crafty_bay/common/services/response/failure.dart';
 import 'package:flutter/cupertino.dart';
+
 import '../../utils/app_strings.dart';
 import '../../wrappers/app_snack_bar.dart';
 

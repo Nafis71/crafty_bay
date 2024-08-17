@@ -1,6 +1,7 @@
 import 'package:crafty_bay/features/product_details/view_models/product_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../../utils/app_assets.dart';
 import '../view_model/base_navigation_view_model.dart';
 import 'bottom_navigation_bar_item.dart';
@@ -35,7 +36,7 @@ class BottomNavigation extends StatelessWidget {
             fontFamily: "Poppins",
           ),
           onTap: (index) {
-            if(baseNavigationViewModel.index == index){
+            if (baseNavigationViewModel.index == index) {
               return;
             }
             baseNavigationViewModel.setIndex = index;

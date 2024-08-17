@@ -3,6 +3,7 @@ import 'package:gap/gap.dart';
 
 class StackedAppBar extends StatelessWidget {
   final String title;
+
   const StackedAppBar({super.key, required this.title});
 
   @override

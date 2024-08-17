@@ -26,9 +26,10 @@ class ProductBody extends StatelessWidget {
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   product.title.toString(),
-                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                    fontSize: 18
-                  ),
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleMedium!
+                      .copyWith(fontSize: 18),
                 ),
               ),
               Expanded(

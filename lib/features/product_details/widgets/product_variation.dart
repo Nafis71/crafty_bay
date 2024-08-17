@@ -28,7 +28,7 @@ class ProductVariation extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .titleMedium!
-                .copyWith(fontWeight: FontWeight.w600,fontSize: 18),
+                .copyWith(fontWeight: FontWeight.w600, fontSize: 18),
           ),
           const Gap(10),
           GetBuilder<ProductViewModel>(builder: (productViewModel) {
@@ -52,7 +52,7 @@ class ProductVariation extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .titleMedium!
-                .copyWith(fontWeight: FontWeight.w600,fontSize: 18),
+                .copyWith(fontWeight: FontWeight.w600, fontSize: 18),
           ),
           const Gap(10),
           GetBuilder<ProductViewModel>(

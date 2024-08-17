@@ -13,7 +13,7 @@ class CategoryService extends ApiRequest {
     return getRequest(url: NetworkUrls.categoryList);
   }
 
-  Future<Object> getProductByCategory(String categoryId) async{
+  Future<Object> getProductByCategory(String categoryId) async {
     return getRequest(url: "${NetworkUrls.listProductByCategory}/$categoryId");
   }
 }

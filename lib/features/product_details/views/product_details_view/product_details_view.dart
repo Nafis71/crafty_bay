@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../widgets/product_image_carousel.dart';
+import '../../widgets/product_image_carousel.dart';
 
 class ProductDetailsView extends StatefulWidget {
   final int productId;
@@ -38,11 +38,10 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
     Orientation deviceOrientation = MediaQuery.of(context).orientation;
     return Scaffold(
       appBar: craftyAppBar(
-        title: AppStrings.productDetailsHeader,
-        context: context,
-        backgroundColor: AppColor.productCarouselBackgroundColor,
-        toolBarHeight: 60
-      ),
+          title: AppStrings.productDetailsHeader,
+          context: context,
+          backgroundColor: AppColor.productCarouselBackgroundColor,
+          toolBarHeight: 60),
       body: SafeArea(
         child: GetBuilder<ProductViewModel>(
           builder: (productViewModel) {
@@ -66,7 +65,11 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-                          ProductImageCarousel(orientation: deviceOrientation,carouselImageList: productViewModel.carouselImageList,),
+                          ProductImageCarousel(
+                            orientation: deviceOrientation,
+                            carouselImageList:
+                                productViewModel.carouselImageList,
+                          ),
                           const Gap(10),
                           ProductBody(product: productViewModel.productData!),
                           const Gap(10),
@@ -76,8 +79,8 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                           ),
                           const Gap(20),
                           ProductDescription(
-                            description:
-                                productViewModel.productData!.shortDes.toString(),
+                            description: productViewModel.productData!.shortDes
+                                .toString(),
                           ),
                         ],
                       ),

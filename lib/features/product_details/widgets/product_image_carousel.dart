@@ -7,7 +7,9 @@ import 'package:gap/gap.dart';
 class ProductImageCarousel extends StatelessWidget {
   final Orientation orientation;
   final List<String> carouselImageList;
-  const ProductImageCarousel({super.key, required this.orientation, required this.carouselImageList});
+
+  const ProductImageCarousel(
+      {super.key, required this.orientation, required this.carouselImageList});
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +25,7 @@ class ProductImageCarousel extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CachedNetworkImage(
-                imageUrl:
-                    carouselImageList[index],
+                imageUrl: carouselImageList[index],
                 fit: BoxFit.fill,
                 width: 230,
               ),
@@ -40,12 +41,11 @@ class ProductImageCarousel extends StatelessWidget {
         indicatorMargin: 20,
         slideIndicator: CircularSlideIndicator(
           slideIndicatorOptions: SlideIndicatorOptions(
-            currentIndicatorColor: Theme.of(context).primaryColor,
-            indicatorRadius: 8,
-            itemSpacing: 23,
-            indicatorBackgroundColor: Colors.white,
-            enableAnimation: true
-          ),
+              currentIndicatorColor: Theme.of(context).primaryColor,
+              indicatorRadius: 8,
+              itemSpacing: 23,
+              indicatorBackgroundColor: Colors.white,
+              enableAnimation: true),
         ),
       ),
     );

@@ -31,12 +31,12 @@ class ProductViewModel extends GetxController {
     update();
   }
 
-  set setSelectedColor(int index){
+  set setSelectedColor(int index) {
     selectedColor = index;
     update();
   }
 
-  set setSelectedSize(int index){
+  set setSelectedSize(int index) {
     selectedSize = index;
     update();
   }
@@ -80,10 +80,10 @@ class ProductViewModel extends GetxController {
   }
 
   List<String> getProductColors(String color) {
-    List<String> colorList =  color.split(",");
-    List<String> refinedColorList =[];
-    for(String color in colorList){
-      refinedColorList.add(color.substring(1,color.length));
+    List<String> colorList = color.split(",");
+    List<String> refinedColorList = [];
+    for (String color in colorList) {
+      refinedColorList.add(color.substring(1, color.length));
     }
     return refinedColorList;
   }
