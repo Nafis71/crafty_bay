@@ -46,17 +46,18 @@ class _HomeViewState extends State<HomeView> {
               const Gap(5),
               const OfferCarousel(),
               const Gap(8),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(
-                  homeViewModel.productSliderList.length,
-                  (index) {
-                    return CarouselIndicator(
-                      index: index,
-                    );
-                  },
+              if (homeViewModel.productSliderList.isNotEmpty)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(
+                    homeViewModel.productSliderList.length,
+                    (index) {
+                      return CarouselIndicator(
+                        index: index,
+                      );
+                    },
+                  ),
                 ),
-              ),
               const Gap(30),
               if (Get.find<CategoryViewModel>().categoryList.isNotEmpty)
                 ProductLayoutSection(
