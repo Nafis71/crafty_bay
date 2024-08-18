@@ -70,7 +70,7 @@ class _ProductReviewViewState extends State<ProductReviewView> {
                   ),
                   const Gap(15),
                   const Text(
-                    "No review found for this product",
+                    AppStrings.noReviewFoundText,
                   ),
                 ],
               ),
@@ -98,6 +98,7 @@ class _ProductReviewViewState extends State<ProductReviewView> {
               Expanded(
                 child: ProductReviewFooter(
                   totalReview: productReviewViewModel.productReviewList.length,
+                  productId: productReviewViewModel.productReviewList[0].productId!,
                 ),
               )
             ],

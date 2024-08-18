@@ -76,7 +76,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                     ),
                     const Gap(15),
                     const Text(
-                      "No data found for this product",
+                      AppStrings.noProductFoundText,
                     ),
                   ],
                 ),

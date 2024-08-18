@@ -13,4 +13,13 @@ class ProductReviewService extends ApiRequest {
       url: "${NetworkUrls.listReviewByProduct}/$productId",
     );
   }
+
+  Future<Object> createReview(
+      String productId, String token, Map<String, dynamic> review) async {
+    return postRequest(
+      url: NetworkUrls.createProductReview,
+      headers: {"content-type": "Application/json", "token": token},
+      body: review,
+    );
+  }
 }

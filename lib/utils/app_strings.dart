@@ -71,7 +71,15 @@ class AppStrings {
   static const String addToCartButtonText = "Add To Cart";
   static const String productReviewHeader = "Reviews";
   static const String stockOutText = "Stock Out";
+  static const String noProductFoundText = "No data found for this product";
 
   //product review screen
+  static const String noReviewFoundText = "No review found for this product";
+  static const String addReviewHeader = "Create Review";
+  static const String writeReviewHintText = "Write Review";
+  static const String emptyReviewText ="Review is required";
+  static const String reviewSubmitButtonText = "Submit";
+  static const String reviewCreationSuccessMessage = "Your review has been added!";
+  static const String reviewCreationFailedMessage = "Failed to add your review";
 
 }
