@@ -1,5 +1,5 @@
 import 'package:crafty_bay/common/services/prefetch_service.dart';
-import 'package:crafty_bay/common/view_models/profile_view_model.dart';
+import 'package:crafty_bay/common/view_model/profile_view_model.dart';
 import 'package:crafty_bay/common/widgets/circular_loading.dart';
 import 'package:crafty_bay/utils/app_assets.dart';
 import 'package:crafty_bay/utils/app_routes.dart';

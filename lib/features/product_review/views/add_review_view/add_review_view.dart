@@ -1,6 +1,6 @@
 import 'package:crafty_bay/common/services/internet_service_error.dart';
 import 'package:crafty_bay/common/services/response/failure.dart';
-import 'package:crafty_bay/common/view_models/profile_view_model.dart';
+import 'package:crafty_bay/common/view_model/profile_view_model.dart';
 import 'package:crafty_bay/common/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/features/product_review/view_model/product_review_view_model.dart';
 import 'package:crafty_bay/utils/app_strings.dart';

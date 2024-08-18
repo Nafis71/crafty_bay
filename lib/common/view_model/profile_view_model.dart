@@ -66,7 +66,7 @@ class ProfileViewModel extends GetxController {
     response = await ProfileDetailService().readProfile(token);
     if (response is Success) {
       Map<String, dynamic> jsonData =
-          (response).response as Map<String, dynamic>;
+      (response).response as Map<String, dynamic>;
       List<Map<String, dynamic>> userData = jsonData['data'];
       if (userData.isNotEmpty) {
         UserModel userModel = UserModel.fromJson(userData[0]);
@@ -99,7 +99,7 @@ class ProfileViewModel extends GetxController {
       SharedPreferences localStorage = await SharedPreferences.getInstance();
       localStorage.setBool("hasUserData", true);
       Map<String, dynamic> jsonData =
-          (response as Success).response as Map<String, dynamic>;
+      (response as Success).response as Map<String, dynamic>;
       UserModel userModel = UserModel.fromJson(jsonData['data']);
       await saveUserData(userModel, localStorage);
       _responseStatus = true;
@@ -108,8 +108,8 @@ class ProfileViewModel extends GetxController {
     return _responseStatus;
   }
 
-  Future<void> saveUserData(
-      UserModel userModel, SharedPreferences localStorage) async {
+  Future<void> saveUserData(UserModel userModel,
+      SharedPreferences localStorage) async {
     localStorage.setString("userData", jsonEncode(userModel.toJson()));
     _userModel = userModel;
   }

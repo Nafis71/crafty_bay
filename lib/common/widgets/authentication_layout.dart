@@ -1,4 +1,4 @@
-import 'package:crafty_bay/common/view_models/profile_view_model.dart';
+import 'package:crafty_bay/common/view_model/profile_view_model.dart';
 import 'package:crafty_bay/common/widgets/circular_loading.dart';
 import 'package:crafty_bay/features/authentication/view_model/auth_view_model.dart';
 import 'package:flutter/material.dart';

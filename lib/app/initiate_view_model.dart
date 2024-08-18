@@ -1,4 +1,4 @@
-import 'package:crafty_bay/common/view_models/profile_view_model.dart';
+import 'package:crafty_bay/common/view_model/profile_view_model.dart';
 import 'package:crafty_bay/features/authentication/view_model/auth_view_model.dart';
 import 'package:crafty_bay/features/base_navigation/view_model/base_navigation_view_model.dart';
 import 'package:crafty_bay/features/category/view_model/category_view_model.dart';
