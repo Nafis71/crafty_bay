@@ -51,7 +51,6 @@ class ProductReviewViewModel extends GetxController {
       "product_id": productId
     };
     response = await ProductReviewService().createReview(
-      productId.toString(),
       token,
       reviewJson,
     );

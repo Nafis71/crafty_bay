@@ -14,8 +14,7 @@ class ProductReviewService extends ApiRequest {
     );
   }
 
-  Future<Object> createReview(
-      String productId, String token, Map<String, dynamic> review) async {
+  Future<Object> createReview(String token, Map<String, dynamic> review) async {
     return postRequest(
       url: NetworkUrls.createProductReview,
       headers: {"content-type": "Application/json", "token": token},

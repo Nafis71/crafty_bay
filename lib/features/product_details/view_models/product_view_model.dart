@@ -7,17 +7,25 @@ import 'package:get/get.dart';
 
 class ProductViewModel extends GetxController {
   Object? response;
+  Object? cartResponse;
   Product? _productData;
   final List<String> _carouselImageList = [];
   List<String> _productSizeList = [];
   List<String> _productColorList = [];
   bool _isBusy = false;
+  bool _isAddingToCart = false;
+  bool _isItemAddedToCart = false;
   bool _responseStatus = false;
   int selectedColor = 0;
   int selectedSize = 0;
   int _productQuantity = 1;
 
   bool get isBusy => _isBusy;
+
+  bool get isAddingToCart => _isAddingToCart;
+
+  bool get isItemAddedToCart => _isItemAddedToCart;
+
   int get productQuantity => _productQuantity;
 
   Product? get productData => _productData;
@@ -33,6 +41,16 @@ class ProductViewModel extends GetxController {
     update();
   }
 
+  set setIsAddingToCart(bool value) {
+    _isAddingToCart = value;
+    update();
+  }
+
+  set setIsItemAddedToCart(bool value) {
+    _isItemAddedToCart = value;
+    update();
+  }
+
   set setSelectedColor(int index) {
     selectedColor = index;
     update();
@@ -43,13 +61,13 @@ class ProductViewModel extends GetxController {
     update();
   }
 
-  void incrementProductQuantity(){
+  void incrementProductQuantity() {
     _productQuantity++;
     update();
   }
 
-  void decrementProductQuantity(){
-    if(_productQuantity == 1){
+  void decrementProductQuantity() {
+    if (_productQuantity == 1) {
       return;
     }
     _productQuantity--;
@@ -83,6 +101,25 @@ class ProductViewModel extends GetxController {
     return _responseStatus;
   }
 
+  Future<bool> createCartList(
+      {required int productId, required String token}) async {
+    _responseStatus = false;
+    setIsAddingToCart = true;
+    Map<String, dynamic> cartJson = {
+      "product_id": productId,
+      "color": getColorText(_productColorList[selectedColor]),
+      "size": getSizeText(selectedSize),
+    };
+    cartResponse = await ProductService().createCartList(token, cartJson);
+    if (cartResponse is Success) {
+      //TODO I have to add cart api here later
+      _responseStatus = true;
+      _isItemAddedToCart = true;
+    }
+    setIsAddingToCart = false;
+    return _responseStatus;
+  }
+
   void loadCarouselImageList(ProductDetailsModel productDetailsModel) {
     _carouselImageList.add(productDetailsModel.data![0].img1!);
     _carouselImageList.add(productDetailsModel.data![0].img2!);
@@ -113,6 +150,17 @@ class ProductViewModel extends GetxController {
     return sizes[index] ?? "XXL";
   }
 
+  String getColorText(String colorCode) {
+    Map<String, String> colorCodes = {
+      "212121": "Black",
+      "0E98B1": "Cyan",
+      "7A5548": "Brown",
+      "D9D9D9": "White",
+      "757575": "Grey",
+    };
+    return colorCodes[colorCode] ?? "Red";
+  }
+
   void resetViewModel() {
     _carouselImageList.clear();
     _productSizeList.clear();
@@ -120,5 +168,6 @@ class ProductViewModel extends GetxController {
     selectedSize = 0;
     selectedColor = 0;
     _productQuantity = 1;
+    _isItemAddedToCart = false;
   }
 }

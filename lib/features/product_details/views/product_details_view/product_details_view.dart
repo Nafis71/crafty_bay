@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:crafty_bay/common/services/internet_service_error.dart';
 import 'package:crafty_bay/common/services/response/failure.dart';
+import 'package:crafty_bay/common/view_models/profile_view_model.dart';
 import 'package:crafty_bay/common/widgets/alternative_widget.dart';
 import 'package:crafty_bay/common/widgets/circular_loading.dart';
 import 'package:crafty_bay/common/widgets/crafty_app_bar.dart';
@@ -64,7 +67,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                 ),
               );
             }
-            if(productViewModel.productData == null){
+            if (productViewModel.productData == null) {
               return AlternativeWidget(
                 onRefresh: loadProductDetails,
                 child: Column(
@@ -114,9 +117,13 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                       ),
                     ),
                   ),
-                  const Flexible(
+                  Flexible(
                     flex: 1,
-                    child: ProductFooter(),
+                    child: ProductFooter(
+                      addToCart: (productViewModel) {
+                        addToCart(productViewModel);
+                      },
+                    ),
                   )
                 ],
               ),
@@ -125,6 +132,26 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
         ),
       ),
     );
+  }
+
+  Future<void> addToCart(ProductViewModel productViewModel) async {
+    bool status = await productViewModel.createCartList(
+      productId: widget.productId,
+      token: Get.find<ProfileViewModel>().token,
+    );
+    if (!status && mounted) {
+      Failure failure = productViewModel.cartResponse as Failure;
+      InternetServiceError.showErrorSnackBar(
+        failure: failure,
+        context: context,
+      );
+      return;
+    }
+    Timer.periodic(const Duration(seconds: 1), (timer){
+      if(timer.tick == 3){
+        productViewModel.setIsItemAddedToCart = false;
+      }
+    });
   }
 
   Future<void> loadProductDetails() async {

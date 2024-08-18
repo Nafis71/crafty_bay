@@ -11,4 +11,5 @@ class NetworkUrls {
   static const String listProductByCategory = "$baseUrl/ListProductByCategory";
   static const String listReviewByProduct = "$baseUrl/ListReviewByProduct";
   static const String createProductReview = "$baseUrl/CreateProductReview";
+  static const String createCartList ="$baseUrl/CreateCartList";
 }

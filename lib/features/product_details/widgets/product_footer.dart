@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:crafty_bay/common/widgets/circular_loading.dart';
 import 'package:crafty_bay/features/product_details/view_models/product_view_model.dart';
 import 'package:crafty_bay/themes/app_color.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
@@ -5,7 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ProductFooter extends StatelessWidget {
-  const ProductFooter({super.key});
+  final Function(dynamic) addToCart;
+
+  const ProductFooter({super.key, required this.addToCart});
 
   @override
   Widget build(BuildContext context) {
@@ -52,20 +57,52 @@ class ProductFooter extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.38,
                   height: 50,
                   child: (productViewModel.productData!.stock != 0)
-                      ? ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                          child: Text(
-                            AppStrings.addToCartButtonText,
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelMedium!
-                                .copyWith(fontSize: 13),
-                          ),
+                      ? GetBuilder<ProductViewModel>(
+                          builder: (productViewModel) {
+                            if (productViewModel.isAddingToCart) {
+                              return const Center(
+                                child: CircularLoading(),
+                              );
+                            }
+                            if (productViewModel.isItemAddedToCart) {
+
+                              return Center(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Icon(
+                                      Icons.done,
+                                      color: Theme.of(context).primaryColor,
+                                      size: 35,
+                                    ),
+                                    Text(
+                                      "Added",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .labelSmall!
+                                          .copyWith(
+                                              fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                ),
+                              );
+                            }
+                            return ElevatedButton(
+                              onPressed: () => addToCart(productViewModel),
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                              child: Text(
+                                AppStrings.addToCartButtonText,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .labelMedium!
+                                    .copyWith(fontSize: 13),
+                              ),
+                            );
+                          },
                         )
                       : Row(
                           mainAxisAlignment: MainAxisAlignment.end,
@@ -91,4 +128,7 @@ class ProductFooter extends StatelessWidget {
       );
     });
   }
+  // void resetAddToCartButton(ProductViewModel productViewModel){
+  //
+  // }
 }

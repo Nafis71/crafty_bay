@@ -54,7 +54,9 @@ class ProductBody extends StatelessWidget {
                     GetBuilder<ProductViewModel>(
                       builder: (productViewModel) {
                         return Text(
-                          productViewModel.productQuantity.toString(),
+                          productViewModel.productQuantity
+                              .toString()
+                              .padLeft(2, "0"),
                           style: Theme.of(context).textTheme.titleSmall,
                         );
                       },
