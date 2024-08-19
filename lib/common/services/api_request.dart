@@ -54,6 +54,7 @@ class ApiRequest {
   }
 
   Object getResponse(Response response) {
+    print("Response Status Code - ${response.statusCode}");
     if (response.statusCode == 200) {
       return Success(
           response: jsonDecode(response.body), statusCode: response.statusCode);

@@ -67,7 +67,7 @@ class ProfileViewModel extends GetxController {
     if (response is Success) {
       Map<String, dynamic> jsonData =
       (response).response as Map<String, dynamic>;
-      List<Map<String, dynamic>> userData = jsonData['data'];
+      List<dynamic> userData = jsonData['data'];
       if (userData.isNotEmpty) {
         UserModel userModel = UserModel.fromJson(userData[0]);
         SharedPreferences localStorage = await SharedPreferences.getInstance();
