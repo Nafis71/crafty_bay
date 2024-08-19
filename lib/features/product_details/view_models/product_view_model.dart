@@ -75,6 +75,10 @@ class ProductViewModel extends GetxController {
   }
 
   Future<bool> getProductDetails(int productId) async {
+   if(isProductExist(productId)){
+     return true;
+   }
+   resetViewModel();
     _responseStatus = false;
     setIsBusy = true;
     response = await ProductService().getProductDetails(productId.toString());
@@ -99,6 +103,13 @@ class ProductViewModel extends GetxController {
     }
     setIsBusy = false;
     return _responseStatus;
+  }
+
+  bool isProductExist(int productId){
+    if(productData != null && productData!.id == productId){
+      return true;
+    }
+    return false;
   }
 
   Future<bool> createCartList(

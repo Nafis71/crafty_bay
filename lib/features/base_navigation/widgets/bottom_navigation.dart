@@ -21,7 +21,6 @@ class BottomNavigation extends StatelessWidget {
             return;
           }
           baseNavigationViewModel.setIndex = index;
-          Get.find<ProductViewModel>().resetViewModel();
         },
         items: [
           getBottomNavigationBarItem(

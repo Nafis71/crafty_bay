@@ -16,9 +16,12 @@ class CartViewModel extends GetxController {
 
   Future<bool> getCartList(String token) async {
     _responseStatus = false;
-    _isBusy = true;
+    if(_cartList.isEmpty){
+      _isBusy = true;
+    }
     response = await CartService().getCartList(token);
     if (response is Success) {
+      _cartList.clear();
       CartListModel cartListModel = CartListModel.fromJson(
           (response as Success).response as Map<String, dynamic>);
       for (CartData cartData in cartListModel.cartData!) {
