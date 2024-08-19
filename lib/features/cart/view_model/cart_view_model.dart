@@ -21,7 +21,7 @@ class CartViewModel extends GetxController {
     if (response is Success) {
       CartListModel cartListModel = CartListModel.fromJson(
           (response as Success).response as Map<String, dynamic>);
-      for(CartData cartData in cartListModel.cartData!){
+      for (CartData cartData in cartListModel.cartData!) {
         _cartList.add(cartData);
       }
       _responseStatus = true;

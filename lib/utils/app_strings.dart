@@ -84,5 +84,6 @@ class AppStrings {
 
   //cart screen
   static const String cartViewHeader = "Cart";
+  static const String noCartListFoundText = "Your cart is currently empty now";
 
 }
