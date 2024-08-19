@@ -110,6 +110,9 @@ class _CartViewState extends State<CartView> {
 
   Future<void> getCartList() async {
     CartViewModel cartViewModel = Get.find<CartViewModel>();
+    if(cartViewModel.cartList.isNotEmpty){
+      return;
+    }
     bool status = await cartViewModel.getCartList(
       Get.find<ProfileViewModel>().token,
     );

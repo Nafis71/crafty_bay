@@ -1,4 +1,6 @@
 import 'package:crafty_bay/common/services/response/success.dart';
+import 'package:crafty_bay/features/cart/view_model/cart_view_model.dart';
+import 'package:crafty_bay/features/cart/views/cart_view.dart';
 import 'package:crafty_bay/features/product_details/models/product.dart';
 import 'package:crafty_bay/features/product_details/models/product_details_model.dart';
 import 'package:crafty_bay/features/product_details/services/product_service.dart';
@@ -75,10 +77,10 @@ class ProductViewModel extends GetxController {
   }
 
   Future<bool> getProductDetails(int productId) async {
-   if(isProductExist(productId)){
-     return true;
-   }
-   resetViewModel();
+    if (isProductExist(productId)) {
+      return true;
+    }
+    resetViewModel();
     _responseStatus = false;
     setIsBusy = true;
     response = await ProductService().getProductDetails(productId.toString());
@@ -105,8 +107,8 @@ class ProductViewModel extends GetxController {
     return _responseStatus;
   }
 
-  bool isProductExist(int productId){
-    if(productData != null && productData!.id == productId){
+  bool isProductExist(int productId) {
+    if (productData != null && productData!.id == productId) {
       return true;
     }
     return false;
@@ -123,7 +125,7 @@ class ProductViewModel extends GetxController {
     };
     cartResponse = await ProductService().createCartList(token, cartJson);
     if (cartResponse is Success) {
-      //TODO I have to add cart api here later
+      await Get.find<CartViewModel>().getCartList(token);
       _responseStatus = true;
       _isItemAddedToCart = true;
     }
