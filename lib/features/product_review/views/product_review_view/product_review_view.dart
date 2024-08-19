@@ -1,9 +1,12 @@
 import 'package:crafty_bay/common/services/internet_service_error.dart';
 import 'package:crafty_bay/common/services/response/failure.dart';
 import 'package:crafty_bay/common/widgets/crafty_app_bar.dart';
+import 'package:crafty_bay/common/widgets/view_footer.dart';
 import 'package:crafty_bay/features/product_review/view_model/product_review_view_model.dart';
+import 'package:crafty_bay/features/product_review/widgets/product_review_footer_button.dart';
 import 'package:crafty_bay/features/product_review/widgets/product_review_card.dart';
 import 'package:crafty_bay/features/product_review/widgets/product_review_footer.dart';
+import 'package:crafty_bay/features/product_review/widgets/product_review_footer_text.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -96,9 +99,15 @@ class _ProductReviewViewState extends State<ProductReviewView> {
                 ),
               ),
               Expanded(
-                child: ProductReviewFooter(
-                  totalReview: productReviewViewModel.productReviewList.length,
-                  productId: productReviewViewModel.productReviewList[0].productId!,
+                child: ViewFooter(
+                  leftWidget: ProductReviewFooterText(
+                    text:
+                        "Reviews (${productReviewViewModel.productReviewList.length})",
+                  ),
+                  rightWidget: FooterButtonWidget(
+                    productId:
+                        productReviewViewModel.productReviewList[0].productId!,
+                  ),
                 ),
               )
             ],

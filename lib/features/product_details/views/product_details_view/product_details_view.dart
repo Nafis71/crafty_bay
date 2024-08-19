@@ -6,10 +6,12 @@ import 'package:crafty_bay/common/view_model/profile_view_model.dart';
 import 'package:crafty_bay/common/widgets/alternative_widget.dart';
 import 'package:crafty_bay/common/widgets/circular_loading.dart';
 import 'package:crafty_bay/common/widgets/crafty_app_bar.dart';
+import 'package:crafty_bay/common/widgets/view_footer.dart';
 import 'package:crafty_bay/features/product_details/view_models/product_view_model.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_body.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_description.dart';
-import 'package:crafty_bay/features/product_details/widgets/product_footer.dart';
+import 'package:crafty_bay/features/product_details/widgets/product_details_footer_button.dart';
+import 'package:crafty_bay/features/product_details/widgets/product_details_footer_text.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_variation.dart';
 import 'package:crafty_bay/themes/app_color.dart';
 import 'package:crafty_bay/utils/app_assets.dart';
@@ -119,10 +121,12 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                   ),
                   Flexible(
                     flex: 1,
-                    child: ProductFooter(
-                      addToCart: (productViewModel) {
-                        addToCart(productViewModel);
-                      },
+                    child: ViewFooter(
+                      leftWidget: const ProductDetailsFooterText(),
+                      rightWidget: ProductDetailsFooterButton(
+                        addToCart: (productViewModel) =>
+                            addToCart(productViewModel),
+                      ),
                     ),
                   )
                 ],
@@ -147,8 +151,8 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
       );
       return;
     }
-    Timer.periodic(const Duration(seconds: 1), (timer){
-      if(timer.tick == 3){
+    Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (timer.tick == 3) {
         productViewModel.setIsItemAddedToCart = false;
       }
     });
