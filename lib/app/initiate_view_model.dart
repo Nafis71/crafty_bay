@@ -1,6 +1,7 @@
 import 'package:crafty_bay/common/view_model/profile_view_model.dart';
 import 'package:crafty_bay/features/authentication/view_model/auth_view_model.dart';
 import 'package:crafty_bay/features/base_navigation/view_model/base_navigation_view_model.dart';
+import 'package:crafty_bay/features/cart/view_model/cart_view_model.dart';
 import 'package:crafty_bay/features/category/view_model/category_view_model.dart';
 import 'package:crafty_bay/features/home/view_model/home_view_model.dart';
 import 'package:crafty_bay/features/product_details/view_models/product_view_model.dart';
@@ -19,6 +20,7 @@ class InitiateViewModel extends Bindings {
     Get.lazyPut(() => CategoryViewModel());
     Get.lazyPut(() => ProductViewModel());
     Get.lazyPut(() => ProductReviewViewModel());
+    Get.lazyPut(() => CartViewModel());
     Get.put(HomeViewModel());
   }
 }

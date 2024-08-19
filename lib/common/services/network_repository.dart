@@ -6,7 +6,7 @@ import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 
-class ApiRequest {
+class NetworkRepository {
   Object? _finalResponse;
 
   Future<Object> getRequest(

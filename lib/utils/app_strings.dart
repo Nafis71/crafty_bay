@@ -82,4 +82,7 @@ class AppStrings {
   static const String reviewCreationSuccessMessage = "Your review has been added!";
   static const String reviewCreationFailedMessage = "Failed to add your review";
 
+  //cart screen
+  static const String cartViewHeader = "Cart";
+
 }
