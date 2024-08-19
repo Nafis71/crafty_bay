@@ -64,6 +64,5 @@ class CartListFooter extends StatelessWidget {
         ],
       ),
     );
-    ;
   }
 }
