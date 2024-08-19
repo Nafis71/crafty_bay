@@ -4,6 +4,7 @@ import 'package:crafty_bay/common/view_model/profile_view_model.dart';
 import 'package:crafty_bay/common/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/features/cart/view_model/cart_view_model.dart';
 import 'package:crafty_bay/features/cart/widgets/cart_list_card.dart';
+import 'package:crafty_bay/features/cart/widgets/cart_list_footer.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -75,15 +76,23 @@ class _CartViewState extends State<CartView> {
             ),
           );
         }
-        return ListView.separated(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-          itemBuilder: (context, index) {
-            return const CartListCard();
-          },
-          separatorBuilder: (context, index) {
-            return const Gap(20);
-          },
-          itemCount: cartViewModel.cartList.length,
+        return Column(
+          children: [
+            Expanded(
+              flex: 6,
+              child: ListView.separated(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+                itemBuilder: (context, index) {
+                  return const CartListCard();
+                },
+                separatorBuilder: (context, index) {
+                  return const Gap(20);
+                },
+                itemCount: cartViewModel.cartList.length,
+              ),
+            ),
+            Expanded(child: CartListFooter())
+          ],
         );
       }),
     );
