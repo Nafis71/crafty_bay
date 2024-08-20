@@ -134,7 +134,7 @@ class _CartViewState extends State<CartView> {
     if (mounted) {
       if (failure.statusCode != 600 ||
           failure.statusCode != 601 ||
-          failure.statusCode != 501) {
+          failure.statusCode != 500) {
         AppSnackBar.show(
           message: AppStrings.cartDeletionFailureText,
           context: context,

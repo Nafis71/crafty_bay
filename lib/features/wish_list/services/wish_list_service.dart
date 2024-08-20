@@ -1,0 +1,17 @@
+import 'package:crafty_bay/common/services/network_repository.dart';
+import 'package:crafty_bay/common/services/network_urls/network_urls.dart';
+
+class WishListService extends NetworkRepository {
+  static WishListService? _instance;
+
+  WishListService._();
+
+  factory WishListService() => _instance ??= WishListService._();
+
+  Future<Object> createWishList(String productId, String token) async {
+    return await getRequest(
+      url: "${NetworkUrls.createWishList}/$productId",
+      headers: {"token": token},
+    );
+  }
+}

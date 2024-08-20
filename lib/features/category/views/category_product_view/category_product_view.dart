@@ -11,7 +11,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 import '../../../../common/widgets/circular_loading.dart';
-import '../../../home/widgets/product_card.dart';
+import '../../../../common/widgets/product_card.dart';
 
 class CategoryProductView extends StatefulWidget {
   final int categoryId;

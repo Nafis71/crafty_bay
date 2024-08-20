@@ -1,7 +1,9 @@
+import 'package:crafty_bay/common/view_model/profile_view_model.dart';
 import 'package:crafty_bay/features/product_details/models/product.dart';
 import 'package:crafty_bay/features/product_details/view_models/product_view_model.dart';
 import 'package:crafty_bay/common/widgets/small_icon_card.dart';
 import 'package:crafty_bay/features/product_review/views/product_review_view/product_review_view.dart';
+import 'package:crafty_bay/features/wish_list/view_model/wish_list_view_model.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -111,10 +113,27 @@ class ProductBody extends StatelessWidget {
                 ),
               ),
               const Gap(15),
-              const SmallIconCard(
-                icon: Icons.favorite_outline_rounded,
-                applyPrimaryColor: true,
-              )
+              GetBuilder<WishListViewModel>(builder: (wishListViewModel) {
+                return InkWell(
+                  onTap: () {
+                    if (wishListViewModel.wishListProductId
+                        .contains(product.id!)) {
+                      return;
+                    }
+                    wishListViewModel.createWishList(
+                      product.id!,
+                      Get.find<ProfileViewModel>().token,
+                    );
+                  },
+                  child: SmallIconCard(
+                    icon: (!wishListViewModel.wishListProductId
+                            .contains(product.id!))
+                        ? Icons.favorite_outline_rounded
+                        : Icons.favorite,
+                    applyPrimaryColor: true,
+                  ),
+                );
+              })
             ],
           )
         ],

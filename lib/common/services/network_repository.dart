@@ -41,11 +41,15 @@ class NetworkRepository {
       _finalResponse = getResponse(response);
       return _finalResponse!;
     } on ClientException {
-      _finalResponse =
-          Failure(statusCode: 601, errorMessage: AppStrings.networkError);
+      _finalResponse = Failure(
+        statusCode: 601,
+        errorMessage: AppStrings.networkError,
+      );
     } catch (exception) {
-      _finalResponse =
-          Failure(statusCode: 600, errorMessage: AppStrings.unknownError);
+      _finalResponse = Failure(
+        statusCode: 600,
+        errorMessage: AppStrings.unknownError,
+      );
       if (kDebugMode) {
         debugPrint(exception.toString());
       }
@@ -54,10 +58,11 @@ class NetworkRepository {
   }
 
   Object getResponse(Response response) {
-    print("Response Status Code - ${response.statusCode}");
     if (response.statusCode == 200) {
       return Success(
-          response: jsonDecode(response.body), statusCode: response.statusCode);
+        response: jsonDecode(response.body),
+        statusCode: response.statusCode,
+      );
     } else if (response.statusCode == 500) {
       return Failure(
         statusCode: response.statusCode,
