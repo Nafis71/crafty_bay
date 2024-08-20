@@ -3,6 +3,8 @@ import 'package:crafty_bay/features/home/view_model/home_view_model.dart';
 import 'package:crafty_bay/features/wish_list/view_model/wish_list_view_model.dart';
 import 'package:get/get.dart';
 
+import '../view_model/profile_view_model.dart';
+
 class PrefetchService {
   static Future<void> prefetchProductSliderList() async {
     await Get.find<HomeViewModel>().getProductSliderList();
@@ -26,5 +28,18 @@ class PrefetchService {
 
   static Future<void> prefetchProductWishList(String token) async{
     await Get.find<WishListViewModel>().getWishList(token);
+  }
+
+  static Future<void> prefetchData() async{
+    await Future.wait([
+      prefetchProductSliderList(),
+      prefetchCategoryList(),
+      prefetchPopularProductData(),
+      prefetchSpecialProductData(),
+      prefetchNewProductData(),
+      prefetchProductWishList(
+        Get.find<ProfileViewModel>().token,
+      ),
+    ]);
   }
 }
