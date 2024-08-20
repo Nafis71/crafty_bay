@@ -15,4 +15,5 @@ class NetworkUrls {
   static const String cartList = "$baseUrl/CartList";
   static const String deleteCartList = "$baseUrl/DeleteCartList";
   static const String createWishList = "$baseUrl/CreateWishList";
+  static const String productWishList = "$baseUrl/ProductWishList";
 }

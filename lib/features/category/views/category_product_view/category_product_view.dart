@@ -87,6 +87,7 @@ class _CategoryProductViewState extends State<CategoryProductView> {
             itemBuilder: (context, index) {
               return ProductCard(
                 productList: categoryViewModel.categoryProductData[index],
+                isWishListCard: false,
               );
             },
           );

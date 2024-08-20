@@ -48,6 +48,7 @@ class ProductBody extends StatelessWidget {
                         Get.find<ProductViewModel>().decrementProductQuantity();
                       },
                       child: const SmallIconCard(
+                        cardInsidePadding: 5,
                         icon: Icons.remove,
                         applyPrimaryColor: false,
                       ),
@@ -70,6 +71,7 @@ class ProductBody extends StatelessWidget {
                         Get.find<ProductViewModel>().incrementProductQuantity();
                       },
                       child: const SmallIconCard(
+                        cardInsidePadding: 5,
                         icon: Icons.add,
                         applyPrimaryColor: true,
                       ),
@@ -131,6 +133,7 @@ class ProductBody extends StatelessWidget {
                         ? Icons.favorite_outline_rounded
                         : Icons.favorite,
                     applyPrimaryColor: true,
+                    cardInsidePadding: 5,
                   ),
                 );
               })

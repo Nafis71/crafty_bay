@@ -145,7 +145,10 @@ class _HomeViewState extends State<HomeView> {
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return ProductCard(productList: productList[index]);
+          return ProductCard(
+            productList: productList[index],
+            isWishListCard: false,
+          );
         },
         separatorBuilder: (context, index) {
           return const Gap(20);

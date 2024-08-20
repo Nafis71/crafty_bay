@@ -29,7 +29,10 @@ class _AllProductViewState extends State<AllProductView> {
           mainAxisExtent: 200,
         ),
         itemBuilder: (context, index) {
-          return ProductCard(productList: widget.elementList[index]);
+          return ProductCard(
+            productList: widget.elementList[index],
+            isWishListCard: false,
+          );
         },
       ),
     );

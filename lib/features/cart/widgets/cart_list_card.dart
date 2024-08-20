@@ -120,6 +120,7 @@ class CartListCard extends StatelessWidget {
                             child: const SmallIconCard(
                               icon: Icons.remove,
                               applyPrimaryColor: false,
+                              cardInsidePadding: 5,
                             ),
                           ),
                           const Gap(2),
@@ -138,6 +139,7 @@ class CartListCard extends StatelessWidget {
                             child: const SmallIconCard(
                               icon: Icons.add,
                               applyPrimaryColor: true,
+                              cardInsidePadding: 5,
                             ),
                           ),
                         ],

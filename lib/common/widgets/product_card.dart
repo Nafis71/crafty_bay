@@ -1,14 +1,21 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:crafty_bay/common/view_model/profile_view_model.dart';
 import 'package:crafty_bay/common/widgets/circular_loading.dart';
+import 'package:crafty_bay/common/widgets/small_icon_card.dart';
 import 'package:crafty_bay/features/product_details/views/product_details_view/product_details_view.dart';
+import 'package:crafty_bay/features/wish_list/view_model/wish_list_view_model.dart';
 import 'package:crafty_bay/themes/app_color.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 
 class ProductCard extends StatelessWidget {
   final dynamic productList;
+  final bool isWishListCard;
 
-  const ProductCard({super.key, required this.productList});
+  const ProductCard(
+      {super.key, required this.productList, required this.isWishListCard});
 
   @override
   Widget build(BuildContext context) {
@@ -114,18 +121,26 @@ class ProductCard extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            Card(
-                              color: Theme.of(context).primaryColor,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(3)),
-                              child: const Padding(
-                                padding: EdgeInsets.all(3.0),
-                                child: Icon(
-                                  Icons.favorite_outline_rounded,
-                                  color: Colors.white,
-                                  size: 15,
-                                ),
-                              ),
+                            GetBuilder<WishListViewModel>(
+                              builder: (wishListViewModel) {
+                                return InkWell(
+                                  onTap: () {
+                                    if (wishListViewModel.wishListProductId
+                                        .contains(productList.id)) {
+                                      return;
+                                    }
+                                    wishListViewModel.createWishList(
+                                      productList.id,
+                                      Get.find<ProfileViewModel>().token,
+                                    );
+                                  },
+                                  child: SmallIconCard(
+                                    icon: getWishListIcon(wishListViewModel),
+                                    applyPrimaryColor: true,
+                                    cardInsidePadding: 3.0,
+                                  ),
+                                );
+                              },
                             )
                           ],
                         ),
@@ -139,5 +154,17 @@ class ProductCard extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  IconData getWishListIcon(WishListViewModel wishListViewModel) {
+    if (wishListViewModel.wishListProductId.contains(productList.id) &&
+        isWishListCard) {
+      return CupertinoIcons.delete_simple;
+    }
+    if (wishListViewModel.wishListProductId.contains(productList.id) &&
+        !isWishListCard) {
+      return Icons.favorite;
+    }
+    return Icons.favorite_outline_rounded;
   }
 }

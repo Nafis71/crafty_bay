@@ -4,9 +4,14 @@ import 'package:flutter/material.dart';
 class SmallIconCard extends StatelessWidget {
   final IconData icon;
   final bool applyPrimaryColor;
+  final double cardInsidePadding;
 
-  const SmallIconCard(
-      {super.key, required this.icon, required this.applyPrimaryColor});
+  const SmallIconCard({
+    super.key,
+    required this.icon,
+    required this.applyPrimaryColor,
+    required this.cardInsidePadding,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,10 +20,10 @@ class SmallIconCard extends StatelessWidget {
       color: (applyPrimaryColor)
           ? Theme.of(context).primaryColor
           : AppColor.quantityDecreaseCardColor,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
       child: Padding(
-        padding: const EdgeInsets.all(5.0),
-        child: Icon(icon, color: Colors.white, size: 18),
+        padding: EdgeInsets.all(cardInsidePadding),
+        child: Icon(icon, color: Colors.white, size: 15),
       ),
     );
   }

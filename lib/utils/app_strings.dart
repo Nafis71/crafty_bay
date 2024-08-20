@@ -88,4 +88,8 @@ class AppStrings {
   static const String cartDeletionFailureText = "Failed to delete cart item";
   static const String cartDeletionSuccessText = "Item has been removed from your cart";
 
+  //wishlist screen
+  static const String wishListViewHeader = "Wish List";
+  static const String noWishListFoundText = "Your wish list is currently empty";
+
 }
