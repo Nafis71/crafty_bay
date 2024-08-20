@@ -3,6 +3,7 @@ import 'package:crafty_bay/common/services/response/failure.dart';
 import 'package:crafty_bay/common/services/response/success.dart';
 import 'package:crafty_bay/common/widgets/alternative_widget.dart';
 import 'package:crafty_bay/common/widgets/crafty_app_bar.dart';
+import 'package:crafty_bay/common/widgets/grid_view_layout.dart';
 import 'package:crafty_bay/features/category/view_model/category_view_model.dart';
 import 'package:crafty_bay/utils/app_assets.dart';
 import 'package:crafty_bay/wrappers/svg_image_loader.dart';
@@ -74,17 +75,9 @@ class _CategoryProductViewState extends State<CategoryProductView> {
               ),
             );
           }
-          return GridView.builder(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            itemCount: categoryViewModel.categoryProductData.length,
-            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 180,
-              childAspectRatio: 1,
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
-              mainAxisExtent: 200,
-            ),
-            itemBuilder: (context, index) {
+          return GridViewLayout(
+            length: categoryViewModel.categoryProductData.length,
+            child: (index) {
               return ProductCard(
                 productList: categoryViewModel.categoryProductData[index],
                 isWishListCard: false,

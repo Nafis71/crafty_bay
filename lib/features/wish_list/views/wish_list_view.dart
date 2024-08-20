@@ -1,4 +1,5 @@
 import 'package:crafty_bay/common/widgets/crafty_app_bar.dart';
+import 'package:crafty_bay/common/widgets/grid_view_layout.dart';
 import 'package:crafty_bay/features/wish_list/view_model/wish_list_view_model.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:flutter/material.dart';
@@ -49,18 +50,13 @@ class _WishListViewState extends State<WishListView> {
               ),
             );
           }
-          return GridView.builder(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            itemCount: wishListViewModel.productWishList.length,
-            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 180,
-              childAspectRatio: 1,
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
-              mainAxisExtent: 200,
-            ),
-            itemBuilder: (context, index) {
-              return ProductCard(productList: wishListViewModel.productWishList[index],isWishListCard: true,);
+          return GridViewLayout(
+            length: wishListViewModel.productWishList.length,
+            child: (index) {
+              return ProductCard(
+                productList: wishListViewModel.productWishList[index],
+                isWishListCard: true,
+              );
             },
           );
         },

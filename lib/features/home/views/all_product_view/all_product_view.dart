@@ -1,4 +1,5 @@
 import 'package:crafty_bay/common/widgets/crafty_app_bar.dart';
+import 'package:crafty_bay/common/widgets/grid_view_layout.dart';
 import 'package:crafty_bay/common/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 
@@ -18,17 +19,9 @@ class _AllProductViewState extends State<AllProductView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: craftyAppBar(title: widget.appBarTitle, context: context),
-      body: GridView.builder(
-        padding: const EdgeInsets.symmetric(vertical: 10),
-        itemCount: widget.elementList.length,
-        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 180,
-          childAspectRatio: 1,
-          mainAxisSpacing: 10,
-          crossAxisSpacing: 10,
-          mainAxisExtent: 200,
-        ),
-        itemBuilder: (context, index) {
+      body: GridViewLayout(
+        length: widget.elementList.length,
+        child: (index) {
           return ProductCard(
             productList: widget.elementList[index],
             isWishListCard: false,
