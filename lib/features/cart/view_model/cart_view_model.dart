@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:crafty_bay/common/services/response/success.dart';
 import 'package:crafty_bay/features/cart/models/cart_list_model/cart_data.dart';
 import 'package:crafty_bay/features/cart/models/cart_list_model/cart_list_model.dart';
@@ -63,7 +61,11 @@ class CartViewModel extends GetxController {
   }) async {
     _responseStatus = false;
     CartData tempCartData = _cartList[deleteIndex];
+    Product tempProductData = _cartProductData[deleteIndex];
     _cartList.removeAt(deleteIndex);
+    _cartProductData.removeAt(deleteIndex);
+    int productPrice = int.parse(tempProductData.price.toString());
+    totalPrice -= productPrice;
     update();
     deleteResponse =
         await CartService().deleteCartItem(cartId.toString(), token);
@@ -71,6 +73,8 @@ class CartViewModel extends GetxController {
       _responseStatus = true;
     } else {
       _cartList.insert(deleteIndex, tempCartData);
+      _cartProductData.insert(deleteIndex, tempProductData);
+      totalPrice += productPrice;
       update();
     }
     return _responseStatus;

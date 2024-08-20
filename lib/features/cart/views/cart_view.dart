@@ -128,11 +128,6 @@ class _CartViewState extends State<CartView> {
       deleteIndex: index,
     );
     if (status && mounted) {
-      AppSnackBar.show(
-        message: AppStrings.cartDeletionSuccessText,
-        context: context,
-        isError: false,
-      );
       return;
     }
     Failure failure = cartViewModel.deleteResponse as Failure;
