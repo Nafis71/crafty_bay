@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 
 class CartViewModel extends GetxController {
   Object? response;
+  Object? deleteResponse;
   bool _isBusy = false;
   bool _responseStatus = false;
   final List<CartData> _cartList = [];
@@ -16,7 +17,7 @@ class CartViewModel extends GetxController {
 
   Future<bool> getCartList(String token) async {
     _responseStatus = false;
-    if(_cartList.isEmpty){
+    if (_cartList.isEmpty) {
       _isBusy = true;
     }
     response = await CartService().getCartList(token);
@@ -31,6 +32,25 @@ class CartViewModel extends GetxController {
     }
     _isBusy = false;
     update();
+    return _responseStatus;
+  }
+
+  Future<bool> deleteCartItem({
+    required int cartId,
+    required String token,
+    required int deleteIndex,
+  }) async {
+    _responseStatus = false;
+    CartData tempCartData = _cartList[deleteIndex];
+    _cartList.removeAt(deleteIndex);
+    update();
+    deleteResponse = await CartService().deleteCartItem(cartId.toString(), token);
+    if (deleteResponse is Success) {
+      _responseStatus = true;
+    } else {
+      _cartList.insert(deleteIndex, tempCartData);
+      update();
+    }
     return _responseStatus;
   }
 }

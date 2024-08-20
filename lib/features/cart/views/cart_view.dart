@@ -8,6 +8,7 @@ import 'package:crafty_bay/features/cart/widgets/cart_footer_button.dart';
 import 'package:crafty_bay/features/cart/widgets/cart_footer_text.dart';
 import 'package:crafty_bay/features/cart/widgets/cart_list_card.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
+import 'package:crafty_bay/wrappers/app_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -60,7 +61,7 @@ class _CartViewState extends State<CartView> {
             );
           }
           if (cartViewModel.cartList.isEmpty) {
-            AlternativeWidget(
+            return AlternativeWidget(
               onRefresh: () {
                 getCartList();
               },
@@ -87,7 +88,13 @@ class _CartViewState extends State<CartView> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
                   itemBuilder: (context, index) {
-                    return CartListCard(cartProductData: cartViewModel.cartList[index],);
+                    return CartListCard(
+                      cartProductData: cartViewModel.cartList[index],
+                      index: index,
+                      onDeletePressed: (int cardId, int index) {
+                        deleteCartItem(cardId, index);
+                      },
+                    );
                   },
                   separatorBuilder: (context, index) {
                     return const Gap(20);
@@ -108,9 +115,43 @@ class _CartViewState extends State<CartView> {
     );
   }
 
+  Future<void> deleteCartItem(int cartId, int index) async {
+    CartViewModel cartViewModel = Get.find<CartViewModel>();
+    bool status = await cartViewModel.deleteCartItem(
+      cartId: cartId,
+      token: Get.find<ProfileViewModel>().token,
+      deleteIndex: index,
+    );
+    if (status && mounted) {
+      AppSnackBar.show(
+        message: AppStrings.cartDeletionSuccessText,
+        context: context,
+        isError: false,
+      );
+      return;
+    }
+    Failure failure = cartViewModel.deleteResponse as Failure;
+    if (mounted) {
+      if (failure.statusCode != 600 ||
+          failure.statusCode != 601 ||
+          failure.statusCode != 501) {
+        AppSnackBar.show(
+          message: AppStrings.cartDeletionFailureText,
+          context: context,
+          isError: true,
+        );
+        return;
+      }
+      InternetServiceError.showErrorSnackBar(
+        failure: failure,
+        context: context,
+      );
+    }
+  }
+
   Future<void> getCartList() async {
     CartViewModel cartViewModel = Get.find<CartViewModel>();
-    if(cartViewModel.cartList.isNotEmpty){
+    if (cartViewModel.cartList.isNotEmpty) {
       return;
     }
     bool status = await cartViewModel.getCartList(

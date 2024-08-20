@@ -9,9 +9,18 @@ class CartService extends NetworkRepository {
   factory CartService() => _instance ??= CartService._();
 
   Future<Object> getCartList(String token) async {
-    return getRequest(
+    return await getRequest(
       url: NetworkUrls.cartList,
       headers: {"token": token},
+    );
+  }
+
+  Future<Object> deleteCartItem(String cartId, String token) async {
+    return await getRequest(
+      url: "${NetworkUrls.deleteCartList}/$cartId",
+      headers: {
+        "token": token,
+      },
     );
   }
 }

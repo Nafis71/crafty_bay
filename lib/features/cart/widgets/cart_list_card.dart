@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:crafty_bay/features/cart/models/cart_list_model/cart_data.dart';
 import 'package:crafty_bay/features/cart/view_model/cart_view_model.dart';
-import 'package:crafty_bay/features/product_details/view_models/product_view_model.dart';
 import 'package:crafty_bay/features/product_details/views/product_details_view/product_details_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +10,15 @@ import '../../../common/widgets/small_icon_card.dart';
 
 class CartListCard extends StatelessWidget {
   final CartData cartProductData;
+  final int index;
+  final void Function(int,int) onDeletePressed;
 
-  const CartListCard({super.key, required this.cartProductData});
+  const CartListCard({
+    super.key,
+    required this.cartProductData,
+    required this.index,
+    required this.onDeletePressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -72,11 +78,16 @@ class CartListCard extends StatelessWidget {
                                   ),
                         ),
                       ),
-                      const Expanded(
-                        child: Icon(
-                          CupertinoIcons.delete_simple,
-                          color: Colors.grey,
-                          size: 23,
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            onDeletePressed(cartProductData.productId!,index);
+                          },
+                          child: const Icon(
+                            CupertinoIcons.delete_simple,
+                            color: Colors.grey,
+                            size: 23,
+                          ),
                         ),
                       )
                     ],
