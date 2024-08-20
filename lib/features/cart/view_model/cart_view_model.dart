@@ -11,8 +11,8 @@ class CartViewModel extends GetxController {
   Object? deleteResponse;
   bool _isBusy = false;
   bool _responseStatus = false;
-  final List<CartData> _cartList = [];
-  final List<Product> _cartProductData = [];
+  List<CartData> _cartList = [];
+  List<Product> _cartProductData = [];
   int totalPrice = 0;
 
   bool get isBusy => _isBusy;
@@ -47,6 +47,8 @@ class CartViewModel extends GetxController {
           _cartProductData.add(product);
         }
       }
+      _cartList = _cartList.reversed.toList();
+      _cartProductData = _cartProductData.reversed.toList();
       _responseStatus = true;
     }
     _isBusy = false;

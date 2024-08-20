@@ -17,7 +17,7 @@ class BottomNavigation extends StatelessWidget {
       return BottomNavigationBar(
         currentIndex: baseNavigationViewModel.index,
         onTap: (index) {
-          if (baseNavigationViewModel.index == index) {
+          if (baseNavigationViewModel.index == index || Get.find<ProductViewModel>().isAddingToCart) {
             return;
           }
           baseNavigationViewModel.setIndex = index;
