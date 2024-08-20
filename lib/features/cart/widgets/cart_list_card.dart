@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:crafty_bay/features/cart/models/cart_list_model/cart_data.dart';
 import 'package:crafty_bay/features/cart/view_model/cart_view_model.dart';
+import 'package:crafty_bay/features/product_details/models/product.dart';
 import 'package:crafty_bay/features/product_details/views/product_details_view/product_details_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,15 +10,16 @@ import 'package:get/get.dart';
 import '../../../common/widgets/small_icon_card.dart';
 
 class CartListCard extends StatelessWidget {
-  final CartData cartProductData;
+  final CartData cartData;
+  final Product productData;
   final int index;
   final void Function(int,int) onDeletePressed;
 
   const CartListCard({
     super.key,
-    required this.cartProductData,
+    required this.cartData,
     required this.index,
-    required this.onDeletePressed,
+    required this.onDeletePressed, required this.productData,
   });
 
   @override
@@ -28,7 +30,7 @@ class CartListCard extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => ProductDetailsView(
-              productId: cartProductData.productId!,
+              productId: cartData.productId!,
             ),
           ),
         );
@@ -54,7 +56,7 @@ class CartListCard extends StatelessWidget {
               flex: 1,
               child: CachedNetworkImage(
                 imageUrl:
-                    "https://photo.teamrabbil.com/images/2023/04/04/product.png",
+                    productData.image.toString(),
                 fit: BoxFit.contain,
               ),
             ),
@@ -70,7 +72,7 @@ class CartListCard extends StatelessWidget {
                       Expanded(
                         flex: 7,
                         child: Text(
-                          "New Year Special Shoe",
+                          productData.title.toString(),
                           style:
                               Theme.of(context).textTheme.titleMedium!.copyWith(
                                     fontSize: 15,
@@ -81,7 +83,7 @@ class CartListCard extends StatelessWidget {
                       Expanded(
                         child: InkWell(
                           onTap: () {
-                            onDeletePressed(cartProductData.productId!,index);
+                            onDeletePressed(cartData.productId!,index);
                           },
                           child: const Icon(
                             CupertinoIcons.delete_simple,
@@ -93,7 +95,7 @@ class CartListCard extends StatelessWidget {
                     ],
                   ),
                   Text(
-                    "Color: ${cartProductData.color}, Size: ${cartProductData.size}",
+                    "Color: ${cartData.color}, Size: ${cartData.size}",
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                           fontSize: 12,
                         ),
@@ -103,7 +105,7 @@ class CartListCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "\$100",
+                        "\$${productData.price}",
                         style: Theme.of(context)
                             .textTheme
                             .titleMedium!

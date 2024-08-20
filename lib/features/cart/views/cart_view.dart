@@ -89,7 +89,8 @@ class _CartViewState extends State<CartView> {
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
                   itemBuilder: (context, index) {
                     return CartListCard(
-                      cartProductData: cartViewModel.cartList[index],
+                      cartData: cartViewModel.cartList[index],
+                      productData: cartViewModel.cartProductData[index],
                       index: index,
                       onDeletePressed: (int cardId, int index) {
                         deleteCartItem(cardId, index);
@@ -102,11 +103,15 @@ class _CartViewState extends State<CartView> {
                   itemCount: cartViewModel.cartList.length,
                 ),
               ),
-              const Expanded(
-                child: ViewFooter(
-                  leftWidget: CartFooterText(),
-                  rightWidget: CartFooterButton(),
-                ),
+              Expanded(
+                child: GetBuilder<CartViewModel>(builder: (cartViewModel) {
+                  return ViewFooter(
+                    leftWidget: CartFooterText(
+                      totalPrice: cartViewModel.totalPrice,
+                    ),
+                    rightWidget: const CartFooterButton(),
+                  );
+                }),
               )
             ],
           );
