@@ -6,12 +6,14 @@ class AppSnackBar {
   static show(
       {required String message,
       required BuildContext context,
-      required bool isError}) {
+      required bool isError,
+      Color? color,
+      }) {
     floatingSnackBar(
       message: message,
       context: context,
       backgroundColor:
-          (!isError) ? AppColor.appPrimaryColor : Colors.red.shade400,
+          (!isError) ? AppColor.appPrimaryColor : (color == null) ? Colors.red.shade400 : color,
     );
   }
 }
