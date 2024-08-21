@@ -4,6 +4,8 @@ import 'package:crafty_bay/features/authentication/services/auth_service.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../common/services/prefetch_service.dart';
+
 class AuthViewModel extends GetxController {
   bool _isBusy = false;
   bool _responseStatus = false;
@@ -46,6 +48,7 @@ class AuthViewModel extends GetxController {
           await Get.find<ProfileViewModel>().readProfile(response!, token);
       _hasUserData = status;
       localStorage.setBool("hasUserData", status);
+      await PrefetchService.prefetchData();
       _responseStatus = true;
     }
     setIsBusy = false;

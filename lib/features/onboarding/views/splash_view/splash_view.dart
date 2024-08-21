@@ -91,7 +91,6 @@ class _SplashViewState extends State<SplashView> {
     isLoading = true;
     bool isTokenExpired = await Get.find<ProfileViewModel>().validateToken();
     if (isTokenExpired) {
-      await PrefetchService.prefetchData();
       Future.delayed(const Duration(seconds: 4), () {
         if (mounted) {
           Navigator.pushReplacementNamed(context, AppRoutes.loginView);
