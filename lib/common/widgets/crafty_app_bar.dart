@@ -16,7 +16,7 @@ AppBar craftyAppBar({
         ? const SvgImageLoader(
             assetLocation: AppAssets.logoNav,
             boxFit: BoxFit.contain,
-            width: 150,
+            width: 140,
           )
         : Row(
             children: [
