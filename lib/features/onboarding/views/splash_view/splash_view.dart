@@ -93,18 +93,22 @@ class _SplashViewState extends State<SplashView> {
     if (isTokenExpired) {
       await PrefetchService.prefetchData();
       Future.delayed(const Duration(seconds: 4), () {
-        Get.offNamed(AppRoutes.loginView);
+        if (mounted) {
+          Navigator.pushReplacementNamed(context, AppRoutes.loginView);
+        }
       });
       return;
     }
     await PrefetchService.prefetchData();
     bool isUserDataAvailable =
         await Get.find<ProfileViewModel>().checkUserData();
-    if (!isUserDataAvailable) {
-      Get.offNamed(AppRoutes.profileDetailView);
+    if (!isUserDataAvailable && mounted) {
+      Navigator.pushReplacementNamed(context, AppRoutes.profileDetailView);
       return;
     }
     await Get.find<ProfileViewModel>().loadUserDataFromStorage();
-    Get.offNamed(AppRoutes.baseNavigationView);
+    if (mounted) {
+      Navigator.pushReplacementNamed(context, AppRoutes.baseNavigationView);
+    }
   }
 }
