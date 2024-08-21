@@ -92,4 +92,7 @@ class AppStrings {
   static const String wishListViewHeader = "Wish List";
   static const String noWishListFoundText = "Your wish list is currently empty";
 
+  //search screen
+  static const String searchWithNameText = "Search for a product with name";
+  static String noSearchResultText(String query) => "No Item found for \"$query\" query";
 }

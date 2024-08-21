@@ -33,7 +33,7 @@ class _SplashViewState extends State<SplashView> {
     return Scaffold(
       body: GetBuilder<ConnectionViewModel>(builder: (connectionViewModel) {
         if (connectionViewModel.hasInternet) {
-          handleUserAuthentication();
+          _handleUserAuthentication();
         } else {
           if (!hasShownSnackBar) {
             hasShownSnackBar = true;
@@ -84,7 +84,7 @@ class _SplashViewState extends State<SplashView> {
     );
   }
 
-  Future<void> handleUserAuthentication() async {
+  Future<void> _handleUserAuthentication() async {
     if (isLoading) {
       return;
     }

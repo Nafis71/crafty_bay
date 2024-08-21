@@ -14,6 +14,7 @@ class HomeViewModel extends GetxController {
   List<RemarkProductData> _popularProductList = [];
   List<RemarkProductData> _specialProductList = [];
   List<RemarkProductData> _newProductList = [];
+  List<RemarkProductData> _searchProductList = [];
 
   int get carouselIndex => _carouselIndex;
 
@@ -24,6 +25,8 @@ class HomeViewModel extends GetxController {
   List<RemarkProductData> get specialProductList => _specialProductList;
 
   List<RemarkProductData> get newProductList => _newProductList;
+
+  List<RemarkProductData> get searchProductList => _searchProductList;
 
   set setCarouselIndex(int index) {
     _carouselIndex = index;
@@ -46,7 +49,9 @@ class HomeViewModel extends GetxController {
         await getProductByRemark("popular");
     if (remarkProductModel != null) {
       _popularProductList = await getProductList(remarkProductModel);
+      _searchProductList.addAll(_popularProductList);
     }
+
   }
 
   Future<void> getSpecialProduct() async {
@@ -54,6 +59,7 @@ class HomeViewModel extends GetxController {
         await getProductByRemark("special");
     if (remarkProductModel != null) {
       _specialProductList = await getProductList(remarkProductModel);
+      _searchProductList.addAll(_specialProductList);
     }
   }
 
@@ -61,6 +67,7 @@ class HomeViewModel extends GetxController {
     RemarkProductModel? remarkProductModel = await getProductByRemark("new");
     if (remarkProductModel != null) {
       _newProductList = await getProductList(remarkProductModel);
+      _searchProductList.addAll(_newProductList);
     }
   }
 

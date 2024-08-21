@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:crafty_bay/common/view_model/profile_view_model.dart';
 import 'package:crafty_bay/common/widgets/circular_loading.dart';
+import 'package:crafty_bay/common/widgets/product_rating.dart';
 import 'package:crafty_bay/common/widgets/small_icon_card.dart';
 import 'package:crafty_bay/features/product_details/views/product_details_view/product_details_view.dart';
 import 'package:crafty_bay/features/wish_list/view_model/wish_list_view_model.dart';
@@ -102,24 +103,11 @@ class ProductCard extends StatelessWidget {
                                       color: Theme.of(context).primaryColor,
                                       fontWeight: FontWeight.bold),
                             ),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.star,
-                                  size: 18,
-                                  color: AppColor.ratingIconColor,
-                                ),
-                                Text(
-                                  productList.star.toStringAsFixed(1),
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium!
-                                      .copyWith(
-                                        fontSize: 12,
-                                        color: Colors.grey.shade600,
-                                      ),
-                                ),
-                              ],
+                            ProductRating(
+                              productRating:
+                                  productList.star,
+                              iconSize: 18,
+                              fontSize: 12,
                             ),
                             GetBuilder<WishListViewModel>(
                               builder: (wishListViewModel) {
