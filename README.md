@@ -12,7 +12,7 @@ Key features of Crafty Bay
 <br />
 
 ## Project APK Link
-`Download link-` https://shorturl.at/563SN
+`Download link-` https://shorturl.at/TSTLg
 <br />
 
 ## Installation
