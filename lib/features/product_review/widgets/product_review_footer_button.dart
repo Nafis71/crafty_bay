@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../views/add_review_view/add_review_view.dart';
-
 class FooterButtonWidget extends StatelessWidget {
   final int productId;
+  final Function(dynamic) navigateToAddProductReview;
 
-  const FooterButtonWidget({super.key, required this.productId});
+  const FooterButtonWidget(
+      {super.key,
+      required this.productId,
+      required this.navigateToAddProductReview});
 
   @override
   Widget build(BuildContext context) {
@@ -13,16 +15,7 @@ class FooterButtonWidget extends StatelessWidget {
       width: 50,
       height: 50,
       child: InkWell(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => AddReviewView(
-                productId: productId,
-              ),
-            ),
-          );
-        },
+        onTap: () => navigateToAddProductReview(productId),
         child: Container(
           decoration: BoxDecoration(
               shape: BoxShape.circle,

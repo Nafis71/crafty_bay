@@ -5,17 +5,18 @@ import 'package:crafty_bay/common/widgets/view_footer.dart';
 import 'package:crafty_bay/features/product_review/view_model/product_review_view_model.dart';
 import 'package:crafty_bay/features/product_review/widgets/product_review_footer_button.dart';
 import 'package:crafty_bay/features/product_review/widgets/product_review_card.dart';
-import 'package:crafty_bay/features/product_review/widgets/product_review_footer.dart';
 import 'package:crafty_bay/features/product_review/widgets/product_review_footer_text.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-
+import '../../../../common/view_model/profile_view_model.dart';
 import '../../../../common/widgets/alternative_widget.dart';
 import '../../../../common/widgets/circular_loading.dart';
 import '../../../../utils/app_assets.dart';
+import '../../../../utils/app_routes.dart';
 import '../../../../wrappers/svg_image_loader.dart';
+import '../add_review_view/add_review_view.dart';
 
 class ProductReviewView extends StatefulWidget {
   final int productId;
@@ -107,12 +108,30 @@ class _ProductReviewViewState extends State<ProductReviewView> {
                   rightWidget: FooterButtonWidget(
                     productId:
                         productReviewViewModel.productReviewList[0].productId!,
+                    navigateToAddProductReview: (productId) {
+                      navigateToAddProductReview(productId);
+                    },
                   ),
                 ),
               )
             ],
           );
         },
+      ),
+    );
+  }
+
+  void navigateToAddProductReview(int productId) {
+    if (Get.find<ProfileViewModel>().token.isEmpty) {
+      navigator!.pushNamed(AppRoutes.loginView, arguments: (token) {});
+      return;
+    }
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => AddReviewView(
+          productId: productId,
+        ),
       ),
     );
   }
