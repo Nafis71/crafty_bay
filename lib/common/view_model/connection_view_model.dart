@@ -8,8 +8,8 @@ class ConnectionViewModel extends GetxController {
   late StreamSubscription<InternetConnectionStatus> subscription;
   bool hasInternet = false;
 
-  void initialize(){
-     subscription = connectionChecker.onStatusChange.listen(
+  void initialize() {
+    subscription = connectionChecker.onStatusChange.listen(
       (InternetConnectionStatus status) {
         if (status == InternetConnectionStatus.connected) {
           hasInternet = true;
@@ -21,6 +21,7 @@ class ConnectionViewModel extends GetxController {
       },
     );
   }
+
   @override
   void dispose() {
     subscription.cancel();

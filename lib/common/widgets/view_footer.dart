@@ -33,9 +33,7 @@ class ViewFooter extends StatelessWidget {
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  leftWidget
-                ],
+                children: [leftWidget],
               ),
               rightWidget
             ],

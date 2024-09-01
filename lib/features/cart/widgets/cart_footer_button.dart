@@ -7,7 +7,7 @@ class CartFooterButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<CartViewModel>(builder: (cartViewModel){
+    return GetBuilder<CartViewModel>(builder: (cartViewModel) {
       return SizedBox(
         width: MediaQuery.of(context).size.width * 0.35,
         child: ElevatedButton(

@@ -5,6 +5,7 @@ import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+
 import '../../../common/widgets/alternative_widget.dart';
 import '../../../common/widgets/circular_loading.dart';
 import '../../../common/widgets/product_card.dart';

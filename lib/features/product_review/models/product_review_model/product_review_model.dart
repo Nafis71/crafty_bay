@@ -11,12 +11,12 @@ class ProductReviewModel {
 
   ProductReviewModel(
       {this.id,
-        this.description,
-        this.email,
-        this.productId,
-        this.createdAt,
-        this.updatedAt,
-        this.profile});
+      this.description,
+      this.email,
+      this.productId,
+      this.createdAt,
+      this.updatedAt,
+      this.profile});
 
   ProductReviewModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -26,7 +26,7 @@ class ProductReviewModel {
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     profile =
-    json['profile'] != null ? Profile.fromJson(json['profile']) : null;
+        json['profile'] != null ? Profile.fromJson(json['profile']) : null;
   }
 
   Map<String, dynamic> toJson() {

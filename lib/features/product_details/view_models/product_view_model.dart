@@ -1,6 +1,5 @@
 import 'package:crafty_bay/common/services/response/success.dart';
 import 'package:crafty_bay/features/cart/view_model/cart_view_model.dart';
-import 'package:crafty_bay/features/cart/views/cart_view.dart';
 import 'package:crafty_bay/features/product_details/models/product.dart';
 import 'package:crafty_bay/features/product_details/models/product_details_model.dart';
 import 'package:crafty_bay/features/product_details/services/product_service.dart';

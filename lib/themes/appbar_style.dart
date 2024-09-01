@@ -6,15 +6,15 @@ class AppbarStyle {
   static AppBarTheme getLightAppBarTheme() => AppBarTheme(
         backgroundColor: Colors.white,
         surfaceTintColor: Colors.white,
-    toolbarHeight: 70,
-    shadowColor: Colors.black.withOpacity(0.1),
-    titleTextStyle: TextStyle(
-      fontSize: 16,
-      color: Colors.black.withOpacity(0.6),
-      fontFamily: "Poppins",
-      fontWeight: FontWeight.bold,
-    ),
-    systemOverlayStyle: SystemUiOverlayStyle(
+        toolbarHeight: 70,
+        shadowColor: Colors.black.withOpacity(0.1),
+        titleTextStyle: TextStyle(
+          fontSize: 16,
+          color: Colors.black.withOpacity(0.6),
+          fontFamily: "Poppins",
+          fontWeight: FontWeight.bold,
+        ),
+        systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: AppColor.appPrimaryColor,
         ),
       );

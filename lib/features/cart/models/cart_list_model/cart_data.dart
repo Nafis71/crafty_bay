@@ -7,15 +7,15 @@ class CartData {
   String? createdAt;
   String? updatedAt;
 
-  CartData(
-      {this.id,
-        this.email,
-        this.productId,
-        this.color,
-        this.size,
-        this.createdAt,
-        this.updatedAt,
-        });
+  CartData({
+    this.id,
+    this.email,
+    this.productId,
+    this.color,
+    this.size,
+    this.createdAt,
+    this.updatedAt,
+  });
 
   CartData.fromJson(Map<String, dynamic> json) {
     id = json['id'];

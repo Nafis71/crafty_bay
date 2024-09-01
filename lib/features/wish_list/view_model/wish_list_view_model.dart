@@ -38,7 +38,7 @@ class WishListViewModel extends GetxController {
     _responseStatus = false;
     _isBusy = true;
     response = await WishListService().getWishList(token);
-    if(response is Success) {
+    if (response is Success) {
       _productWishList.clear();
       _wishListProductId.clear();
       Map<String, dynamic> jsonData =
@@ -56,11 +56,12 @@ class WishListViewModel extends GetxController {
     return _responseStatus;
   }
 
-  Future<void> getProductData(int productId) async{
-    response =  await ProductService().getProductDetails(productId.toString());
-    if(response is Success){
-      Map<String,dynamic> jsonData = (response as Success).response as Map<String,dynamic>;
-      Map<String,dynamic> productJson = jsonData['data'][0]['product'];
+  Future<void> getProductData(int productId) async {
+    response = await ProductService().getProductDetails(productId.toString());
+    if (response is Success) {
+      Map<String, dynamic> jsonData =
+          (response as Success).response as Map<String, dynamic>;
+      Map<String, dynamic> productJson = jsonData['data'][0]['product'];
       _productWishList.add(Product.fromJson(productJson));
     }
   }

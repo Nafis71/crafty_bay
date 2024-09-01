@@ -3,13 +3,14 @@ import 'package:crafty_bay/common/services/response/failure.dart';
 import 'package:crafty_bay/common/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/common/widgets/view_footer.dart';
 import 'package:crafty_bay/features/product_review/view_model/product_review_view_model.dart';
-import 'package:crafty_bay/features/product_review/widgets/product_review_footer_button.dart';
 import 'package:crafty_bay/features/product_review/widgets/product_review_card.dart';
+import 'package:crafty_bay/features/product_review/widgets/product_review_footer_button.dart';
 import 'package:crafty_bay/features/product_review/widgets/product_review_footer_text.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+
 import '../../../../common/view_model/profile_view_model.dart';
 import '../../../../common/widgets/alternative_widget.dart';
 import '../../../../common/widgets/circular_loading.dart';

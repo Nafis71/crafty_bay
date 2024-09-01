@@ -104,8 +104,7 @@ class ProductCard extends StatelessWidget {
                                       fontWeight: FontWeight.bold),
                             ),
                             ProductRating(
-                              productRating:
-                                  productList.star,
+                              productRating: productList.star,
                               iconSize: 18,
                               fontSize: 12,
                             ),

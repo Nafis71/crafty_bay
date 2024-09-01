@@ -5,13 +5,13 @@ class WishListModel {
   String? createdAt;
   String? updatedAt;
 
-  WishListModel(
-      {this.id,
-        this.email,
-        this.productId,
-        this.createdAt,
-        this.updatedAt,
-        });
+  WishListModel({
+    this.id,
+    this.email,
+    this.productId,
+    this.createdAt,
+    this.updatedAt,
+  });
 
   WishListModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];

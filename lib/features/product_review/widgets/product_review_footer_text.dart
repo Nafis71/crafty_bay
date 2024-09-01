@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class ProductReviewFooterText extends StatelessWidget {
   final String text;
+
   const ProductReviewFooterText({super.key, required this.text});
 
   @override

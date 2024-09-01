@@ -47,7 +47,6 @@ class AppStrings {
   static const String invalidShippingAddress = "Invalid Shipping Address";
   static const String profileDetailsButtonText = "Complete";
 
-
   //base navigation screen
   static const String homeNavigationTabText = "Home";
   static const String categoryNavigationTabText = "Category";
@@ -77,16 +76,18 @@ class AppStrings {
   static const String noReviewFoundText = "No review found for this product";
   static const String addReviewHeader = "Create Review";
   static const String writeReviewHintText = "Write Review";
-  static const String emptyReviewText ="Review is required";
+  static const String emptyReviewText = "Review is required";
   static const String reviewSubmitButtonText = "Submit";
-  static const String reviewCreationSuccessMessage = "Your review has been added!";
+  static const String reviewCreationSuccessMessage =
+      "Your review has been added!";
   static const String reviewCreationFailedMessage = "Failed to add your review";
 
   //cart screen
   static const String cartViewHeader = "Cart";
   static const String noCartListFoundText = "Your cart is currently empty now";
   static const String cartDeletionFailureText = "Failed to delete cart item";
-  static const String cartDeletionSuccessText = "Item has been removed from your cart";
+  static const String cartDeletionSuccessText =
+      "Item has been removed from your cart";
   static const String cartLoginText = "Login to see your cart";
   static const String cartLoginButtonText = "Login Now";
 
@@ -96,5 +97,7 @@ class AppStrings {
 
   //search screen
   static const String searchWithNameText = "Search for a product with name";
-  static String noSearchResultText(String query) => "No Item found for \"$query\" query";
+
+  static String noSearchResultText(String query) =>
+      "No Item found for \"$query\" query";
 }

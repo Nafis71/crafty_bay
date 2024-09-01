@@ -1,3 +1,4 @@
+import 'package:crafty_bay/common/widgets/product_card.dart';
 import 'package:crafty_bay/features/base_navigation/view_model/base_navigation_view_model.dart';
 import 'package:crafty_bay/features/category/view_model/category_view_model.dart';
 import 'package:crafty_bay/features/home/models/remark_product_model/remark_product_data.dart';
@@ -6,7 +7,6 @@ import 'package:crafty_bay/features/home/views/all_product_view/all_product_view
 import 'package:crafty_bay/features/home/widgets/app_search_bar.dart';
 import 'package:crafty_bay/features/home/widgets/carousel_indicator.dart';
 import 'package:crafty_bay/features/home/widgets/offer_carousel.dart';
-import 'package:crafty_bay/common/widgets/product_card.dart';
 import 'package:crafty_bay/features/home/widgets/product_layout_section.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:flutter/material.dart';

@@ -15,7 +15,7 @@ class WishListService extends NetworkRepository {
     );
   }
 
-  Future<Object> getWishList(String token) async{
+  Future<Object> getWishList(String token) async {
     return await getRequest(
       url: NetworkUrls.productWishList,
       headers: {"token": token},

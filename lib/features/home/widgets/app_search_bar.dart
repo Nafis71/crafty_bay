@@ -11,8 +11,11 @@ class AppSearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
-        showSearch(context: context, delegate: CustomSearchDelegate(),);
+      onTap: () {
+        showSearch(
+          context: context,
+          delegate: CustomSearchDelegate(),
+        );
       },
       child: Card(
         color: AppColor.searchBarBackgroundColor,

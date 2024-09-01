@@ -32,7 +32,8 @@ class AuthViewModel extends GetxController {
     return _responseStatus;
   }
 
-  Future<bool> verifyOTP(String emailAddress, String otp, Function(dynamic) futureExecution) async {
+  Future<bool> verifyOTP(String emailAddress, String otp,
+      Function(dynamic) futureExecution) async {
     _responseStatus = false;
     setIsBusy = true;
     response = await AuthService().verifyOTP(emailAddress, otp);

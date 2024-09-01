@@ -8,6 +8,7 @@ import '../../product_details/views/product_details_view/product_details_view.da
 
 class SearchResult extends StatelessWidget {
   final List<RemarkProductData> matchQuery;
+
   const SearchResult({super.key, required this.matchQuery});
 
   @override
@@ -61,8 +62,8 @@ class SearchResult extends StatelessWidget {
                                   .textTheme
                                   .bodyMedium!
                                   .copyWith(
-                                  color: Theme.of(context).primaryColor,
-                                  fontWeight: FontWeight.bold),
+                                      color: Theme.of(context).primaryColor,
+                                      fontWeight: FontWeight.bold),
                             ),
                             const Gap(5),
                             ProductRating(

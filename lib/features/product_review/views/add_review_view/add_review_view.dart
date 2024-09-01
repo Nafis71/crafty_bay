@@ -88,7 +88,7 @@ class _AddReviewViewState extends State<AddReviewView> {
                       }
                       return ElevatedButton(
                         onPressed: () {
-                          if(_formKey.currentState!.validate()){
+                          if (_formKey.currentState!.validate()) {
                             createReview(productReviewViewModel);
                           }
                         },

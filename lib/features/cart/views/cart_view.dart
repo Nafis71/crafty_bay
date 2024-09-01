@@ -61,7 +61,7 @@ class _CartViewState extends State<CartView> {
                       onPressed: () {
                         navigator!.pushNamed(
                           AppRoutes.loginView,
-                          arguments: (token) async{
+                          arguments: (token) async {
                             await cartViewModel.getCartList(token);
                           },
                         );

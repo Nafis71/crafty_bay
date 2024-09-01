@@ -31,8 +31,9 @@ class FormValidation {
     }
     return null;
   }
-  static String? validateReview(String? review){
-    if(review == null || review.isEmpty){
+
+  static String? validateReview(String? review) {
+    if (review == null || review.isEmpty) {
       return AppStrings.emptyReviewText;
     }
     return null;

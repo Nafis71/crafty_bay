@@ -11,14 +11,14 @@ class Profile {
 
   Profile(
       {this.id,
-        this.firstName,
-        this.lastName,
-        this.mobile,
-        this.city,
-        this.shippingAddress,
-        this.email,
-        this.createdAt,
-        this.updatedAt});
+      this.firstName,
+      this.lastName,
+      this.mobile,
+      this.city,
+      this.shippingAddress,
+      this.email,
+      this.createdAt,
+      this.updatedAt});
 
   Profile.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -34,7 +34,7 @@ class Profile {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] =id;
+    data['id'] = id;
     data['firstName'] = firstName;
     data['lastName'] = lastName;
     data['mobile'] = mobile;

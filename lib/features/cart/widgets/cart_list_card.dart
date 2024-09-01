@@ -7,19 +7,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+
 import '../../../common/widgets/small_icon_card.dart';
 
 class CartListCard extends StatelessWidget {
   final CartData cartData;
   final Product productData;
   final int index;
-  final void Function(int,int) onDeletePressed;
+  final void Function(int, int) onDeletePressed;
 
   const CartListCard({
     super.key,
     required this.cartData,
     required this.index,
-    required this.onDeletePressed, required this.productData,
+    required this.onDeletePressed,
+    required this.productData,
   });
 
   @override
@@ -55,8 +57,7 @@ class CartListCard extends StatelessWidget {
             Expanded(
               flex: 1,
               child: CachedNetworkImage(
-                imageUrl:
-                    productData.image.toString(),
+                imageUrl: productData.image.toString(),
                 fit: BoxFit.contain,
               ),
             ),
@@ -83,7 +84,7 @@ class CartListCard extends StatelessWidget {
                       Expanded(
                         child: InkWell(
                           onTap: () {
-                            onDeletePressed(cartData.productId!,index);
+                            onDeletePressed(cartData.productId!, index);
                           },
                           child: const Icon(
                             CupertinoIcons.delete_simple,

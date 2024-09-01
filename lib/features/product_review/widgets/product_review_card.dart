@@ -15,18 +15,18 @@ class ProductReviewCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(25),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        border: Border.fromBorderSide(BorderSide(color: Colors.black.withOpacity(0.03))),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.04),
-            spreadRadius: 1,
-            blurRadius: 2,
-            offset: const Offset(0, 3),
-          )
-        ]
-      ),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          border: Border.fromBorderSide(
+              BorderSide(color: Colors.black.withOpacity(0.03))),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.04),
+              spreadRadius: 1,
+              blurRadius: 2,
+              offset: const Offset(0, 3),
+            )
+          ]),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -50,9 +50,11 @@ class ProductReviewCard extends StatelessWidget {
             ],
           ),
           const Gap(8),
-          Text(productReviewData.description!,style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-            fontSize: 13
-          ),)
+          Text(
+            productReviewData.description!,
+            style:
+                Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 13),
+          )
         ],
       ),
     );

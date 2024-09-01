@@ -163,8 +163,8 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
           message: AppStrings.invalidOTP, context: context, isError: true);
       return;
     }
-    bool status = await authViewModel.verifyOTP(
-        widget.viewData['email'], _otpTEController.text,widget.viewData['futureExecution']);
+    bool status = await authViewModel.verifyOTP(widget.viewData['email'],
+        _otpTEController.text, widget.viewData['futureExecution']);
     if (status && mounted && !authViewModel.hasUserData) {
       navigator!.pushReplacementNamed(AppRoutes.profileDetailView);
       return;

@@ -85,13 +85,13 @@ class _SplashViewState extends State<SplashView> {
     );
   }
 
-  Future<void> _prefetchData() async{
+  Future<void> _prefetchData() async {
     if (isLoading) {
       return;
     }
     isLoading = true;
     List<bool> result = await PrefetchService.prefetchData();
-    if(!result.contains(false) && mounted){
+    if (!result.contains(false) && mounted) {
       Navigator.pushNamed(context, AppRoutes.baseNavigationView);
     }
   }
