@@ -16,11 +16,16 @@ class AppRoutes {
   static PageRoute? generateRoutes(RouteSettings routeSettings) {
     Map<String, WidgetBuilder> routes = {
       AppRoutes.splashView: (context) => const SplashView(),
-      AppRoutes.loginView: (context) => const LoginView(),
+      AppRoutes.loginView: (context){
+        Function(dynamic) futureExecution = routeSettings.arguments as Function(dynamic);
+        return LoginView(
+          futureExecution: futureExecution,
+        );
+      },
       AppRoutes.otpVerificationView: (context) {
-        String emailAddress = routeSettings.arguments as String;
+        Map<String,dynamic> viewData = routeSettings.arguments as Map<String,dynamic>;
         return OtpVerificationView(
-          emailAddress: emailAddress,
+          viewData: viewData,
         );
       },
       AppRoutes.profileDetailView: (context) => const ProfileDetailView(),

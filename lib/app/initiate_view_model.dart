@@ -15,8 +15,6 @@ class InitiateViewModel extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => CountdownTimer());
-    Get.lazyPut(() => AuthViewModel());
-    Get.lazyPut(() => ProfileViewModel());
     Get.lazyPut(() => BaseNavigationViewModel());
     Get.lazyPut(() => CategoryViewModel());
     Get.lazyPut(() => ProductViewModel());
@@ -24,5 +22,7 @@ class InitiateViewModel extends Bindings {
     Get.lazyPut(() => CartViewModel());
     Get.put(HomeViewModel());
     Get.put(WishListViewModel());
+    Get.put(AuthViewModel());
+    Get.put(ProfileViewModel());
   }
 }

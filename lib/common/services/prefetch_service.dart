@@ -7,22 +7,37 @@ import '../view_model/profile_view_model.dart';
 
 class PrefetchService {
   static Future<bool> prefetchProductSliderList() async {
+    if(Get.find<HomeViewModel>().productSliderList.isNotEmpty){
+      return true;
+    }
     return await Get.find<HomeViewModel>().getProductSliderList();
   }
 
   static Future<bool> prefetchCategoryList() async {
+    if(Get.find<CategoryViewModel>().categoryList.isNotEmpty){
+      return true;
+    }
     return await Get.find<CategoryViewModel>().getCategoryList();
   }
 
   static Future<bool> prefetchPopularProductData() async {
+    if(Get.find<HomeViewModel>().popularProductList.isNotEmpty){
+      return true;
+    }
     return await Get.find<HomeViewModel>().getPopularProduct();
   }
 
   static Future<bool> prefetchSpecialProductData() async {
+    if(Get.find<HomeViewModel>().specialProductList.isNotEmpty){
+      return true;
+    }
     return await Get.find<HomeViewModel>().getSpecialProduct();
   }
 
   static Future<bool> prefetchNewProductData() async {
+    if(Get.find<HomeViewModel>().newProductList.isNotEmpty){
+      return true;
+    }
     return await Get.find<HomeViewModel>().getNewProduct();
   }
 

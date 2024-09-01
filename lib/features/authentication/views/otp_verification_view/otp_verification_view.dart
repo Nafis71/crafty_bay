@@ -18,9 +18,9 @@ import '../../../../utils/app_strings.dart';
 import 'countdown_timer.dart';
 
 class OtpVerificationView extends StatefulWidget {
-  final String emailAddress;
+  final Map<String, dynamic> viewData;
 
-  const OtpVerificationView({super.key, required this.emailAddress});
+  const OtpVerificationView({super.key, required this.viewData});
 
   @override
   State<OtpVerificationView> createState() => _OtpVerificationViewState();
@@ -125,8 +125,9 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
                               }
                               initiateTimer();
                               Get.find<AuthViewModel>().sendOTP(
-                                  widget.emailAddress,
-                                  isResending: true);
+                                widget.viewData['email'],
+                                isResending: true,
+                              );
                             },
                             child: Text(
                               AppStrings.otpResendButtonText,
@@ -163,13 +164,13 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
       return;
     }
     bool status = await authViewModel.verifyOTP(
-        widget.emailAddress, _otpTEController.text);
+        widget.viewData['email'], _otpTEController.text,widget.viewData['futureExecution']);
     if (status && mounted && !authViewModel.hasUserData) {
-      Navigator.pushReplacementNamed(context, AppRoutes.profileDetailView);
+      navigator!.pushReplacementNamed(AppRoutes.profileDetailView);
       return;
     }
     if (status && mounted && authViewModel.hasUserData) {
-      Navigator.pushReplacementNamed(context, AppRoutes.baseNavigationView);
+      navigator!.pop();
       return;
     }
     Failure failure = authViewModel.response as Failure;

@@ -25,6 +25,7 @@ class _SplashViewState extends State<SplashView> {
 
   @override
   void initState() {
+    Get.find<ProfileViewModel>().validateToken();
     super.initState();
   }
 
@@ -90,7 +91,7 @@ class _SplashViewState extends State<SplashView> {
     }
     isLoading = true;
     List<bool> result = await PrefetchService.prefetchData();
-    if(!result.contains(false)){
+    if(!result.contains(false) && mounted){
       Navigator.pushNamed(context, AppRoutes.baseNavigationView);
     }
   }

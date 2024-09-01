@@ -5,13 +5,27 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CraftyBay extends StatelessWidget {
+class CraftyBay extends StatefulWidget {
   const CraftyBay({super.key});
+
+  @override
+  State<CraftyBay> createState() => _CraftyBayState();
+}
+
+class _CraftyBayState extends State<CraftyBay> {
+  late final GlobalKey<NavigatorState> navigatorState;
+
+  @override
+  void initState() {
+    navigatorState = GlobalKey<NavigatorState>();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      navigatorKey: navigatorState,
       initialBinding: InitiateViewModel(),
       initialRoute: AppRoutes.splashView,
       locale: DevicePreview.locale(context),

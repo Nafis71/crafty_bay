@@ -36,6 +36,7 @@ class HomeViewModel extends GetxController {
   Future<bool> getProductSliderList() async {
     response = await HomeProductService().getProductSliderList();
     if (response is Success) {
+      _productSliderList.clear();
       ProductSlider productSliderModel = ProductSlider.fromJson(
           (response as Success).response as Map<String, dynamic>);
       for (ProductSliderData productSliderData in productSliderModel.data!) {

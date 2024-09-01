@@ -32,7 +32,7 @@ class AuthViewModel extends GetxController {
     return _responseStatus;
   }
 
-  Future<bool> verifyOTP(String emailAddress, String otp) async {
+  Future<bool> verifyOTP(String emailAddress, String otp, Function(dynamic) futureExecution) async {
     _responseStatus = false;
     setIsBusy = true;
     response = await AuthService().verifyOTP(emailAddress, otp);
@@ -48,7 +48,8 @@ class AuthViewModel extends GetxController {
           await Get.find<ProfileViewModel>().readProfile(response!, token);
       _hasUserData = status;
       localStorage.setBool("hasUserData", status);
-      await PrefetchService.prefetchData();
+      await PrefetchService.prefetchProductWishList(token);
+      await futureExecution(token);
       _responseStatus = true;
     }
     setIsBusy = false;

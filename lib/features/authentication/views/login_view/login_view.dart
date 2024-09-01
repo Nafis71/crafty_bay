@@ -11,7 +11,8 @@ import 'package:get/get.dart';
 import '../../../../common/services/internet_service_error.dart';
 
 class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+  final Function(dynamic) futureExecution;
+  const LoginView({super.key, required this.futureExecution});
 
   @override
   State<LoginView> createState() => _LoginViewState();
@@ -78,8 +79,14 @@ class _LoginViewState extends State<LoginView> {
   Future<void> _sendOTP(AuthViewModel authViewModel) async {
     bool status = await authViewModel.sendOTP(_emailTEController.text.trim());
     if (status && mounted) {
-      Navigator.pushNamed(context, AppRoutes.otpVerificationView,
-          arguments: _emailTEController.text.trim());
+      Map<String, dynamic> viewData ={
+        "email" : _emailTEController.text.trim(),
+        "futureExecution" : widget.futureExecution
+      };
+      navigator!.pushReplacementNamed(
+        AppRoutes.otpVerificationView,
+        arguments: viewData,
+      );
       return;
     }
     Failure failure = authViewModel.response as Failure;

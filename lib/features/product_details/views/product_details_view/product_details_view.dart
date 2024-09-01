@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:crafty_bay/common/services/internet_service_error.dart';
 import 'package:crafty_bay/common/services/response/failure.dart';
+import 'package:crafty_bay/common/services/user_auth_service/user_auth_service.dart';
 import 'package:crafty_bay/common/view_model/profile_view_model.dart';
 import 'package:crafty_bay/common/widgets/alternative_widget.dart';
 import 'package:crafty_bay/common/widgets/circular_loading.dart';
@@ -15,6 +16,7 @@ import 'package:crafty_bay/features/product_details/widgets/product_details_foot
 import 'package:crafty_bay/features/product_details/widgets/product_variation.dart';
 import 'package:crafty_bay/themes/app_color.dart';
 import 'package:crafty_bay/utils/app_assets.dart';
+import 'package:crafty_bay/utils/app_routes.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:crafty_bay/wrappers/svg_image_loader.dart';
 import 'package:flutter/material.dart';
@@ -139,6 +141,12 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
   }
 
   Future<void> addToCart(ProductViewModel productViewModel) async {
+    if(Get.find<ProfileViewModel>().token.isEmpty){
+      navigator!.pushNamed(AppRoutes.loginView,arguments: (token){
+        addToCart(productViewModel);
+      });
+      return;
+    }
     bool status = await productViewModel.createCartList(
       productId: widget.productId,
       token: Get.find<ProfileViewModel>().token,

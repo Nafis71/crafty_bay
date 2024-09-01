@@ -7,6 +7,7 @@ import 'package:crafty_bay/features/cart/view_model/cart_view_model.dart';
 import 'package:crafty_bay/features/cart/widgets/cart_footer_button.dart';
 import 'package:crafty_bay/features/cart/widgets/cart_footer_text.dart';
 import 'package:crafty_bay/features/cart/widgets/cart_list_card.dart';
+import 'package:crafty_bay/utils/app_routes.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:crafty_bay/wrappers/app_snack_bar.dart';
 import 'package:flutter/material.dart';
@@ -40,6 +41,42 @@ class _CartViewState extends State<CartView> {
       ),
       body: GetBuilder<CartViewModel>(
         builder: (cartViewModel) {
+          if (Get.find<ProfileViewModel>().token.isEmpty) {
+            return AlternativeWidget(
+              child: Column(
+                children: [
+                  Icon(
+                    Icons.login_outlined,
+                    color: Theme.of(context).primaryColor,
+                    size: 45,
+                  ),
+                  const Gap(15),
+                  const Text(
+                    AppStrings.cartLoginText,
+                  ),
+                  const Gap(20),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        navigator!.pushNamed(
+                          AppRoutes.loginView,
+                          arguments: (token) async{
+                            await cartViewModel.getCartList(token);
+                          },
+                        );
+                      },
+                      child: Text(
+                        AppStrings.cartLoginButtonText,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              onRefresh: () {},
+            );
+          }
+
           if (cartViewModel.isBusy) {
             return const Column(
               mainAxisSize: MainAxisSize.max,
@@ -151,7 +188,8 @@ class _CartViewState extends State<CartView> {
 
   Future<void> getCartList() async {
     CartViewModel cartViewModel = Get.find<CartViewModel>();
-    if (cartViewModel.cartList.isNotEmpty) {
+    if (cartViewModel.cartList.isNotEmpty ||
+        Get.find<ProfileViewModel>().token.isEmpty) {
       return;
     }
     bool status = await cartViewModel.getCartList(
