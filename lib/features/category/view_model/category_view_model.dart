@@ -24,7 +24,8 @@ class CategoryViewModel extends GetxController {
     _isBusy = value;
   }
 
-  Future<void> getCategoryList() async {
+  Future<bool> getCategoryList() async {
+    _responseStatus = false;
     response = await CategoryService().getCategoryList();
     if (response is Success) {
       CategoryModel categoryModel = CategoryModel.fromJson(
@@ -32,7 +33,9 @@ class CategoryViewModel extends GetxController {
       for (CategoryData categoryData in categoryModel.data!) {
         _categoryList.add(categoryData);
       }
+      _responseStatus = true;
     }
+    return _responseStatus;
   }
 
   Future<bool> getProductByCategory(String categoryId) async {

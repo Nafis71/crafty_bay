@@ -33,7 +33,7 @@ class HomeViewModel extends GetxController {
     update();
   }
 
-  Future<void> getProductSliderList() async {
+  Future<bool> getProductSliderList() async {
     response = await HomeProductService().getProductSliderList();
     if (response is Success) {
       ProductSlider productSliderModel = ProductSlider.fromJson(
@@ -41,34 +41,41 @@ class HomeViewModel extends GetxController {
       for (ProductSliderData productSliderData in productSliderModel.data!) {
         _productSliderList.add(productSliderData);
       }
+      return true;
     }
+    return false;
   }
 
-  Future<void> getPopularProduct() async {
+  Future<bool> getPopularProduct() async {
     RemarkProductModel? remarkProductModel =
         await getProductByRemark("popular");
     if (remarkProductModel != null) {
       _popularProductList = await getProductList(remarkProductModel);
       _searchProductList.addAll(_popularProductList);
+      return true;
     }
-
+    return false;
   }
 
-  Future<void> getSpecialProduct() async {
+  Future<bool> getSpecialProduct() async {
     RemarkProductModel? remarkProductModel =
         await getProductByRemark("special");
     if (remarkProductModel != null) {
       _specialProductList = await getProductList(remarkProductModel);
       _searchProductList.addAll(_specialProductList);
+      return true;
     }
+    return false;
   }
 
-  Future<void> getNewProduct() async {
+  Future<bool> getNewProduct() async {
     RemarkProductModel? remarkProductModel = await getProductByRemark("new");
     if (remarkProductModel != null) {
       _newProductList = await getProductList(remarkProductModel);
       _searchProductList.addAll(_newProductList);
+      return true;
     }
+    return false;
   }
 
   Future<List<RemarkProductData>> getProductList(

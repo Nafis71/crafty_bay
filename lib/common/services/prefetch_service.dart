@@ -6,40 +6,37 @@ import 'package:get/get.dart';
 import '../view_model/profile_view_model.dart';
 
 class PrefetchService {
-  static Future<void> prefetchProductSliderList() async {
-    await Get.find<HomeViewModel>().getProductSliderList();
+  static Future<bool> prefetchProductSliderList() async {
+    return await Get.find<HomeViewModel>().getProductSliderList();
   }
 
-  static Future<void> prefetchCategoryList() async {
-    await Get.find<CategoryViewModel>().getCategoryList();
+  static Future<bool> prefetchCategoryList() async {
+    return await Get.find<CategoryViewModel>().getCategoryList();
   }
 
-  static Future<void> prefetchPopularProductData() async {
-    await Get.find<HomeViewModel>().getPopularProduct();
+  static Future<bool> prefetchPopularProductData() async {
+    return await Get.find<HomeViewModel>().getPopularProduct();
   }
 
-  static Future<void> prefetchSpecialProductData() async {
-    await Get.find<HomeViewModel>().getSpecialProduct();
+  static Future<bool> prefetchSpecialProductData() async {
+    return await Get.find<HomeViewModel>().getSpecialProduct();
   }
 
-  static Future<void> prefetchNewProductData() async {
-    await Get.find<HomeViewModel>().getNewProduct();
+  static Future<bool> prefetchNewProductData() async {
+    return await Get.find<HomeViewModel>().getNewProduct();
   }
 
   static Future<void> prefetchProductWishList(String token) async{
     await Get.find<WishListViewModel>().getWishList(token);
   }
 
-  static Future<void> prefetchData() async{
-    await Future.wait([
+  static Future<List<bool>> prefetchData() async{
+    return await Future.wait([
       prefetchProductSliderList(),
       prefetchCategoryList(),
       prefetchPopularProductData(),
       prefetchSpecialProductData(),
       prefetchNewProductData(),
-      prefetchProductWishList(
-        Get.find<ProfileViewModel>().token,
-      ),
     ]);
   }
 }

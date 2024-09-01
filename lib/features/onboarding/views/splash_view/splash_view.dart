@@ -33,7 +33,7 @@ class _SplashViewState extends State<SplashView> {
     return Scaffold(
       body: GetBuilder<ConnectionViewModel>(builder: (connectionViewModel) {
         if (connectionViewModel.hasInternet) {
-          _handleUserAuthentication();
+          _prefetchData();
         } else {
           if (!hasShownSnackBar) {
             hasShownSnackBar = true;
@@ -84,30 +84,14 @@ class _SplashViewState extends State<SplashView> {
     );
   }
 
-  Future<void> _handleUserAuthentication() async {
+  Future<void> _prefetchData() async{
     if (isLoading) {
       return;
     }
     isLoading = true;
-    bool isTokenExpired = await Get.find<ProfileViewModel>().validateToken();
-    if (isTokenExpired) {
-      Future.delayed(const Duration(seconds: 4), () {
-        if (mounted) {
-          Navigator.pushReplacementNamed(context, AppRoutes.loginView);
-        }
-      });
-      return;
-    }
-    await PrefetchService.prefetchData();
-    bool isUserDataAvailable =
-        await Get.find<ProfileViewModel>().checkUserData();
-    if (!isUserDataAvailable && mounted) {
-      Navigator.pushReplacementNamed(context, AppRoutes.profileDetailView);
-      return;
-    }
-    await Get.find<ProfileViewModel>().loadUserDataFromStorage();
-    if (mounted) {
-      Navigator.pushReplacementNamed(context, AppRoutes.baseNavigationView);
+    List<bool> result = await PrefetchService.prefetchData();
+    if(!result.contains(false)){
+      Navigator.pushNamed(context, AppRoutes.baseNavigationView);
     }
   }
 }
