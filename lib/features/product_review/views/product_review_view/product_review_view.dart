@@ -11,11 +11,10 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../../../common/view_model/profile_view_model.dart';
+import '../../../../common/services/user_auth_service/user_auth_service.dart';
 import '../../../../common/widgets/alternative_widget.dart';
 import '../../../../common/widgets/circular_loading.dart';
 import '../../../../utils/app_assets.dart';
-import '../../../../utils/app_routes.dart';
 import '../../../../wrappers/svg_image_loader.dart';
 import '../add_review_view/add_review_view.dart';
 
@@ -122,9 +121,10 @@ class _ProductReviewViewState extends State<ProductReviewView> {
     );
   }
 
-  void navigateToAddProductReview(int productId) {
-    if (Get.find<ProfileViewModel>().token.isEmpty) {
-      navigator!.pushNamed(AppRoutes.loginView, arguments: (token) {});
+  void navigateToAddProductReview(int productId) async {
+    bool isAuthenticated =
+        await UserAuthService.isUserAuthenticated(futureExecution: (token) {});
+    if (!isAuthenticated) {
       return;
     }
     Navigator.push(

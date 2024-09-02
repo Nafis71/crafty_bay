@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:crafty_bay/common/services/internet_service_error.dart';
 import 'package:crafty_bay/common/services/response/failure.dart';
+import 'package:crafty_bay/common/services/user_auth_service/user_auth_service.dart';
 import 'package:crafty_bay/common/view_model/profile_view_model.dart';
 import 'package:crafty_bay/common/widgets/alternative_widget.dart';
 import 'package:crafty_bay/common/widgets/circular_loading.dart';
@@ -140,10 +141,10 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
   }
 
   Future<void> addToCart(ProductViewModel productViewModel) async {
-    if (Get.find<ProfileViewModel>().token.isEmpty) {
-      navigator!.pushNamed(AppRoutes.loginView, arguments: (token) {
-        addToCart(productViewModel);
-      });
+    bool isAuthenticated = await UserAuthService.isUserAuthenticated(futureExecution: (token){
+      addToCart(productViewModel);
+    });
+    if(!isAuthenticated){
       return;
     }
     bool status = await productViewModel.createCartList(

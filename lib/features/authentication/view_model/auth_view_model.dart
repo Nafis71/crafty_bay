@@ -44,7 +44,7 @@ class AuthViewModel extends GetxController {
       SharedPreferences localStorage = await SharedPreferences.getInstance();
       localStorage.setString("token", token);
       Get.find<ProfileViewModel>().setToken = token;
-      await Future.delayed(const Duration(seconds: 2));
+      await Future.delayed(const Duration(milliseconds: 2500));
       bool status =
           await Get.find<ProfileViewModel>().readProfile(response!, token);
       _hasUserData = status;
