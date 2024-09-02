@@ -38,102 +38,99 @@ class _HomeViewState extends State<HomeView> {
       appBar: craftyAppBar(),
       body: Container(
         margin: const EdgeInsets.only(left: 8, right: 8),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const AppSearchBar(),
-              const Gap(5),
-              const OfferCarousel(),
-              const Gap(8),
-              if (homeViewModel.productSliderList.isNotEmpty)
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                    homeViewModel.productSliderList.length,
-                    (index) {
-                      return CarouselIndicator(
-                        index: index,
-                      );
+        child: ListView(
+          children: [
+            const AppSearchBar(),
+            const Gap(5),
+            const OfferCarousel(),
+            const Gap(8),
+            if (homeViewModel.productSliderList.isNotEmpty)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
+                  homeViewModel.productSliderList.length,
+                      (index) {
+                    return CarouselIndicator(
+                      index: index,
+                    );
+                  },
+                ),
+              ),
+            const Gap(30),
+            if (Get.find<CategoryViewModel>().categoryList.isNotEmpty)
+              ProductLayoutSection(
+                sectionTitle: AppStrings.homeCategoryHeader,
+                cardWidget: SizedBox(
+                  height: 100,
+                  child: ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return CategoryCard(
+                          categoryData: Get.find<CategoryViewModel>()
+                              .categoryList[index]);
                     },
+                    separatorBuilder: (context, index) {
+                      return const Gap(25);
+                    },
+                    itemCount: 4,
                   ),
                 ),
-              const Gap(30),
-              if (Get.find<CategoryViewModel>().categoryList.isNotEmpty)
-                ProductLayoutSection(
-                  sectionTitle: AppStrings.homeCategoryHeader,
-                  cardWidget: SizedBox(
-                    height: 100,
-                    child: ListView.separated(
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) {
-                        return CategoryCard(
-                            categoryData: Get.find<CategoryViewModel>()
-                                .categoryList[index]);
-                      },
-                      separatorBuilder: (context, index) {
-                        return const Gap(25);
-                      },
-                      itemCount: 4,
+                onTap: () {
+                  Get.find<BaseNavigationViewModel>().setIndex = 1;
+                },
+              ),
+            const Gap(20),
+            if (homeViewModel.popularProductList.isNotEmpty)
+              ProductLayoutSection(
+                sectionTitle: AppStrings.homePopularHeader,
+                cardWidget: getProductCard(homeViewModel.popularProductList),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AllProductView(
+                        elementList: homeViewModel.popularProductList,
+                        appBarTitle: AppStrings.homePopularHeader,
+                      ),
                     ),
-                  ),
-                  onTap: () {
-                    Get.find<BaseNavigationViewModel>().setIndex = 1;
-                  },
-                ),
-              const Gap(20),
-              if (homeViewModel.popularProductList.isNotEmpty)
-                ProductLayoutSection(
-                  sectionTitle: AppStrings.homePopularHeader,
-                  cardWidget: getProductCard(homeViewModel.popularProductList),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => AllProductView(
-                          elementList: homeViewModel.popularProductList,
-                          appBarTitle: AppStrings.homePopularHeader,
-                        ),
+                  );
+                },
+              ),
+            const Gap(20),
+            if (homeViewModel.specialProductList.isNotEmpty)
+              ProductLayoutSection(
+                sectionTitle: AppStrings.homeSpecialHeader,
+                cardWidget: getProductCard(homeViewModel.specialProductList),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AllProductView(
+                        elementList: homeViewModel.specialProductList,
+                        appBarTitle: AppStrings.homeSpecialHeader,
                       ),
-                    );
-                  },
-                ),
-              const Gap(20),
-              if (homeViewModel.specialProductList.isNotEmpty)
-                ProductLayoutSection(
-                  sectionTitle: AppStrings.homeSpecialHeader,
-                  cardWidget: getProductCard(homeViewModel.specialProductList),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => AllProductView(
-                          elementList: homeViewModel.specialProductList,
-                          appBarTitle: AppStrings.homeSpecialHeader,
-                        ),
+                    ),
+                  );
+                },
+              ),
+            const Gap(20),
+            if (homeViewModel.newProductList.isNotEmpty)
+              ProductLayoutSection(
+                sectionTitle: AppStrings.homeNewHeader,
+                cardWidget: getProductCard(homeViewModel.newProductList),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AllProductView(
+                        elementList: homeViewModel.newProductList,
+                        appBarTitle: AppStrings.homeNewHeader,
                       ),
-                    );
-                  },
-                ),
-              const Gap(20),
-              if (homeViewModel.newProductList.isNotEmpty)
-                ProductLayoutSection(
-                  sectionTitle: AppStrings.homeNewHeader,
-                  cardWidget: getProductCard(homeViewModel.newProductList),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => AllProductView(
-                          elementList: homeViewModel.newProductList,
-                          appBarTitle: AppStrings.homeNewHeader,
-                        ),
-                      ),
-                    );
-                  },
-                ),
-            ],
-          ),
+                    ),
+                  );
+                },
+              ),
+          ],
         ),
       ),
     );
