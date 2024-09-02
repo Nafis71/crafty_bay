@@ -37,16 +37,19 @@ class _SplashViewState extends State<SplashView> {
         } else {
           if (!hasShownSnackBar) {
             hasShownSnackBar = true;
-            Future.delayed(const Duration(seconds: 3), () {
-              if (context.mounted && !connectionViewModel.hasInternet) {
-                AppSnackBar.show(
-                  message: AppStrings.networkError,
-                  context: context,
-                  isError: true,
-                  color: Colors.black,
-                );
-              }
-            });
+            Future.delayed(
+              const Duration(seconds: 3),
+              () {
+                if (context.mounted && !connectionViewModel.hasInternet) {
+                  AppSnackBar.show(
+                    message: AppStrings.networkError,
+                    context: context,
+                    isError: true,
+                    color: Colors.black,
+                  );
+                }
+              },
+            );
           }
         }
         return Center(
@@ -91,8 +94,9 @@ class _SplashViewState extends State<SplashView> {
     isLoading = true;
     List<bool> result = await PrefetchService.prefetchData();
     if (!result.contains(false) && mounted) {
-      if(!await Get.find<ProfileViewModel>().validateToken()){
-        await PrefetchService.prefetchProductWishList(Get.find<ProfileViewModel>().token);
+      if (!await Get.find<ProfileViewModel>().validateToken()) {
+        await PrefetchService.prefetchProductWishList(
+            Get.find<ProfileViewModel>().token);
       }
       Navigator.pushNamed(context, AppRoutes.baseNavigationView);
     }
