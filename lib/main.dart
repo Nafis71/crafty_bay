@@ -8,5 +8,5 @@ import 'common/view_model/connection_view_model.dart';
 void main() {
   Get.put(ConnectionViewModel());
   Get.find<ConnectionViewModel>().initialize();
-  runApp(DevicePreview(enabled: false, builder: (_) => const CraftyBay()));
+  runApp(DevicePreview(enabled: true, builder: (_) => const CraftyBay()));
 }
