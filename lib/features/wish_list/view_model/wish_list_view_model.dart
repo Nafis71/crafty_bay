@@ -35,6 +35,7 @@ class WishListViewModel extends GetxController {
   }
 
   Future<bool> getWishList(String token) async {
+    print(token);
     _responseStatus = false;
     _isBusy = true;
     response = await WishListService().getWishList(token);
