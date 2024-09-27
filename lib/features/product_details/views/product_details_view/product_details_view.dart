@@ -44,12 +44,14 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
   @override
   Widget build(BuildContext context) {
     Orientation deviceOrientation = MediaQuery.of(context).orientation;
+    print(widget.productId);
     return Scaffold(
       appBar: craftyAppBar(
-          title: AppStrings.productDetailsHeader,
-          context: context,
-          backgroundColor: AppColor.productCarouselBackgroundColor,
-          toolBarHeight: 60),
+        title: AppStrings.productDetailsHeader,
+        context: context,
+        backgroundColor: AppColor.productCarouselBackgroundColor,
+        toolBarHeight: 60,
+      ),
       body: SafeArea(
         child: GetBuilder<ProductViewModel>(
           builder: (productViewModel) {
@@ -141,10 +143,11 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
   }
 
   Future<void> addToCart(ProductViewModel productViewModel) async {
-    bool isAuthenticated = await UserAuthService.isUserAuthenticated(futureExecution: (token){
+    bool isAuthenticated =
+        await UserAuthService.isUserAuthenticated(futureExecution: (token) {
       addToCart(productViewModel);
     });
-    if(!isAuthenticated){
+    if (!isAuthenticated) {
       return;
     }
     bool status = await productViewModel.createCartList(
