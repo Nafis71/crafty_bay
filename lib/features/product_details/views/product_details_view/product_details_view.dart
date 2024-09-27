@@ -16,7 +16,6 @@ import 'package:crafty_bay/features/product_details/widgets/product_details_foot
 import 'package:crafty_bay/features/product_details/widgets/product_variation.dart';
 import 'package:crafty_bay/themes/app_color.dart';
 import 'package:crafty_bay/utils/app_assets.dart';
-import 'package:crafty_bay/utils/app_routes.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:crafty_bay/wrappers/svg_image_loader.dart';
 import 'package:flutter/material.dart';

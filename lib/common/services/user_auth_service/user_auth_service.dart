@@ -4,7 +4,8 @@ import 'package:get/get.dart';
 import '../../view_model/profile_view_model.dart';
 
 class UserAuthService {
-  static Future<bool> isUserAuthenticated({required Function(dynamic) futureExecution}) async {
+  static Future<bool> isUserAuthenticated(
+      {required Function(dynamic) futureExecution}) async {
     bool isTokenExpired = await Get.find<ProfileViewModel>().validateToken();
     if (isTokenExpired) {
       navigator!.pushNamed(AppRoutes.loginView, arguments: futureExecution);

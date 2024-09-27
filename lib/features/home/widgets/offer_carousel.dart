@@ -63,8 +63,8 @@ class _OfferCarouselState extends State<OfferCarousel> {
                                     .textTheme
                                     .bodyMedium!
                                     .copyWith(
-                                  fontSize: 13,
-                                ),
+                                      fontSize: 13,
+                                    ),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(7))),
                             onPressed: () {

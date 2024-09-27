@@ -49,7 +49,7 @@ class _HomeViewState extends State<HomeView> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: List.generate(
                   homeViewModel.productSliderList.length,
-                      (index) {
+                  (index) {
                     return CarouselIndicator(
                       index: index,
                     );
