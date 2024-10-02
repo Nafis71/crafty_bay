@@ -29,8 +29,7 @@ dependencies:
   jwt_decoder: ^2.0.1
   flutter_carousel_widget: ^2.3.0
   cached_network_image: ^3.4.1
-  internet_connection_checker: ^2.0.0
-
+  internet_connection_checker: ^1.0.0+1
 
 dev_dependencies:
   flutter_test:
