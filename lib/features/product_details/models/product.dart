@@ -40,7 +40,7 @@ class Product {
     discountPrice = json['discount_price'];
     image = json['image'];
     stock = json['stock'];
-    star = json['star'];
+    star = double.parse(json['star'].toString());
     remark = json['remark'];
     categoryId = json['category_id'];
     brandId = json['brand_id'];

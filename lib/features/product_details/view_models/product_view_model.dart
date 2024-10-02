@@ -12,7 +12,7 @@ class ProductViewModel extends GetxController {
   Product? _productData;
   final List<String> _carouselImageList = [];
   List<String> _productSizeList = [];
-  List<String> _productColorList = [];
+  List<int> _productColorList = [];
   bool _isBusy = false;
   bool _isAddingToCart = false;
   bool _isItemAddedToCart = false;
@@ -35,7 +35,7 @@ class ProductViewModel extends GetxController {
 
   List<String> get productSizeList => _productSizeList;
 
-  List<String> get productColorList => _productColorList;
+  List<int> get productColorList => _productColorList;
 
   set setIsBusy(bool value) {
     _isBusy = value;
@@ -98,7 +98,8 @@ class ProductViewModel extends GetxController {
         }
       } catch (exception) {
         if (kDebugMode) {
-          debugPrint(exception.toString());
+          debugPrint(
+              "Exception caught from product details fetching ${exception.toString()}");
         }
       }
     }
@@ -140,35 +141,38 @@ class ProductViewModel extends GetxController {
   }
 
   List<String> getProductSizes(String size) {
+    print(size);
     return size.split(",");
   }
 
-  List<String> getProductColors(String color) {
+  List<int> getProductColors(String color) {
+    Map<String, int> colorCodes = {
+      "red": 0xFF890104,
+      "green": 0xFF007C00,
+      "white": 0xFFD9D9D9
+    };
     List<String> colorList = color.split(",");
-    List<String> refinedColorList = [];
+    List<int> refinedColorList = [];
     for (String color in colorList) {
-      refinedColorList.add(color.substring(1, color.length));
+      refinedColorList.add(colorCodes[color.toLowerCase()]!);
     }
     return refinedColorList;
   }
 
   String getSizeText(int index) {
     Map<int, String> sizes = {
-      0: "M",
-      1: "L",
-      2: "XL",
-      3: "XXL",
+      0: "X",
+      1: "2X",
+      2: "3X",
     };
-    return sizes[index] ?? "XXL";
+    return sizes[index] ?? "X";
   }
 
-  String getColorText(String colorCode) {
-    Map<String, String> colorCodes = {
-      "212121": "Black",
-      "0E98B1": "Cyan",
-      "7A5548": "Brown",
-      "D9D9D9": "White",
-      "757575": "Grey",
+  String getColorText(int colorCode) {
+    Map<int, String> colorCodes = {
+      0xFF890104: "Red",
+      0xFF007C00: "Green",
+      0xFFFFFFFF: "White",
     };
     return colorCodes[colorCode] ?? "Red";
   }

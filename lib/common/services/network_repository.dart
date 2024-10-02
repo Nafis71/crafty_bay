@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:crafty_bay/common/services/response/failure.dart';
 import 'package:crafty_bay/common/services/response/success.dart';
@@ -58,6 +59,7 @@ class NetworkRepository {
   }
 
   Object getResponse(Response response) {
+    log(response.statusCode.toString());
     if (response.statusCode == 200) {
       return Success(
         response: jsonDecode(response.body),

@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 
 class ProductVariation extends StatelessWidget {
   final List<String> productSizes;
-  final List<String> productColors;
+  final List<int> productColors;
 
   const ProductVariation({
     super.key,
@@ -36,7 +36,7 @@ class ProductVariation extends StatelessWidget {
               children: List.generate(
                 productColors.length,
                 (index) {
-                  int color = int.parse("0xFF${productColors[index]}");
+                  int color = productColors[index];
                   return ColorSelectionWidget(
                     productViewModel: productViewModel,
                     index: index,
