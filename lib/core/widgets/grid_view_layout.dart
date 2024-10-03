@@ -16,7 +16,7 @@ class GridViewLayout extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10),
       itemCount: length,
       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: 180,
+        maxCrossAxisExtent: 200,
         childAspectRatio: 1,
         mainAxisSpacing: 10,
         crossAxisSpacing: 10,

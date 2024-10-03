@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:crafty_bay/core/utils/product_rating_calculator.dart';
 import 'package:crafty_bay/core/view_model/profile_view_model.dart';
 import 'package:crafty_bay/core/widgets/circular_loading.dart';
 import 'package:crafty_bay/core/widgets/product_rating.dart';
@@ -103,7 +104,8 @@ class ProductCard extends StatelessWidget {
                                       fontWeight: FontWeight.bold),
                             ),
                             ProductRating(
-                              productRating: productList.star,
+                              productRating: ProductRatingCalculator()
+                                  .getProductRating(productList.star),
                               iconSize: 18,
                               fontSize: 12,
                             ),
