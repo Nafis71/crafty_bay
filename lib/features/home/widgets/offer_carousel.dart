@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:crafty_bay/features/home/view_model/home_view_model.dart';
 import 'package:crafty_bay/features/product_details/view_models/product_view_model.dart';
 import 'package:crafty_bay/features/product_details/views/product_details_view/product_details_view.dart';
@@ -20,79 +21,101 @@ class _OfferCarouselState extends State<OfferCarousel> {
     return FlutterCarousel.builder(
       itemCount: Get.find<HomeViewModel>().productSliderList.length,
       itemBuilder: (context, index, pageViewIndex) {
-        return Card(
-          color: Theme.of(context).primaryColor,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Gap(5),
-              Expanded(
-                child: Center(
-                  child: Image.network(
-                    Get.find<HomeViewModel>().productSliderList[index].image!,
-                    fit: BoxFit.contain,
-                    width: 170,
-                  ),
+        return CachedNetworkImage(
+          imageUrl: Get.find<HomeViewModel>().productSliderList[index].image!,
+          imageBuilder: (context, imageProvider) {
+            return Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(15),
+                  topRight: Radius.circular(45),
+                  bottomLeft: Radius.circular(15),
+                  bottomRight: Radius.circular(45),
                 ),
               ),
-              Expanded(
-                flex: 1,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: Stack(
                       children: [
-                        Text(
-                          Get.find<HomeViewModel>()
-                              .productSliderList[index]
-                              .title!,
-                          style: Theme.of(context).textTheme.labelMedium,
-                        ),
-                        const Gap(10),
-                        SizedBox(
-                          width: 120,
-                          height: 35,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.white,
-                                foregroundColor: Theme.of(context).primaryColor,
-                                textStyle: Theme.of(context)
-                                    .textTheme
-                                    .bodyMedium!
-                                    .copyWith(
-                                      fontSize: 13,
-                                    ),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(7))),
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ProductDetailsView(
-                                    productId: Get.find<HomeViewModel>()
-                                        .productSliderList[index]
-                                        .productId!,
-                                  ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Gap(10),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  Get.find<HomeViewModel>()
+                                      .productSliderList[index]
+                                      .title!,
+                                  style:
+                                      Theme.of(context).textTheme.labelMedium,
                                 ),
-                              ).then((value) {
-                                Get.find<ProductViewModel>().resetViewModel();
-                              });
-                            },
-                            child: const Text(
-                              AppStrings.offerCarouselButtonText,
+                                const Gap(10),
+                                SizedBox(
+                                  width: 120,
+                                  height: 40,
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.white,
+                                      foregroundColor:
+                                          Theme.of(context).primaryColor,
+                                      textStyle: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium!
+                                          .copyWith(
+                                            fontSize: 13,
+                                          ),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(7),
+                                      ),
+                                    ),
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              ProductDetailsView(
+                                            productId: Get.find<HomeViewModel>()
+                                                .productSliderList[index]
+                                                .productId!,
+                                          ),
+                                        ),
+                                      ).then((value) {
+                                        Get.find<ProductViewModel>()
+                                            .resetViewModel();
+                                      });
+                                    },
+                                    child: Text(
+                                      AppStrings.offerCarouselButtonText,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .labelSmall!
+                                          .copyWith(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 13),
+                                    ),
+                                  ),
+                                )
+                              ],
                             ),
-                          ),
+                          ],
                         )
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            );
+          },
         );
       },
       options: CarouselOptions(

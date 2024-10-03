@@ -25,6 +25,7 @@ class AppTextTheme {
       labelMedium: getDefaultStyle().copyWith(
         fontSize: 17,
         fontWeight: FontWeight.bold,
+        color: Colors.black
       ));
 
   static TextStyle getDefaultStyle() => const TextStyle(
