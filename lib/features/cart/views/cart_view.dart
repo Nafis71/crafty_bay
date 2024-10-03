@@ -127,7 +127,7 @@ class _CartViewState extends State<CartView> {
                   itemBuilder: (context, index) {
                     return CartListCard(
                       cartData: cartViewModel.cartList[index],
-                      productData: cartViewModel.cartProductData[index],
+                      productData: cartViewModel.cartList[index].cartProductData!,
                       index: index,
                       onDeletePressed: (int cardId, int index) {
                         deleteCartItem(cardId, index);

@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:crafty_bay/features/cart/models/cart_list_model/cart_data.dart';
+import 'package:crafty_bay/features/cart/models/cart_list_model/cart_product_data.dart';
 import 'package:crafty_bay/features/cart/view_model/cart_view_model.dart';
-import 'package:crafty_bay/features/product_details/models/product.dart';
 import 'package:crafty_bay/features/product_details/views/product_details_view/product_details_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +12,7 @@ import '../../../core/widgets/small_icon_card.dart';
 
 class CartListCard extends StatelessWidget {
   final CartData cartData;
-  final Product productData;
+  final CartProductData productData;
   final int index;
   final void Function(int, int) onDeletePressed;
 
@@ -106,7 +106,7 @@ class CartListCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "\$${productData.price}",
+                        "\$${cartData.price}",
                         style: Theme.of(context)
                             .textTheme
                             .titleMedium!
@@ -130,7 +130,7 @@ class CartListCard extends StatelessWidget {
                           GetBuilder<CartViewModel>(
                             builder: (productViewModel) {
                               return Text(
-                                "1".toString().padLeft(2, "0"),
+                                cartData.qty.toString().padLeft(2, "0"),
                                 style: Theme.of(context).textTheme.titleSmall,
                               );
                             },

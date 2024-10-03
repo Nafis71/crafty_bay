@@ -123,6 +123,7 @@ class ProductViewModel extends GetxController {
       "product_id": productId,
       "color": getColorText(_productColorList[selectedColor]),
       "size": getSizeText(selectedSize),
+      "qty": _productQuantity
     };
     cartResponse = await ProductService().createCartList(token, cartJson);
     if (cartResponse is Success) {
