@@ -21,6 +21,8 @@ class _AllProductViewState extends State<AllProductView> {
       appBar: craftyAppBar(title: widget.appBarTitle, context: context),
       body: GridViewLayout(
         length: widget.elementList.length,
+        mainAxisExtent: 200,
+        crossAxisExtent : 200,
         child: (index) {
           return ProductCard(
             productList: widget.elementList[index],

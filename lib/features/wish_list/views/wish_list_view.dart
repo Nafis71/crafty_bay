@@ -53,6 +53,8 @@ class _WishListViewState extends State<WishListView> {
           }
           return GridViewLayout(
             length: wishListViewModel.productWishList.length,
+            mainAxisExtent: 200,
+            crossAxisExtent: 200,
             child: (index) {
               return ProductCard(
                 productList: wishListViewModel.productWishList[index],

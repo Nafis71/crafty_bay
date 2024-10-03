@@ -77,6 +77,8 @@ class _CategoryProductViewState extends State<CategoryProductView> {
           }
           return GridViewLayout(
             length: categoryViewModel.categoryProductData.length,
+            mainAxisExtent: 200,
+            crossAxisExtent: 200,
             child: (index) {
               return ProductCard(
                 productList: categoryViewModel.categoryProductData[index],

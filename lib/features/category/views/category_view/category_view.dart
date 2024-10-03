@@ -1,5 +1,6 @@
 import 'package:crafty_bay/core/widgets/category_card.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
+import 'package:crafty_bay/core/widgets/grid_view_layout.dart';
 import 'package:crafty_bay/features/category/view_model/category_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -22,17 +23,16 @@ class _CategoryViewState extends State<CategoryView> {
           context: (widget.fromHome == null) ? null : context),
       body: GetBuilder<CategoryViewModel>(
         builder: (categoryViewModel) {
-          return GridView.builder(
-            padding: const EdgeInsets.symmetric(vertical: 15),
-            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 110,
-            ),
-            itemBuilder: (context, index) {
+          print(categoryViewModel.categoryList.length);
+          return GridViewLayout(
+            length: categoryViewModel.categoryList.length,
+            mainAxisExtent: 100,
+            crossAxisExtent: 110,
+            child: (index) {
               return CategoryCard(
                 categoryData: categoryViewModel.categoryList[index],
               );
             },
-            itemCount: categoryViewModel.categoryList.length,
           );
         },
       ),

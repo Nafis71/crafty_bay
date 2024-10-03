@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 class GridViewLayout extends StatelessWidget {
   final int length;
   final Function(dynamic) child;
+  final double mainAxisExtent,crossAxisExtent;
 
   const GridViewLayout({
     super.key,
     required this.length,
-    required this.child,
+    required this.child, required this.mainAxisExtent, required this.crossAxisExtent,
   });
 
   @override
@@ -15,12 +16,12 @@ class GridViewLayout extends StatelessWidget {
     return GridView.builder(
       padding: const EdgeInsets.symmetric(vertical: 10),
       itemCount: length,
-      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: 200,
+      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+        maxCrossAxisExtent: crossAxisExtent,
         childAspectRatio: 1,
         mainAxisSpacing: 10,
         crossAxisSpacing: 10,
-        mainAxisExtent: 200,
+        mainAxisExtent: mainAxisExtent,
       ),
       itemBuilder: (context, index) {
         return child(index);
