@@ -70,10 +70,11 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
                   descriptionText: AppStrings.otpVerificationScreenDescription,
                   formWidget: Padding(
                     padding: EdgeInsets.symmetric(
-                        horizontal: (deviceOrientation == Orientation.portrait)
-                            ? 40
-                            : 180,
-                        vertical: 10),
+                      horizontal: (deviceOrientation == Orientation.portrait)
+                          ? 0
+                          : 180,
+                      vertical: 10,
+                    ),
                     child: Form(
                       key: _formKey,
                       child: PinCodeTextField(
@@ -88,7 +89,7 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
                         cursorColor: AppColor.appPrimaryColor,
                         appContext: context,
                         validator: FormValidation.validateOTP,
-                        length: 4,
+                        length: 6,
                       ),
                     ),
                   ),

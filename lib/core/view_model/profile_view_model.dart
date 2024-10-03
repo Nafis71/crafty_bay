@@ -67,8 +67,8 @@ class ProfileViewModel extends GetxController {
     if (response is Success) {
       Map<String, dynamic> jsonData =
           (response).response as Map<String, dynamic>;
-      List<dynamic> userData = jsonData['data'];
-      if (userData.isNotEmpty) {
+      List<dynamic>? userData = jsonData['data'];
+      if (userData != null && userData.isNotEmpty) {
         UserModel userModel = UserModel.fromJson(userData[0]);
         SharedPreferences localStorage = await SharedPreferences.getInstance();
         await saveUserData(userModel, localStorage);
@@ -88,11 +88,21 @@ class ProfileViewModel extends GetxController {
     _responseStatus = false;
     setIsBusy = true;
     Map<String, String> json = {
-      "firstName": firstName,
-      "lastName": lastName,
-      "mobile": mobile,
-      "city": city,
-      "shippingAddress": shippingAddress
+      "cus_name": firstName + lastName,
+      "cus_add": shippingAddress,
+      "cus_city": city,
+      "cus_state": city,
+      "cus_postcode": "1207",
+      "cus_country": "Bangladesh",
+      "cus_phone": mobile,
+      "cus_fax": mobile,
+      "ship_name": firstName + lastName,
+      "ship_add": shippingAddress,
+      "ship_city": city,
+      "ship_state": city,
+      "ship_postcode": "1207",
+      "ship_country": "Bangladesh",
+      "ship_phone": mobile
     };
     response = await ProfileDetailService().createProfile(_token, json);
     if (response is Success) {
