@@ -13,6 +13,7 @@ class Product {
   int? brandId;
   String? createdAt;
   String? updatedAt;
+  String? description;
 
   Product({
     this.id,

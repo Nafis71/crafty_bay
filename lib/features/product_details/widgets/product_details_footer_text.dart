@@ -24,9 +24,10 @@ class ProductDetailsFooterText extends StatelessWidget {
             Text(
               "\$${productViewModel.productData!.price}",
               style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 17),
+                    color: Theme.of(context).primaryColor,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 17,
+                  ),
             ),
           ],
         );

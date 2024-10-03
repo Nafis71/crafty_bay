@@ -115,7 +115,8 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                           ),
                           const Gap(20),
                           ProductDescription(
-                            description: productViewModel.productData!.shortDes
+                            description: productViewModel
+                                .productData!.description
                                 .toString(),
                           ),
                         ],
@@ -171,7 +172,9 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
   Future<void> loadProductDetails() async {
     bool status =
         await Get.find<ProductViewModel>().getProductDetails(widget.productId);
-    if (!status && mounted && Get.find<ProductViewModel>().response is Failure) {
+    if (!status &&
+        mounted &&
+        Get.find<ProductViewModel>().response is Failure) {
       InternetServiceError.showErrorSnackBar(
         failure: Get.find<ProductViewModel>().response as Failure,
         context: context,

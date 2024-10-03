@@ -16,22 +16,23 @@ class ProductImageCarousel extends StatelessWidget {
     return FlutterCarousel.builder(
       itemCount: carouselImageList.length,
       itemBuilder: (context, index, pageIndex) {
-        return Container(
-          decoration: BoxDecoration(
-            color: AppColor.productCarouselBackgroundColor,
-          ),
-          alignment: Alignment.topCenter,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CachedNetworkImage(
-                imageUrl: carouselImageList[index],
-                fit: BoxFit.fill,
-                width: 230,
+        return CachedNetworkImage(
+          imageUrl: carouselImageList[index],
+          imageBuilder: (context, imageProvider) {
+            return Container(
+              decoration: BoxDecoration(
+                  color: AppColor.productCarouselBackgroundColor,
+                  image:
+                      DecorationImage(image: imageProvider, fit: BoxFit.cover)),
+              alignment: Alignment.topCenter,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Gap(40),
+                ],
               ),
-              const Gap(40),
-            ],
-          ),
+            );
+          },
         );
       },
       options: CarouselOptions(

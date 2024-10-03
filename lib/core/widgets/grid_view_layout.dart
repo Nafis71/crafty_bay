@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 class GridViewLayout extends StatelessWidget {
   final int length;
   final Function(dynamic) child;
-  final double mainAxisExtent,crossAxisExtent;
+  final double mainAxisExtent, crossAxisExtent;
 
   const GridViewLayout({
     super.key,
     required this.length,
-    required this.child, required this.mainAxisExtent, required this.crossAxisExtent,
+    required this.child,
+    required this.mainAxisExtent,
+    required this.crossAxisExtent,
   });
 
   @override

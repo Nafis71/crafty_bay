@@ -25,15 +25,24 @@ class _OfferCarouselState extends State<OfferCarousel> {
           imageUrl: Get.find<HomeViewModel>().productSliderList[index].image!,
           imageBuilder: (context, imageProvider) {
             return Container(
+              margin:
+                  const EdgeInsets.only(left: 5, right: 5, bottom: 10, top: 7),
               decoration: BoxDecoration(
-                image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(15),
-                  topRight: Radius.circular(45),
-                  bottomLeft: Radius.circular(15),
-                  bottomRight: Radius.circular(45),
-                ),
-              ),
+                  image:
+                      DecorationImage(image: imageProvider, fit: BoxFit.cover),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    topRight: Radius.circular(45),
+                    bottomLeft: Radius.circular(15),
+                    bottomRight: Radius.circular(45),
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.black.withOpacity(0.04),
+                        spreadRadius: 2,
+                        blurRadius: 10,
+                        offset: const Offset(0, 2))
+                  ]),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -54,8 +63,10 @@ class _OfferCarouselState extends State<OfferCarousel> {
                                   Get.find<HomeViewModel>()
                                       .productSliderList[index]
                                       .title!,
-                                  style:
-                                      Theme.of(context).textTheme.labelMedium,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelMedium!
+                                      .copyWith(color: Colors.black),
                                 ),
                                 const Gap(10),
                                 SizedBox(
@@ -98,10 +109,11 @@ class _OfferCarouselState extends State<OfferCarousel> {
                                           .textTheme
                                           .labelSmall!
                                           .copyWith(
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 13),
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 13,
+                                          ),
                                     ),
                                   ),
                                 )

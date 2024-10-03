@@ -22,7 +22,7 @@ class _AllProductViewState extends State<AllProductView> {
       body: GridViewLayout(
         length: widget.elementList.length,
         mainAxisExtent: 200,
-        crossAxisExtent : 200,
+        crossAxisExtent: 200,
         child: (index) {
           return ProductCard(
             productList: widget.elementList[index],

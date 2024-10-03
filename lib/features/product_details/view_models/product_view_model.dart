@@ -94,6 +94,7 @@ class ProductViewModel extends GetxController {
           _productColorList =
               getProductColors(productDetailsModel.data![0].color.toString());
           _productData = productDetailsModel.data![0].product;
+          _productData?.description = productDetailsModel.data![0].des;
           _responseStatus = true;
         }
       } catch (exception) {
@@ -147,7 +148,7 @@ class ProductViewModel extends GetxController {
 
   List<int> getProductColors(String color) {
     Map<String, int> colorCodes = {
-      "red": 0xFF890104,
+      "red": 0xFFE71A23,
       "green": 0xFF007C00,
       "white": 0xFFD9D9D9
     };

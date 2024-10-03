@@ -1,3 +1,4 @@
+import 'package:crafty_bay/core/utils/product_rating_calculator.dart';
 import 'package:crafty_bay/core/view_model/profile_view_model.dart';
 import 'package:crafty_bay/core/widgets/small_icon_card.dart';
 import 'package:crafty_bay/features/product_details/models/product.dart';
@@ -34,7 +35,7 @@ class ProductBody extends StatelessWidget {
                   style: Theme.of(context)
                       .textTheme
                       .titleMedium!
-                      .copyWith(fontSize: 18),
+                      .copyWith(fontSize: 17),
                 ),
               ),
               Expanded(
@@ -91,7 +92,9 @@ class ProductBody extends StatelessWidget {
                 color: AppColor.ratingIconColor,
               ),
               Text(
-                product.star.toString(),
+                ProductRatingCalculator()
+                    .getProductRating(product.star ?? 0.0)
+                    .toStringAsFixed(1),
                 style: Theme.of(context).textTheme.labelSmall!,
               ),
               const Gap(15),
