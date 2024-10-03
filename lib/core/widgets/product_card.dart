@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:crafty_bay/common/view_model/profile_view_model.dart';
-import 'package:crafty_bay/common/widgets/circular_loading.dart';
-import 'package:crafty_bay/common/widgets/product_rating.dart';
-import 'package:crafty_bay/common/widgets/small_icon_card.dart';
+import 'package:crafty_bay/core/view_model/profile_view_model.dart';
+import 'package:crafty_bay/core/widgets/circular_loading.dart';
+import 'package:crafty_bay/core/widgets/product_rating.dart';
+import 'package:crafty_bay/core/widgets/small_icon_card.dart';
 import 'package:crafty_bay/features/product_details/views/product_details_view/product_details_view.dart';
 import 'package:crafty_bay/features/wish_list/view_model/wish_list_view_model.dart';
 import 'package:crafty_bay/themes/app_color.dart';
@@ -53,9 +53,8 @@ class ProductCard extends StatelessWidget {
                 Expanded(
                   flex: 2,
                   child: Container(
-                    padding: const EdgeInsets.all(15),
                     decoration: BoxDecoration(
-                      color: AppColor.appSecondaryColor,
+                      color: AppColor.productCardImageBackgroundColor,
                       borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(15),
                         topRight: Radius.circular(15),
@@ -64,7 +63,7 @@ class ProductCard extends StatelessWidget {
                     alignment: Alignment.center,
                     child: CachedNetworkImage(
                       imageUrl: productList.image,
-                      fit: BoxFit.contain,
+                      fit: BoxFit.cover,
                       placeholder: (context, _) {
                         return const CircularLoading();
                       },

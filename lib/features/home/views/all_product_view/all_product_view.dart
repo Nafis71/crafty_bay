@@ -1,6 +1,6 @@
-import 'package:crafty_bay/common/widgets/crafty_app_bar.dart';
-import 'package:crafty_bay/common/widgets/grid_view_layout.dart';
-import 'package:crafty_bay/common/widgets/product_card.dart';
+import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
+import 'package:crafty_bay/core/widgets/grid_view_layout.dart';
+import 'package:crafty_bay/core/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 
 class AllProductView extends StatefulWidget {

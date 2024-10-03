@@ -1,4 +1,4 @@
-import 'package:crafty_bay/common/widgets/product_card.dart';
+import 'package:crafty_bay/core/widgets/product_card.dart';
 import 'package:crafty_bay/features/base_navigation/view_model/base_navigation_view_model.dart';
 import 'package:crafty_bay/features/category/view_model/category_view_model.dart';
 import 'package:crafty_bay/features/home/models/remark_product_model/remark_product_data.dart';
@@ -13,8 +13,8 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../../../common/widgets/category_card.dart';
-import '../../../../common/widgets/crafty_app_bar.dart';
+import '../../../../core/widgets/category_card.dart';
+import '../../../../core/widgets/crafty_app_bar.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});

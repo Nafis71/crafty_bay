@@ -3,7 +3,7 @@ import 'package:crafty_bay/features/category/models/category_product_model/categ
 import 'package:crafty_bay/features/category/services/category_service.dart';
 import 'package:get/get.dart';
 
-import '../../../common/services/response/success.dart';
+import '../../../core/services/response/success.dart';
 import '../models/category_model/category_data.dart';
 import '../models/category_model/category_list_model.dart';
 

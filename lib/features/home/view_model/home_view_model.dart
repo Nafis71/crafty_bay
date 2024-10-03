@@ -1,4 +1,4 @@
-import 'package:crafty_bay/common/services/response/success.dart';
+import 'package:crafty_bay/core/services/response/success.dart';
 import 'package:crafty_bay/features/home/models/product_slider_model/product_slider.dart';
 import 'package:crafty_bay/features/home/models/remark_product_model/remark_product_data.dart';
 import 'package:crafty_bay/features/home/models/remark_product_model/remark_product_model.dart';

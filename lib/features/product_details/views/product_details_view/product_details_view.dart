@@ -1,13 +1,13 @@
 import 'dart:async';
 
-import 'package:crafty_bay/common/services/internet_service_error.dart';
-import 'package:crafty_bay/common/services/response/failure.dart';
-import 'package:crafty_bay/common/services/user_auth_service/user_auth_service.dart';
-import 'package:crafty_bay/common/view_model/profile_view_model.dart';
-import 'package:crafty_bay/common/widgets/alternative_widget.dart';
-import 'package:crafty_bay/common/widgets/circular_loading.dart';
-import 'package:crafty_bay/common/widgets/crafty_app_bar.dart';
-import 'package:crafty_bay/common/widgets/view_footer.dart';
+import 'package:crafty_bay/core/services/internet_service_error.dart';
+import 'package:crafty_bay/core/services/response/failure.dart';
+import 'package:crafty_bay/core/services/user_auth_service/user_auth_service.dart';
+import 'package:crafty_bay/core/view_model/profile_view_model.dart';
+import 'package:crafty_bay/core/widgets/alternative_widget.dart';
+import 'package:crafty_bay/core/widgets/circular_loading.dart';
+import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
+import 'package:crafty_bay/core/widgets/view_footer.dart';
 import 'package:crafty_bay/features/product_details/view_models/product_view_model.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_body.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_description.dart';

@@ -1,4 +1,4 @@
-import 'package:crafty_bay/common/services/response/failure.dart';
+import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../utils/app_strings.dart';

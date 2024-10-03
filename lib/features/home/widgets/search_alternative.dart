@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import '../../../common/widgets/alternative_widget.dart';
+import '../../../core/widgets/alternative_widget.dart';
 
 class SearchAlternative extends StatelessWidget {
   final String message;

@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../../common/widgets/small_icon_card.dart';
+import '../../../core/widgets/small_icon_card.dart';
 
 class CartListCard extends StatelessWidget {
   final CartData cartData;

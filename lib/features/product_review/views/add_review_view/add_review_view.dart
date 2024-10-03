@@ -1,7 +1,7 @@
-import 'package:crafty_bay/common/services/internet_service_error.dart';
-import 'package:crafty_bay/common/services/response/failure.dart';
-import 'package:crafty_bay/common/view_model/profile_view_model.dart';
-import 'package:crafty_bay/common/widgets/crafty_app_bar.dart';
+import 'package:crafty_bay/core/services/internet_service_error.dart';
+import 'package:crafty_bay/core/services/response/failure.dart';
+import 'package:crafty_bay/core/view_model/profile_view_model.dart';
+import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/features/product_review/view_model/product_review_view_model.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:crafty_bay/utils/form_validation.dart';
@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../../../common/widgets/circular_loading.dart';
+import '../../../../core/widgets/circular_loading.dart';
 
 class AddReviewView extends StatefulWidget {
   final int productId;

@@ -1,5 +1,5 @@
-import 'package:crafty_bay/common/services/network_repository.dart';
-import 'package:crafty_bay/common/services/network_urls/network_urls.dart';
+import 'package:crafty_bay/core/services/network_repository.dart';
+import 'package:crafty_bay/core/services/network_urls/network_urls.dart';
 
 class CartService extends NetworkRepository {
   static CartService? _instance;

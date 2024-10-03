@@ -1,9 +1,9 @@
-import 'package:crafty_bay/common/services/internet_service_error.dart';
-import 'package:crafty_bay/common/services/response/failure.dart';
-import 'package:crafty_bay/common/services/response/success.dart';
-import 'package:crafty_bay/common/widgets/alternative_widget.dart';
-import 'package:crafty_bay/common/widgets/crafty_app_bar.dart';
-import 'package:crafty_bay/common/widgets/grid_view_layout.dart';
+import 'package:crafty_bay/core/services/internet_service_error.dart';
+import 'package:crafty_bay/core/services/response/failure.dart';
+import 'package:crafty_bay/core/services/response/success.dart';
+import 'package:crafty_bay/core/widgets/alternative_widget.dart';
+import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
+import 'package:crafty_bay/core/widgets/grid_view_layout.dart';
 import 'package:crafty_bay/features/category/view_model/category_view_model.dart';
 import 'package:crafty_bay/utils/app_assets.dart';
 import 'package:crafty_bay/wrappers/svg_image_loader.dart';
@@ -11,8 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../../../common/widgets/circular_loading.dart';
-import '../../../../common/widgets/product_card.dart';
+import '../../../../core/widgets/circular_loading.dart';
+import '../../../../core/widgets/product_card.dart';
 
 class CategoryProductView extends StatefulWidget {
   final int categoryId;

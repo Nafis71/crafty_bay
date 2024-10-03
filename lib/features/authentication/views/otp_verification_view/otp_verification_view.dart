@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:crafty_bay/common/services/internet_service_error.dart';
-import 'package:crafty_bay/common/services/response/failure.dart';
-import 'package:crafty_bay/common/widgets/authentication_layout.dart';
+import 'package:crafty_bay/core/services/internet_service_error.dart';
+import 'package:crafty_bay/core/services/response/failure.dart';
+import 'package:crafty_bay/core/widgets/authentication_layout.dart';
 import 'package:crafty_bay/features/authentication/view_model/auth_view_model.dart';
 import 'package:crafty_bay/themes/app_color.dart';
 import 'package:crafty_bay/themes/pin_code_theme.dart';

@@ -3,7 +3,7 @@ import 'package:crafty_bay/features/home/models/remark_product_model/remark_prod
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import '../../../common/widgets/product_rating.dart';
+import '../../../core/widgets/product_rating.dart';
 import '../../product_details/views/product_details_view/product_details_view.dart';
 
 class SearchResult extends StatelessWidget {
