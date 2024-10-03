@@ -181,6 +181,7 @@ class ProductViewModel extends GetxController {
     _carouselImageList.clear();
     _productSizeList.clear();
     _productColorList.clear();
+    _productData = null;
     selectedSize = 0;
     selectedColor = 0;
     _productQuantity = 1;

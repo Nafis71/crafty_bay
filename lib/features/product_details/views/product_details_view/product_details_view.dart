@@ -171,7 +171,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
   Future<void> loadProductDetails() async {
     bool status =
         await Get.find<ProductViewModel>().getProductDetails(widget.productId);
-    if (!status && mounted) {
+    if (!status && mounted && Get.find<ProductViewModel>().response is Failure) {
       InternetServiceError.showErrorSnackBar(
         failure: Get.find<ProductViewModel>().response as Failure,
         context: context,
