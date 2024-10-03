@@ -59,7 +59,6 @@ class NetworkRepository {
   }
 
   Object getResponse(Response response) {
-    log(response.statusCode.toString());
     if (response.statusCode == 200) {
       return Success(
         response: jsonDecode(response.body),

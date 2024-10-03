@@ -143,7 +143,6 @@ class ProductViewModel extends GetxController {
   }
 
   List<String> getProductSizes(String size) {
-    print(size);
     return size.split(",");
   }
 

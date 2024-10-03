@@ -28,21 +28,21 @@ class _OfferCarouselState extends State<OfferCarousel> {
               margin:
                   const EdgeInsets.only(left: 5, right: 5, bottom: 10, top: 7),
               decoration: BoxDecoration(
-                  image:
-                      DecorationImage(image: imageProvider, fit: BoxFit.cover),
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(15),
-                    topRight: Radius.circular(45),
-                    bottomLeft: Radius.circular(15),
-                    bottomRight: Radius.circular(45),
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.black.withOpacity(0.04),
-                        spreadRadius: 2,
-                        blurRadius: 10,
-                        offset: const Offset(0, 2))
-                  ]),
+                image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(15),
+                  topRight: Radius.circular(45),
+                  bottomLeft: Radius.circular(15),
+                  bottomRight: Radius.circular(45),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black.withOpacity(0.04),
+                      spreadRadius: 2,
+                      blurRadius: 10,
+                      offset: const Offset(0, 2))
+                ],
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
