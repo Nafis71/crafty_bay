@@ -3,6 +3,7 @@ import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/view_model/profile_view_model.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/features/product_review/view_model/product_review_view_model.dart';
+import 'package:crafty_bay/features/product_review/widgets/product_review_rating_bar.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:crafty_bay/utils/form_validation.dart';
 import 'package:crafty_bay/wrappers/app_snack_bar.dart';
@@ -78,6 +79,10 @@ class _AddReviewViewState extends State<AddReviewView> {
                       validator: FormValidation.validateReview,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                     ),
+                    const Gap(20),
+                    Text("Give Rating"),
+                    const Gap(10),
+                    ProductReviewRatingBar.show(),
                     const Gap(30),
                     GetBuilder<ProductReviewViewModel>(
                         builder: (productReviewViewModel) {
@@ -113,8 +118,6 @@ class _AddReviewViewState extends State<AddReviewView> {
       productId: widget.productId,
       token: Get.find<ProfileViewModel>().token,
       review: _reviewTEController.text.trim(),
-      firstName: _firstNameTEController.text.trim(),
-      lastName: _lastNameTEController.text.trim(),
     );
     if (status && mounted) {
       AppSnackBar.show(

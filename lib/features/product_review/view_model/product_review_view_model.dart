@@ -9,10 +9,15 @@ class ProductReviewViewModel extends GetxController {
   bool _responseStatus = false;
   List<ProductReviewModel> _productReviewList = [];
   Object? response;
+  int _productRating = 3;
 
   bool get isBusy => _isBusy;
 
   bool get isCreatingReview => _isCreatingReview;
+
+  set setProductRating(int productRating) {
+    _productRating = productRating;
+  }
 
   List<ProductReviewModel> get productReviewList => _productReviewList;
 
@@ -40,15 +45,14 @@ class ProductReviewViewModel extends GetxController {
     required int productId,
     required String token,
     required String review,
-    required String firstName,
-    required String lastName,
   }) async {
     _responseStatus = false;
     _isCreatingReview = true;
     update();
     Map<String, dynamic> reviewJson = {
       "description": review,
-      "product_id": productId
+      "product_id": productId,
+      "rating": _productRating
     };
     response = await ProductReviewService().createReview(
       token,
