@@ -62,8 +62,8 @@ class CartViewModel extends GetxController {
             (productTotalPrice + productUnitPrice).toString();
       }
       calculateTotalCartPrice();
-      update();
       _responseStatus = true;
+      update();
     }
     return _responseStatus;
   }

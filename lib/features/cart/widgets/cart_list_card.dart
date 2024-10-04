@@ -6,6 +6,7 @@ import 'package:crafty_bay/core/widgets/circular_loading.dart';
 import 'package:crafty_bay/features/cart/models/cart_list_model/cart_data.dart';
 import 'package:crafty_bay/features/cart/models/cart_list_model/cart_product_data.dart';
 import 'package:crafty_bay/features/cart/view_model/cart_view_model.dart';
+import 'package:crafty_bay/features/cart/widgets/loading_dialog.dart';
 import 'package:crafty_bay/features/product_details/views/product_details_view/product_details_view.dart';
 import 'package:crafty_bay/utils/app_assets.dart';
 import 'package:flutter/cupertino.dart';
@@ -172,27 +173,13 @@ class CartListCard extends StatelessWidget {
 
   Future<void> updateCartItem(
       {required bool isIncrement, required BuildContext context}) async {
-    if(!isIncrement && int.parse(cartData.qty!) <= 1){
+    if (!isIncrement && int.parse(cartData.qty!) <= 1) {
       return;
     }
     BuildContext? alertDialogContext;
-    showDialog(
-        context: context,
-        barrierColor: Colors.black.withOpacity(0.05),
-        builder: (alertContext) {
-          alertDialogContext = alertContext;
-          return SizedBox(
-            child: FittedBox(
-              child: AlertDialog(
-                contentPadding: const EdgeInsets.all(0),
-                backgroundColor: Colors.transparent,
-                content: Center(
-                    child: Lottie.asset(AppAssets.cartLottie,
-                        fit: BoxFit.contain, width: 70, height: 60)),
-              ),
-            ),
-          );
-        });
+    alertDialogContext = await LoadingDialog.show(
+      mainViewContext: context,
+    );
     bool status = await Get.find<CartViewModel>().updateCartList(
       index,
       Get.find<ProfileViewModel>().token,
@@ -205,6 +192,8 @@ class CartListCard extends StatelessWidget {
         context: context,
       );
     }
-    Navigator.pop(alertDialogContext!);
+    if (alertDialogContext != null) {
+      Navigator.pop(alertDialogContext);  // Close the dialog using the returned context
+    }
   }
 }
