@@ -34,7 +34,7 @@ class ProfileViewModel extends GetxController {
     _userModel = userModel;
   }
 
-  Future<bool> validateToken() async {
+  Future<bool> isTokenExpired() async {
     SharedPreferences localStorage = await SharedPreferences.getInstance();
     String? token = localStorage.getString("token");
     if (token == null || JwtDecoder.isExpired(token)) {
@@ -88,7 +88,7 @@ class ProfileViewModel extends GetxController {
     _responseStatus = false;
     setIsBusy = true;
     Map<String, String> json = {
-      "cus_name": firstName + lastName,
+      "cus_name": "${firstName} ${lastName}",
       "cus_add": shippingAddress,
       "cus_city": city,
       "cus_state": city,

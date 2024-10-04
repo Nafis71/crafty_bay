@@ -127,7 +127,8 @@ class _CartViewState extends State<CartView> {
                   itemBuilder: (context, index) {
                     return CartListCard(
                       cartData: cartViewModel.cartList[index],
-                      productData: cartViewModel.cartList[index].cartProductData!,
+                      productData:
+                          cartViewModel.cartList[index].cartProductData!,
                       index: index,
                       onDeletePressed: (int cardId, int index) {
                         deleteCartItem(cardId, index);
@@ -188,6 +189,12 @@ class _CartViewState extends State<CartView> {
 
   Future<void> getCartList() async {
     CartViewModel cartViewModel = Get.find<CartViewModel>();
+    ProfileViewModel profileViewModel = Get.find<ProfileViewModel>();
+    if (await profileViewModel.isTokenExpired()) {
+      profileViewModel.setToken = "";
+      cartViewModel.update();
+      return;
+    }
     if (cartViewModel.cartList.isNotEmpty ||
         Get.find<ProfileViewModel>().token.isEmpty) {
       return;

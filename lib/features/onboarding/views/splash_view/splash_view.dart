@@ -94,7 +94,7 @@ class _SplashViewState extends State<SplashView> {
     isLoading = true;
     List<bool> result = await PrefetchService.prefetchData();
     if (!result.contains(false) && mounted) {
-      if (!await Get.find<ProfileViewModel>().validateToken()) {
+      if (!await Get.find<ProfileViewModel>().isTokenExpired()) {
         await PrefetchService.prefetchProductWishList(
             Get.find<ProfileViewModel>().token);
       }
