@@ -80,7 +80,7 @@ class _AddReviewViewState extends State<AddReviewView> {
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                     ),
                     const Gap(20),
-                    Text("Give Rating"),
+                    Text(AppStrings.ratingBarHeaderText),
                     const Gap(10),
                     ProductReviewRatingBar.show(),
                     const Gap(30),
