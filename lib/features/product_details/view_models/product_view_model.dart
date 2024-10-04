@@ -1,4 +1,5 @@
 import 'package:crafty_bay/core/services/response/success.dart';
+import 'package:crafty_bay/features/cart/services/cart_service.dart';
 import 'package:crafty_bay/features/cart/view_model/cart_view_model.dart';
 import 'package:crafty_bay/features/product_details/models/product.dart';
 import 'package:crafty_bay/features/product_details/models/product_details_model.dart';
@@ -125,7 +126,7 @@ class ProductViewModel extends GetxController {
       "size": getSizeText(selectedSize),
       "qty": _productQuantity
     };
-    cartResponse = await ProductService().createCartList(token, cartJson);
+    cartResponse = await CartService().createCartList(token, cartJson);
     if (cartResponse is Success) {
       await Get.find<CartViewModel>().getCartList(token);
       _responseStatus = true;

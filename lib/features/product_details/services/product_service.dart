@@ -13,13 +13,4 @@ class ProductService extends NetworkRepository {
       url: "${NetworkUrls.productDetailsById}/$productId",
     );
   }
-
-  Future<Object> createCartList(
-      String token, Map<String, dynamic> cartJson) async {
-    return await postRequest(
-      url: NetworkUrls.createCartList,
-      headers: {"content-type": "Application/json", "token": token},
-      body: cartJson,
-    );
-  }
 }

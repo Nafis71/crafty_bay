@@ -11,4 +11,8 @@ class AppAssets {
   static const String categoryIcon = "$iconDirectory/category.svg";
   static const String cartIcon = "$iconDirectory/cart.svg";
   static const String giftIcon = "$iconDirectory/gift.svg";
+
+  //lotties
+  static const String lottieDirectory = "$baseDirectory/lotties";
+  static const String cartLottie = "$lottieDirectory/cart_lottie.json";
 }

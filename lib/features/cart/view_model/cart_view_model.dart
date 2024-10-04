@@ -29,13 +29,42 @@ class CartViewModel extends GetxController {
           (response as Success).response as Map<String, dynamic>);
       for (CartData cartData in cartListModel.cartData!) {
         _cartList.add(cartData);
-        totalPrice += int.parse(cartData.price.toString());
       }
       _cartList = _cartList.reversed.toList();
+      calculateTotalCartPrice();
       _responseStatus = true;
     }
     _isBusy = false;
     update();
+    return _responseStatus;
+  }
+
+  Future<bool> updateCartList(int index, String token, bool isIncrement) async {
+    _responseStatus = false;
+    int productQuantity = int.parse(cartList[index].qty!);
+    Map<String, dynamic> cartJson = {
+      "product_id": cartList[index].productId!,
+      "color": cartList[index].color,
+      "size": cartList[index].size,
+      "qty": (isIncrement) ? productQuantity + 1 : productQuantity - 1
+    };
+    response = await CartService().createCartList(token, cartJson);
+    if (response is Success) {
+      int productUnitPrice = int.parse(cartList[index].cartProductData!.price!);
+      int productTotalPrice = int.parse(cartList[index].price!);
+      if (!isIncrement) {
+        cartList[index].qty = (productQuantity - 1).toString();
+        cartList[index].price =
+            (productTotalPrice - productUnitPrice).toString();
+      } else {
+        cartList[index].qty = (productQuantity + 1).toString();
+        cartList[index].price =
+            (productTotalPrice + productUnitPrice).toString();
+      }
+      calculateTotalCartPrice();
+      update();
+      _responseStatus = true;
+    }
     return _responseStatus;
   }
 
@@ -61,4 +90,12 @@ class CartViewModel extends GetxController {
     }
     return _responseStatus;
   }
+
+  void calculateTotalCartPrice(){
+    totalPrice = 0;
+    for(CartData cartData in cartList){
+      totalPrice += int.parse(cartData.price!);
+    }
+  }
+
 }
