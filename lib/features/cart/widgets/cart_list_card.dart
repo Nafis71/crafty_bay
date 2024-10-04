@@ -2,18 +2,15 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:crafty_bay/core/services/internet_service_error.dart';
 import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/view_model/profile_view_model.dart';
-import 'package:crafty_bay/core/widgets/circular_loading.dart';
 import 'package:crafty_bay/features/cart/models/cart_list_model/cart_data.dart';
 import 'package:crafty_bay/features/cart/models/cart_list_model/cart_product_data.dart';
 import 'package:crafty_bay/features/cart/view_model/cart_view_model.dart';
 import 'package:crafty_bay/features/cart/widgets/loading_dialog.dart';
 import 'package:crafty_bay/features/product_details/views/product_details_view/product_details_view.dart';
-import 'package:crafty_bay/utils/app_assets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
 
 import '../../../core/widgets/small_icon_card.dart';
 
@@ -192,8 +189,6 @@ class CartListCard extends StatelessWidget {
         context: context,
       );
     }
-    if (alertDialogContext != null) {
-      Navigator.pop(alertDialogContext);  // Close the dialog using the returned context
-    }
+    Navigator.pop(alertDialogContext);
   }
 }
