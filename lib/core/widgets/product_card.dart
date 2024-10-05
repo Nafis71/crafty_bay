@@ -115,6 +115,10 @@ class ProductCard extends StatelessWidget {
                                   onTap: () {
                                     if (wishListViewModel.wishListProductId
                                         .contains(productList.id)) {
+                                      wishListViewModel.removeWishList(
+                                        Get.find<ProfileViewModel>().token,
+                                        productList.id,
+                                      );
                                       return;
                                     }
                                     wishListViewModel.createWishList(

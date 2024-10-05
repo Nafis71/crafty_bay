@@ -1,33 +1,27 @@
-class WishListModel {
-  int? id;
-  String? email;
-  int? productId;
-  String? createdAt;
-  String? updatedAt;
+import 'package:crafty_bay/features/wish_list/models/WishListData.dart';
 
-  WishListModel({
-    this.id,
-    this.email,
-    this.productId,
-    this.createdAt,
-    this.updatedAt,
-  });
+class WishListModel {
+  String? msg;
+  List<WishListData>? wishListData;
+
+  WishListModel({this.msg, this.wishListData});
 
   WishListModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    email = json['email'];
-    productId = json['product_id'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
+    msg = json['msg'];
+    if (json['data'] != null) {
+      wishListData = <WishListData>[];
+      json['data'].forEach((v) {
+        wishListData!.add(new WishListData.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['email'] = email;
-    data['product_id'] = productId;
-    data['created_at'] = createdAt;
-    data['updated_at'] = updatedAt;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['msg'] = this.msg;
+    if (this.wishListData != null) {
+      data['data'] = this.wishListData!.map((v) => v.toJson()).toList();
+    }
     return data;
   }
 }

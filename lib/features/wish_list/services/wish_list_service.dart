@@ -21,4 +21,11 @@ class WishListService extends NetworkRepository {
       headers: {"token": token},
     );
   }
+
+  Future<Object> removeWishList(String token, int id) async {
+    return await getRequest(
+      url: "${NetworkUrls.removeWishList}/$id",
+      headers: {"token": token},
+    );
+  }
 }

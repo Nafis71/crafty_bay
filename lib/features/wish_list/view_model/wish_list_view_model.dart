@@ -1,15 +1,19 @@
 import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/services/response/success.dart';
+import 'package:crafty_bay/features/cart/services/cart_service.dart';
 import 'package:crafty_bay/features/product_details/models/product.dart';
 import 'package:crafty_bay/features/product_details/services/product_service.dart';
+import 'package:crafty_bay/features/wish_list/models/WishListData.dart';
+import 'package:crafty_bay/features/wish_list/models/WishListProductData.dart';
 import 'package:crafty_bay/features/wish_list/models/wish_list_model.dart';
 import 'package:crafty_bay/features/wish_list/services/wish_list_service.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
 class WishListViewModel extends GetxController {
   Object? response;
   final List<int> _wishListProductId = [];
-  final List<Product> _productWishList = [];
+  final List<WishListProductData> _wishListProductData = [];
   bool _isBusy = false;
   bool _responseStatus = false;
 
@@ -17,7 +21,7 @@ class WishListViewModel extends GetxController {
 
   List<int> get wishListProductId => _wishListProductId;
 
-  List<Product> get productWishList => _productWishList;
+  List<WishListProductData> get productWishList => _wishListProductData;
 
   Future<void> createWishList(int productId, String token) async {
     _responseStatus = false;
@@ -30,7 +34,7 @@ class WishListViewModel extends GetxController {
       update();
       return;
     }
-    await getProductData(productId);
+    await getWishList(token);
     update();
   }
 
@@ -40,15 +44,15 @@ class WishListViewModel extends GetxController {
     _isBusy = true;
     response = await WishListService().getWishList(token);
     if (response is Success) {
-      _productWishList.clear();
+      _wishListProductData.clear();
       _wishListProductId.clear();
       Map<String, dynamic> jsonData =
           (response as Success).response as Map<String, dynamic>;
       List<dynamic> listOfWishList = jsonData['data'];
       for (Map<String, dynamic> wishList in listOfWishList) {
-        WishListModel wishListModel = WishListModel.fromJson(wishList);
-        _wishListProductId.add(wishListModel.productId!);
-        await getProductData(wishListModel.productId!);
+        WishListData wishListData = WishListData.fromJson(wishList);
+        _wishListProductId.add(wishListData.productId!);
+        _wishListProductData.add(wishListData.wishListProductData!);
       }
       _responseStatus = true;
     }
@@ -57,13 +61,30 @@ class WishListViewModel extends GetxController {
     return _responseStatus;
   }
 
-  Future<void> getProductData(int productId) async {
-    response = await ProductService().getProductDetails(productId.toString());
-    if (response is Success) {
-      Map<String, dynamic> jsonData =
-          (response as Success).response as Map<String, dynamic>;
-      Map<String, dynamic> productJson = jsonData['data'][0]['product'];
-      _productWishList.add(Product.fromJson(productJson));
+  Future<bool> removeWishList(String token, int productId) async {
+    _responseStatus = false;
+    try {
+      WishListProductData tempWishListProductData = _wishListProductData
+          .firstWhere((productData) => productData.id == productId);
+      _wishListProductData
+          .removeWhere((productData) => productData.id == productId);
+      _wishListProductId.removeWhere((productId) => productId == productId);
+      update();
+      response = await WishListService().removeWishList(token, productId);
+      if (response is Failure) {
+        _wishListProductData.insert(0, tempWishListProductData);
+        _wishListProductId.add(productId);
+      } else {
+        _responseStatus = true;
+      }
+    } catch (exception) {
+      if (kDebugMode) {
+        debugPrint(exception.toString());
+      }
+      update();
+      return _responseStatus;
     }
+    update();
+    return _responseStatus;
   }
 }

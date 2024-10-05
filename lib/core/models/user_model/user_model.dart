@@ -61,7 +61,7 @@ class UserModel {
     shipPostcode = json['ship_postcode'];
     shipCountry = json['ship_country'];
     shipPhone = json['ship_phone'];
-    userId = json['user_id'];
+    userId = int.parse(json['user_id'].toString());
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     user = json['user'] != null ? new User.fromJson(json['user']) : null;
