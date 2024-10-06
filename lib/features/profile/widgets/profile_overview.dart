@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-
 import '../../../utils/app_assets.dart';
 import '../../base_navigation/view_model/base_navigation_view_model.dart';
 import '../../cart/view_model/cart_view_model.dart';
@@ -20,7 +19,7 @@ class ProfileOverview extends StatelessWidget {
       children: [
         Expanded(
           child: CircleAvatar(
-            radius: 40,
+            radius: 35,
             backgroundColor: Colors.grey.shade100,
             child: Center(
               child: Lottie.asset(

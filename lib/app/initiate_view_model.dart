@@ -17,10 +17,10 @@ class InitiateViewModel extends Bindings {
     Get.lazyPut(() => CountdownTimer());
     Get.lazyPut(() => BaseNavigationViewModel());
     Get.lazyPut(() => CategoryViewModel());
-    Get.lazyPut(() => ProductViewModel());
     Get.lazyPut(() => ProductReviewViewModel());
     Get.lazyPut(() => ProductViewModel());
-    Get.lazyPut(() => CartViewModel());
+    Get.put(ProductViewModel());
+    Get.put(CartViewModel());
     Get.put(HomeViewModel());
     Get.put(WishListViewModel());
     Get.put(AuthViewModel());

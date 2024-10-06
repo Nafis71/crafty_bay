@@ -2,6 +2,7 @@ import 'package:crafty_bay/core/services/prefetch_service.dart';
 import 'package:crafty_bay/core/view_model/connection_view_model.dart';
 import 'package:crafty_bay/core/view_model/profile_view_model.dart';
 import 'package:crafty_bay/core/widgets/circular_loading.dart';
+import 'package:crafty_bay/features/cart/view_model/cart_view_model.dart';
 import 'package:crafty_bay/utils/app_assets.dart';
 import 'package:crafty_bay/utils/app_routes.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
@@ -99,6 +100,7 @@ class _SplashViewState extends State<SplashView> {
             Get.find<ProfileViewModel>().token);
       }
       await Get.find<ProfileViewModel>().loadUserDataFromStorage();
+      Get.find<CartViewModel>().getCartList(Get.find<ProfileViewModel>().token);
       Navigator.pushNamed(context, AppRoutes.baseNavigationView);
     }
   }

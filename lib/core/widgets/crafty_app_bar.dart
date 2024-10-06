@@ -1,3 +1,4 @@
+import 'package:crafty_bay/features/cart/view_model/cart_view_model.dart';
 import 'package:crafty_bay/themes/app_color.dart';
 import 'package:crafty_bay/utils/app_assets.dart';
 import 'package:crafty_bay/utils/app_routes.dart';
@@ -50,7 +51,9 @@ AppBar craftyAppBar({
                 if (await Get.find<ProfileViewModel>().isTokenExpired()) {
                   navigator!.pushNamed(
                     AppRoutes.loginView,
-                    arguments: (token) async {},
+                    arguments: (token) async {
+                      Get.find<CartViewModel>().getCartList(token);
+                    },
                   );
                   return;
                 }
