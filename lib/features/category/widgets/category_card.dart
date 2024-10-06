@@ -45,10 +45,8 @@ class CategoryCard extends StatelessWidget {
           ),
         ),
         const Gap(3),
-        Text(
-          categoryData.categoryName!,
-          style: Theme.of(context).textTheme.bodyMedium
-        )
+        Text(categoryData.categoryName!,
+            style: Theme.of(context).textTheme.bodyMedium)
       ],
     );
   }

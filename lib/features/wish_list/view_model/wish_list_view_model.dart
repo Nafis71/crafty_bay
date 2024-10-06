@@ -1,11 +1,7 @@
 import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/services/response/success.dart';
-import 'package:crafty_bay/features/cart/services/cart_service.dart';
-import 'package:crafty_bay/features/product_details/models/product.dart';
-import 'package:crafty_bay/features/product_details/services/product_service.dart';
 import 'package:crafty_bay/features/wish_list/models/WishListData.dart';
 import 'package:crafty_bay/features/wish_list/models/WishListProductData.dart';
-import 'package:crafty_bay/features/wish_list/models/wish_list_model.dart';
 import 'package:crafty_bay/features/wish_list/services/wish_list_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';

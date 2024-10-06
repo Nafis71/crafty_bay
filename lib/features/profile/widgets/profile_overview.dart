@@ -1,6 +1,4 @@
 import 'package:crafty_bay/core/view_model/profile_view_model.dart';
-import 'package:crafty_bay/features/home/view_model/home_view_model.dart';
-import 'package:crafty_bay/utils/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -53,7 +51,7 @@ class ProfileOverview extends StatelessWidget {
               Row(
                 children: [
                   InkWell(
-                    onTap: (){
+                    onTap: () {
                       navigator!.pop();
                       Get.find<BaseNavigationViewModel>().setIndex = 3;
                     },
@@ -67,7 +65,7 @@ class ProfileOverview extends StatelessWidget {
                   ),
                   Gap(10),
                   InkWell(
-                    onTap: (){
+                    onTap: () {
                       navigator!.pop();
                       Get.find<BaseNavigationViewModel>().setIndex = 2;
                     },

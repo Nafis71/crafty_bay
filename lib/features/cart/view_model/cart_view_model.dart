@@ -91,11 +91,10 @@ class CartViewModel extends GetxController {
     return _responseStatus;
   }
 
-  void calculateTotalCartPrice(){
+  void calculateTotalCartPrice() {
     totalPrice = 0;
-    for(CartData cartData in cartList){
+    for (CartData cartData in cartList) {
       totalPrice += int.parse(cartData.price!);
     }
   }
-
 }

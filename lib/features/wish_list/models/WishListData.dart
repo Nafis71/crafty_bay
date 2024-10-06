@@ -10,11 +10,11 @@ class WishListData {
 
   WishListData(
       {this.id,
-        this.productId,
-        this.userId,
-        this.createdAt,
-        this.updatedAt,
-        this.wishListProductData});
+      this.productId,
+      this.userId,
+      this.createdAt,
+      this.updatedAt,
+      this.wishListProductData});
 
   WishListData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -22,8 +22,9 @@ class WishListData {
     userId = json['user_id'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-    wishListProductData =
-    json['product'] != null ? new WishListProductData.fromJson(json['product']) : null;
+    wishListProductData = json['product'] != null
+        ? new WishListProductData.fromJson(json['product'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {

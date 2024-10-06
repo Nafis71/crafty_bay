@@ -4,7 +4,8 @@ import 'package:lottie/lottie.dart';
 import '../../../utils/app_assets.dart';
 
 class LoadingDialog {
-  static Future<BuildContext> show({required BuildContext mainViewContext}) async {
+  static Future<BuildContext> show(
+      {required BuildContext mainViewContext}) async {
     BuildContext? alertDialogContext;
     showDialog(
       context: mainViewContext,

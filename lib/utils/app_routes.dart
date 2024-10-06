@@ -37,7 +37,7 @@ class AppRoutes {
       AppRoutes.profileDetailView: (context) => const ProfileDetailView(),
       AppRoutes.baseNavigationView: (context) => const BaseNavigationView(),
       AppRoutes.profileView: (context) => const ProfileView(),
-      AppRoutes.wishListView : (context) => const WishListView(),
+      AppRoutes.wishListView: (context) => const WishListView(),
     };
     WidgetBuilder? builder = routes[routeSettings.name];
     return (builder != null) ? MaterialPageRoute(builder: builder) : null;

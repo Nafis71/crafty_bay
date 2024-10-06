@@ -46,8 +46,8 @@ AppBar craftyAppBar({
     actions: (title == null)
         ? [
             InkWell(
-              onTap: ()async{
-                if(await Get.find<ProfileViewModel>().isTokenExpired()){
+              onTap: () async {
+                if (await Get.find<ProfileViewModel>().isTokenExpired()) {
                   navigator!.pushNamed(
                     AppRoutes.loginView,
                     arguments: (token) async {},

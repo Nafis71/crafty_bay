@@ -56,14 +56,13 @@ class ProfileViewModel extends GetxController {
   Future<void> loadUserDataFromStorage() async {
     SharedPreferences localStorage = await SharedPreferences.getInstance();
     String? userData = localStorage.getString("userData").toString();
-    if(userData.isNotEmpty){
+    if (userData.isNotEmpty) {
       _userModel = UserModel.fromJson(
         jsonDecode(
           userData,
         ),
       );
     }
-
   }
 
   Future<bool> readProfile(Object response, String token) async {

@@ -19,8 +19,8 @@ class InitiateViewModel extends Bindings {
     Get.lazyPut(() => CategoryViewModel());
     Get.lazyPut(() => ProductViewModel());
     Get.lazyPut(() => ProductReviewViewModel());
-    Get.lazyPut(()=>ProductViewModel());
-    Get.lazyPut(()=>CartViewModel());
+    Get.lazyPut(() => ProductViewModel());
+    Get.lazyPut(() => CartViewModel());
     Get.put(HomeViewModel());
     Get.put(WishListViewModel());
     Get.put(AuthViewModel());

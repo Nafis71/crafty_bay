@@ -70,9 +70,8 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
                   descriptionText: AppStrings.otpVerificationScreenDescription,
                   formWidget: Padding(
                     padding: EdgeInsets.symmetric(
-                      horizontal: (deviceOrientation == Orientation.portrait)
-                          ? 0
-                          : 180,
+                      horizontal:
+                          (deviceOrientation == Orientation.portrait) ? 0 : 180,
                       vertical: 10,
                     ),
                     child: Form(
