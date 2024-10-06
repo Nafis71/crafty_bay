@@ -3,6 +3,7 @@ import 'package:crafty_bay/features/authentication/views/otp_verification_view/o
 import 'package:crafty_bay/features/authentication/views/profile_detail_view/profile_detail_screen.dart';
 import 'package:crafty_bay/features/base_navigation/views/base_navigation_view.dart';
 import 'package:crafty_bay/features/profile/views/profile_view.dart';
+import 'package:crafty_bay/features/wish_list/views/wish_list_view.dart';
 import 'package:flutter/material.dart';
 
 import '../features/onboarding/views/splash_view/splash_view.dart';
@@ -14,6 +15,7 @@ class AppRoutes {
   static const String profileDetailView = "/profileDetailScreen";
   static const String baseNavigationView = "/mainNavigationView";
   static const String profileView = "/profileView";
+  static const String wishListView = "/wishListView";
 
   static PageRoute? generateRoutes(RouteSettings routeSettings) {
     Map<String, WidgetBuilder> routes = {
@@ -35,6 +37,7 @@ class AppRoutes {
       AppRoutes.profileDetailView: (context) => const ProfileDetailView(),
       AppRoutes.baseNavigationView: (context) => const BaseNavigationView(),
       AppRoutes.profileView: (context) => const ProfileView(),
+      AppRoutes.wishListView : (context) => const WishListView(),
     };
     WidgetBuilder? builder = routes[routeSettings.name];
     return (builder != null) ? MaterialPageRoute(builder: builder) : null;
