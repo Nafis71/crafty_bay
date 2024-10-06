@@ -1,11 +1,8 @@
 import 'package:crafty_bay/core/view_model/profile_view_model.dart';
-import 'package:crafty_bay/core/widgets/alternative_widget.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/features/cart/view_model/cart_view_model.dart';
 import 'package:crafty_bay/features/wish_list/view_model/wish_list_view_model.dart';
 import 'package:crafty_bay/utils/app_assets.dart';
-import 'package:crafty_bay/utils/app_routes.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -40,16 +37,15 @@ class _ProfileViewState extends State<ProfileView> {
                   children: [
                     Expanded(
                       child: CircleAvatar(
-                        radius: 40,
-                        backgroundColor: Colors.grey.shade100,
-                        child: Center(
-                          child: Lottie.asset(
-                            AppAssets.userPlaceHolderLottie,
-                            fit: BoxFit.fill,
-                            width: 65,
-                          ),
-                        )
-                      ),
+                          radius: 40,
+                          backgroundColor: Colors.grey.shade100,
+                          child: Center(
+                            child: Lottie.asset(
+                              AppAssets.userPlaceHolderLottie,
+                              fit: BoxFit.fill,
+                              width: 65,
+                            ),
+                          )),
                     ),
                     Expanded(
                       flex: 3,
