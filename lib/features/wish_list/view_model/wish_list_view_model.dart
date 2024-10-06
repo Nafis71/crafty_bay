@@ -64,7 +64,7 @@ class WishListViewModel extends GetxController {
           .firstWhere((productData) => productData.id == productId);
       _wishListProductData
           .removeWhere((productData) => productData.id == productId);
-      _wishListProductId.removeWhere((productId) => productId == productId);
+      _wishListProductId.removeWhere((wishListProductId) => wishListProductId == productId);
       update();
       response = await WishListService().removeWishList(token, productId);
       if (response is Failure) {
@@ -73,6 +73,7 @@ class WishListViewModel extends GetxController {
       } else {
         _responseStatus = true;
       }
+      update();
     } catch (exception) {
       if (kDebugMode) {
         debugPrint(exception.toString());
@@ -80,7 +81,6 @@ class WishListViewModel extends GetxController {
       update();
       return _responseStatus;
     }
-    update();
     return _responseStatus;
   }
 }

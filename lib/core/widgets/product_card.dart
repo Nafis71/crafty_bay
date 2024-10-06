@@ -21,6 +21,7 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("Whole widget tree is building");
     return InkWell(
       splashColor: Colors.transparent,
       onTap: () {
@@ -111,6 +112,7 @@ class ProductCard extends StatelessWidget {
                             ),
                             GetBuilder<WishListViewModel>(
                               builder: (wishListViewModel) {
+                                print("only button is building");
                                 return InkWell(
                                   onTap: () {
                                     if (wishListViewModel.wishListProductId
