@@ -13,7 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/widgets/category_card.dart';
+import '../../../category/widgets/category_card.dart';
 import '../../../../core/widgets/crafty_app_bar.dart';
 
 class HomeView extends StatefulWidget {
