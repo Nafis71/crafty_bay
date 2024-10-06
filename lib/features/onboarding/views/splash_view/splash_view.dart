@@ -98,6 +98,7 @@ class _SplashViewState extends State<SplashView> {
         await PrefetchService.prefetchProductWishList(
             Get.find<ProfileViewModel>().token);
       }
+      await Get.find<ProfileViewModel>().loadUserDataFromStorage();
       Navigator.pushNamed(context, AppRoutes.baseNavigationView);
     }
   }

@@ -1,9 +1,13 @@
 import 'package:crafty_bay/themes/app_color.dart';
 import 'package:crafty_bay/utils/app_assets.dart';
+import 'package:crafty_bay/utils/app_routes.dart';
 import 'package:crafty_bay/wrappers/svg_image_loader.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
+
+import '../view_model/profile_view_model.dart';
 
 AppBar craftyAppBar({
   String? title,
@@ -38,10 +42,22 @@ AppBar craftyAppBar({
     elevation: (title == null || backgroundColor != null) ? 0 : 5,
     centerTitle: false,
     automaticallyImplyLeading: false,
-    toolbarHeight: (toolBarHeight != null) ? toolBarHeight : null,
+    toolbarHeight: toolBarHeight,
     actions: (title == null)
         ? [
-            actionItem(CupertinoIcons.person),
+            InkWell(
+              onTap: ()async{
+                if(await Get.find<ProfileViewModel>().isTokenExpired()){
+                  navigator!.pushNamed(
+                    AppRoutes.loginView,
+                    arguments: (token) async {},
+                  );
+                  return;
+                }
+                navigator?.pushNamed(AppRoutes.profileView);
+              },
+              child: actionItem(CupertinoIcons.person),
+            ),
             const Gap(10),
             actionItem(CupertinoIcons.phone),
             const Gap(10),

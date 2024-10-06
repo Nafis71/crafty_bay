@@ -15,4 +15,5 @@ class AppAssets {
   //lotties
   static const String lottieDirectory = "$baseDirectory/lotties";
   static const String cartLottie = "$lottieDirectory/cart_lottie.json";
+  static const String userPlaceHolderLottie = '$lottieDirectory/user.json';
 }
