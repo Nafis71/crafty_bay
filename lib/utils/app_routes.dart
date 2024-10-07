@@ -2,7 +2,8 @@ import 'package:crafty_bay/features/authentication/views/login_view/login_view.d
 import 'package:crafty_bay/features/authentication/views/otp_verification_view/otp_verification_view.dart';
 import 'package:crafty_bay/features/authentication/views/profile_detail_view/profile_detail_screen.dart';
 import 'package:crafty_bay/features/base_navigation/views/base_navigation_view.dart';
-import 'package:crafty_bay/features/profile/views/profile_view.dart';
+import 'package:crafty_bay/features/profile/views/profile_updation_view/profile_updation_view.dart';
+import 'package:crafty_bay/features/profile/views/profile_view/profile_view.dart';
 import 'package:crafty_bay/features/wish_list/views/wish_list_view.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +17,7 @@ class AppRoutes {
   static const String baseNavigationView = "/mainNavigationView";
   static const String profileView = "/profileView";
   static const String wishListView = "/wishListView";
+  static const String profileUpdationView = "/profileUpdationView";
 
   static PageRoute? generateRoutes(RouteSettings routeSettings) {
     Map<String, WidgetBuilder> routes = {
@@ -38,6 +40,10 @@ class AppRoutes {
       AppRoutes.baseNavigationView: (context) => const BaseNavigationView(),
       AppRoutes.profileView: (context) => const ProfileView(),
       AppRoutes.wishListView: (context) => const WishListView(),
+      AppRoutes.profileUpdationView : (context){
+        String profileUpdationType = routeSettings.arguments as String;
+        return ProfileUpdationView(profileUpdationType: profileUpdationType);
+      }
     };
     WidgetBuilder? builder = routes[routeSettings.name];
     return (builder != null) ? MaterialPageRoute(builder: builder) : null;

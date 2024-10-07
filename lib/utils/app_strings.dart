@@ -101,4 +101,12 @@ class AppStrings {
 
   static String noSearchResultText(String query) =>
       "No Item found for \"$query\" query";
+
+  //profile screen
+  static const String profileScreenTitle = "Profile";
+  static const String changeNameText = "Change Name";
+  static const String changeShipAddressText = "Shipping Address";
+  static const String changeContactNumberText = "Change Contact Number";
+  static const String darkModeText = "Dark Mode";
+  static const String logoutButtonText = "Logout";
 }

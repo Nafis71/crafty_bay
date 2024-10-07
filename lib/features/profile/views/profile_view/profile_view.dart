@@ -3,6 +3,8 @@ import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/features/profile/widgets/profile_options.dart';
 import 'package:crafty_bay/features/profile/widgets/profile_overview.dart';
 import 'package:crafty_bay/features/profile/widgets/theme_switch.dart';
+import 'package:crafty_bay/utils/app_routes.dart';
+import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -23,8 +25,9 @@ class _ProfileViewState extends State<ProfileView> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.sizeOf(context);
     return Scaffold(
-      appBar: craftyAppBar(title: "Profile", context: context),
+      appBar: craftyAppBar(title: AppStrings.profileScreenTitle, context: context),
       body: GetBuilder<ProfileViewModel>(
         builder: (profileViewModel) {
           return SingleChildScrollView(
@@ -35,18 +38,22 @@ class _ProfileViewState extends State<ProfileView> {
                 ProfileOverview(profileViewModel: profileViewModel),
                 Gap(30),
                 ProfileOptions(
-                  optionLeadingWidget: Text("Change Name"),
-                  optionTrailingWidget: Icon(
-                    Icons.edit,
+                  optionLeadingWidget: Text(AppStrings.changeNameText),
+                  optionTrailingWidget: IconButton(
                     color: Theme.of(context).primaryColor,
+                    onPressed: () {
+                      navigator!.pushNamed(AppRoutes.profileUpdationView, arguments: AppStrings.changeNameText);
+                    },
+                    icon: Icon(Icons.edit),
                   ),
                 ),
+                Gap(5),
                 ProfileOptions(
                   optionLeadingWidget: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Shipping Address",
+                        AppStrings.changeShipAddressText,
                         style: Theme.of(context).textTheme.labelSmall!.copyWith(
                               fontSize: 14,
                             ),
@@ -62,21 +69,32 @@ class _ProfileViewState extends State<ProfileView> {
                       ),
                     ],
                   ),
-                  optionTrailingWidget: Icon(
-                    Icons.edit,
+                  optionTrailingWidget: IconButton(
                     color: Theme.of(context).primaryColor,
+                    onPressed: () {},
+                    icon: Icon(Icons.edit),
                   ),
                 ),
+                Gap(5),
                 ProfileOptions(
-                  optionLeadingWidget: Text("Change Contact Number"),
-                  optionTrailingWidget: Icon(
-                    Icons.edit,
+                  optionLeadingWidget: Text(AppStrings.changeContactNumberText),
+                  optionTrailingWidget: IconButton(
                     color: Theme.of(context).primaryColor,
+                    onPressed: () {},
+                    icon: Icon(Icons.edit),
                   ),
                 ),
+                Gap(5),
                 ProfileOptions(
-                  optionLeadingWidget: Text("Dark Mode"),
-                  optionTrailingWidget: ThemeSwitch()
+                    optionLeadingWidget: Text(AppStrings.darkModeText),
+                    optionTrailingWidget: ThemeSwitch()),
+                Gap(20),
+                SizedBox(
+                  width: size.width * 0.9,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text(AppStrings.logoutButtonText),
+                  ),
                 ),
               ],
             ),

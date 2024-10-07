@@ -8,6 +8,7 @@ class ProfileOptions extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: Colors.white,
+      shadowColor: Colors.black.withOpacity(0.5),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
       ),
