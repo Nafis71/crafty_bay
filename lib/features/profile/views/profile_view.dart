@@ -1,6 +1,8 @@
 import 'package:crafty_bay/core/view_model/profile_view_model.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
+import 'package:crafty_bay/features/profile/widgets/profile_options.dart';
 import 'package:crafty_bay/features/profile/widgets/profile_overview.dart';
+import 'package:crafty_bay/features/profile/widgets/theme_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -31,6 +33,51 @@ class _ProfileViewState extends State<ProfileView> {
               children: [
                 Gap(30),
                 ProfileOverview(profileViewModel: profileViewModel),
+                Gap(30),
+                ProfileOptions(
+                  optionLeadingWidget: Text("Change Name"),
+                  optionTrailingWidget: Icon(
+                    Icons.edit,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+                ProfileOptions(
+                  optionLeadingWidget: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Shipping Address",
+                        style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                              fontSize: 14,
+                            ),
+                      ),
+                      SizedBox(
+                        width: 200,
+                        child: Text(
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          profileViewModel.userModel.shipAdd.toString(),
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
+                      ),
+                    ],
+                  ),
+                  optionTrailingWidget: Icon(
+                    Icons.edit,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+                ProfileOptions(
+                  optionLeadingWidget: Text("Change Contact Number"),
+                  optionTrailingWidget: Icon(
+                    Icons.edit,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+                ProfileOptions(
+                  optionLeadingWidget: Text("Dark Mode"),
+                  optionTrailingWidget: ThemeSwitch()
+                ),
               ],
             ),
           );
