@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+
 import '../../../utils/app_assets.dart';
 import '../../base_navigation/view_model/base_navigation_view_model.dart';
 import '../../cart/view_model/cart_view_model.dart';

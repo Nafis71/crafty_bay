@@ -14,11 +14,8 @@ class AppTextFieldStyle {
           color: AppColor.appPrimaryColor,
           fontFamily: "Poppins",
         ),
-        labelStyle: TextStyle(
-          fontFamily: "Poppins",
-          color: Colors.grey,
-          fontSize: 13
-        ),
+        labelStyle:
+            TextStyle(fontFamily: "Poppins", color: Colors.grey, fontSize: 13),
         enabledBorder:
             getOutlineInputBorder(width: 1, color: AppColor.appPrimaryColor),
         focusedBorder:

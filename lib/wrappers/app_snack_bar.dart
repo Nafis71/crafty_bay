@@ -15,8 +15,8 @@ class AppSnackBar {
       backgroundColor: (!isError)
           ? AppColor.appPrimaryColor
           : (color == null)
-              ? Colors.red.shade400
-              : color,
+          ? Colors.red.shade400
+          : color,
     );
   }
 }

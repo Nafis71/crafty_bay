@@ -94,7 +94,8 @@ class _ProfileViewState extends State<ProfileView> {
                       navigator!.pushNamed(
                         AppRoutes.profileUpdationView,
                         arguments: ProfileUpdationModel(
-                          profileUpdationType: AppStrings.changeContactNumberText,
+                          profileUpdationType:
+                              AppStrings.changeContactNumberText,
                           value: profileViewModel.userModel.cusPhone.toString(),
                         ),
                       );

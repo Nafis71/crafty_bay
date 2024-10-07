@@ -64,7 +64,8 @@ class WishListViewModel extends GetxController {
           .firstWhere((productData) => productData.id == productId);
       _wishListProductData
           .removeWhere((productData) => productData.id == productId);
-      _wishListProductId.removeWhere((wishListProductId) => wishListProductId == productId);
+      _wishListProductId
+          .removeWhere((wishListProductId) => wishListProductId == productId);
       update();
       response = await WishListService().removeWishList(token, productId);
       if (response is Failure) {

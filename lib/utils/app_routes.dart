@@ -42,7 +42,8 @@ class AppRoutes {
       AppRoutes.profileView: (context) => const ProfileView(),
       AppRoutes.wishListView: (context) => const WishListView(),
       AppRoutes.profileUpdationView: (context) {
-        ProfileUpdationModel profileUpdationModel = routeSettings.arguments as ProfileUpdationModel;
+        ProfileUpdationModel profileUpdationModel =
+            routeSettings.arguments as ProfileUpdationModel;
         return ProfileUpdationView(
           profileUpdationModel: profileUpdationModel,
         );

@@ -22,27 +22,26 @@ class UserModel {
   String? updatedAt;
   User? user;
 
-  UserModel(
-      {this.id,
-      this.cusName,
-      this.cusAdd,
-      this.cusCity,
-      this.cusState,
-      this.cusPostcode,
-      this.cusCountry,
-      this.cusPhone,
-      this.cusFax,
-      this.shipName,
-      this.shipAdd,
-      this.shipCity,
-      this.shipState,
-      this.shipPostcode,
-      this.shipCountry,
-      this.shipPhone,
-      this.userId,
-      this.createdAt,
-      this.updatedAt,
-      this.user});
+  UserModel({this.id,
+    this.cusName,
+    this.cusAdd,
+    this.cusCity,
+    this.cusState,
+    this.cusPostcode,
+    this.cusCountry,
+    this.cusPhone,
+    this.cusFax,
+    this.shipName,
+    this.shipAdd,
+    this.shipCity,
+    this.shipState,
+    this.shipPostcode,
+    this.shipCountry,
+    this.shipPhone,
+    this.userId,
+    this.createdAt,
+    this.updatedAt,
+    this.user});
 
   UserModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];

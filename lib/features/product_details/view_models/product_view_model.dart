@@ -174,7 +174,7 @@ class ProductViewModel extends GetxController {
     Map<int, String> colorCodes = {
       0xFF890104: "Red",
       0xFF007C00: "Green",
-      0xFFFFFFFF: "White",
+      0xFFD9D9D9: "White",
     };
     return colorCodes[colorCode] ?? "Red";
   }
