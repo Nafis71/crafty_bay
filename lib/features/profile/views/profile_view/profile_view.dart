@@ -1,5 +1,6 @@
 import 'package:crafty_bay/core/view_model/profile_view_model.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
+import 'package:crafty_bay/features/profile/models/profile_updation_model.dart';
 import 'package:crafty_bay/features/profile/widgets/profile_options.dart';
 import 'package:crafty_bay/features/profile/widgets/profile_overview.dart';
 import 'package:crafty_bay/features/profile/widgets/theme_switch.dart';
@@ -18,16 +19,11 @@ class ProfileView extends StatefulWidget {
 
 class _ProfileViewState extends State<ProfileView> {
   @override
-  void initState() {
-    checkTokenValidity();
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
     return Scaffold(
-      appBar: craftyAppBar(title: AppStrings.profileScreenTitle, context: context),
+      appBar:
+          craftyAppBar(title: AppStrings.profileScreenTitle, context: context),
       body: GetBuilder<ProfileViewModel>(
         builder: (profileViewModel) {
           return SingleChildScrollView(
@@ -42,7 +38,13 @@ class _ProfileViewState extends State<ProfileView> {
                   optionTrailingWidget: IconButton(
                     color: Theme.of(context).primaryColor,
                     onPressed: () {
-                      navigator!.pushNamed(AppRoutes.profileUpdationView, arguments: AppStrings.changeNameText);
+                      navigator!.pushNamed(
+                        AppRoutes.profileUpdationView,
+                        arguments: ProfileUpdationModel(
+                          profileUpdationType: AppStrings.changeNameText,
+                          value: profileViewModel.userModel.cusName.toString(),
+                        ),
+                      );
                     },
                     icon: Icon(Icons.edit),
                   ),
@@ -71,7 +73,15 @@ class _ProfileViewState extends State<ProfileView> {
                   ),
                   optionTrailingWidget: IconButton(
                     color: Theme.of(context).primaryColor,
-                    onPressed: () {},
+                    onPressed: () {
+                      navigator!.pushNamed(
+                        AppRoutes.profileUpdationView,
+                        arguments: ProfileUpdationModel(
+                          profileUpdationType: AppStrings.changeShipAddressText,
+                          value: profileViewModel.userModel.shipAdd.toString(),
+                        ),
+                      );
+                    },
                     icon: Icon(Icons.edit),
                   ),
                 ),
@@ -80,7 +90,15 @@ class _ProfileViewState extends State<ProfileView> {
                   optionLeadingWidget: Text(AppStrings.changeContactNumberText),
                   optionTrailingWidget: IconButton(
                     color: Theme.of(context).primaryColor,
-                    onPressed: () {},
+                    onPressed: () {
+                      navigator!.pushNamed(
+                        AppRoutes.profileUpdationView,
+                        arguments: ProfileUpdationModel(
+                          profileUpdationType: AppStrings.changeContactNumberText,
+                          value: profileViewModel.userModel.cusPhone.toString(),
+                        ),
+                      );
+                    },
                     icon: Icon(Icons.edit),
                   ),
                 ),
@@ -103,6 +121,4 @@ class _ProfileViewState extends State<ProfileView> {
       ),
     );
   }
-
-  Future<void> checkTokenValidity() async {}
 }

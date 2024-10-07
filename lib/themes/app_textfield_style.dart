@@ -5,10 +5,20 @@ class AppTextFieldStyle {
   static InputDecorationTheme getTextFieldTheme() => InputDecorationTheme(
         isDense: true,
         hintStyle: TextStyle(
-            color: Colors.grey.shade400,
-            fontFamily: "Poppins",
-            fontWeight: FontWeight.normal,
-            fontSize: 14),
+          color: Colors.grey.shade400,
+          fontFamily: "Poppins",
+          fontWeight: FontWeight.normal,
+          fontSize: 14,
+        ),
+        floatingLabelStyle: TextStyle(
+          color: AppColor.appPrimaryColor,
+          fontFamily: "Poppins",
+        ),
+        labelStyle: TextStyle(
+          fontFamily: "Poppins",
+          color: Colors.grey,
+          fontSize: 13
+        ),
         enabledBorder:
             getOutlineInputBorder(width: 1, color: AppColor.appPrimaryColor),
         focusedBorder:

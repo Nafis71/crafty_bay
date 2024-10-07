@@ -109,4 +109,5 @@ class AppStrings {
   static const String changeContactNumberText = "Change Contact Number";
   static const String darkModeText = "Dark Mode";
   static const String logoutButtonText = "Logout";
+  static const String updateButtonText = "Update";
 }
