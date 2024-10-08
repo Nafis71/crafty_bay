@@ -134,6 +134,8 @@ class ProfileViewModel extends GetxController {
     }
     response = await ProfileDetailService().createProfile(token, userModel.toJson());
     if(response is Success){
+      SharedPreferences localStorage = await SharedPreferences.getInstance();
+      saveUserData(userModel, localStorage);
       _responseStatus = true;
     }
     return _responseStatus;
