@@ -68,7 +68,6 @@ class UserModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
     data['cus_name'] = this.cusName;
     data['cus_add'] = this.cusAdd;
     data['cus_city'] = this.cusCity;
@@ -84,12 +83,6 @@ class UserModel {
     data['ship_postcode'] = this.shipPostcode;
     data['ship_country'] = this.shipCountry;
     data['ship_phone'] = this.shipPhone;
-    data['user_id'] = this.userId;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    if (this.user != null) {
-      data['user'] = this.user!.toJson();
-    }
     return data;
   }
 }

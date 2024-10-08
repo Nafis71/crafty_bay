@@ -1,6 +1,6 @@
 import 'package:crafty_bay/core/services/network_repository.dart';
 
-import '../../../core/services/network_urls/network_urls.dart';
+import 'network_urls/network_urls.dart';
 
 class ProfileDetailService extends NetworkRepository {
   Future<Object> readProfile(String token) async {
@@ -8,7 +8,7 @@ class ProfileDetailService extends NetworkRepository {
         url: NetworkUrls.readProfile, headers: {"token": token});
   }
 
-  Future<Object> createProfile(String token, Map<String, String> json) async {
+  Future<Object> createProfile(String token, Map<String, dynamic> json) async {
     return await postRequest(
       url: NetworkUrls.createProfile,
       body: json,
