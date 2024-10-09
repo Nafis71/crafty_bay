@@ -9,7 +9,11 @@ class ShimmerGenerator extends StatelessWidget {
   final double shimmerHeight;
 
   const ShimmerGenerator(
-      {super.key, required this.shimmer, required this.axis, required this.itemCount, required this.shimmerHeight});
+      {super.key,
+      required this.shimmer,
+      required this.axis,
+      required this.itemCount,
+      required this.shimmerHeight});
 
   @override
   Widget build(BuildContext context) {

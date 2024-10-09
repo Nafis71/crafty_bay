@@ -85,7 +85,8 @@ class _HomeViewState extends State<HomeView> {
                           separatorBuilder: (context, index) {
                             return const Gap(25);
                           },
-                          itemCount: Get.find<CategoryViewModel>().categoryList.length,
+                          itemCount:
+                              Get.find<CategoryViewModel>().categoryList.length,
                         ),
                       ),
                       onTap: () {
@@ -178,9 +179,9 @@ class _HomeViewState extends State<HomeView> {
 
   Future<void> fetchHomeData() async {
     List<bool> responses = await PrefetchService.fetchHomeData();
-    if(responses.contains(false)){
+    if (responses.contains(false)) {
       fetchHomeData();
-    }else{
+    } else {
       Get.find<HomeViewModel>().update();
     }
   }

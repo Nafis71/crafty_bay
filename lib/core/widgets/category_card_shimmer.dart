@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:shimmer/shimmer.dart';
 
 class CategoryCardShimmer extends StatelessWidget {
   const CategoryCardShimmer({super.key});

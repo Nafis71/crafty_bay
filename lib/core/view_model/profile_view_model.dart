@@ -122,10 +122,10 @@ class ProfileViewModel extends GetxController {
     return _responseStatus;
   }
 
-  Future<bool> updateProfile(String profileUpdationType,String value)async{
+  Future<bool> updateProfile(String profileUpdationType, String value) async {
     setIsBusy = true;
     _responseStatus = false;
-    switch(profileUpdationType){
+    switch (profileUpdationType) {
       case AppStrings.changeNameText:
         userModel.cusName = value;
       case AppStrings.changeShipAddressText:
@@ -133,8 +133,9 @@ class ProfileViewModel extends GetxController {
       case AppStrings.changeContactNumberText:
         userModel.cusPhone = value;
     }
-    response = await ProfileDetailService().createProfile(token, userModel.toJson());
-    if(response is Success){
+    response =
+        await ProfileDetailService().createProfile(token, userModel.toJson());
+    if (response is Success) {
       SharedPreferences localStorage = await SharedPreferences.getInstance();
       saveUserData(userModel, localStorage);
       _responseStatus = true;
@@ -146,7 +147,8 @@ class ProfileViewModel extends GetxController {
 
   Future<void> saveUserData(
       UserModel userModel, SharedPreferences localStorage) async {
-    localStorage.setString("userData", jsonEncode(userModel.toJsonFromStorage()));
+    localStorage.setString(
+        "userData", jsonEncode(userModel.toJsonFromStorage()));
     _userModel = userModel;
   }
 }

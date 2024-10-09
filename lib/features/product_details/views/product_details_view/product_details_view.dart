@@ -5,14 +5,15 @@ import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/services/user_auth_service/user_auth_service.dart';
 import 'package:crafty_bay/core/view_model/profile_view_model.dart';
 import 'package:crafty_bay/core/widgets/alternative_widget.dart';
-import 'package:crafty_bay/core/widgets/circular_loading.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
+import 'package:crafty_bay/core/widgets/shimmer_generator.dart';
 import 'package:crafty_bay/core/widgets/view_footer.dart';
 import 'package:crafty_bay/features/product_details/view_models/product_view_model.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_body.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_description.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_details_footer_button.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_details_footer_text.dart';
+import 'package:crafty_bay/features/product_details/widgets/product_details_shimmer.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_variation.dart';
 import 'package:crafty_bay/themes/app_color.dart';
 import 'package:crafty_bay/utils/app_assets.dart';
@@ -43,6 +44,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
   @override
   Widget build(BuildContext context) {
     Orientation deviceOrientation = MediaQuery.of(context).orientation;
+    Size size = MediaQuery.sizeOf(context);
     print(widget.productId);
     return Scaffold(
       appBar: craftyAppBar(
@@ -55,12 +57,11 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
         child: GetBuilder<ProductViewModel>(
           builder: (productViewModel) {
             if (productViewModel.isBusy) {
-              return const Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Center(child: CircularLoading()),
-                ],
+              return ShimmerGenerator(
+                shimmer: ProductDetailsShimmer(),
+                axis: Axis.vertical,
+                itemCount: 2,
+                shimmerHeight: size.height,
               );
             }
             if (productViewModel.response is Failure) {

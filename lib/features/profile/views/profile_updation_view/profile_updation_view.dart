@@ -70,7 +70,7 @@ class _ProfileUpdationViewState extends State<ProfileUpdationView> {
                       width: size.width * 0.9,
                       child: GetBuilder<ProfileViewModel>(
                         builder: (profileViewModel) {
-                          if(profileViewModel.isBusy){
+                          if (profileViewModel.isBusy) {
                             return Center(child: CircularLoading());
                           }
                           return ElevatedButton(

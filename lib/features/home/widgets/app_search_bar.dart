@@ -14,7 +14,7 @@ class AppSearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        if(Get.find<HomeViewModel>().searchProductList.isEmpty){
+        if (Get.find<HomeViewModel>().searchProductList.isEmpty) {
           return;
         }
         showSearch(

@@ -21,25 +21,26 @@ class UserModel {
   String? updatedAt;
   User? user;
 
-  UserModel({this.id,
-    this.cusName,
-    this.cusAdd,
-    this.cusCity,
-    this.cusState,
-    this.cusPostcode,
-    this.cusCountry,
-    this.cusPhone,
-    this.cusFax,
-    this.shipName,
-    this.shipAdd,
-    this.shipCity,
-    this.shipState,
-    this.shipPostcode,
-    this.shipCountry,
-    this.shipPhone,
-    this.createdAt,
-    this.updatedAt,
-    this.user});
+  UserModel(
+      {this.id,
+      this.cusName,
+      this.cusAdd,
+      this.cusCity,
+      this.cusState,
+      this.cusPostcode,
+      this.cusCountry,
+      this.cusPhone,
+      this.cusFax,
+      this.shipName,
+      this.shipAdd,
+      this.shipCity,
+      this.shipState,
+      this.shipPostcode,
+      this.shipCountry,
+      this.shipPhone,
+      this.createdAt,
+      this.updatedAt,
+      this.user});
 
   UserModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -82,6 +83,7 @@ class UserModel {
     data['ship_phone'] = this.shipPhone;
     return data;
   }
+
   Map<String, dynamic> toJsonFromStorage() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['cus_name'] = this.cusName;
