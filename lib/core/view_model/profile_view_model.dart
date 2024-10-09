@@ -56,8 +56,8 @@ class ProfileViewModel extends GetxController {
 
   Future<void> loadUserDataFromStorage() async {
     SharedPreferences localStorage = await SharedPreferences.getInstance();
-    String? userData = localStorage.getString("userData").toString();
-    if (userData.isNotEmpty) {
+    String? userData = localStorage.getString("userData");
+    if (userData != null && userData.isNotEmpty) {
       _userModel = UserModel.fromJson(
         jsonDecode(
           userData,
