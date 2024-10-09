@@ -17,7 +17,6 @@ class UserModel {
   String? shipPostcode;
   String? shipCountry;
   String? shipPhone;
-  int? userId;
   String? createdAt;
   String? updatedAt;
   User? user;
@@ -38,7 +37,6 @@ class UserModel {
     this.shipPostcode,
     this.shipCountry,
     this.shipPhone,
-    this.userId,
     this.createdAt,
     this.updatedAt,
     this.user});
@@ -60,7 +58,6 @@ class UserModel {
     shipPostcode = json['ship_postcode'];
     shipCountry = json['ship_country'];
     shipPhone = json['ship_phone'];
-    userId = int.parse(json['user_id'].toString());
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     user = json['user'] != null ? new User.fromJson(json['user']) : null;
@@ -83,6 +80,26 @@ class UserModel {
     data['ship_postcode'] = this.shipPostcode;
     data['ship_country'] = this.shipCountry;
     data['ship_phone'] = this.shipPhone;
+    return data;
+  }
+  Map<String, dynamic> toJsonFromStorage() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['cus_name'] = this.cusName;
+    data['cus_add'] = this.cusAdd;
+    data['cus_city'] = this.cusCity;
+    data['cus_state'] = this.cusState;
+    data['cus_postcode'] = this.cusPostcode;
+    data['cus_country'] = this.cusCountry;
+    data['cus_phone'] = this.cusPhone;
+    data['cus_fax'] = this.cusFax;
+    data['ship_name'] = this.shipName;
+    data['ship_add'] = this.shipAdd;
+    data['ship_city'] = this.shipCity;
+    data['ship_state'] = this.shipState;
+    data['ship_postcode'] = this.shipPostcode;
+    data['ship_country'] = this.shipCountry;
+    data['ship_phone'] = this.shipPhone;
+    data['user'] = this.user;
     return data;
   }
 }

@@ -123,6 +123,7 @@ class ProfileViewModel extends GetxController {
   }
 
   Future<bool> updateProfile(String profileUpdationType,String value)async{
+    setIsBusy = true;
     _responseStatus = false;
     switch(profileUpdationType){
       case AppStrings.changeNameText:
@@ -138,12 +139,14 @@ class ProfileViewModel extends GetxController {
       saveUserData(userModel, localStorage);
       _responseStatus = true;
     }
+    setIsBusy = false;
+    update();
     return _responseStatus;
   }
 
   Future<void> saveUserData(
       UserModel userModel, SharedPreferences localStorage) async {
-    localStorage.setString("userData", jsonEncode(userModel.toJson()));
+    localStorage.setString("userData", jsonEncode(userModel.toJsonFromStorage()));
     _userModel = userModel;
   }
 }

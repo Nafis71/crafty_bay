@@ -110,4 +110,5 @@ class AppStrings {
   static const String darkModeText = "Dark Mode";
   static const String logoutButtonText = "Logout";
   static const String updateButtonText = "Update";
+  static const String profileUpdationSuccessText = "Profile has been updated successfully";
 }

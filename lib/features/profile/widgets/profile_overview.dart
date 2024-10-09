@@ -41,7 +41,7 @@ class ProfileOverview extends StatelessWidget {
                 style: Theme.of(context).textTheme.labelSmall,
               ),
               Text(
-                profileViewModel.userModel.user!.email.toString(),
+                profileViewModel.userModel.user?.email ?? "NA",
                 style: Theme.of(context)
                     .textTheme
                     .bodySmall!
