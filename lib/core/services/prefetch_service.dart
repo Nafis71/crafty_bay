@@ -43,7 +43,7 @@ class PrefetchService {
     await Get.find<WishListViewModel>().getWishList(token);
   }
 
-  static Future<List<bool>> prefetchData() async {
+  static Future<List<bool>> fetchHomeData() async {
     return await Future.wait([
       prefetchProductSliderList(),
       prefetchCategoryList(),

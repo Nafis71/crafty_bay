@@ -32,6 +32,7 @@ dependencies:
   internet_connection_checker: ^1.0.0+1
   lottie: ^3.1.2
   flutter_rating_bar: ^4.0.1
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:

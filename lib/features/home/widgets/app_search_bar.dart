@@ -1,6 +1,8 @@
+import 'package:crafty_bay/features/home/view_model/home_view_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 
 import '../../../themes/app_color.dart';
 import 'custom_search_delegate.dart';
@@ -12,6 +14,9 @@ class AppSearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        if(Get.find<HomeViewModel>().searchProductList.isEmpty){
+          return;
+        }
         showSearch(
           context: context,
           delegate: CustomSearchDelegate(),

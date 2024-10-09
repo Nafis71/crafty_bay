@@ -10,6 +10,7 @@ import '../models/product_slider_model/product_data.dart';
 class HomeViewModel extends GetxController {
   int _carouselIndex = 0;
   Object? response;
+  bool _isBusy = false;
   final List<ProductSliderData> _productSliderList = [];
   List<RemarkProductData> _popularProductList = [];
   List<RemarkProductData> _specialProductList = [];
@@ -17,6 +18,13 @@ class HomeViewModel extends GetxController {
   List<RemarkProductData> _searchProductList = [];
 
   int get carouselIndex => _carouselIndex;
+
+  bool get isBusy => _isBusy;
+
+  set setIsBusy(bool isBusy){
+    _isBusy = isBusy;
+    update();
+  }
 
   List<ProductSliderData> get productSliderList => _productSliderList;
 

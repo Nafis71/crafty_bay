@@ -93,15 +93,12 @@ class _SplashViewState extends State<SplashView> {
       return;
     }
     isLoading = true;
-    List<bool> result = await PrefetchService.prefetchData();
-    if (!result.contains(false) && mounted) {
-      if (!await Get.find<ProfileViewModel>().isTokenExpired()) {
-        await PrefetchService.prefetchProductWishList(
-            Get.find<ProfileViewModel>().token);
-      }
-      await Get.find<ProfileViewModel>().loadUserDataFromStorage();
-      Get.find<CartViewModel>().getCartList(Get.find<ProfileViewModel>().token);
-      Navigator.pushNamed(context, AppRoutes.baseNavigationView);
+    if (!await Get.find<ProfileViewModel>().isTokenExpired()) {
+      await PrefetchService.prefetchProductWishList(
+          Get.find<ProfileViewModel>().token);
     }
+    await Get.find<ProfileViewModel>().loadUserDataFromStorage();
+    Get.find<CartViewModel>().getCartList(Get.find<ProfileViewModel>().token);
+    Navigator.pushNamed(context, AppRoutes.baseNavigationView);
   }
 }
