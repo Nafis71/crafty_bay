@@ -1,3 +1,4 @@
+import 'package:crafty_bay/core/services/prefetch_service.dart';
 import 'package:crafty_bay/core/widgets/category_card_shimmer.dart';
 import 'package:crafty_bay/core/widgets/product_card.dart';
 import 'package:crafty_bay/core/widgets/shimmer_generator.dart';
@@ -84,7 +85,7 @@ class _HomeViewState extends State<HomeView> {
                           separatorBuilder: (context, index) {
                             return const Gap(25);
                           },
-                          itemCount: 4,
+                          itemCount: Get.find<CategoryViewModel>().categoryList.length,
                         ),
                       ),
                       onTap: () {
@@ -176,9 +177,12 @@ class _HomeViewState extends State<HomeView> {
   }
 
   Future<void> fetchHomeData() async {
-    Get.find<HomeViewModel>().setIsBusy = true;
-    await Future.delayed(Duration(seconds: 200));
-    Get.find<HomeViewModel>().setIsBusy = false;
+    List<bool> responses = await PrefetchService.fetchHomeData();
+    if(responses.contains(false)){
+      fetchHomeData();
+    }else{
+      Get.find<HomeViewModel>().update();
+    }
   }
 
   Widget getProductCard(List<RemarkProductData> productList) {

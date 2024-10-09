@@ -28,6 +28,7 @@ class CategoryViewModel extends GetxController {
     _responseStatus = false;
     response = await CategoryService().getCategoryList();
     if (response is Success) {
+      _categoryList.clear();
       CategoryModel categoryModel = CategoryModel.fromJson(
           (response as Success).response as Map<String, dynamic>);
       for (CategoryData categoryData in categoryModel.data!) {
