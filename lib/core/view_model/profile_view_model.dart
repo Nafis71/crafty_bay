@@ -39,6 +39,7 @@ class ProfileViewModel extends GetxController {
     SharedPreferences localStorage = await SharedPreferences.getInstance();
     String? token = localStorage.getString("token");
     if (token == null || JwtDecoder.isExpired(token)) {
+      localStorage.clear();
       return true;
     }
     _token = token;
