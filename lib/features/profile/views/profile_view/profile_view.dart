@@ -43,7 +43,7 @@ class _ProfileViewState extends State<ProfileView> {
                         AppRoutes.profileUpdationView,
                         arguments: ProfileUpdationModel(
                           profileUpdationType: AppStrings.changeNameText,
-                          value: profileViewModel.userModel.cusName.toString(),
+                          value: profileViewModel.userModel!.cusName.toString(),
                         ),
                       );
                     },
@@ -66,7 +66,7 @@ class _ProfileViewState extends State<ProfileView> {
                         child: Text(
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          profileViewModel.userModel.shipAdd.toString(),
+                          profileViewModel.userModel!.shipAdd.toString(),
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
                       ),
@@ -79,7 +79,7 @@ class _ProfileViewState extends State<ProfileView> {
                         AppRoutes.profileUpdationView,
                         arguments: ProfileUpdationModel(
                           profileUpdationType: AppStrings.changeShipAddressText,
-                          value: profileViewModel.userModel.shipAdd.toString(),
+                          value: profileViewModel.userModel!.shipAdd.toString(),
                         ),
                       );
                     },
@@ -97,7 +97,7 @@ class _ProfileViewState extends State<ProfileView> {
                         arguments: ProfileUpdationModel(
                           profileUpdationType:
                               AppStrings.changeContactNumberText,
-                          value: profileViewModel.userModel.cusPhone.toString(),
+                          value: profileViewModel.userModel!.cusPhone.toString(),
                         ),
                       );
                     },

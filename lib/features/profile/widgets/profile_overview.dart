@@ -37,11 +37,11 @@ class ProfileOverview extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                profileViewModel.userModel.cusName.toString(),
+                profileViewModel.userModel!.cusName.toString(),
                 style: Theme.of(context).textTheme.labelSmall,
               ),
               Text(
-                profileViewModel.userModel.user?.email ?? "NA",
+                profileViewModel.userModel!.user?.email ?? "NA",
                 style: Theme.of(context)
                     .textTheme
                     .bodySmall!

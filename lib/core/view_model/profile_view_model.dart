@@ -10,7 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../services/response/success.dart';
 
 class ProfileViewModel extends GetxController {
-  late UserModel _userModel;
+  UserModel? _userModel;
   Object? response;
   bool _responseStatus = false;
   bool _isBusy = false;
@@ -29,7 +29,7 @@ class ProfileViewModel extends GetxController {
     _token = token;
   }
 
-  UserModel get userModel => _userModel;
+  UserModel? get userModel => _userModel;
 
   set setUserData(UserModel userModel) {
     _userModel = userModel;
@@ -128,17 +128,17 @@ class ProfileViewModel extends GetxController {
     _responseStatus = false;
     switch (profileUpdationType) {
       case AppStrings.changeNameText:
-        userModel.cusName = value;
+        userModel!.cusName = value;
       case AppStrings.changeShipAddressText:
-        userModel.shipAdd = value;
+        userModel!.shipAdd = value;
       case AppStrings.changeContactNumberText:
-        userModel.cusPhone = value;
+        userModel!.cusPhone = value;
     }
     response =
-        await ProfileDetailService().createProfile(token, userModel.toJson());
+        await ProfileDetailService().createProfile(token, userModel!.toJson());
     if (response is Success) {
       SharedPreferences localStorage = await SharedPreferences.getInstance();
-      saveUserData(userModel, localStorage);
+      saveUserData(userModel!, localStorage);
       _responseStatus = true;
     }
     setIsBusy = false;

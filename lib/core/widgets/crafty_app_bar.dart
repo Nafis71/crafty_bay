@@ -1,5 +1,4 @@
-import 'package:crafty_bay/features/cart/view_model/cart_view_model.dart';
-import 'package:crafty_bay/themes/app_color.dart';
+import 'package:crafty_bay/core/services/user_auth_service/user_auth_service.dart';
 import 'package:crafty_bay/themes/theme_switcher.dart';
 import 'package:crafty_bay/utils/app_assets.dart';
 import 'package:crafty_bay/utils/app_routes.dart';
@@ -14,7 +13,6 @@ import '../view_model/profile_view_model.dart';
 AppBar craftyAppBar({
   String? title,
   BuildContext? context,
-  Color? backgroundColor,
   double? toolBarHeight,
 }) {
   return AppBar(
@@ -30,23 +28,23 @@ AppBar craftyAppBar({
                 InkWell(
                   splashColor: Colors.transparent,
                   onTap: () => Navigator.pop(context),
-                  child: GetBuilder<ThemeSwitcher>(builder: (themeSwitcher) {
-                    return Icon(
-                      Icons.arrow_back_ios,
-                      weight: 0.4,
-                      color: (themeSwitcher.themeMode == ThemeMode.dark)
-                          ? Colors.white
-                          : Colors.black,
-                    );
-                  },),
+                  child: GetBuilder<ThemeSwitcher>(
+                    builder: (themeSwitcher) {
+                      return Icon(
+                        Icons.arrow_back_ios,
+                        weight: 0.4,
+                        color: (themeSwitcher.themeMode == ThemeMode.dark)
+                            ? Colors.white
+                            : Colors.black,
+                      );
+                    },
+                  ),
                 ),
               const Gap(5),
               Text(title),
             ],
           ),
-    backgroundColor: (backgroundColor != null) ? backgroundColor : null,
-    surfaceTintColor: (backgroundColor != null) ? backgroundColor : null,
-    elevation: (title == null || backgroundColor != null) ? 0 : 5,
+    elevation: (title == null) ? 0 : 5,
     centerTitle: false,
     automaticallyImplyLeading: false,
     toolbarHeight: toolBarHeight,
@@ -55,12 +53,8 @@ AppBar craftyAppBar({
             InkWell(
               onTap: () async {
                 if (await Get.find<ProfileViewModel>().isTokenExpired()) {
-                  navigator!.pushNamed(
-                    AppRoutes.loginView,
-                    arguments: (token) async {
-                      Get.find<CartViewModel>().getCartList(token);
-                    },
-                  );
+                  UserAuthService.isUserAuthenticated(
+                      futureExecution: (token) {});
                   return;
                 }
                 navigator?.pushNamed(AppRoutes.profileView);
@@ -78,13 +72,15 @@ AppBar craftyAppBar({
 }
 
 Widget actionItem(IconData icon) {
-  return GetBuilder<ThemeSwitcher>(builder: (themeSwitcher) {
-    return CircleAvatar(
-      backgroundColor: themeSwitcher.getAppBarActionButtonColor(),
-      child: Icon(
-        icon,
-        color: Colors.grey,
-      ),
-    );
-  });
+  return GetBuilder<ThemeSwitcher>(
+    builder: (themeSwitcher) {
+      return CircleAvatar(
+        backgroundColor: themeSwitcher.getAppBarActionButtonColor(),
+        child: Icon(
+          icon,
+          color: Colors.grey,
+        ),
+      );
+    },
+  );
 }

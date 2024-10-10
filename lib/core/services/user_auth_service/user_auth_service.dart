@@ -11,6 +11,10 @@ class UserAuthService {
       navigator!.pushNamed(AppRoutes.loginView, arguments: futureExecution);
       return false;
     }
+    if(Get.find<ProfileViewModel>().userModel == null){
+      navigator!.pushNamed(AppRoutes.profileDetailView);
+      return false;
+    }
     return true;
   }
 }

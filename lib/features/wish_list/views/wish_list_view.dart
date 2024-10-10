@@ -6,7 +6,6 @@ import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-
 import '../../../core/view_model/profile_view_model.dart';
 import '../../../core/widgets/alternative_widget.dart';
 import '../../../core/widgets/circular_loading.dart';
