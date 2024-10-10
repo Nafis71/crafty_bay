@@ -1,11 +1,13 @@
 import 'package:crafty_bay/core/services/internet_service_error.dart';
 import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
+import 'package:crafty_bay/core/widgets/shimmer_generator.dart';
 import 'package:crafty_bay/core/widgets/view_footer.dart';
 import 'package:crafty_bay/features/product_review/view_model/product_review_view_model.dart';
 import 'package:crafty_bay/features/product_review/widgets/product_review_card.dart';
 import 'package:crafty_bay/features/product_review/widgets/product_review_footer_button.dart';
 import 'package:crafty_bay/features/product_review/widgets/product_review_footer_text.dart';
+import 'package:crafty_bay/features/product_review/widgets/product_review_shimmer.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -37,6 +39,7 @@ class _ProductReviewViewState extends State<ProductReviewView> {
   @override
   Widget build(BuildContext context) {
     Orientation orientation = MediaQuery.of(context).orientation;
+    Size size = MediaQuery.sizeOf(context);
     return Scaffold(
       appBar: craftyAppBar(
         title: AppStrings.productReviewHeader,
@@ -45,13 +48,7 @@ class _ProductReviewViewState extends State<ProductReviewView> {
       body: GetBuilder<ProductReviewViewModel>(
         builder: (productReviewViewModel) {
           if (productReviewViewModel.isBusy) {
-            return const Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(child: CircularLoading()),
-              ],
-            );
+            return ShimmerGenerator(shimmer: ProductReviewShimmer(), axis: Axis.vertical, itemCount: 7, shimmerHeight: size.height);
           }
           if (productReviewViewModel.response is Failure) {
             return AlternativeWidget(
