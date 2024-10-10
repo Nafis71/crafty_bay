@@ -18,9 +18,6 @@ class CartFooterText extends StatelessWidget {
               "Total Price",
               style: Theme.of(context).textTheme.labelSmall!.copyWith(
                     fontWeight: FontWeight.bold,
-                    fontSize: 11,
-                    fontFamily: "Poppins Medium",
-                    color: Colors.black.withOpacity(0.5),
                   ),
             ),
             Text(

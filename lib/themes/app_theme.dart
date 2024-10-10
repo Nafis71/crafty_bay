@@ -20,6 +20,7 @@ class AppTheme {
             BottomNavigationTheme.getBottomNavigationBarLightTheme(),
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
+    fontFamily: "Poppins",
       );
   static ThemeData getDarkTheme() => getLightTheme().copyWith(
     brightness: Brightness.dark,

@@ -3,13 +3,16 @@ import 'package:flutter/material.dart';
 import 'app_color.dart';
 
 class AppSearchBarTheme {
-  static ThemeData getSearchBarTheme(BuildContext context) => ThemeData(
+  static ThemeData getSearchBarThemeLight(BuildContext context) => ThemeData(
         primaryColor: AppColor.appPrimaryColor,
         textTheme: TextTheme(
           bodyMedium: Theme.of(context).textTheme.bodyMedium,
         ),
+        scaffoldBackgroundColor: Colors.white,
         appBarTheme: const AppBarTheme(
-            color: Colors.white, surfaceTintColor: Colors.white),
+          color: Colors.white,
+          surfaceTintColor: Colors.white,
+        ),
         textSelectionTheme: TextSelectionThemeData(
           cursorColor: AppColor.appPrimaryColor,
         ),
@@ -24,6 +27,20 @@ class AppSearchBarTheme {
             borderSide: BorderSide(
               color: AppColor.appPrimaryColor,
             ),
+          ),
+        ),
+      );
+
+  static ThemeData getSearchBarThemeDark(BuildContext context) =>
+      getSearchBarThemeLight(context).copyWith(
+        appBarTheme: const AppBarTheme(
+          color: AppColor.darkComponentsColor,
+          surfaceTintColor: AppColor.darkComponentsColor,
+        ),
+        scaffoldBackgroundColor: AppColor.scaffoldBackgroundColorDark,
+        textTheme: TextTheme(
+          bodyMedium: Theme.of(context).textTheme.bodyMedium!.copyWith(
+            color: Colors.white
           ),
         ),
       );

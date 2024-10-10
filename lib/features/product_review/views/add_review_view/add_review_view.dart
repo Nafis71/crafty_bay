@@ -41,10 +41,9 @@ class _AddReviewViewState extends State<AddReviewView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: craftyAppBar(title: AppStrings.addReviewHeader, context: context),
-      body: Container(
-        padding:
-            const EdgeInsets.only(left: 25, right: 25, top: 40, bottom: 10),
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 25, right: 25, top: 40, bottom: 10),
           child: Column(
             children: [
               Form(

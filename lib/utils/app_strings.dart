@@ -82,6 +82,7 @@ class AppStrings {
       "Your review has been added!";
   static const String reviewCreationFailedMessage = "Failed to add your review";
   static const String ratingBarHeaderText = "Give Rating";
+  static const String unknownUserText = "Unknown user";
 
   //cart screen
   static const String cartViewHeader = "Cart";

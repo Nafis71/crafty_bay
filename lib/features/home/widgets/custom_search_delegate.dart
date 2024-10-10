@@ -3,6 +3,7 @@ import 'package:crafty_bay/features/home/view_model/home_view_model.dart';
 import 'package:crafty_bay/features/home/widgets/search_alternative.dart';
 import 'package:crafty_bay/features/home/widgets/search_result.dart';
 import 'package:crafty_bay/themes/search_bar_theme.dart';
+import 'package:crafty_bay/themes/theme_switcher.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,10 @@ import 'package:get/get.dart';
 class CustomSearchDelegate extends SearchDelegate {
   @override
   ThemeData appBarTheme(BuildContext context) {
-    return AppSearchBarTheme.getSearchBarTheme(context);
+    if (Get.find<ThemeSwitcher>().themeMode == ThemeMode.dark) {
+      return AppSearchBarTheme.getSearchBarThemeDark(context);
+    }
+    return AppSearchBarTheme.getSearchBarThemeLight(context);
   }
 
   List<RemarkProductData> searchTerms =
@@ -33,13 +37,20 @@ class CustomSearchDelegate extends SearchDelegate {
 
   @override
   Widget? buildLeading(BuildContext context) {
-    return IconButton(
-      onPressed: () {
-        close(context, null);
+    return GetBuilder<ThemeSwitcher>(
+      builder: (themeSwitcher) {
+        return IconButton(
+          onPressed: () {
+            close(context, null);
+          },
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: (themeSwitcher.themeMode == ThemeMode.light)
+                ? Colors.black
+                : Colors.grey,
+          ),
+        );
       },
-      icon: const Icon(
-        Icons.arrow_back_ios,
-      ),
     );
   }
 

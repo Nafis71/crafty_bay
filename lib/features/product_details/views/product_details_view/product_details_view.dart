@@ -50,8 +50,6 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
       appBar: craftyAppBar(
         title: AppStrings.productDetailsHeader,
         context: context,
-        backgroundColor: AppColor.productCarouselBackgroundColor,
-        toolBarHeight: 60,
       ),
       body: SafeArea(
         child: GetBuilder<ProductViewModel>(

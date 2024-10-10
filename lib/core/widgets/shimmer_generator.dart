@@ -1,5 +1,8 @@
+import 'package:crafty_bay/themes/app_color.dart';
+import 'package:crafty_bay/themes/theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ShimmerGenerator extends StatelessWidget {
@@ -17,25 +20,29 @@ class ShimmerGenerator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: shimmerHeight,
-      child: Shimmer.fromColors(
-        baseColor: Colors.grey.shade100,
-        highlightColor: Colors.white,
-        child: ListView.separated(
-          primary: false,
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          scrollDirection: axis,
-          itemBuilder: (context, index) {
-            return shimmer;
-          },
-          separatorBuilder: (BuildContext context, int index) {
-            return Gap(10);
-          },
-          itemCount: itemCount,
-        ),
-      ),
+    return GetBuilder<ThemeSwitcher>(
+      builder: (themeSwitcher) {
+        return SizedBox(
+          height: shimmerHeight,
+          child: Shimmer.fromColors(
+            baseColor: (themeSwitcher.themeMode == ThemeMode.light) ? Colors.grey.shade100 : AppColor.darkComponentsColor,
+            highlightColor: (themeSwitcher.themeMode == ThemeMode.light) ? Colors.white : Colors.white.withOpacity(0.01),
+            child: ListView.separated(
+              primary: false,
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              scrollDirection: axis,
+              itemBuilder: (context, index) {
+                return shimmer;
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return Gap(10);
+              },
+              itemCount: itemCount,
+            ),
+          ),
+        );
+      }
     );
   }
 }

@@ -10,9 +10,9 @@ class ProductReviewFooterText extends StatelessWidget {
     return Text(
       text,
       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
-          color: Colors.black.withOpacity(0.6)),
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
     );
   }
 }
