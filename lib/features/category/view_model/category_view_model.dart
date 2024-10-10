@@ -36,6 +36,7 @@ class CategoryViewModel extends GetxController {
       }
       _responseStatus = true;
     }
+    update();
     return _responseStatus;
   }
 

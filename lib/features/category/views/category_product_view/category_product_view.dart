@@ -4,7 +4,9 @@ import 'package:crafty_bay/core/services/response/success.dart';
 import 'package:crafty_bay/core/widgets/alternative_widget.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/core/widgets/grid_view_layout.dart';
+import 'package:crafty_bay/core/widgets/shimmer_generator.dart';
 import 'package:crafty_bay/features/category/view_model/category_view_model.dart';
+import 'package:crafty_bay/features/category/widgets/category_product_view_shimmer.dart';
 import 'package:crafty_bay/utils/app_assets.dart';
 import 'package:crafty_bay/wrappers/svg_image_loader.dart';
 import 'package:flutter/material.dart';
@@ -34,18 +36,13 @@ class _CategoryProductViewState extends State<CategoryProductView> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.sizeOf(context);
     return Scaffold(
       appBar: craftyAppBar(title: widget.categoryName, context: context),
       body: GetBuilder<CategoryViewModel>(
         builder: (categoryViewModel) {
           if (categoryViewModel.isBusy) {
-            return const Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(child: CircularLoading()),
-              ],
-            );
+            return ShimmerGenerator(shimmer: CategoryProductViewShimmer(), axis:Axis.vertical, itemCount: 7, shimmerHeight: size.height);
           }
           if (categoryViewModel.categoryProductData.isEmpty &&
               categoryViewModel.response is Success) {
