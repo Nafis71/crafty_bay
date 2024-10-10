@@ -8,8 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../view_model/profile_view_model.dart';
-
 AppBar craftyAppBar({
   String? title,
   BuildContext? context,
@@ -50,12 +48,10 @@ AppBar craftyAppBar({
         ? [
             InkWell(
               onTap: () async {
-                if (await Get.find<ProfileViewModel>().isTokenExpired()) {
-                  UserAuthService.isUserAuthenticated(
-                      futureExecution: (token) {});
-                  return;
+                if (await UserAuthService.isUserAuthenticated(
+                    futureExecution: (token) {})) {
+                  navigator?.pushNamed(AppRoutes.profileView);
                 }
-                navigator?.pushNamed(AppRoutes.profileView);
               },
               child: actionItem(CupertinoIcons.person),
             ),

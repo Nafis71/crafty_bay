@@ -111,13 +111,10 @@ class ProfileViewModel extends GetxController {
     };
     response = await ProfileDetailService().createProfile(_token, json);
     if (response is Success) {
-      SharedPreferences localStorage = await SharedPreferences.getInstance();
-      localStorage.setBool("hasUserData", true);
-      Map<String, dynamic> jsonData =
-          (response as Success).response as Map<String, dynamic>;
-      UserModel userModel = UserModel.fromJson(jsonData['data']);
-      await saveUserData(userModel, localStorage);
-      _responseStatus = true;
+      bool readStatus = await readProfile(response!, token);
+      if(readStatus){
+        _responseStatus = true;
+      }
     }
     setIsBusy = false;
     return _responseStatus;
@@ -150,12 +147,14 @@ class ProfileViewModel extends GetxController {
       UserModel userModel, SharedPreferences localStorage) async {
     localStorage.setString(
         "userData", jsonEncode(userModel.toJsonFromStorage()));
+    localStorage.setBool("hasUserData", true);
     _userModel = userModel;
   }
 
   Future<void> logout() async{
     SharedPreferences localStorage = await SharedPreferences.getInstance();
     localStorage.clear();
+    _userModel = null;
     _token = "";
   }
 
