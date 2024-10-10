@@ -98,6 +98,7 @@ class AppStrings {
   //wishlist screen
   static const String wishListViewHeader = "Wish List";
   static const String noWishListFoundText = "Your wish list is currently empty";
+  static const String wishListLoginText = "Login to see your wishlist";
 
   //search screen
   static const String searchWithNameText = "Search for a product with name";

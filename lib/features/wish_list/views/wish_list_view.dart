@@ -28,7 +28,7 @@ class _WishListViewState extends State<WishListView> {
         builder: (wishListViewModel) {
           if (Get.find<ProfileViewModel>().token.isEmpty) {
             return LoginPrompt(
-              subtitle: AppStrings.cartLoginText,
+              subtitle: AppStrings.wishListLoginText,
               futureExecution: (token) async {
                 await Get.find<CartViewModel>().getCartList(token);
               },
