@@ -13,7 +13,6 @@ import '../view_model/profile_view_model.dart';
 AppBar craftyAppBar({
   String? title,
   BuildContext? context,
-  double? toolBarHeight,
 }) {
   return AppBar(
     title: (title == null)
@@ -47,7 +46,6 @@ AppBar craftyAppBar({
     elevation: (title == null) ? 0 : 5,
     centerTitle: false,
     automaticallyImplyLeading: false,
-    toolbarHeight: toolBarHeight,
     actions: (title == null)
         ? [
             InkWell(
