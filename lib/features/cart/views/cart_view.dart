@@ -2,12 +2,12 @@ import 'package:crafty_bay/core/services/internet_service_error.dart';
 import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/view_model/profile_view_model.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
+import 'package:crafty_bay/core/widgets/login_prompt.dart';
 import 'package:crafty_bay/core/widgets/view_footer.dart';
 import 'package:crafty_bay/features/cart/view_model/cart_view_model.dart';
 import 'package:crafty_bay/features/cart/widgets/cart_footer_button.dart';
 import 'package:crafty_bay/features/cart/widgets/cart_footer_text.dart';
 import 'package:crafty_bay/features/cart/widgets/cart_list_card.dart';
-import 'package:crafty_bay/utils/app_routes.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:crafty_bay/wrappers/app_snack_bar.dart';
 import 'package:flutter/material.dart';
@@ -42,41 +42,13 @@ class _CartViewState extends State<CartView> {
       body: GetBuilder<CartViewModel>(
         builder: (cartViewModel) {
           if (Get.find<ProfileViewModel>().token.isEmpty) {
-            return AlternativeWidget(
-              child: Column(
-                children: [
-                  Icon(
-                    Icons.login_outlined,
-                    color: Theme.of(context).primaryColor,
-                    size: 45,
-                  ),
-                  const Gap(15),
-                  const Text(
-                    AppStrings.cartLoginText,
-                  ),
-                  const Gap(20),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.4,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        navigator!.pushNamed(
-                          AppRoutes.loginView,
-                          arguments: (token) async {
-                            await cartViewModel.getCartList(token);
-                          },
-                        );
-                      },
-                      child: Text(
-                        AppStrings.cartLoginButtonText,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              onRefresh: () {},
+            return LoginPrompt(
+              subtitle: AppStrings.cartLoginText,
+              futureExecution: (token) async {
+                await cartViewModel.getCartList(token);
+              },
             );
           }
-
           if (cartViewModel.isBusy) {
             return const Column(
               mainAxisSize: MainAxisSize.max,

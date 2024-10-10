@@ -152,4 +152,11 @@ class ProfileViewModel extends GetxController {
         "userData", jsonEncode(userModel.toJsonFromStorage()));
     _userModel = userModel;
   }
+
+  Future<void> logout() async{
+    SharedPreferences localStorage = await SharedPreferences.getInstance();
+    localStorage.clear();
+    _token = "";
+  }
+
 }

@@ -116,7 +116,10 @@ class _ProfileViewState extends State<ProfileView> {
                 SizedBox(
                   width: size.width * 0.9,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      profileViewModel.logout();
+                      navigator!.pop();
+                    },
                     child: Text(AppStrings.logoutButtonText),
                   ),
                 ),

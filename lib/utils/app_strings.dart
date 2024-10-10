@@ -6,6 +6,9 @@ class AppStrings {
   static const String internalServerError =
       "Internal Server Error, please try again later.";
 
+  //core
+  static const String loginButtonText = "Login Now";
+
   //login Screen
   static const String appVersion = "Version 1.0";
   static const String loginScreenTitle = "Welcome Back";
@@ -91,7 +94,6 @@ class AppStrings {
   static const String cartDeletionSuccessText =
       "Item has been removed from your cart";
   static const String cartLoginText = "Login to see your cart";
-  static const String cartLoginButtonText = "Login Now";
 
   //wishlist screen
   static const String wishListViewHeader = "Wish List";
