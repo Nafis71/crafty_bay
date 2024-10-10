@@ -4,8 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-
-import '../../../themes/app_color.dart';
 import 'custom_search_delegate.dart';
 
 class AppSearchBar extends StatelessWidget {
@@ -26,7 +24,7 @@ class AppSearchBar extends StatelessWidget {
       child: GetBuilder<ThemeSwitcher>(
         builder: (themeSwitcher) {
           return Card(
-            color: themeSwitcher.getComponentColor(),
+            color: themeSwitcher.getSearchBarColor(),
             elevation: 0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
