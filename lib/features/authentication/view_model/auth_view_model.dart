@@ -38,22 +38,26 @@ class AuthViewModel extends GetxController {
     setIsBusy = true;
     response = await AuthService().verifyOTP(emailAddress, otp);
     if (response is Success) {
-      Map<String, dynamic> jsonData =
-          (response as Success).response as Map<String, dynamic>;
-      String token = jsonData['data'];
-      SharedPreferences localStorage = await SharedPreferences.getInstance();
-      localStorage.setString("token", token);
-      Get.find<ProfileViewModel>().setToken = token;
-      await Future.delayed(const Duration(milliseconds: 2500));
-      bool status =
-          await Get.find<ProfileViewModel>().readProfile(response!, token);
-      _hasUserData = status;
-      localStorage.setBool("hasUserData", status);
-      await PrefetchService.prefetchProductWishList(token);
-      await futureExecution(token);
+      await postProcessing(futureExecution);
       _responseStatus = true;
     }
     setIsBusy = false;
     return _responseStatus;
+  }
+
+  Future<void> postProcessing(Function(dynamic) futureExecution) async {
+    Map<String, dynamic> jsonData =
+        (response as Success).response as Map<String, dynamic>;
+    String token = jsonData['data'];
+    SharedPreferences localStorage = await SharedPreferences.getInstance();
+    localStorage.setString("token", token);
+    Get.find<ProfileViewModel>().setToken = token;
+    await Future.delayed(const Duration(milliseconds: 2500));
+    bool status =
+        await Get.find<ProfileViewModel>().readProfile(response!, token);
+    _hasUserData = status;
+    localStorage.setBool("hasUserData", status);
+    await PrefetchService.prefetchProductWishList(token);
+    await futureExecution(token);
   }
 }
