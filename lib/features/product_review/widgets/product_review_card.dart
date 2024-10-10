@@ -33,7 +33,7 @@ class ProductReviewCard extends StatelessWidget {
           Row(
             children: [
               CircleAvatar(
-                backgroundColor: AppColor.appBarActionButtonColor,
+                backgroundColor: AppColor.appBarActionButtonColorLight,
                 child: const Icon(
                   CupertinoIcons.person,
                   color: Colors.grey,

@@ -1,5 +1,6 @@
 import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/widgets/authentication_layout.dart';
+import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/features/authentication/view_model/auth_view_model.dart';
 import 'package:crafty_bay/themes/app_color.dart';
 import 'package:crafty_bay/utils/app_routes.dart';
@@ -34,7 +35,7 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     Orientation deviceOrientation = MediaQuery.of(context).orientation;
     return Scaffold(
-      appBar: AppBar(),
+      appBar: craftyAppBar(title: "",context: context),
       resizeToAvoidBottomInset: false,
       body: Container(
         margin: const EdgeInsets.all(20),

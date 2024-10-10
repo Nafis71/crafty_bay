@@ -7,6 +7,7 @@ import 'package:crafty_bay/core/widgets/small_icon_card.dart';
 import 'package:crafty_bay/features/product_details/views/product_details_view/product_details_view.dart';
 import 'package:crafty_bay/features/wish_list/view_model/wish_list_view_model.dart';
 import 'package:crafty_bay/themes/app_color.dart';
+import 'package:crafty_bay/themes/theme_switcher.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -31,120 +32,122 @@ class ProductCard extends StatelessWidget {
           ),
         );
       },
-      child: Column(
-        children: [
-          Container(
-            width: 155,
-            height: 195,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(15),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
-                  blurRadius: 5,
-                  spreadRadius: 1,
-                  offset: const Offset(0, 2),
-                ),
-              ],
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: AppColor.productCardImageBackgroundColor,
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(15),
-                        topRight: Radius.circular(15),
+      child: GetBuilder<ThemeSwitcher>(builder: (themeSwitcher) {
+        return Column(
+          children: [
+            Container(
+              width: 155,
+              height: 195,
+              decoration: BoxDecoration(
+                color: themeSwitcher.getComponentColor(),
+                borderRadius: BorderRadius.circular(15),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.05),
+                    blurRadius: 5,
+                    spreadRadius: 1,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: AppColor.productCardImageBackgroundColor,
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(15),
+                          topRight: Radius.circular(15),
+                        ),
+                      ),
+                      alignment: Alignment.center,
+                      child: CachedNetworkImage(
+                        imageUrl: productList.image,
+                        fit: BoxFit.cover,
+                        placeholder: (context, _) {
+                          return const CircularLoading();
+                        },
                       ),
                     ),
-                    alignment: Alignment.center,
-                    child: CachedNetworkImage(
-                      imageUrl: productList.image,
-                      fit: BoxFit.cover,
-                      placeholder: (context, _) {
-                        return const CircularLoading();
-                      },
-                    ),
                   ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          productList.title,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium!
-                              .copyWith(
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            productList.title,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .copyWith(
                                   fontSize: 10,
-                                  color: Colors.grey.shade600,
-                                  fontWeight: FontWeight.bold),
-                        ),
-                        const Gap(3),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "\$${productList.price}",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium!
-                                  .copyWith(
-                                      fontSize: 13,
-                                      color: Theme.of(context).primaryColor,
-                                      fontWeight: FontWeight.bold),
-                            ),
-                            ProductRating(
-                              productRating: ProductRatingCalculator()
-                                  .getProductRating(productList.star),
-                              iconSize: 18,
-                              fontSize: 12,
-                            ),
-                            GetBuilder<WishListViewModel>(
-                              builder: (wishListViewModel) {
-                                return InkWell(
-                                  onTap: () {
-                                    if (wishListViewModel.wishListProductId
-                                        .contains(productList.id)) {
-                                      wishListViewModel.removeWishList(
-                                        Get.find<ProfileViewModel>().token,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                          ),
+                          const Gap(3),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "\$${productList.price}",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium!
+                                    .copyWith(
+                                        fontSize: 13,
+                                        color: Theme.of(context).primaryColor,
+                                        fontWeight: FontWeight.bold),
+                              ),
+                              ProductRating(
+                                productRating: ProductRatingCalculator()
+                                    .getProductRating(productList.star),
+                                iconSize: 18,
+                                fontSize: 12,
+                              ),
+                              GetBuilder<WishListViewModel>(
+                                builder: (wishListViewModel) {
+                                  return InkWell(
+                                    onTap: () {
+                                      if (wishListViewModel.wishListProductId
+                                          .contains(productList.id)) {
+                                        wishListViewModel.removeWishList(
+                                          Get.find<ProfileViewModel>().token,
+                                          productList.id,
+                                        );
+                                        return;
+                                      }
+                                      wishListViewModel.createWishList(
                                         productList.id,
+                                        Get.find<ProfileViewModel>().token,
                                       );
-                                      return;
-                                    }
-                                    wishListViewModel.createWishList(
-                                      productList.id,
-                                      Get.find<ProfileViewModel>().token,
-                                    );
-                                  },
-                                  child: SmallIconCard(
-                                    icon: getWishListIcon(wishListViewModel),
-                                    applyPrimaryColor: true,
-                                    cardInsidePadding: 3.0,
-                                  ),
-                                );
-                              },
-                            )
-                          ],
-                        ),
-                      ],
+                                    },
+                                    child: SmallIconCard(
+                                      icon: getWishListIcon(wishListViewModel),
+                                      applyPrimaryColor: true,
+                                      cardInsidePadding: 3.0,
+                                    ),
+                                  );
+                                },
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             ),
-          ),
-        ],
-      ),
+          ],
+        );
+      }),
     );
   }
 

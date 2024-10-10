@@ -1,5 +1,6 @@
 import 'package:crafty_bay/app/initiate_view_model.dart';
 import 'package:crafty_bay/themes/app_theme.dart';
+import 'package:crafty_bay/themes/theme_switcher.dart';
 import 'package:crafty_bay/utils/app_routes.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
@@ -23,18 +24,23 @@ class _CraftyBayState extends State<CraftyBay> {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      navigatorKey: navigatorState,
-      initialBinding: InitiateViewModel(),
-      initialRoute: AppRoutes.splashView,
-      locale: DevicePreview.locale(context),
-      builder: DevicePreview.appBuilder,
-      onGenerateRoute: (RouteSettings routeSettings) {
-        return AppRoutes.generateRoutes(routeSettings);
-      },
-      themeMode: ThemeMode.light,
-      theme: AppTheme.getLightTheme(),
+    return GetBuilder<ThemeSwitcher>(
+      builder: (themeSwitcher) {
+        return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          navigatorKey: navigatorState,
+          initialBinding: InitiateViewModel(),
+          initialRoute: AppRoutes.splashView,
+          locale: DevicePreview.locale(context),
+          builder: DevicePreview.appBuilder,
+          onGenerateRoute: (RouteSettings routeSettings) {
+            return AppRoutes.generateRoutes(routeSettings);
+          },
+          themeMode: themeSwitcher.themeMode,
+          theme: AppTheme.getLightTheme(),
+          darkTheme: AppTheme.getDarkTheme(),
+        );
+      }
     );
   }
 }

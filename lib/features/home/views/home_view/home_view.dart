@@ -13,6 +13,7 @@ import 'package:crafty_bay/features/home/widgets/carousel_slider_shimmer.dart';
 import 'package:crafty_bay/features/home/widgets/offer_carousel.dart';
 import 'package:crafty_bay/features/home/widgets/product_card_shimmer.dart';
 import 'package:crafty_bay/features/home/widgets/product_layout_section.dart';
+import 'package:crafty_bay/themes/theme_switcher.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -43,7 +44,7 @@ class _HomeViewState extends State<HomeView> {
       appBar: craftyAppBar(),
       body: GetBuilder<HomeViewModel>(builder: (homeViewModel) {
         return Container(
-          margin: const EdgeInsets.only(left: 8, right: 8),
+          margin: const EdgeInsets.only(left: 8, right: 8, top: 8),
           child: ListView(
             children: [
               const AppSearchBar(),

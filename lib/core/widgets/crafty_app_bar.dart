@@ -1,5 +1,6 @@
 import 'package:crafty_bay/features/cart/view_model/cart_view_model.dart';
 import 'package:crafty_bay/themes/app_color.dart';
+import 'package:crafty_bay/themes/theme_switcher.dart';
 import 'package:crafty_bay/utils/app_assets.dart';
 import 'package:crafty_bay/utils/app_routes.dart';
 import 'package:crafty_bay/wrappers/svg_image_loader.dart';
@@ -29,10 +30,15 @@ AppBar craftyAppBar({
                 InkWell(
                   splashColor: Colors.transparent,
                   onTap: () => Navigator.pop(context),
-                  child: const Icon(
-                    Icons.arrow_back_ios,
-                    weight: 0.4,
-                  ),
+                  child: GetBuilder<ThemeSwitcher>(builder: (themeSwitcher) {
+                    return Icon(
+                      Icons.arrow_back_ios,
+                      weight: 0.4,
+                      color: (themeSwitcher.themeMode == ThemeMode.dark)
+                          ? Colors.white
+                          : Colors.black,
+                    );
+                  },),
                 ),
               const Gap(5),
               Text(title),
@@ -71,12 +77,14 @@ AppBar craftyAppBar({
   );
 }
 
-CircleAvatar actionItem(IconData icon) {
-  return CircleAvatar(
-    backgroundColor: AppColor.appBarActionButtonColor,
-    child: Icon(
-      icon,
-      color: Colors.grey,
-    ),
-  );
+Widget actionItem(IconData icon) {
+  return GetBuilder<ThemeSwitcher>(builder: (themeSwitcher) {
+    return CircleAvatar(
+      backgroundColor: themeSwitcher.getAppBarActionButtonColor(),
+      child: Icon(
+        icon,
+        color: Colors.grey,
+      ),
+    );
+  });
 }

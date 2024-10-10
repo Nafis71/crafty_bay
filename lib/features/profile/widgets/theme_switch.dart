@@ -1,13 +1,15 @@
+import 'package:crafty_bay/themes/theme_switcher.dart';
 import 'package:flutter/material.dart';
 
 class ThemeSwitch extends StatelessWidget {
-  const ThemeSwitch({super.key});
+  final ThemeSwitcher themeSwitcher;
+  const ThemeSwitch({super.key, required this.themeSwitcher});
 
   @override
   Widget build(BuildContext context) {
     return Switch(
       activeColor: Theme.of(context).primaryColor,
-      value: false,
+      value: (themeSwitcher.themeMode == ThemeMode.dark) ? true : false,
       trackOutlineColor: WidgetStateProperty.resolveWith<Color?>(
         (states) {
           return Colors.grey.shade100;
@@ -37,7 +39,13 @@ class ThemeSwitch extends StatelessWidget {
           return const Icon(Icons.wb_sunny_rounded);
         },
       ),
-      onChanged: (value) {},
+      onChanged: (value) {
+        if(value){
+          themeSwitcher.setThemeMode = ThemeMode.dark;
+        } else{
+          themeSwitcher.setThemeMode = ThemeMode.light;
+        }
+      },
     );
   }
 }

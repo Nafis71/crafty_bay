@@ -19,4 +19,8 @@ class BottomNavigationTheme {
           fontFamily: "Poppins",
         ),
       );
+
+  static BottomNavigationBarThemeData getBottomNavigationBarDarkTheme()=> getBottomNavigationBarLightTheme().copyWith(
+    backgroundColor: AppColor.darkComponentsColor
+  );
 }

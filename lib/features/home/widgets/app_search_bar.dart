@@ -1,4 +1,5 @@
 import 'package:crafty_bay/features/home/view_model/home_view_model.dart';
+import 'package:crafty_bay/themes/theme_switcher.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -22,31 +23,35 @@ class AppSearchBar extends StatelessWidget {
           delegate: CustomSearchDelegate(),
         );
       },
-      child: Card(
-        color: AppColor.searchBarBackgroundColor,
-        elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Row(
-            children: [
-              Icon(
-                CupertinoIcons.search,
-                color: Colors.grey.shade700,
+      child: GetBuilder<ThemeSwitcher>(
+        builder: (themeSwitcher) {
+          return Card(
+            color: themeSwitcher.getComponentColor(),
+            elevation: 0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Row(
+                children: [
+                  Icon(
+                    CupertinoIcons.search,
+                    color: Colors.grey.shade700,
+                  ),
+                  const Gap(4),
+                  Text(
+                    "Search",
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          fontSize: 15,
+                          color: Colors.grey,
+                        ),
+                  ),
+                ],
               ),
-              const Gap(4),
-              Text(
-                "Search",
-                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      fontSize: 15,
-                      color: Colors.grey,
-                    ),
-              ),
-            ],
-          ),
-        ),
+            ),
+          );
+        }
       ),
     );
   }
