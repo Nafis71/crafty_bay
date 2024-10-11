@@ -32,7 +32,9 @@ class SizeSelectionWidget extends StatelessWidget {
               border: (productViewModel.selectedSize != index)
                   ? Border.fromBorderSide(
                       BorderSide(
-                          color: Colors.black.withOpacity(0.5), width: 1.8),
+                        color: Colors.black.withOpacity(0.5),
+                        width: 0.5,
+                      ),
                     )
                   : null,
             ),
@@ -42,7 +44,7 @@ class SizeSelectionWidget extends StatelessWidget {
               style: Theme.of(context).textTheme.labelSmall!.copyWith(
                     fontWeight: FontWeight.w600,
                     color: (productViewModel.selectedSize != index)
-                        ? null
+                        ? Colors.black
                         : Colors.white,
                   ),
             ),

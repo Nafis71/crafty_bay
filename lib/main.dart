@@ -11,5 +11,5 @@ void main() async{
   Get.put(ConnectionViewModel());
   Get.find<ConnectionViewModel>().initialize();
   Get.put(ThemeSwitcher());
-  runApp(DevicePreview(enabled: true, builder: (_) => const CraftyBay()));
+  runApp(DevicePreview(enabled: false, builder: (_) => const CraftyBay()));
 }

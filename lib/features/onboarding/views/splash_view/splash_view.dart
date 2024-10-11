@@ -98,7 +98,7 @@ class _SplashViewState extends State<SplashView> {
           Get.find<ProfileViewModel>().token);
     }
     await Get.find<ProfileViewModel>().loadUserDataFromStorage();
-    Get.find<CartViewModel>().getCartList(Get.find<ProfileViewModel>().token);
+    await Future.delayed(Duration(seconds: 3));
     Navigator.pushNamed(context, AppRoutes.baseNavigationView);
   }
 }
