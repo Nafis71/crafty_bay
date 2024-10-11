@@ -1,4 +1,5 @@
 import 'package:crafty_bay/core/services/user_auth_service/user_auth_service.dart';
+import 'package:crafty_bay/features/cart/view_model/cart_view_model.dart';
 import 'package:crafty_bay/themes/theme_switcher.dart';
 import 'package:crafty_bay/utils/app_assets.dart';
 import 'package:crafty_bay/utils/app_routes.dart';

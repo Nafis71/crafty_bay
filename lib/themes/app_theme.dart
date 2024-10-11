@@ -20,13 +20,15 @@ class AppTheme {
             BottomNavigationTheme.getBottomNavigationBarLightTheme(),
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
-    fontFamily: "Poppins",
+        fontFamily: "Poppins",
       );
+
   static ThemeData getDarkTheme() => getLightTheme().copyWith(
-    brightness: Brightness.dark,
-    scaffoldBackgroundColor: AppColor.scaffoldBackgroundColorDark,
-    appBarTheme: AppbarStyle.getDarkAppBarTheme(),
-    textTheme: AppTextTheme.getTextThemeDark(),
-    bottomNavigationBarTheme: BottomNavigationTheme.getBottomNavigationBarDarkTheme(),
-  );
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: AppColor.scaffoldBackgroundColorDark,
+        appBarTheme: AppbarStyle.getDarkAppBarTheme(),
+        textTheme: AppTextTheme.getTextThemeDark(),
+        bottomNavigationBarTheme:
+            BottomNavigationTheme.getBottomNavigationBarDarkTheme(),
+      );
 }

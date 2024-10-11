@@ -3,11 +3,13 @@ import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/view_model/profile_view_model.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/core/widgets/login_prompt.dart';
+import 'package:crafty_bay/core/widgets/shimmer_generator.dart';
 import 'package:crafty_bay/core/widgets/view_footer.dart';
 import 'package:crafty_bay/features/cart/view_model/cart_view_model.dart';
 import 'package:crafty_bay/features/cart/widgets/cart_footer_button.dart';
 import 'package:crafty_bay/features/cart/widgets/cart_footer_text.dart';
 import 'package:crafty_bay/features/cart/widgets/cart_list_card.dart';
+import 'package:crafty_bay/features/cart/widgets/cart_view_shimmer.dart';
 import 'package:crafty_bay/utils/app_strings.dart';
 import 'package:crafty_bay/wrappers/app_snack_bar.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +37,7 @@ class _CartViewState extends State<CartView> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.sizeOf(context);
     return Scaffold(
       appBar: craftyAppBar(
         title: AppStrings.cartViewHeader,
@@ -50,12 +53,11 @@ class _CartViewState extends State<CartView> {
             );
           }
           if (cartViewModel.isBusy) {
-            return const Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(child: CircularLoading()),
-              ],
+            return ShimmerGenerator(
+              shimmer: CartViewShimmer(),
+              axis: Axis.vertical,
+              itemCount: 8,
+              shimmerHeight: size.height,
             );
           }
           if (cartViewModel.response is Failure) {

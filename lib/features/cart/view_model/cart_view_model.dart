@@ -20,6 +20,7 @@ class CartViewModel extends GetxController {
     _responseStatus = false;
     if (_cartList.isEmpty) {
       _isBusy = true;
+      update();
     }
     response = await CartService().getCartList(token);
     if (response is Success) {
