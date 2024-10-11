@@ -89,6 +89,7 @@ class ProfileViewModel extends GetxController {
     required String mobile,
     required String city,
     required String shippingAddress,
+    required String postCode
   }) async {
     _responseStatus = false;
     setIsBusy = true;
@@ -105,7 +106,7 @@ class ProfileViewModel extends GetxController {
       "ship_add": shippingAddress,
       "ship_city": city,
       "ship_state": city,
-      "ship_postcode": "1207",
+      "ship_postcode": postCode,
       "ship_country": "Bangladesh",
       "ship_phone": mobile
     };

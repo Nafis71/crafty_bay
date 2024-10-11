@@ -69,6 +69,16 @@ class FormValidation {
     return null;
   }
 
+  static String? validatePostCode(String? postCode) {
+    if (postCode == null || postCode.isEmpty) {
+      return AppStrings.emptyPostCode;
+    }
+    if (!RegEx.digitRegEx.hasMatch(postCode)) {
+      return AppStrings.invalidPostCode;
+    }
+    return null;
+  }
+
   static String? validateShippingAddress(String? shippingAddress) {
     if (shippingAddress == null || shippingAddress.isEmpty) {
       return AppStrings.emptyShippingAddress;

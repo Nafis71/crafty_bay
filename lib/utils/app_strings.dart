@@ -41,6 +41,8 @@ class AppStrings {
   static const String emptyMobile = "Mobile number is required";
   static const String cityHintText = "City";
   static const String emptyCity = "City is required";
+  static const String postCodeHintText = "Post Code";
+  static const String emptyPostCode = "Post Code is required";
   static const String shippingAddressHintText = "Shipping Address";
   static const String emptyShippingAddress = "Shipping address is required";
   static const String invalidFirstNameText = "Invalid First Name";
@@ -48,6 +50,7 @@ class AppStrings {
   static const String invalidMobileText = "Invalid Mobile Number";
   static const String invalidCityText = "Invalid City Name";
   static const String invalidShippingAddress = "Invalid Shipping Address";
+  static const String invalidPostCode = "Invalid Post Code";
   static const String profileDetailsButtonText = "Complete";
 
   //base navigation screen
