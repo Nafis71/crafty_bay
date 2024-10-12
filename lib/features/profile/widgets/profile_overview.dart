@@ -53,7 +53,7 @@ class ProfileOverview extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       navigator!.pop();
-                      Get.find<BaseNavigationViewModel>().setIndex = 3;
+                      Get.find<BaseNavigationState>().setIndex = 3;
                     },
                     child: Text(
                       "${Get.find<WishListViewModel>().productWishList.length} Wishlist",
@@ -67,7 +67,7 @@ class ProfileOverview extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       navigator!.pop();
-                      Get.find<BaseNavigationViewModel>().setIndex = 2;
+                      Get.find<BaseNavigationState>().setIndex = 2;
                     },
                     child: Text(
                       "${Get.find<CartViewModel>().cartList.length} Cart item",

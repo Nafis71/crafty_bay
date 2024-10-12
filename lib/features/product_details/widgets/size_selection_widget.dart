@@ -1,14 +1,15 @@
-import 'package:crafty_bay/features/product_details/view_models/product_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import '../state_holders/product_view_model.dart';
+
 class SizeSelectionWidget extends StatelessWidget {
-  final ProductViewModel productViewModel;
+  final ProductState productState;
   final int index;
 
   const SizeSelectionWidget({
     super.key,
-    required this.productViewModel,
+    required this.productState,
     required this.index,
   });
 
@@ -19,17 +20,17 @@ class SizeSelectionWidget extends StatelessWidget {
         InkWell(
           splashColor: Colors.transparent,
           onTap: () {
-            productViewModel.setSelectedSize = index;
+            productState.setSelectedSize = index;
           },
           child: Container(
             width: 38,
             height: 38,
             decoration: BoxDecoration(
-              color: (productViewModel.selectedSize != index)
+              color: (productState.selectedSize != index)
                   ? Colors.white
                   : Theme.of(context).primaryColor,
               shape: BoxShape.circle,
-              border: (productViewModel.selectedSize != index)
+              border: (productState.selectedSize != index)
                   ? Border.fromBorderSide(
                       BorderSide(
                         color: Colors.black.withOpacity(0.5),
@@ -40,10 +41,10 @@ class SizeSelectionWidget extends StatelessWidget {
             ),
             alignment: Alignment.center,
             child: Text(
-              productViewModel.getSizeText(index),
+              productState.getSizeText(index),
               style: Theme.of(context).textTheme.labelSmall!.copyWith(
                     fontWeight: FontWeight.w600,
-                    color: (productViewModel.selectedSize != index)
+                    color: (productState.selectedSize != index)
                         ? Colors.black
                         : Colors.white,
                   ),

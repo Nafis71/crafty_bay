@@ -43,11 +43,12 @@ class ProductImageCarousel extends StatelessWidget {
         indicatorMargin: 20,
         slideIndicator: CircularSlideIndicator(
           slideIndicatorOptions: SlideIndicatorOptions(
-              currentIndicatorColor: Theme.of(context).primaryColor,
-              indicatorRadius: 8,
-              itemSpacing: 23,
-              indicatorBackgroundColor: Colors.white,
-              enableAnimation: true),
+            currentIndicatorColor: Theme.of(context).primaryColor,
+            indicatorRadius: 8,
+            itemSpacing: 23,
+            indicatorBackgroundColor: Colors.white,
+            enableAnimation: true,
+          ),
         ),
       ),
     );

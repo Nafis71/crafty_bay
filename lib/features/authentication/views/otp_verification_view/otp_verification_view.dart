@@ -40,13 +40,13 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
   }
 
   void initiateTimer() {
-    Get.find<CountdownTimer>().resetTime();
+    Get.find<CountdownTimerState>().resetTime();
     timer = Timer.periodic(const Duration(seconds: 1), (countdown) {
       if (countdown.tick > 120) {
         countdown.cancel();
         return;
       }
-      Get.find<CountdownTimer>().decreaseTime();
+      Get.find<CountdownTimerState>().decreaseTime();
     });
   }
 
@@ -92,7 +92,7 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
                       ),
                     ),
                   ),
-                  bottomWidget: GetBuilder<CountdownTimer>(
+                  bottomWidget: GetBuilder<CountdownTimerState>(
                     builder: (timer) {
                       return Column(
                         children: [
@@ -158,7 +158,7 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
   }
 
   Future<void> _verifyOTP(AuthViewModel authViewModel) async {
-    if (Get.find<CountdownTimer>().timeLeft == 0) {
+    if (Get.find<CountdownTimerState>().timeLeft == 0) {
       AppSnackBar.show(
           message: AppStrings.invalidOTP, context: context, isError: true);
       return;

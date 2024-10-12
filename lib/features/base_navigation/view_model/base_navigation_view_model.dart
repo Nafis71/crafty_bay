@@ -5,7 +5,7 @@ import 'package:crafty_bay/features/wish_list/views/wish_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class BaseNavigationViewModel extends GetxController {
+class BaseNavigationState extends GetxController {
   int _index = 0;
   final List<Widget> _views = [
     const HomeView(),

@@ -22,7 +22,7 @@ class _BaseNavigationViewState extends State<BaseNavigationView> {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<BaseNavigationViewModel>(
+    return GetBuilder<BaseNavigationState>(
         builder: (baseNavigationViewModel) {
       return PopScope(
         onPopInvokedWithResult: (isPop, result) async {

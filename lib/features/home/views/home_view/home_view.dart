@@ -90,7 +90,7 @@ class _HomeViewState extends State<HomeView> {
                         ),
                       ),
                       onTap: () {
-                        Get.find<BaseNavigationViewModel>().setIndex = 1;
+                        Get.find<BaseNavigationState>().setIndex = 1;
                       },
                     )
                   : ShimmerGenerator(

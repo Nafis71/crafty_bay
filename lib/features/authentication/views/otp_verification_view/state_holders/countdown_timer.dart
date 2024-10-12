@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class CountdownTimer extends GetxController {
+class CountdownTimerState extends GetxController {
   int _timeLeft = 120;
 
   int get timeLeft => _timeLeft;

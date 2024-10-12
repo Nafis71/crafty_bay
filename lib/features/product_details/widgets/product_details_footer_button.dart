@@ -4,7 +4,8 @@ import 'package:get/get.dart';
 
 import '../../../core/utils/app_strings.dart';
 import '../../../core/widgets/circular_loading.dart';
-import '../view_models/product_view_model.dart';
+import '../state_holders/product_view_model.dart';
+
 
 class ProductDetailsFooterButton extends StatelessWidget {
   final Function(dynamic) addToCart;
@@ -13,20 +14,20 @@ class ProductDetailsFooterButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<ProductViewModel>(
-      builder: (productViewModel) {
+    return GetBuilder<ProductState>(
+      builder: (productState) {
         return SizedBox(
           width: MediaQuery.of(context).size.width * 0.38,
           height: 50,
-          child: (productViewModel.productData!.stock != 0)
+          child: (productState.productData!.stock != 0)
               ? Builder(
                   builder: (context) {
-                    if (productViewModel.isAddingToCart) {
+                    if (productState.isAddingToCart) {
                       return const Center(
                         child: CircularLoading(),
                       );
                     }
-                    if (productViewModel.isItemAddedToCart) {
+                    if (productState.isItemAddedToCart) {
                       return Center(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,

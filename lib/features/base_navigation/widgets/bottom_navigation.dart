@@ -1,9 +1,9 @@
-import 'package:crafty_bay/features/product_details/view_models/product_view_model.dart';
 import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/utils/app_assets.dart';
+import '../../product_details/state_holders/product_view_model.dart';
 import '../view_model/base_navigation_view_model.dart';
 import 'bottom_navigation_bar_item.dart';
 
@@ -12,13 +12,13 @@ class BottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<BaseNavigationViewModel>(
+    return GetBuilder<BaseNavigationState>(
         builder: (baseNavigationViewModel) {
       return BottomNavigationBar(
         currentIndex: baseNavigationViewModel.index,
         onTap: (index) {
           if (baseNavigationViewModel.index == index ||
-              Get.find<ProductViewModel>().isAddingToCart) {
+              Get.find<ProductState>().isAddingToCart) {
             return;
           }
           baseNavigationViewModel.setIndex = index;

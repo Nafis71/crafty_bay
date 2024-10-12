@@ -5,7 +5,7 @@ import 'package:crafty_bay/features/product_details/services/product_service.dar
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
-class ProductViewModel extends GetxController {
+class ProductState extends GetxController {
   Object? response;
   Object? cartResponse;
   Product? _productData;
@@ -104,7 +104,6 @@ class ProductViewModel extends GetxController {
       }
     }
     setIsBusy = false;
-    print(productColorList);
     return _responseStatus;
   }
 

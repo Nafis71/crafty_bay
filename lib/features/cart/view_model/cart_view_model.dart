@@ -2,8 +2,9 @@ import 'package:crafty_bay/core/services/response/success.dart';
 import 'package:crafty_bay/features/cart/models/cart_list_model/cart_data.dart';
 import 'package:crafty_bay/features/cart/models/cart_list_model/cart_list_model.dart';
 import 'package:crafty_bay/features/cart/services/cart_service.dart';
-import 'package:crafty_bay/features/product_details/view_models/product_view_model.dart';
 import 'package:get/get.dart';
+
+import '../../product_details/state_holders/product_view_model.dart';
 
 class CartViewModel extends GetxController {
   Object? response;
@@ -12,7 +13,7 @@ class CartViewModel extends GetxController {
   bool _responseStatus = false;
   List<CartData> _cartList = [];
   int totalPrice = 0;
-  ProductViewModel productViewModel;
+  ProductState productViewModel;
 
   CartViewModel(this.productViewModel);
 
@@ -48,8 +49,6 @@ class CartViewModel extends GetxController {
       {required int productId, required String token}) async {
     _responseStatus = false;
     productViewModel.setIsAddingToCart = true;
-    print(productViewModel.selectedColor);
-    print(productViewModel.productColorList);
     Map<String, dynamic> cartJson = {
       "product_id": productId,
       "color": productViewModel.getColorText(

@@ -1,15 +1,16 @@
-import 'package:crafty_bay/features/product_details/view_models/product_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import '../state_holders/product_view_model.dart';
+
 class ColorSelectionWidget extends StatelessWidget {
-  final ProductViewModel productViewModel;
+  final ProductState productState;
   final int index;
   final int color;
 
   const ColorSelectionWidget(
       {super.key,
-      required this.productViewModel,
+      required this.productState,
       required this.index,
       required this.color});
 
@@ -20,12 +21,12 @@ class ColorSelectionWidget extends StatelessWidget {
         InkWell(
           splashColor: Colors.transparent,
           onTap: () {
-            productViewModel.setSelectedColor = index;
+            productState.setSelectedColor = index;
           },
           child: CircleAvatar(
             radius: 18,
             backgroundColor: Color(color),
-            child: (index == productViewModel.selectedColor)
+            child: (index == productState.selectedColor)
                 ? const Icon(
                     Icons.done,
                     color: Colors.white,

@@ -11,7 +11,6 @@ import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/core/widgets/shimmer_generator.dart';
 import 'package:crafty_bay/core/widgets/view_footer.dart';
 import 'package:crafty_bay/features/cart/view_model/cart_view_model.dart';
-import 'package:crafty_bay/features/product_details/view_models/product_view_model.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_body.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_description.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_details_footer_button.dart';
@@ -22,6 +21,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import '../../../../core/wrappers/svg_image_loader.dart';
+import '../../state_holders/product_view_model.dart';
 import '../../widgets/product_image_carousel.dart';
 
 class ProductDetailsView extends StatefulWidget {
@@ -51,9 +51,9 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
         context: context,
       ),
       body: SafeArea(
-        child: GetBuilder<ProductViewModel>(
-          builder: (productViewModel) {
-            if (productViewModel.isBusy) {
+        child: GetBuilder<ProductState>(
+          builder: (productState) {
+            if (productState.isBusy) {
               return ShimmerGenerator(
                 shimmer: ProductDetailsShimmer(),
                 axis: Axis.vertical,
@@ -61,7 +61,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                 shimmerHeight: size.height,
               );
             }
-            if (productViewModel.response is Failure) {
+            if (productState.response is Failure) {
               return AlternativeWidget(
                 onRefresh: loadProductDetails,
                 child: const SvgImageLoader(
@@ -70,7 +70,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                 ),
               );
             }
-            if (productViewModel.productData == null) {
+            if (productState.productData == null) {
               return AlternativeWidget(
                 onRefresh: loadProductDetails,
                 child: Column(
@@ -102,18 +102,18 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                           ProductImageCarousel(
                             orientation: deviceOrientation,
                             carouselImageList:
-                                productViewModel.carouselImageList,
+                                productState.carouselImageList,
                           ),
                           const Gap(10),
-                          ProductBody(product: productViewModel.productData!),
+                          ProductBody(product: productState.productData!),
                           const Gap(10),
                           ProductVariation(
-                            productSizes: productViewModel.productSizeList,
-                            productColors: productViewModel.productColorList,
+                            productSizes: productState.productSizeList,
+                            productColors: productState.productColorList,
                           ),
                           const Gap(20),
                           ProductDescription(
-                            description: productViewModel
+                            description: productState
                                 .productData!.description
                                 .toString(),
                           ),
@@ -162,19 +162,19 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
     }
     Timer.periodic(const Duration(seconds: 1), (timer) {
       if (timer.tick == 3) {
-        Get.find<ProductViewModel>().setIsItemAddedToCart = false;
+        Get.find<ProductState>().setIsItemAddedToCart = false;
       }
     });
   }
 
   Future<void> loadProductDetails() async {
     bool status =
-        await Get.find<ProductViewModel>().getProductDetails(widget.productId);
+        await Get.find<ProductState>().getProductDetails(widget.productId);
     if (!status &&
         mounted &&
-        Get.find<ProductViewModel>().response is Failure) {
+        Get.find<ProductState>().response is Failure) {
       InternetServiceError.showErrorSnackBar(
-        failure: Get.find<ProductViewModel>().response as Failure,
+        failure: Get.find<ProductState>().response as Failure,
         context: context,
       );
     }
