@@ -5,12 +5,12 @@ import 'package:crafty_bay/features/product_details/models/product.dart';
 import 'package:crafty_bay/features/product_details/view_models/product_view_model.dart';
 import 'package:crafty_bay/features/product_review/views/product_review_view/product_review_view.dart';
 import 'package:crafty_bay/features/wish_list/view_model/wish_list_view_model.dart';
-import 'package:crafty_bay/utils/app_strings.dart';
+import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../../themes/app_color.dart';
+import '../../../core/themes/app_color.dart';
 
 class ProductBody extends StatelessWidget {
   final Product product;

@@ -1,10 +1,10 @@
-import 'package:crafty_bay/themes/app_color.dart';
-import 'package:crafty_bay/themes/app_elevated_button_style.dart';
-import 'package:crafty_bay/themes/app_text_theme.dart';
-import 'package:crafty_bay/themes/app_textfield_style.dart';
-import 'package:crafty_bay/themes/appbar_style.dart';
-import 'package:crafty_bay/themes/bottom_navigation_theme.dart';
 import 'package:flutter/material.dart';
+import 'app_color.dart';
+import 'app_elevated_button_style.dart';
+import 'app_text_theme.dart';
+import 'app_textfield_style.dart';
+import 'appbar_style.dart';
+import 'bottom_navigation_theme.dart';
 
 class AppTheme {
   static ThemeData getLightTheme() => ThemeData(

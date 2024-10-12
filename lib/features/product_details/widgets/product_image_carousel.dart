@@ -1,8 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:crafty_bay/themes/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:gap/gap.dart';
+
+import '../../../core/themes/app_color.dart';
 
 class ProductImageCarousel extends StatelessWidget {
   final Orientation orientation;

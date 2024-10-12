@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:crafty_bay/core/models/user_model/user_model.dart';
 import 'package:crafty_bay/core/services/profile_detail_service.dart';
-import 'package:crafty_bay/utils/app_strings.dart';
+import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:get/get.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:shared_preferences/shared_preferences.dart';

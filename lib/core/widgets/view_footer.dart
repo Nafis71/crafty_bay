@@ -1,8 +1,10 @@
-import 'package:crafty_bay/themes/theme_switcher.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../themes/app_color.dart';
+import '../themes/app_color.dart';
+import '../themes/theme_switcher.dart';
+
 
 class ViewFooter extends StatelessWidget {
   final Widget leftWidget, rightWidget;

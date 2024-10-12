@@ -1,9 +1,10 @@
-import 'package:crafty_bay/themes/app_color.dart';
-import 'package:crafty_bay/themes/theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
+
+import '../themes/app_color.dart';
+import '../themes/theme_switcher.dart';
 
 class ShimmerGenerator extends StatelessWidget {
   final Widget shimmer;

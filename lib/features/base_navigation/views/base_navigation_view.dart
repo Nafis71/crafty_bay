@@ -5,9 +5,9 @@ import 'package:crafty_bay/features/base_navigation/widgets/bottom_navigation.da
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import '../../../core/utils/app_strings.dart';
+import '../../../core/wrappers/app_snack_bar.dart';
 
-import '../../../utils/app_strings.dart';
-import '../../../wrappers/app_snack_bar.dart';
 
 class BaseNavigationView extends StatefulWidget {
   const BaseNavigationView({super.key});

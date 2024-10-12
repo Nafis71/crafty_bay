@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:crafty_bay/core/services/internet_service_error.dart';
 import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/services/user_auth_service/user_auth_service.dart';
+import 'package:crafty_bay/core/utils/app_assets.dart';
+import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:crafty_bay/core/view_model/profile_view_model.dart';
 import 'package:crafty_bay/core/widgets/alternative_widget.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
@@ -15,14 +17,10 @@ import 'package:crafty_bay/features/product_details/widgets/product_details_foot
 import 'package:crafty_bay/features/product_details/widgets/product_details_footer_text.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_details_shimmer.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_variation.dart';
-import 'package:crafty_bay/themes/app_color.dart';
-import 'package:crafty_bay/utils/app_assets.dart';
-import 'package:crafty_bay/utils/app_strings.dart';
-import 'package:crafty_bay/wrappers/svg_image_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-
+import '../../../../core/wrappers/svg_image_loader.dart';
 import '../../widgets/product_image_carousel.dart';
 
 class ProductDetailsView extends StatefulWidget {

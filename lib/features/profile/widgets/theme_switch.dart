@@ -1,5 +1,6 @@
-import 'package:crafty_bay/themes/theme_switcher.dart';
 import 'package:flutter/material.dart';
+
+import '../../../core/themes/theme_switcher.dart';
 
 class ThemeSwitch extends StatelessWidget {
   final ThemeSwitcher themeSwitcher;

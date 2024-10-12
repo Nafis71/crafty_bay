@@ -4,11 +4,12 @@ import 'package:crafty_bay/core/view_model/profile_view_model.dart';
 import 'package:crafty_bay/core/widgets/circular_loading.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/features/profile/models/profile_updation_model.dart';
-import 'package:crafty_bay/utils/app_strings.dart';
-import 'package:crafty_bay/wrappers/app_snack_bar.dart';
+import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+
+import '../../../../core/wrappers/app_snack_bar.dart';
 
 class ProfileUpdationView extends StatefulWidget {
   final ProfileUpdationModel profileUpdationModel;

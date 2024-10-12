@@ -2,12 +2,13 @@ import 'package:crafty_bay/features/home/models/remark_product_model/remark_prod
 import 'package:crafty_bay/features/home/view_model/home_view_model.dart';
 import 'package:crafty_bay/features/home/widgets/search_alternative.dart';
 import 'package:crafty_bay/features/home/widgets/search_result.dart';
-import 'package:crafty_bay/themes/search_bar_theme.dart';
-import 'package:crafty_bay/themes/theme_switcher.dart';
-import 'package:crafty_bay/utils/app_strings.dart';
+import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../../core/themes/search_bar_theme.dart';
+import '../../../core/themes/theme_switcher.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
   @override

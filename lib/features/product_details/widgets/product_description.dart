@@ -1,4 +1,4 @@
-import 'package:crafty_bay/utils/app_strings.dart';
+import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 

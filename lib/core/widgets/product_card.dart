@@ -6,12 +6,13 @@ import 'package:crafty_bay/core/widgets/product_rating.dart';
 import 'package:crafty_bay/core/widgets/small_icon_card.dart';
 import 'package:crafty_bay/features/product_details/views/product_details_view/product_details_view.dart';
 import 'package:crafty_bay/features/wish_list/view_model/wish_list_view_model.dart';
-import 'package:crafty_bay/themes/app_color.dart';
-import 'package:crafty_bay/themes/theme_switcher.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+
+import '../themes/app_color.dart';
+import '../themes/theme_switcher.dart';
 
 class ProductCard extends StatelessWidget {
   final dynamic productList;

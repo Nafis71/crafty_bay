@@ -2,14 +2,14 @@ import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/widgets/authentication_layout.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/features/authentication/view_model/auth_view_model.dart';
-import 'package:crafty_bay/themes/app_color.dart';
-import 'package:crafty_bay/utils/app_routes.dart';
-import 'package:crafty_bay/utils/app_strings.dart';
-import 'package:crafty_bay/utils/form_validation.dart';
+import 'package:crafty_bay/core/utils/app_routes.dart';
+import 'package:crafty_bay/core/utils/app_strings.dart';
+import 'package:crafty_bay/core/utils/form_validation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/services/internet_service_error.dart';
+import '../../../../core/themes/app_color.dart';
 
 class LoginView extends StatefulWidget {
   final Function(dynamic) futureExecution;

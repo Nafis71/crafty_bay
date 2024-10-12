@@ -1,5 +1,5 @@
-import 'package:crafty_bay/utils/app_strings.dart';
-import 'package:crafty_bay/utils/reg_ex.dart';
+import 'package:crafty_bay/core/utils/app_strings.dart';
+import 'package:crafty_bay/core/utils/reg_ex.dart';
 
 class FormValidation {
   static String? validateEmail(String? emailAddress) {

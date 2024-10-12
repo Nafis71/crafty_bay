@@ -1,13 +1,13 @@
 import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/view_model/profile_view_model.dart';
 import 'package:crafty_bay/core/widgets/authentication_layout.dart';
-import 'package:crafty_bay/themes/app_color.dart';
-import 'package:crafty_bay/utils/app_strings.dart';
-import 'package:crafty_bay/utils/form_validation.dart';
+import 'package:crafty_bay/core/utils/app_strings.dart';
+import 'package:crafty_bay/core/utils/form_validation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/services/internet_service_error.dart';
+import '../../../../core/themes/app_color.dart';
 
 class ProfileDetailView extends StatefulWidget {
   const ProfileDetailView({super.key});

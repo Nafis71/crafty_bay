@@ -1,9 +1,9 @@
 import 'package:crafty_bay/features/home/view_model/home_view_model.dart';
-import 'package:crafty_bay/themes/theme_switcher.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import '../../../core/themes/theme_switcher.dart';
 import 'custom_search_delegate.dart';
 
 class AppSearchBar extends StatelessWidget {

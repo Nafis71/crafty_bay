@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../wrappers/svg_image_loader.dart';
+import '../../../core/wrappers/svg_image_loader.dart';
 
 BottomNavigationBarItem getBottomNavigationBarItem({
   required int index,

@@ -2,7 +2,7 @@ import 'package:crafty_bay/features/product_details/view_models/product_view_mod
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../utils/app_strings.dart';
+import '../../../core/utils/app_strings.dart';
 
 class ProductDetailsFooterText extends StatelessWidget {
   const ProductDetailsFooterText({super.key});

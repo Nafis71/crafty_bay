@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/services/response/success.dart';
-import 'package:crafty_bay/utils/app_strings.dart';
+import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 

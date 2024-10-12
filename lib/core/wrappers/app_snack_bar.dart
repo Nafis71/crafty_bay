@@ -1,6 +1,7 @@
-import 'package:crafty_bay/themes/app_color.dart';
 import 'package:floating_snackbar/floating_snackbar.dart';
 import 'package:flutter/material.dart';
+
+import '../themes/app_color.dart';
 
 class AppSnackBar {
   static show({

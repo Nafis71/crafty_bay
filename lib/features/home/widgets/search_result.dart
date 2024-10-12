@@ -1,12 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:crafty_bay/core/utils/product_rating_calculator.dart';
 import 'package:crafty_bay/features/home/models/remark_product_model/remark_product_data.dart';
-import 'package:crafty_bay/themes/app_color.dart';
-import 'package:crafty_bay/themes/theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
+import '../../../core/themes/app_color.dart';
+import '../../../core/themes/theme_switcher.dart';
 import '../../../core/widgets/product_rating.dart';
 import '../../product_details/views/product_details_view/product_details_view.dart';
 

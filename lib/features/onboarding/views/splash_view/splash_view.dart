@@ -2,16 +2,16 @@ import 'package:crafty_bay/core/services/prefetch_service.dart';
 import 'package:crafty_bay/core/view_model/connection_view_model.dart';
 import 'package:crafty_bay/core/view_model/profile_view_model.dart';
 import 'package:crafty_bay/core/widgets/circular_loading.dart';
-import 'package:crafty_bay/features/cart/view_model/cart_view_model.dart';
-import 'package:crafty_bay/utils/app_assets.dart';
-import 'package:crafty_bay/utils/app_routes.dart';
-import 'package:crafty_bay/utils/app_strings.dart';
-import 'package:crafty_bay/wrappers/app_snack_bar.dart';
-import 'package:crafty_bay/wrappers/svg_image_loader.dart';
+import 'package:crafty_bay/core/utils/app_assets.dart';
+import 'package:crafty_bay/core/utils/app_routes.dart';
+import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:widget_and_text_animator/widget_and_text_animator.dart';
+
+import '../../../../core/wrappers/app_snack_bar.dart';
+import '../../../../core/wrappers/svg_image_loader.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});

@@ -1,5 +1,6 @@
 import 'package:crafty_bay/core/services/internet_service_error.dart';
 import 'package:crafty_bay/core/services/response/failure.dart';
+import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:crafty_bay/core/view_model/profile_view_model.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/core/widgets/login_prompt.dart';
@@ -10,16 +11,14 @@ import 'package:crafty_bay/features/cart/widgets/cart_footer_button.dart';
 import 'package:crafty_bay/features/cart/widgets/cart_footer_text.dart';
 import 'package:crafty_bay/features/cart/widgets/cart_list_card.dart';
 import 'package:crafty_bay/features/cart/widgets/cart_view_shimmer.dart';
-import 'package:crafty_bay/utils/app_strings.dart';
-import 'package:crafty_bay/wrappers/app_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
+import '../../../core/utils/app_assets.dart';
 import '../../../core/widgets/alternative_widget.dart';
-import '../../../core/widgets/circular_loading.dart';
-import '../../../utils/app_assets.dart';
-import '../../../wrappers/svg_image_loader.dart';
+import '../../../core/wrappers/app_snack_bar.dart';
+import '../../../core/wrappers/svg_image_loader.dart';
 
 class CartView extends StatefulWidget {
   const CartView({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../themes/app_color.dart';
+import '../themes/app_color.dart';
 
 class ProductRating extends StatelessWidget {
   final double productRating, iconSize, fontSize;

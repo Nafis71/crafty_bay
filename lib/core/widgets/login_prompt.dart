@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 
-import '../../utils/app_routes.dart';
-import '../../utils/app_strings.dart';
+import '../utils/app_routes.dart';
+import '../utils/app_strings.dart';
 import 'alternative_widget.dart';
 
 class LoginPrompt extends StatelessWidget {

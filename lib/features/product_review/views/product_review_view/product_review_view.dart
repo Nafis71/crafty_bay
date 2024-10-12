@@ -8,16 +8,15 @@ import 'package:crafty_bay/features/product_review/widgets/product_review_card.d
 import 'package:crafty_bay/features/product_review/widgets/product_review_footer_button.dart';
 import 'package:crafty_bay/features/product_review/widgets/product_review_footer_text.dart';
 import 'package:crafty_bay/features/product_review/widgets/product_review_shimmer.dart';
-import 'package:crafty_bay/utils/app_strings.dart';
+import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/services/user_auth_service/user_auth_service.dart';
 import '../../../../core/widgets/alternative_widget.dart';
-import '../../../../core/widgets/circular_loading.dart';
-import '../../../../utils/app_assets.dart';
-import '../../../../wrappers/svg_image_loader.dart';
+import '../../../../core/utils/app_assets.dart';
+import '../../../../core/wrappers/svg_image_loader.dart';
 import '../add_review_view/add_review_view.dart';
 
 class ProductReviewView extends StatefulWidget {

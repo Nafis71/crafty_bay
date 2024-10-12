@@ -1,7 +1,8 @@
-import 'package:crafty_bay/themes/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'app_color.dart';
 
 class ThemeSwitcher extends GetxController {
   ThemeMode _themeMode = ThemeMode.light;

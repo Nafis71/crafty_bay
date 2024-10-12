@@ -1,5 +1,6 @@
-import 'package:crafty_bay/themes/app_color.dart';
 import 'package:flutter/material.dart';
+
+import 'app_color.dart';
 
 class AppElevatedButtonStyle {
   static ElevatedButtonThemeData getElevatedButton() => ElevatedButtonThemeData(

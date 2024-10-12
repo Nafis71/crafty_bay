@@ -8,7 +8,7 @@ import 'package:crafty_bay/features/profile/views/profile_view/profile_view.dart
 import 'package:crafty_bay/features/wish_list/views/wish_list_view.dart';
 import 'package:flutter/material.dart';
 
-import '../features/onboarding/views/splash_view/splash_view.dart';
+import '../../features/onboarding/views/splash_view/splash_view.dart';
 
 class AppRoutes {
   static const String splashView = "/";

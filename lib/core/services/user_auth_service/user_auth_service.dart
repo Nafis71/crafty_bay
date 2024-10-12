@@ -1,4 +1,4 @@
-import 'package:crafty_bay/utils/app_routes.dart';
+import 'package:crafty_bay/core/utils/app_routes.dart';
 import 'package:get/get.dart';
 
 import '../../view_model/profile_view_model.dart';

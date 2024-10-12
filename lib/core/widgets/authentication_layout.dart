@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../utils/app_assets.dart';
-import '../../utils/app_strings.dart';
-import '../../wrappers/svg_image_loader.dart';
+import '../utils/app_assets.dart';
+import '../utils/app_strings.dart';
+import '../wrappers/svg_image_loader.dart';
 
 class AuthenticationLayout extends StatelessWidget {
   final double imageWidth = 120;

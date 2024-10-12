@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../../utils/app_assets.dart';
+import '../../../core/utils/app_assets.dart';
 
 class LoadingDialog {
   static Future<BuildContext> show(

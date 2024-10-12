@@ -1,20 +1,19 @@
 import 'package:crafty_bay/core/services/internet_service_error.dart';
 import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/services/response/success.dart';
+import 'package:crafty_bay/core/utils/app_assets.dart';
 import 'package:crafty_bay/core/widgets/alternative_widget.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/core/widgets/grid_view_layout.dart';
 import 'package:crafty_bay/core/widgets/shimmer_generator.dart';
 import 'package:crafty_bay/features/category/view_model/category_view_model.dart';
 import 'package:crafty_bay/features/category/widgets/category_product_view_shimmer.dart';
-import 'package:crafty_bay/utils/app_assets.dart';
-import 'package:crafty_bay/wrappers/svg_image_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/widgets/circular_loading.dart';
 import '../../../../core/widgets/product_card.dart';
+import '../../../../core/wrappers/svg_image_loader.dart';
 
 class CategoryProductView extends StatefulWidget {
   final int categoryId;
@@ -42,7 +41,11 @@ class _CategoryProductViewState extends State<CategoryProductView> {
       body: GetBuilder<CategoryViewModel>(
         builder: (categoryViewModel) {
           if (categoryViewModel.isBusy) {
-            return ShimmerGenerator(shimmer: CategoryProductViewShimmer(), axis:Axis.vertical, itemCount: 7, shimmerHeight: size.height);
+            return ShimmerGenerator(
+                shimmer: CategoryProductViewShimmer(),
+                axis: Axis.vertical,
+                itemCount: 7,
+                shimmerHeight: size.height);
           }
           if (categoryViewModel.categoryProductData.isEmpty &&
               categoryViewModel.response is Success) {
