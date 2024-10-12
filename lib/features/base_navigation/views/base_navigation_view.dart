@@ -1,5 +1,5 @@
 import 'package:crafty_bay/core/view_model/connection_view_model.dart';
-import 'package:crafty_bay/features/base_navigation/view_model/base_navigation_view_model.dart';
+import 'package:crafty_bay/features/base_navigation/state_holders/base_navigation_state.dart';
 import 'package:crafty_bay/features/base_navigation/views/tab_view.dart';
 import 'package:crafty_bay/features/base_navigation/widgets/bottom_navigation.dart';
 import 'package:flutter/material.dart';
@@ -23,15 +23,15 @@ class _BaseNavigationViewState extends State<BaseNavigationView> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<BaseNavigationState>(
-        builder: (baseNavigationViewModel) {
+        builder: (baseNavigationState) {
       return PopScope(
         onPopInvokedWithResult: (isPop, result) async {
-          _isFirstRouteInCurrentTab = !await baseNavigationViewModel
-              .navigatorKeys[baseNavigationViewModel.index]!.currentState!
+          _isFirstRouteInCurrentTab = !await baseNavigationState
+              .navigatorKeys[baseNavigationState.index]!.currentState!
               .maybePop();
           if (_isFirstRouteInCurrentTab) {
-            if (baseNavigationViewModel.index != 0) {
-              baseNavigationViewModel.setIndex = 0;
+            if (baseNavigationState.index != 0) {
+              baseNavigationState.setIndex = 0;
               return;
             } else {
               if (!isPop) {
@@ -61,9 +61,9 @@ class _BaseNavigationViewState extends State<BaseNavigationView> {
               }
             }
             return TabView(
-              currentIndex: baseNavigationViewModel.index,
-              navigatorState: baseNavigationViewModel
-                  .navigatorKeys[baseNavigationViewModel.index]!,
+              currentIndex: baseNavigationState.index,
+              navigatorState: baseNavigationState
+                  .navigatorKeys[baseNavigationState.index]!,
             );
           }),
           bottomNavigationBar: const BottomNavigation(),

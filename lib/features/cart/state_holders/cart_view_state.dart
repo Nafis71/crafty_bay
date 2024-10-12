@@ -4,18 +4,18 @@ import 'package:crafty_bay/features/cart/models/cart_list_model/cart_list_model.
 import 'package:crafty_bay/features/cart/services/cart_service.dart';
 import 'package:get/get.dart';
 
-import '../../product_details/state_holders/product_view_model.dart';
+import '../../product_details/state_holders/product_state.dart';
 
-class CartViewModel extends GetxController {
+class CartViewState extends GetxController {
   Object? response;
   Object? deleteResponse;
   bool _isBusy = false;
   bool _responseStatus = false;
   List<CartData> _cartList = [];
   int totalPrice = 0;
-  ProductState productViewModel;
+  ProductState productState;
 
-  CartViewModel(this.productViewModel);
+  CartViewState(this.productState);
 
   bool get isBusy => _isBusy;
 
@@ -48,21 +48,21 @@ class CartViewModel extends GetxController {
   Future<bool> createCartList(
       {required int productId, required String token}) async {
     _responseStatus = false;
-    productViewModel.setIsAddingToCart = true;
+    productState.setIsAddingToCart = true;
     Map<String, dynamic> cartJson = {
       "product_id": productId,
-      "color": productViewModel.getColorText(
-          productViewModel.productColorList[productViewModel.selectedColor]),
-      "size": productViewModel.getSizeText(productViewModel.selectedSize),
-      "qty": productViewModel.productQuantity
+      "color": productState.getColorText(
+          productState.productColorList[productState.selectedColor]),
+      "size": productState.getSizeText(productState.selectedSize),
+      "qty": productState.productQuantity
     };
     response = await CartService().createCartList(token, cartJson);
     if (response is Success) {
-      await Get.find<CartViewModel>().getCartList(token);
+      await Get.find<CartViewState>().getCartList(token);
       _responseStatus = true;
-      productViewModel.setIsItemAddedToCart = true;
+      productState.setIsItemAddedToCart = true;
     }
-    productViewModel.setIsAddingToCart = false;
+    productState.setIsAddingToCart = false;
     return _responseStatus;
   }
 

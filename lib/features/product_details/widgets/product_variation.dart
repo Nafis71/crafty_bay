@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../state_holders/product_view_model.dart';
+import '../state_holders/product_state.dart';
 
 class ProductVariation extends StatelessWidget {
   final List<String> productSizes;

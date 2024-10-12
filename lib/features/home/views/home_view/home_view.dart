@@ -2,8 +2,6 @@ import 'package:crafty_bay/core/services/prefetch_service.dart';
 import 'package:crafty_bay/core/widgets/category_card_shimmer.dart';
 import 'package:crafty_bay/core/widgets/product_card.dart';
 import 'package:crafty_bay/core/widgets/shimmer_generator.dart';
-import 'package:crafty_bay/features/base_navigation/view_model/base_navigation_view_model.dart';
-import 'package:crafty_bay/features/category/view_model/category_view_model.dart';
 import 'package:crafty_bay/features/home/models/remark_product_model/remark_product_data.dart';
 import 'package:crafty_bay/features/home/views/all_product_view/all_product_view.dart';
 import 'package:crafty_bay/features/home/widgets/app_search_bar.dart';
@@ -18,6 +16,8 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/widgets/crafty_app_bar.dart';
+import '../../../base_navigation/state_holders/base_navigation_state.dart';
+import '../../../category/state_holders/category_view_state.dart';
 import '../../../category/widgets/category_card.dart';
 import '../../state_holders/home_state.dart';
 
@@ -70,7 +70,7 @@ class _HomeViewState extends State<HomeView> {
                   ),
                 ),
               const Gap(30),
-              (Get.find<CategoryViewModel>().categoryList.isNotEmpty)
+              (Get.find<CategoryViewState>().categoryList.isNotEmpty)
                   ? ProductLayoutSection(
                       sectionTitle: AppStrings.homeCategoryHeader,
                       cardWidget: SizedBox(
@@ -79,14 +79,15 @@ class _HomeViewState extends State<HomeView> {
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
                             return CategoryCard(
-                                categoryData: Get.find<CategoryViewModel>()
-                                    .categoryList[index]);
+                              categoryData: Get.find<CategoryViewState>()
+                                  .categoryList[index],
+                            );
                           },
                           separatorBuilder: (context, index) {
                             return const Gap(25);
                           },
                           itemCount:
-                              Get.find<CategoryViewModel>().categoryList.length,
+                              Get.find<CategoryViewState>().categoryList.length,
                         ),
                       ),
                       onTap: () {
@@ -103,8 +104,7 @@ class _HomeViewState extends State<HomeView> {
               (homeState.popularProductList.isNotEmpty)
                   ? ProductLayoutSection(
                       sectionTitle: AppStrings.homePopularHeader,
-                      cardWidget:
-                          getProductCard(homeState.popularProductList),
+                      cardWidget: getProductCard(homeState.popularProductList),
                       onTap: () {
                         Navigator.push(
                           context,
@@ -127,8 +127,7 @@ class _HomeViewState extends State<HomeView> {
               (homeState.specialProductList.isNotEmpty)
                   ? ProductLayoutSection(
                       sectionTitle: AppStrings.homeSpecialHeader,
-                      cardWidget:
-                          getProductCard(homeState.specialProductList),
+                      cardWidget: getProductCard(homeState.specialProductList),
                       onTap: () {
                         Navigator.push(
                           context,

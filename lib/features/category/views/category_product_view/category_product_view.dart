@@ -6,7 +6,6 @@ import 'package:crafty_bay/core/widgets/alternative_widget.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/core/widgets/grid_view_layout.dart';
 import 'package:crafty_bay/core/widgets/shimmer_generator.dart';
-import 'package:crafty_bay/features/category/view_model/category_view_model.dart';
 import 'package:crafty_bay/features/category/widgets/category_product_view_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -14,6 +13,7 @@ import 'package:get/get.dart';
 
 import '../../../../core/widgets/product_card.dart';
 import '../../../../core/wrappers/svg_image_loader.dart';
+import '../../state_holders/category_view_state.dart';
 
 class CategoryProductView extends StatefulWidget {
   final int categoryId;
@@ -38,7 +38,7 @@ class _CategoryProductViewState extends State<CategoryProductView> {
     Size size = MediaQuery.sizeOf(context);
     return Scaffold(
       appBar: craftyAppBar(title: widget.categoryName, context: context),
-      body: GetBuilder<CategoryViewModel>(
+      body: GetBuilder<CategoryViewState>(
         builder: (categoryViewModel) {
           if (categoryViewModel.isBusy) {
             return ShimmerGenerator(
@@ -92,12 +92,12 @@ class _CategoryProductViewState extends State<CategoryProductView> {
   }
 
   Future<void> getProductByCategory() async {
-    bool status = await Get.find<CategoryViewModel>().getProductByCategory(
+    bool status = await Get.find<CategoryViewState>().getProductByCategory(
       widget.categoryId.toString(),
     );
     if (!status && mounted) {
       InternetServiceError.showErrorSnackBar(
-        failure: Get.find<CategoryViewModel>().response as Failure,
+        failure: Get.find<CategoryViewState>().response as Failure,
         context: context,
       );
     }

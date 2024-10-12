@@ -1,6 +1,7 @@
-import 'package:crafty_bay/features/cart/view_model/cart_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../state_holders/cart_view_state.dart';
 
 class CartFooterText extends StatelessWidget {
   final int totalPrice;
@@ -9,7 +10,7 @@ class CartFooterText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<CartViewModel>(
+    return GetBuilder<CartViewState>(
       builder: (cartViewModel) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,

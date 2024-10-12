@@ -6,7 +6,7 @@ import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../product_details/state_holders/product_view_model.dart';
+import '../../product_details/state_holders/product_state.dart';
 import '../state_holders/home_state.dart';
 import '../state_holders/offer_carousel_state.dart';
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/utils/app_strings.dart';
-import '../state_holders/product_view_model.dart';
+import '../state_holders/product_state.dart';
 
 class ProductDetailsFooterText extends StatelessWidget {
   const ProductDetailsFooterText({super.key});

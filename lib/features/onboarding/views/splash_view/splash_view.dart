@@ -95,7 +95,8 @@ class _SplashViewState extends State<SplashView> {
     isLoading = true;
     if (!await Get.find<ProfileViewModel>().isTokenExpired()) {
       await PrefetchService.prefetchProductWishList(
-          Get.find<ProfileViewModel>().token);
+        Get.find<ProfileViewModel>().token,
+      );
     }
     await Get.find<ProfileViewModel>().loadUserDataFromStorage();
     await Future.delayed(Duration(seconds: 3));

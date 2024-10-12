@@ -4,7 +4,6 @@ import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/view_model/profile_view_model.dart';
 import 'package:crafty_bay/features/cart/models/cart_list_model/cart_data.dart';
 import 'package:crafty_bay/features/cart/models/cart_list_model/cart_product_data.dart';
-import 'package:crafty_bay/features/cart/view_model/cart_view_model.dart';
 import 'package:crafty_bay/features/cart/widgets/loading_dialog.dart';
 import 'package:crafty_bay/features/product_details/views/product_details_view/product_details_view.dart';
 import 'package:flutter/cupertino.dart';
@@ -14,6 +13,7 @@ import 'package:get/get.dart';
 
 import '../../../core/themes/theme_switcher.dart';
 import '../../../core/widgets/small_icon_card.dart';
+import '../state_holders/cart_view_state.dart';
 
 class CartListCard extends StatelessWidget {
   final CartData cartData;
@@ -139,7 +139,7 @@ class CartListCard extends StatelessWidget {
                               ),
                             ),
                             const Gap(2),
-                            GetBuilder<CartViewModel>(
+                            GetBuilder<CartViewState>(
                               builder: (productViewModel) {
                                 return Text(
                                   cartData.qty.toString().padLeft(2, "0"),
@@ -183,13 +183,13 @@ class CartListCard extends StatelessWidget {
     alertDialogContext = await LoadingDialog.show(
       mainViewContext: context,
     );
-    bool status = await Get.find<CartViewModel>().updateCartList(
+    bool status = await Get.find<CartViewState>().updateCartList(
       index,
       Get.find<ProfileViewModel>().token,
       isIncrement,
     );
     if (!status && context.mounted) {
-      Failure failure = Get.find<CartViewModel>().response as Failure;
+      Failure failure = Get.find<CartViewState>().response as Failure;
       InternetServiceError.showErrorSnackBar(
         failure: failure,
         context: context,

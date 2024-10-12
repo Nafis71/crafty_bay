@@ -1,7 +1,7 @@
-import 'package:crafty_bay/features/category/view_model/category_view_model.dart';
 import 'package:crafty_bay/features/wish_list/view_model/wish_list_view_model.dart';
 import 'package:get/get.dart';
 
+import '../../features/category/state_holders/category_view_state.dart';
 import '../../features/home/state_holders/home_state.dart';
 
 class PrefetchService {
@@ -13,10 +13,10 @@ class PrefetchService {
   }
 
   static Future<bool> prefetchCategoryList() async {
-    if (Get.find<CategoryViewModel>().categoryList.isNotEmpty) {
+    if (Get.find<CategoryViewState>().categoryList.isNotEmpty) {
       return true;
     }
-    return await Get.find<CategoryViewModel>().getCategoryList();
+    return await Get.find<CategoryViewState>().getCategoryList();
   }
 
   static Future<bool> prefetchPopularProductData() async {

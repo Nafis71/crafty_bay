@@ -7,7 +7,7 @@ import '../../../core/services/response/success.dart';
 import '../models/category_model/category_data.dart';
 import '../models/category_model/category_list_model.dart';
 
-class CategoryViewModel extends GetxController {
+class CategoryViewState extends GetxController {
   final List<CategoryData> _categoryList = [];
   final List<CategoryProductData> _categoryProductData = [];
   Object? response;

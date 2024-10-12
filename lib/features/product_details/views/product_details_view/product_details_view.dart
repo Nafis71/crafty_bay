@@ -10,7 +10,6 @@ import 'package:crafty_bay/core/widgets/alternative_widget.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/core/widgets/shimmer_generator.dart';
 import 'package:crafty_bay/core/widgets/view_footer.dart';
-import 'package:crafty_bay/features/cart/view_model/cart_view_model.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_body.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_description.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_details_footer_button.dart';
@@ -21,7 +20,8 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import '../../../../core/wrappers/svg_image_loader.dart';
-import '../../state_holders/product_view_model.dart';
+import '../../../cart/state_holders/cart_view_state.dart';
+import '../../state_holders/product_state.dart';
 import '../../widgets/product_image_carousel.dart';
 
 class ProductDetailsView extends StatefulWidget {
@@ -126,8 +126,8 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                     child: ViewFooter(
                       leftWidget: const ProductDetailsFooterText(),
                       rightWidget: ProductDetailsFooterButton(
-                        addToCart: (cartViewModel) =>
-                            addToCart(cartViewModel),
+                        addToCart: (cartViewState) =>
+                            addToCart(cartViewState),
                       ),
                     ),
                   )
@@ -140,7 +140,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
     );
   }
 
-  Future<void> addToCart(CartViewModel cartViewModel) async {
+  Future<void> addToCart(CartViewState cartViewModel) async {
     bool isAuthenticated =
         await UserAuthService.isUserAuthenticated(futureExecution: (token) {
       addToCart(cartViewModel);

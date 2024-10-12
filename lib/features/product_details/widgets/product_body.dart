@@ -10,7 +10,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 import '../../../core/themes/app_color.dart';
-import '../state_holders/product_view_model.dart';
+import '../state_holders/product_state.dart';
 
 class ProductBody extends StatelessWidget {
   final Product product;

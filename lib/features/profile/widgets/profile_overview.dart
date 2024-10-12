@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../core/utils/app_assets.dart';
-import '../../base_navigation/view_model/base_navigation_view_model.dart';
-import '../../cart/view_model/cart_view_model.dart';
+import '../../base_navigation/state_holders/base_navigation_state.dart';
+import '../../cart/state_holders/cart_view_state.dart';
 import '../../wish_list/view_model/wish_list_view_model.dart';
 
 class ProfileOverview extends StatelessWidget {
@@ -70,7 +70,7 @@ class ProfileOverview extends StatelessWidget {
                       Get.find<BaseNavigationState>().setIndex = 2;
                     },
                     child: Text(
-                      "${Get.find<CartViewModel>().cartList.length} Cart item",
+                      "${Get.find<CartViewState>().cartList.length} Cart item",
                       style: Theme.of(context).textTheme.labelSmall!.copyWith(
                             color: Theme.of(context).primaryColor,
                             fontSize: 14,

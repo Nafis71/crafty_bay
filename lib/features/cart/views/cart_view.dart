@@ -6,7 +6,6 @@ import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/core/widgets/login_prompt.dart';
 import 'package:crafty_bay/core/widgets/shimmer_generator.dart';
 import 'package:crafty_bay/core/widgets/view_footer.dart';
-import 'package:crafty_bay/features/cart/view_model/cart_view_model.dart';
 import 'package:crafty_bay/features/cart/widgets/cart_footer_button.dart';
 import 'package:crafty_bay/features/cart/widgets/cart_footer_text.dart';
 import 'package:crafty_bay/features/cart/widgets/cart_list_card.dart';
@@ -19,6 +18,7 @@ import '../../../core/utils/app_assets.dart';
 import '../../../core/widgets/alternative_widget.dart';
 import '../../../core/wrappers/app_snack_bar.dart';
 import '../../../core/wrappers/svg_image_loader.dart';
+import '../state_holders/cart_view_state.dart';
 
 class CartView extends StatefulWidget {
   const CartView({super.key});
@@ -41,7 +41,7 @@ class _CartViewState extends State<CartView> {
       appBar: craftyAppBar(
         title: AppStrings.cartViewHeader,
       ),
-      body: GetBuilder<CartViewModel>(
+      body: GetBuilder<CartViewState>(
         builder: (cartViewModel) {
           if (Get.find<ProfileViewModel>().token.isEmpty) {
             return LoginPrompt(
@@ -115,7 +115,7 @@ class _CartViewState extends State<CartView> {
                 ),
               ),
               Expanded(
-                child: GetBuilder<CartViewModel>(builder: (cartViewModel) {
+                child: GetBuilder<CartViewState>(builder: (cartViewModel) {
                   return ViewFooter(
                     leftWidget: CartFooterText(
                       totalPrice: cartViewModel.totalPrice,
@@ -132,7 +132,7 @@ class _CartViewState extends State<CartView> {
   }
 
   Future<void> deleteCartItem(int cartId, int index) async {
-    CartViewModel cartViewModel = Get.find<CartViewModel>();
+    CartViewState cartViewModel = Get.find<CartViewState>();
     bool status = await cartViewModel.deleteCartItem(
       cartId: cartId,
       token: Get.find<ProfileViewModel>().token,
@@ -161,7 +161,7 @@ class _CartViewState extends State<CartView> {
   }
 
   Future<void> getCartList() async {
-    CartViewModel cartViewModel = Get.find<CartViewModel>();
+    CartViewState cartViewModel = Get.find<CartViewState>();
     ProfileViewModel profileViewModel = Get.find<ProfileViewModel>();
     if (await profileViewModel.isTokenExpired()) {
       profileViewModel.setToken = "";

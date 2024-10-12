@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/utils/app_assets.dart';
-import '../../product_details/state_holders/product_view_model.dart';
-import '../view_model/base_navigation_view_model.dart';
+import '../../product_details/state_holders/product_state.dart';
+import '../state_holders/base_navigation_state.dart';
 import 'bottom_navigation_bar_item.dart';
 
 class BottomNavigation extends StatelessWidget {

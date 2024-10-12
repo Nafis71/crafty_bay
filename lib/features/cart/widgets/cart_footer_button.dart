@@ -1,13 +1,14 @@
-import 'package:crafty_bay/features/cart/view_model/cart_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../state_holders/cart_view_state.dart';
 
 class CartFooterButton extends StatelessWidget {
   const CartFooterButton({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<CartViewModel>(builder: (cartViewModel) {
+    return GetBuilder<CartViewState>(builder: (cartViewModel) {
       return SizedBox(
         width: MediaQuery.of(context).size.width * 0.35,
         child: ElevatedButton(
