@@ -1,5 +1,4 @@
 import 'package:crafty_bay/features/home/models/remark_product_model/remark_product_data.dart';
-import 'package:crafty_bay/features/home/view_model/home_view_model.dart';
 import 'package:crafty_bay/features/home/widgets/search_alternative.dart';
 import 'package:crafty_bay/features/home/widgets/search_result.dart';
 import 'package:crafty_bay/core/utils/app_strings.dart';
@@ -9,6 +8,7 @@ import 'package:get/get.dart';
 
 import '../../../core/themes/search_bar_theme.dart';
 import '../../../core/themes/theme_switcher.dart';
+import '../state_holders/home_state.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
   @override
@@ -20,7 +20,7 @@ class CustomSearchDelegate extends SearchDelegate {
   }
 
   List<RemarkProductData> searchTerms =
-      Get.find<HomeViewModel>().searchProductList;
+      Get.find<HomeState>().searchProductList;
 
   @override
   List<Widget>? buildActions(BuildContext context) {

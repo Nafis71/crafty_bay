@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:crafty_bay/features/home/view_model/home_view_model.dart';
 import 'package:crafty_bay/features/product_details/view_models/product_view_model.dart';
 import 'package:crafty_bay/features/product_details/views/product_details_view/product_details_view.dart';
 import 'package:crafty_bay/core/utils/app_strings.dart';
@@ -7,6 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+
+import '../state_holders/home_state.dart';
+import '../state_holders/offer_carousel_state.dart';
 
 class OfferCarousel extends StatefulWidget {
   const OfferCarousel({super.key});
@@ -19,10 +21,10 @@ class _OfferCarouselState extends State<OfferCarousel> {
   @override
   Widget build(BuildContext context) {
     return FlutterCarousel.builder(
-      itemCount: Get.find<HomeViewModel>().productSliderList.length,
+      itemCount: Get.find<HomeState>().productSliderList.length,
       itemBuilder: (context, index, pageViewIndex) {
         return CachedNetworkImage(
-          imageUrl: Get.find<HomeViewModel>().productSliderList[index].image!,
+          imageUrl: Get.find<HomeState>().productSliderList[index].image!,
           imageBuilder: (context, imageProvider) {
             return Container(
               margin:
@@ -37,10 +39,11 @@ class _OfferCarouselState extends State<OfferCarousel> {
                 ),
                 boxShadow: [
                   BoxShadow(
-                      color: Colors.black.withOpacity(0.04),
-                      spreadRadius: 2,
-                      blurRadius: 10,
-                      offset: const Offset(0, 2))
+                    color: Colors.black.withOpacity(0.04),
+                    spreadRadius: 2,
+                    blurRadius: 10,
+                    offset: const Offset(0, 2),
+                  )
                 ],
               ),
               child: Row(
@@ -60,7 +63,7 @@ class _OfferCarouselState extends State<OfferCarousel> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  Get.find<HomeViewModel>()
+                                  Get.find<HomeState>()
                                       .productSliderList[index]
                                       .title!,
                                   style: Theme.of(context)
@@ -93,7 +96,7 @@ class _OfferCarouselState extends State<OfferCarousel> {
                                         MaterialPageRoute(
                                           builder: (context) =>
                                               ProductDetailsView(
-                                            productId: Get.find<HomeViewModel>()
+                                            productId: Get.find<HomeState>()
                                                 .productSliderList[index]
                                                 .productId!,
                                           ),
@@ -139,7 +142,7 @@ class _OfferCarouselState extends State<OfferCarousel> {
         indicatorMargin: 10,
         showIndicator: false,
         onPageChanged: (index, _) {
-          Get.find<HomeViewModel>().setCarouselIndex = index;
+          Get.find<OfferCarouselState>().setCarouselIndex = index;
         },
       ),
     );

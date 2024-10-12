@@ -1,4 +1,4 @@
-import 'package:crafty_bay/features/home/view_model/home_view_model.dart';
+import 'package:crafty_bay/features/home/state_holders/offer_carousel_state.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,20 +9,20 @@ class CarouselIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeViewModel>(
-      builder: (homeViewModel) {
+    return GetBuilder<OfferCarouselState>(
+      builder: (offerCarouselState) {
         return Container(
           height: 15,
           width: 15,
           margin: const EdgeInsets.symmetric(horizontal: 5),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            border: (homeViewModel.carouselIndex != index)
+            border: (offerCarouselState.carouselIndex != index)
                 ? Border.fromBorderSide(
                     BorderSide(color: Colors.grey.shade300, width: 1),
                   )
                 : null,
-            color: (homeViewModel.carouselIndex == index)
+            color: (offerCarouselState.carouselIndex == index)
                 ? Theme.of(context).primaryColor
                 : Colors.white,
           ),

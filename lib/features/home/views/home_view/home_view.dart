@@ -5,7 +5,6 @@ import 'package:crafty_bay/core/widgets/shimmer_generator.dart';
 import 'package:crafty_bay/features/base_navigation/view_model/base_navigation_view_model.dart';
 import 'package:crafty_bay/features/category/view_model/category_view_model.dart';
 import 'package:crafty_bay/features/home/models/remark_product_model/remark_product_data.dart';
-import 'package:crafty_bay/features/home/view_model/home_view_model.dart';
 import 'package:crafty_bay/features/home/views/all_product_view/all_product_view.dart';
 import 'package:crafty_bay/features/home/widgets/app_search_bar.dart';
 import 'package:crafty_bay/features/home/widgets/carousel_indicator.dart';
@@ -20,6 +19,7 @@ import 'package:get/get.dart';
 
 import '../../../../core/widgets/crafty_app_bar.dart';
 import '../../../category/widgets/category_card.dart';
+import '../../state_holders/home_state.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -29,7 +29,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  late HomeViewModel homeViewModel;
+  late HomeState homeState;
 
   @override
   void initState() {
@@ -41,14 +41,14 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: craftyAppBar(),
-      body: GetBuilder<HomeViewModel>(builder: (homeViewModel) {
+      body: GetBuilder<HomeState>(builder: (homeState) {
         return Container(
           margin: const EdgeInsets.only(left: 8, right: 8, top: 8),
           child: ListView(
             children: [
               const AppSearchBar(),
               const Gap(5),
-              (homeViewModel.productSliderList.isNotEmpty)
+              (homeState.productSliderList.isNotEmpty)
                   ? const OfferCarousel()
                   : ShimmerGenerator(
                       shimmer: CarouselSliderShimmer(),
@@ -57,11 +57,11 @@ class _HomeViewState extends State<HomeView> {
                       itemCount: 1,
                     ),
               const Gap(8),
-              if (homeViewModel.productSliderList.isNotEmpty)
+              if (homeState.productSliderList.isNotEmpty)
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: List.generate(
-                    homeViewModel.productSliderList.length,
+                    homeState.productSliderList.length,
                     (index) {
                       return CarouselIndicator(
                         index: index,
@@ -100,17 +100,17 @@ class _HomeViewState extends State<HomeView> {
                       itemCount: 6,
                     ),
               const Gap(20),
-              (homeViewModel.popularProductList.isNotEmpty)
+              (homeState.popularProductList.isNotEmpty)
                   ? ProductLayoutSection(
                       sectionTitle: AppStrings.homePopularHeader,
                       cardWidget:
-                          getProductCard(homeViewModel.popularProductList),
+                          getProductCard(homeState.popularProductList),
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => AllProductView(
-                              elementList: homeViewModel.popularProductList,
+                              elementList: homeState.popularProductList,
                               appBarTitle: AppStrings.homePopularHeader,
                             ),
                           ),
@@ -124,17 +124,17 @@ class _HomeViewState extends State<HomeView> {
                       shimmerHeight: 150,
                     ),
               const Gap(20),
-              (homeViewModel.specialProductList.isNotEmpty)
+              (homeState.specialProductList.isNotEmpty)
                   ? ProductLayoutSection(
                       sectionTitle: AppStrings.homeSpecialHeader,
                       cardWidget:
-                          getProductCard(homeViewModel.specialProductList),
+                          getProductCard(homeState.specialProductList),
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => AllProductView(
-                              elementList: homeViewModel.specialProductList,
+                              elementList: homeState.specialProductList,
                               appBarTitle: AppStrings.homeSpecialHeader,
                             ),
                           ),
@@ -148,16 +148,16 @@ class _HomeViewState extends State<HomeView> {
                       shimmerHeight: 150,
                     ),
               const Gap(20),
-              (homeViewModel.newProductList.isNotEmpty)
+              (homeState.newProductList.isNotEmpty)
                   ? ProductLayoutSection(
                       sectionTitle: AppStrings.homeNewHeader,
-                      cardWidget: getProductCard(homeViewModel.newProductList),
+                      cardWidget: getProductCard(homeState.newProductList),
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => AllProductView(
-                              elementList: homeViewModel.newProductList,
+                              elementList: homeState.newProductList,
                               appBarTitle: AppStrings.homeNewHeader,
                             ),
                           ),
@@ -182,7 +182,7 @@ class _HomeViewState extends State<HomeView> {
     if (responses.contains(false)) {
       fetchHomeData();
     } else {
-      Get.find<HomeViewModel>().update();
+      Get.find<HomeState>().update();
     }
   }
 

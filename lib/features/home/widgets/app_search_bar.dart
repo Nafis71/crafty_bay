@@ -1,9 +1,9 @@
-import 'package:crafty_bay/features/home/view_model/home_view_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import '../../../core/themes/theme_switcher.dart';
+import '../state_holders/home_state.dart';
 import 'custom_search_delegate.dart';
 
 class AppSearchBar extends StatelessWidget {
@@ -13,7 +13,7 @@ class AppSearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        if (Get.find<HomeViewModel>().searchProductList.isEmpty) {
+        if (Get.find<HomeState>().searchProductList.isEmpty) {
           return;
         }
         showSearch(

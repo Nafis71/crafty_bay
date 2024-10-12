@@ -1,22 +1,19 @@
 import 'package:crafty_bay/core/services/response/success.dart';
-import 'package:crafty_bay/features/home/models/product_slider_model/product_slider.dart';
 import 'package:crafty_bay/features/home/models/remark_product_model/remark_product_data.dart';
 import 'package:crafty_bay/features/home/models/remark_product_model/remark_product_model.dart';
 import 'package:crafty_bay/features/home/services/home_product_service.dart';
 import 'package:get/get.dart';
+import 'package:crafty_bay/features/home/models/product_slider_model/product_data.dart';
+import 'package:crafty_bay/features/home/models/product_slider_model/product_slider.dart';
 
-import '../models/product_slider_model/product_data.dart';
 
-class HomeViewModel extends GetxController {
-  int _carouselIndex = 0;
+class HomeState extends GetxController {
   Object? response;
   final List<ProductSliderData> _productSliderList = [];
   List<RemarkProductData> _popularProductList = [];
   List<RemarkProductData> _specialProductList = [];
   List<RemarkProductData> _newProductList = [];
   List<RemarkProductData> _searchProductList = [];
-
-  int get carouselIndex => _carouselIndex;
 
   List<ProductSliderData> get productSliderList => _productSliderList;
 
@@ -28,10 +25,7 @@ class HomeViewModel extends GetxController {
 
   List<RemarkProductData> get searchProductList => _searchProductList;
 
-  set setCarouselIndex(int index) {
-    _carouselIndex = index;
-    update();
-  }
+
 
   Future<bool> getProductSliderList() async {
     response = await HomeProductService().getProductSliderList();

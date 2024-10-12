@@ -1,8 +1,9 @@
+import 'package:crafty_bay/features/cart/view_model/cart_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:get/get.dart';
 
-import '../../../core/widgets/circular_loading.dart';
 import '../../../core/utils/app_strings.dart';
+import '../../../core/widgets/circular_loading.dart';
 import '../view_models/product_view_model.dart';
 
 class ProductDetailsFooterButton extends StatelessWidget {
@@ -47,7 +48,7 @@ class ProductDetailsFooterButton extends StatelessWidget {
                       );
                     }
                     return ElevatedButton(
-                      onPressed: () => addToCart(productViewModel),
+                      onPressed: () => addToCart(Get.find<CartViewModel>()),
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),

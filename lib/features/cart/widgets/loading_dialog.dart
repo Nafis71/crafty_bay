@@ -26,7 +26,7 @@ class LoadingDialog {
         );
       },
     );
-    await Future.delayed(Duration(milliseconds: 400));
+    await Future.delayed(Duration(milliseconds: 420));
     return alertDialogContext!;
   }
 }

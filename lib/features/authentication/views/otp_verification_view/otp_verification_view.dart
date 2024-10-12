@@ -15,7 +15,7 @@ import '../../../../core/themes/pin_code_theme.dart';
 import '../../../../core/utils/app_routes.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/wrappers/app_snack_bar.dart';
-import 'countdown_timer.dart';
+import 'state_holders/countdown_timer.dart';
 
 class OtpVerificationView extends StatefulWidget {
   final Map<String, dynamic> viewData;

@@ -1,6 +1,4 @@
 import 'package:crafty_bay/core/services/response/success.dart';
-import 'package:crafty_bay/features/cart/services/cart_service.dart';
-import 'package:crafty_bay/features/cart/view_model/cart_view_model.dart';
 import 'package:crafty_bay/features/product_details/models/product.dart';
 import 'package:crafty_bay/features/product_details/models/product_details_model.dart';
 import 'package:crafty_bay/features/product_details/services/product_service.dart';
@@ -106,6 +104,7 @@ class ProductViewModel extends GetxController {
       }
     }
     setIsBusy = false;
+    print(productColorList);
     return _responseStatus;
   }
 
@@ -114,26 +113,6 @@ class ProductViewModel extends GetxController {
       return true;
     }
     return false;
-  }
-
-  Future<bool> createCartList(
-      {required int productId, required String token}) async {
-    _responseStatus = false;
-    setIsAddingToCart = true;
-    Map<String, dynamic> cartJson = {
-      "product_id": productId,
-      "color": getColorText(_productColorList[selectedColor]),
-      "size": getSizeText(selectedSize),
-      "qty": _productQuantity
-    };
-    cartResponse = await CartService().createCartList(token, cartJson);
-    if (cartResponse is Success) {
-      await Get.find<CartViewModel>().getCartList(token);
-      _responseStatus = true;
-      _isItemAddedToCart = true;
-    }
-    setIsAddingToCart = false;
-    return _responseStatus;
   }
 
   void loadCarouselImageList(ProductDetailsModel productDetailsModel) {

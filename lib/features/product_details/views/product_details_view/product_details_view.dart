@@ -10,6 +10,7 @@ import 'package:crafty_bay/core/widgets/alternative_widget.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/core/widgets/shimmer_generator.dart';
 import 'package:crafty_bay/core/widgets/view_footer.dart';
+import 'package:crafty_bay/features/cart/view_model/cart_view_model.dart';
 import 'package:crafty_bay/features/product_details/view_models/product_view_model.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_body.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_description.dart';
@@ -125,8 +126,8 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                     child: ViewFooter(
                       leftWidget: const ProductDetailsFooterText(),
                       rightWidget: ProductDetailsFooterButton(
-                        addToCart: (productViewModel) =>
-                            addToCart(productViewModel),
+                        addToCart: (cartViewModel) =>
+                            addToCart(cartViewModel),
                       ),
                     ),
                   )
@@ -139,20 +140,20 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
     );
   }
 
-  Future<void> addToCart(ProductViewModel productViewModel) async {
+  Future<void> addToCart(CartViewModel cartViewModel) async {
     bool isAuthenticated =
         await UserAuthService.isUserAuthenticated(futureExecution: (token) {
-      addToCart(productViewModel);
+      addToCart(cartViewModel);
     });
     if (!isAuthenticated) {
       return;
     }
-    bool status = await productViewModel.createCartList(
+    bool status = await cartViewModel.createCartList(
       productId: widget.productId,
       token: Get.find<ProfileViewModel>().token,
     );
     if (!status && mounted) {
-      Failure failure = productViewModel.cartResponse as Failure;
+      Failure failure = cartViewModel.response as Failure;
       InternetServiceError.showErrorSnackBar(
         failure: failure,
         context: context,
@@ -161,7 +162,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
     }
     Timer.periodic(const Duration(seconds: 1), (timer) {
       if (timer.tick == 3) {
-        productViewModel.setIsItemAddedToCart = false;
+        Get.find<ProductViewModel>().setIsItemAddedToCart = false;
       }
     });
   }

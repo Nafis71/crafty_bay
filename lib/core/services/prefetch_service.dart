@@ -1,14 +1,15 @@
 import 'package:crafty_bay/features/category/view_model/category_view_model.dart';
-import 'package:crafty_bay/features/home/view_model/home_view_model.dart';
 import 'package:crafty_bay/features/wish_list/view_model/wish_list_view_model.dart';
 import 'package:get/get.dart';
 
+import '../../features/home/state_holders/home_state.dart';
+
 class PrefetchService {
   static Future<bool> prefetchProductSliderList() async {
-    if (Get.find<HomeViewModel>().productSliderList.isNotEmpty) {
+    if (Get.find<HomeState>().productSliderList.isNotEmpty) {
       return true;
     }
-    return await Get.find<HomeViewModel>().getProductSliderList();
+    return await Get.find<HomeState>().getProductSliderList();
   }
 
   static Future<bool> prefetchCategoryList() async {
@@ -19,24 +20,24 @@ class PrefetchService {
   }
 
   static Future<bool> prefetchPopularProductData() async {
-    if (Get.find<HomeViewModel>().popularProductList.isNotEmpty) {
+    if (Get.find<HomeState>().popularProductList.isNotEmpty) {
       return true;
     }
-    return await Get.find<HomeViewModel>().getPopularProduct();
+    return await Get.find<HomeState>().getPopularProduct();
   }
 
   static Future<bool> prefetchSpecialProductData() async {
-    if (Get.find<HomeViewModel>().specialProductList.isNotEmpty) {
+    if (Get.find<HomeState>().specialProductList.isNotEmpty) {
       return true;
     }
-    return await Get.find<HomeViewModel>().getSpecialProduct();
+    return await Get.find<HomeState>().getSpecialProduct();
   }
 
   static Future<bool> prefetchNewProductData() async {
-    if (Get.find<HomeViewModel>().newProductList.isNotEmpty) {
+    if (Get.find<HomeState>().newProductList.isNotEmpty) {
       return true;
     }
-    return await Get.find<HomeViewModel>().getNewProduct();
+    return await Get.find<HomeState>().getNewProduct();
   }
 
   static Future<void> prefetchProductWishList(String token) async {
