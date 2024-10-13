@@ -1,6 +1,8 @@
 import 'package:crafty_bay/core/services/response/failure.dart';
+import 'package:crafty_bay/core/services/response/success.dart';
 import 'package:crafty_bay/core/widgets/authentication_layout.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
+import 'package:crafty_bay/core/wrappers/app_snack_bar.dart';
 import 'package:crafty_bay/features/authentication/view_model/auth_view_model.dart';
 import 'package:crafty_bay/core/utils/app_routes.dart';
 import 'package:crafty_bay/core/utils/app_strings.dart';
@@ -35,7 +37,7 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     Orientation deviceOrientation = MediaQuery.of(context).orientation;
     return Scaffold(
-      appBar: craftyAppBar(title: "",context: context),
+      appBar: craftyAppBar(title: "", context: context),
       resizeToAvoidBottomInset: false,
       body: Container(
         margin: const EdgeInsets.all(20),
@@ -90,6 +92,13 @@ class _LoginViewState extends State<LoginView> {
         arguments: viewData,
       );
       return;
+    }
+    if (!status && mounted && authViewModel.response is Success) {
+      AppSnackBar.show(
+        message: AppStrings.otpSendError,
+        context: context,
+        isError: true,
+      );
     }
     Failure failure = authViewModel.response as Failure;
     if (mounted) {

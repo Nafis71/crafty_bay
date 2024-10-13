@@ -18,6 +18,7 @@ class AppStrings {
   static const String loginScreenButtonText = "Next";
   static const String invalidEmailAddress = "Invalid Email Address";
   static const String emptyEmailAddress = "Email address is required";
+  static const String otpSendError = "Failed to send OTP, try again later";
 
   //otp screen
   static const String otpVerificationScreenTitle = "Enter OTP Code";

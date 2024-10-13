@@ -26,7 +26,10 @@ class AuthViewModel extends GetxController {
     if (!isResending) setIsBusy = true;
     response = await AuthService().sendOTP(emailAddress);
     if (response is Success) {
-      _responseStatus = true;
+      Map<String, dynamic> jsonData = (response as Success).response as Map<String,dynamic>;
+      if(jsonData['msg'] == "success"){
+        _responseStatus = true;
+      }
     }
     if (!isResending) setIsBusy = false;
     return _responseStatus;
