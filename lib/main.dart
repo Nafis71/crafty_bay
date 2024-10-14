@@ -11,5 +11,5 @@ void main() async {
   Get.put(NetworkState());
   Get.find<NetworkState>().initialize();
   Get.put(ThemeSwitcher());
-  runApp(DevicePreview(enabled: false, builder: (_) => const CraftyBay()));
+  runApp(DevicePreview(enabled: true, builder: (_) => const CraftyBay()));
 }

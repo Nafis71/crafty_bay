@@ -3,6 +3,7 @@ import 'package:crafty_bay/core/utils/app_assets.dart';
 import 'package:crafty_bay/core/utils/app_routes.dart';
 import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:crafty_bay/core/widgets/circular_loading.dart';
+import 'package:crafty_bay/features/cart/state_holders/cart_view_state.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -60,7 +61,7 @@ class _SplashViewState extends State<SplashView> {
               Expanded(
                 child: WidgetAnimator(
                   incomingEffect: WidgetTransitionEffects.incomingScaleUp(
-                    duration: const Duration(seconds: 3),
+                    duration: const Duration(seconds: 2),
                   ),
                   child: const SvgImageLoader(
                     assetLocation: AppAssets.appLogo,
@@ -97,9 +98,13 @@ class _SplashViewState extends State<SplashView> {
       await PrefetchService.prefetchProductWishList(
         Get.find<ProfileState>().token,
       );
+      await Get.find<CartViewState>().getCartList(
+        Get.find<ProfileState>().token,
+      );
+    }else{
+      await Future.delayed(Duration(seconds: 3));
     }
     await Get.find<ProfileState>().loadUserDataFromStorage();
-    await Future.delayed(Duration(seconds: 3));
     Navigator.pushNamed(context, AppRoutes.baseNavigationView);
   }
 }
