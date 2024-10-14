@@ -82,7 +82,7 @@ class _AddReviewViewState extends State<AddReviewView> {
                     const Gap(20),
                     Text(AppStrings.ratingBarHeaderText),
                     const Gap(10),
-                    ProductReviewRatingBar.show(),
+                    ProductReviewRatingBar.show(initialRating: 3),
                     const Gap(30),
                     GetBuilder<ProductReviewState>(
                         builder: (productReviewViewModel) {

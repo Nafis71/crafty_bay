@@ -7,6 +7,9 @@ class ProductRatingCalculator {
       _instance ??= ProductRatingCalculator._();
 
   double getProductRating(double rating) {
-    return (rating / 100) * 5;
+    if(rating > 5){
+      return (rating / 100) * 5;
+    }
+    return rating;
   }
 }

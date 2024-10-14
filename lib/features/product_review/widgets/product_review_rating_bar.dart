@@ -5,9 +5,9 @@ import 'package:get/get.dart';
 import '../state_holders/product_review_state.dart';
 
 class ProductReviewRatingBar {
-  static RatingBar show() {
+  static RatingBar show({required double initialRating, bool onlyReadable = false}) {
     return RatingBar.builder(
-      initialRating: 3,
+      initialRating: initialRating,
       minRating: 1,
       direction: Axis.horizontal,
       allowHalfRating: false,
@@ -19,6 +19,7 @@ class ProductReviewRatingBar {
         Icons.star,
         color: Colors.amber,
       ),
+      ignoreGestures: onlyReadable,
       onRatingUpdate: (rating) {
         Get.find<ProductReviewState>().setProductRating = rating.ceil();
       },

@@ -7,15 +7,17 @@ class ProductReviewModel {
   String? createdAt;
   String? updatedAt;
   Profile? profile;
+  double? rating;
 
-
-  ProductReviewModel(
-      {this.id,
-      this.description,
-      this.productId,
-      this.createdAt,
-      this.updatedAt,
-      this.profile});
+  ProductReviewModel({
+    this.id,
+    this.description,
+    this.productId,
+    this.createdAt,
+    this.updatedAt,
+    this.profile,
+    this.rating,
+  });
 
   ProductReviewModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -25,6 +27,7 @@ class ProductReviewModel {
     updatedAt = json['updated_at'];
     profile =
         json['profile'] != null ? Profile.fromJson(json['profile']) : null;
+    rating = double.tryParse(json['rating'].toString()) ?? 0.0;
   }
 
   Map<String, dynamic> toJson() {

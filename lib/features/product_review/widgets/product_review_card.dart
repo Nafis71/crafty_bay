@@ -1,5 +1,7 @@
 import 'package:crafty_bay/core/utils/app_strings.dart';
+import 'package:crafty_bay/core/utils/product_rating_calculator.dart';
 import 'package:crafty_bay/features/product_review/models/product_review_model/product_review_model.dart';
+import 'package:crafty_bay/features/product_review/widgets/product_review_rating_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -63,6 +65,17 @@ class ProductReviewCard extends StatelessWidget {
                   .textTheme
                   .bodyMedium!
                   .copyWith(fontSize: 13),
+            ),
+            Gap(20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ProductReviewRatingBar.show(
+                  initialRating: ProductRatingCalculator()
+                      .getProductRating(productReviewData.rating!),
+                  onlyReadable: true
+                ),
+              ],
             )
           ],
         ),
