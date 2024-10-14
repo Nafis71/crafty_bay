@@ -70,7 +70,7 @@ class CartListCard extends StatelessWidget {
               ),
               const Gap(15),
               Expanded(
-                flex: 2,
+                flex: 3,
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -109,6 +109,13 @@ class CartListCard extends StatelessWidget {
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             fontSize: 12,
                           ),
+                    ),
+                    const Gap(2),
+                    Text(
+                      "Unit price: \$${cartData.cartProductData!.price}",
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        fontSize: 11,
+                      ),
                     ),
                     const Gap(30),
                     Row(
