@@ -46,8 +46,8 @@ class ProductReviewCard extends StatelessWidget {
                 ),
                 const Gap(10),
                 Text(
-                  (productReviewData.profile!.firstName != null)
-                      ? "${productReviewData.profile!.firstName} ${productReviewData.profile!.lastName}"
+                  (productReviewData.profile!.cusName != null)
+                      ? "${productReviewData.profile!.cusName}"
                       : AppStrings.unknownUserText,
                   style: Theme.of(context)
                       .textTheme
