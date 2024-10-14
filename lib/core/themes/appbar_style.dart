@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -22,16 +21,15 @@ class AppbarStyle {
       );
 
   static AppBarTheme getDarkAppBarTheme() => getLightAppBarTheme().copyWith(
-    backgroundColor: AppColor.darkComponentsColor,
-    surfaceTintColor: AppColor.darkComponentsColor,
-    systemOverlayStyle: SystemUiOverlayStyle(
-      statusBarColor: AppColor.darkComponentsColor
-    ),
-    titleTextStyle: TextStyle(
-      fontSize: 16,
-      color: Colors.white,
-      fontFamily: "Poppins",
-      fontWeight: FontWeight.bold,
-    ),
-  );
+        backgroundColor: AppColor.darkComponentsColor,
+        surfaceTintColor: AppColor.darkComponentsColor,
+        systemOverlayStyle:
+            SystemUiOverlayStyle(statusBarColor: AppColor.darkComponentsColor),
+        titleTextStyle: TextStyle(
+          fontSize: 16,
+          color: Colors.white,
+          fontFamily: "Poppins",
+          fontWeight: FontWeight.bold,
+        ),
+      );
 }

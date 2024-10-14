@@ -1,6 +1,6 @@
+import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:crafty_bay/features/product_details/widgets/color_selection_widget.dart';
 import 'package:crafty_bay/features/product_details/widgets/size_selection_widget.dart';
-import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';

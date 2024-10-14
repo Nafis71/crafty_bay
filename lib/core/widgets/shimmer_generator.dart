@@ -21,29 +21,31 @@ class ShimmerGenerator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<ThemeSwitcher>(
-      builder: (themeSwitcher) {
-        return SizedBox(
-          height: shimmerHeight,
-          child: Shimmer.fromColors(
-            baseColor: (themeSwitcher.themeMode == ThemeMode.light) ? Colors.grey.shade100 : AppColor.darkComponentsColor,
-            highlightColor: (themeSwitcher.themeMode == ThemeMode.light) ? Colors.white : Colors.white.withOpacity(0.01),
-            child: ListView.separated(
-              primary: false,
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              scrollDirection: axis,
-              itemBuilder: (context, index) {
-                return shimmer;
-              },
-              separatorBuilder: (BuildContext context, int index) {
-                return Gap(10);
-              },
-              itemCount: itemCount,
-            ),
+    return GetBuilder<ThemeSwitcher>(builder: (themeSwitcher) {
+      return SizedBox(
+        height: shimmerHeight,
+        child: Shimmer.fromColors(
+          baseColor: (themeSwitcher.themeMode == ThemeMode.light)
+              ? Colors.grey.shade100
+              : AppColor.darkComponentsColor,
+          highlightColor: (themeSwitcher.themeMode == ThemeMode.light)
+              ? Colors.white
+              : Colors.white.withOpacity(0.01),
+          child: ListView.separated(
+            primary: false,
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            scrollDirection: axis,
+            itemBuilder: (context, index) {
+              return shimmer;
+            },
+            separatorBuilder: (BuildContext context, int index) {
+              return Gap(10);
+            },
+            itemCount: itemCount,
           ),
-        );
-      }
-    );
+        ),
+      );
+    });
   }
 }

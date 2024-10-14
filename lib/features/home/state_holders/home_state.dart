@@ -1,11 +1,10 @@
 import 'package:crafty_bay/core/services/response/success.dart';
+import 'package:crafty_bay/features/home/models/product_slider_model/product_data.dart';
+import 'package:crafty_bay/features/home/models/product_slider_model/product_slider.dart';
 import 'package:crafty_bay/features/home/models/remark_product_model/remark_product_data.dart';
 import 'package:crafty_bay/features/home/models/remark_product_model/remark_product_model.dart';
 import 'package:crafty_bay/features/home/services/home_product_service.dart';
 import 'package:get/get.dart';
-import 'package:crafty_bay/features/home/models/product_slider_model/product_data.dart';
-import 'package:crafty_bay/features/home/models/product_slider_model/product_slider.dart';
-
 
 class HomeState extends GetxController {
   Object? response;
@@ -24,8 +23,6 @@ class HomeState extends GetxController {
   List<RemarkProductData> get newProductList => _newProductList;
 
   List<RemarkProductData> get searchProductList => _searchProductList;
-
-
 
   Future<bool> getProductSliderList() async {
     response = await HomeProductService().getProductSliderList();

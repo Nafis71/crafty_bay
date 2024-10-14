@@ -15,7 +15,7 @@ class ThemeSwitcher extends GetxController {
     update();
   }
 
-  set setThemeModeSilently(ThemeMode themeMode){
+  set setThemeModeSilently(ThemeMode themeMode) {
     _themeMode = themeMode;
   }
 
@@ -33,7 +33,7 @@ class ThemeSwitcher extends GetxController {
     return AppColor.appBarActionButtonColorLight;
   }
 
-  Color getSearchBarColor(){
+  Color getSearchBarColor() {
     if (_themeMode == ThemeMode.dark) {
       return AppColor.darkComponentsColor;
     }

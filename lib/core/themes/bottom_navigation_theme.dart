@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import 'app_color.dart';
@@ -22,7 +21,7 @@ class BottomNavigationTheme {
         ),
       );
 
-  static BottomNavigationBarThemeData getBottomNavigationBarDarkTheme()=> getBottomNavigationBarLightTheme().copyWith(
-    backgroundColor: AppColor.darkComponentsColor
-  );
+  static BottomNavigationBarThemeData getBottomNavigationBarDarkTheme() =>
+      getBottomNavigationBarLightTheme()
+          .copyWith(backgroundColor: AppColor.darkComponentsColor);
 }

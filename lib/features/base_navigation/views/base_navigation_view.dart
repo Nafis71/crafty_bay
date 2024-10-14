@@ -5,9 +5,9 @@ import 'package:crafty_bay/features/base_navigation/widgets/bottom_navigation.da
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+
 import '../../../core/utils/app_strings.dart';
 import '../../../core/wrappers/app_snack_bar.dart';
-
 
 class BaseNavigationView extends StatefulWidget {
   const BaseNavigationView({super.key});
@@ -22,8 +22,7 @@ class _BaseNavigationViewState extends State<BaseNavigationView> {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<BaseNavigationState>(
-        builder: (baseNavigationState) {
+    return GetBuilder<BaseNavigationState>(builder: (baseNavigationState) {
       return PopScope(
         onPopInvokedWithResult: (isPop, result) async {
           _isFirstRouteInCurrentTab = !await baseNavigationState
@@ -62,8 +61,8 @@ class _BaseNavigationViewState extends State<BaseNavigationView> {
             }
             return TabView(
               currentIndex: baseNavigationState.index,
-              navigatorState: baseNavigationState
-                  .navigatorKeys[baseNavigationState.index]!,
+              navigatorState:
+                  baseNavigationState.navigatorKeys[baseNavigationState.index]!,
             );
           }),
           bottomNavigationBar: const BottomNavigation(),

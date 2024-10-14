@@ -1,7 +1,7 @@
 import 'package:crafty_bay/core/services/response/failure.dart';
-import 'package:crafty_bay/core/widgets/authentication_layout.dart';
 import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:crafty_bay/core/utils/form_validation.dart';
+import 'package:crafty_bay/core/widgets/authentication_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

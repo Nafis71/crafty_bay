@@ -1,7 +1,7 @@
+import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:crafty_bay/features/home/models/remark_product_model/remark_product_data.dart';
 import 'package:crafty_bay/features/home/widgets/search_alternative.dart';
 import 'package:crafty_bay/features/home/widgets/search_result.dart';
-import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,8 +19,7 @@ class CustomSearchDelegate extends SearchDelegate {
     return AppSearchBarTheme.getSearchBarThemeLight(context);
   }
 
-  List<RemarkProductData> searchTerms =
-      Get.find<HomeState>().searchProductList;
+  List<RemarkProductData> searchTerms = Get.find<HomeState>().searchProductList;
 
   @override
   List<Widget>? buildActions(BuildContext context) {

@@ -4,6 +4,7 @@ import '../../../core/themes/theme_switcher.dart';
 
 class ThemeSwitch extends StatelessWidget {
   final ThemeSwitcher themeSwitcher;
+
   const ThemeSwitch({super.key, required this.themeSwitcher});
 
   @override
@@ -41,9 +42,9 @@ class ThemeSwitch extends StatelessWidget {
         },
       ),
       onChanged: (value) {
-        if(value){
+        if (value) {
           themeSwitcher.setThemeMode = ThemeMode.dark;
-        } else{
+        } else {
           themeSwitcher.setThemeMode = ThemeMode.light;
         }
       },

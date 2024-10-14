@@ -29,8 +29,9 @@ class AuthState extends GetxController {
     if (!isResending) setIsBusy = true;
     response = await AuthService().sendOTP(emailAddress);
     if (response is Success) {
-      Map<String, dynamic> jsonData = (response as Success).response as Map<String,dynamic>;
-      if(jsonData['msg'] == "success"){
+      Map<String, dynamic> jsonData =
+          (response as Success).response as Map<String, dynamic>;
+      if (jsonData['msg'] == "success") {
         _responseStatus = true;
       }
     }
@@ -59,8 +60,7 @@ class AuthState extends GetxController {
     localStorage.setString("token", token);
     profileState.setToken = token;
     await Future.delayed(const Duration(milliseconds: 2500));
-    bool status =
-        await profileState.readProfile(response!, token);
+    bool status = await profileState.readProfile(response!, token);
     _hasUserData = status;
     localStorage.setBool("hasUserData", status);
     await PrefetchService.prefetchProductWishList(token);

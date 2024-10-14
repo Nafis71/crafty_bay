@@ -1,9 +1,10 @@
+import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/core/widgets/grid_view_layout.dart';
-import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+
 import '../../../core/state_holders/profile_state.dart';
 import '../../../core/widgets/alternative_widget.dart';
 import '../../../core/widgets/circular_loading.dart';

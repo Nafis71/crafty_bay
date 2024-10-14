@@ -31,13 +31,13 @@ class _CategoryViewState extends State<CategoryView> {
             return SingleChildScrollView(
               child: Column(
                 children: [
-                  for(int i=0;i<10; i++)
-                  ShimmerGenerator(
-                    shimmer: CategoryCardShimmer(),
-                    axis: Axis.horizontal,
-                    itemCount: 8,
-                    shimmerHeight: 150,
-                  ),
+                  for (int i = 0; i < 10; i++)
+                    ShimmerGenerator(
+                      shimmer: CategoryCardShimmer(),
+                      axis: Axis.horizontal,
+                      itemCount: 8,
+                      shimmerHeight: 150,
+                    ),
                 ],
               ),
             );

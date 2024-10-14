@@ -9,7 +9,9 @@ import 'alternative_widget.dart';
 class LoginPrompt extends StatelessWidget {
   final String subtitle;
   final Function(dynamic) futureExecution;
-  const LoginPrompt({super.key, required this.subtitle, required this.futureExecution});
+
+  const LoginPrompt(
+      {super.key, required this.subtitle, required this.futureExecution});
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +47,7 @@ class LoginPrompt extends StatelessWidget {
         ],
       ),
       onRefresh: () {},
-    );;
+    );
+    ;
   }
 }

@@ -12,8 +12,7 @@ class BottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<BaseNavigationState>(
-        builder: (baseNavigationViewModel) {
+    return GetBuilder<BaseNavigationState>(builder: (baseNavigationViewModel) {
       return BottomNavigationBar(
         currentIndex: baseNavigationViewModel.index,
         onTap: (index) {

@@ -1,4 +1,5 @@
 import 'package:crafty_bay/core/services/prefetch_service.dart';
+import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:crafty_bay/core/widgets/category_card_shimmer.dart';
 import 'package:crafty_bay/core/widgets/product_card.dart';
 import 'package:crafty_bay/core/widgets/shimmer_generator.dart';
@@ -10,7 +11,6 @@ import 'package:crafty_bay/features/home/widgets/carousel_slider_shimmer.dart';
 import 'package:crafty_bay/features/home/widgets/offer_carousel.dart';
 import 'package:crafty_bay/features/home/widgets/product_card_shimmer.dart';
 import 'package:crafty_bay/features/home/widgets/product_layout_section.dart';
-import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';

@@ -1,9 +1,9 @@
 import 'package:crafty_bay/core/services/internet_service_error.dart';
 import 'package:crafty_bay/core/services/response/failure.dart';
-import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
-import 'package:crafty_bay/features/product_review/widgets/product_review_rating_bar.dart';
 import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:crafty_bay/core/utils/form_validation.dart';
+import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
+import 'package:crafty_bay/features/product_review/widgets/product_review_rating_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -43,7 +43,8 @@ class _AddReviewViewState extends State<AddReviewView> {
       appBar: craftyAppBar(title: AppStrings.addReviewHeader, context: context),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(left: 25, right: 25, top: 40, bottom: 10),
+          padding:
+              const EdgeInsets.only(left: 25, right: 25, top: 40, bottom: 10),
           child: Column(
             children: [
               Form(
@@ -111,8 +112,7 @@ class _AddReviewViewState extends State<AddReviewView> {
     );
   }
 
-  Future<void> createReview(
-      ProductReviewState productReviewState) async {
+  Future<void> createReview(ProductReviewState productReviewState) async {
     bool status = await productReviewState.createProductReview(
       productId: widget.productId,
       token: Get.find<ProfileState>().token,

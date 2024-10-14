@@ -18,6 +18,7 @@ import 'package:crafty_bay/features/product_details/widgets/product_variation.da
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+
 import '../../../../core/state_holders/profile_state.dart';
 import '../../../../core/wrappers/svg_image_loader.dart';
 import '../../../cart/state_holders/cart_view_state.dart';
@@ -101,8 +102,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                         children: [
                           ProductImageCarousel(
                             orientation: deviceOrientation,
-                            carouselImageList:
-                                productState.carouselImageList,
+                            carouselImageList: productState.carouselImageList,
                           ),
                           const Gap(10),
                           ProductBody(product: productState.productData!),
@@ -113,8 +113,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                           ),
                           const Gap(20),
                           ProductDescription(
-                            description: productState
-                                .productData!.description
+                            description: productState.productData!.description
                                 .toString(),
                           ),
                         ],
@@ -126,8 +125,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                     child: ViewFooter(
                       leftWidget: const ProductDetailsFooterText(),
                       rightWidget: ProductDetailsFooterButton(
-                        addToCart: (cartViewState) =>
-                            addToCart(cartViewState),
+                        addToCart: (cartViewState) => addToCart(cartViewState),
                       ),
                     ),
                   )
@@ -170,9 +168,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
   Future<void> loadProductDetails() async {
     bool status =
         await Get.find<ProductState>().getProductDetails(widget.productId);
-    if (!status &&
-        mounted &&
-        Get.find<ProductState>().response is Failure) {
+    if (!status && mounted && Get.find<ProductState>().response is Failure) {
       InternetServiceError.showErrorSnackBar(
         failure: Get.find<ProductState>().response as Failure,
         context: context,

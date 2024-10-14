@@ -7,7 +7,7 @@ class ProductReviewShimmer extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 30),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
       height: 100,
       width: size.width * 0.9,
       decoration: BoxDecoration(

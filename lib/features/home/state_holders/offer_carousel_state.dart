@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class OfferCarouselState extends GetxController{
+class OfferCarouselState extends GetxController {
   int _carouselIndex = 0;
 
   int get carouselIndex => _carouselIndex;

@@ -1,10 +1,10 @@
+import 'package:crafty_bay/core/utils/app_routes.dart';
+import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/features/profile/models/profile_updation_model.dart';
 import 'package:crafty_bay/features/profile/widgets/profile_options.dart';
 import 'package:crafty_bay/features/profile/widgets/profile_overview.dart';
 import 'package:crafty_bay/features/profile/widgets/theme_switch.dart';
-import 'package:crafty_bay/core/utils/app_routes.dart';
-import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -106,13 +106,13 @@ class _ProfileViewState extends State<ProfileView> {
                   ),
                 ),
                 Gap(5),
-                GetBuilder<ThemeSwitcher>(
-                  builder: (themeSwitcher) {
-                    return ProfileOptions(
-                        optionLeadingWidget: Text(AppStrings.darkModeText),
-                        optionTrailingWidget: ThemeSwitch(themeSwitcher: themeSwitcher,));
-                  }
-                ),
+                GetBuilder<ThemeSwitcher>(builder: (themeSwitcher) {
+                  return ProfileOptions(
+                      optionLeadingWidget: Text(AppStrings.darkModeText),
+                      optionTrailingWidget: ThemeSwitch(
+                        themeSwitcher: themeSwitcher,
+                      ));
+                }),
                 Gap(20),
                 SizedBox(
                   width: size.width * 0.9,

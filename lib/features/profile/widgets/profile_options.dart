@@ -13,27 +13,25 @@ class ProfileOptions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<ThemeSwitcher>(
-      builder: (themeSwitcher) {
-        return Card(
-          color: themeSwitcher.getComponentColor(),
-          shadowColor: Colors.black.withOpacity(0.5),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
+    return GetBuilder<ThemeSwitcher>(builder: (themeSwitcher) {
+      return Card(
+        color: themeSwitcher.getComponentColor(),
+        shadowColor: Colors.black.withOpacity(0.5),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        elevation: 0.5,
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              optionLeadingWidget,
+              optionTrailingWidget,
+            ],
           ),
-          elevation: 0.5,
-          child: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                optionLeadingWidget,
-                optionTrailingWidget,
-              ],
-            ),
-          ),
-        );
-      }
-    );
+        ),
+      );
+    });
   }
 }

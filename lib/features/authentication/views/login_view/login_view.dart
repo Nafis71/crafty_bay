@@ -1,12 +1,12 @@
 import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/services/response/success.dart';
+import 'package:crafty_bay/core/utils/app_routes.dart';
+import 'package:crafty_bay/core/utils/app_strings.dart';
+import 'package:crafty_bay/core/utils/form_validation.dart';
 import 'package:crafty_bay/core/widgets/authentication_layout.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/core/wrappers/app_snack_bar.dart';
 import 'package:crafty_bay/features/authentication/state_holders/auth_state.dart';
-import 'package:crafty_bay/core/utils/app_routes.dart';
-import 'package:crafty_bay/core/utils/app_strings.dart';
-import 'package:crafty_bay/core/utils/form_validation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -27,32 +27,29 @@ class _CraftyBayState extends State<CraftyBay> {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<ThemeSwitcher>(
-      builder: (themeSwitcher) {
-        return GetMaterialApp(
-          debugShowCheckedModeBanner: false,
-          navigatorKey: navigatorState,
-          initialBinding: InitiateViewModel(),
-          initialRoute: AppRoutes.splashView,
-          locale: DevicePreview.locale(context),
-          builder: DevicePreview.appBuilder,
-          onGenerateRoute: (RouteSettings routeSettings) {
-            return AppRoutes.generateRoutes(routeSettings);
-          },
-          themeMode: themeSwitcher.themeMode,
-          theme: AppTheme.getLightTheme(),
-          darkTheme: AppTheme.getDarkTheme(),
-        );
-      }
-    );
+    return GetBuilder<ThemeSwitcher>(builder: (themeSwitcher) {
+      return GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        navigatorKey: navigatorState,
+        initialBinding: InitiateViewModel(),
+        initialRoute: AppRoutes.splashView,
+        locale: DevicePreview.locale(context),
+        builder: DevicePreview.appBuilder,
+        onGenerateRoute: (RouteSettings routeSettings) {
+          return AppRoutes.generateRoutes(routeSettings);
+        },
+        themeMode: themeSwitcher.themeMode,
+        theme: AppTheme.getLightTheme(),
+        darkTheme: AppTheme.getDarkTheme(),
+      );
+    });
   }
 
-  Future<void> loadTheme() async{
+  Future<void> loadTheme() async {
     SharedPreferences localStorage = await SharedPreferences.getInstance();
     bool? isDarkModeEnabled = localStorage.getBool("isDarkModeEnabled");
-    if(isDarkModeEnabled!=null && isDarkModeEnabled){
+    if (isDarkModeEnabled != null && isDarkModeEnabled) {
       Get.find<ThemeSwitcher>().setThemeModeSilently = ThemeMode.dark;
     }
   }
-
 }

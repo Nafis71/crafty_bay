@@ -39,9 +39,10 @@ class AppSearchBarTheme {
         ),
         scaffoldBackgroundColor: AppColor.scaffoldBackgroundColorDark,
         textTheme: TextTheme(
-          bodyMedium: Theme.of(context).textTheme.bodyMedium!.copyWith(
-            color: Colors.white
-          ),
+          bodyMedium: Theme.of(context)
+              .textTheme
+              .bodyMedium!
+              .copyWith(color: Colors.white),
         ),
       );
 }

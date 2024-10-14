@@ -83,14 +83,13 @@ class ProfileState extends GetxController {
     return false;
   }
 
-  Future<bool> createProfile({
-    required String firstName,
-    required String lastName,
-    required String mobile,
-    required String city,
-    required String shippingAddress,
-    required String postCode
-  }) async {
+  Future<bool> createProfile(
+      {required String firstName,
+      required String lastName,
+      required String mobile,
+      required String city,
+      required String shippingAddress,
+      required String postCode}) async {
     _responseStatus = false;
     setIsBusy = true;
     Map<String, String> json = {
@@ -113,7 +112,7 @@ class ProfileState extends GetxController {
     response = await ProfileDetailService().createProfile(_token, json);
     if (response is Success) {
       bool readStatus = await readProfile(response!, token);
-      if(readStatus){
+      if (readStatus) {
         _responseStatus = true;
       }
     }
@@ -152,11 +151,10 @@ class ProfileState extends GetxController {
     _userModel = userModel;
   }
 
-  Future<void> logout() async{
+  Future<void> logout() async {
     SharedPreferences localStorage = await SharedPreferences.getInstance();
     localStorage.clear();
     _userModel = null;
     _token = "";
   }
-
 }

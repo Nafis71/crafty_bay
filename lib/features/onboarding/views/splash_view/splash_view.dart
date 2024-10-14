@@ -1,8 +1,8 @@
 import 'package:crafty_bay/core/services/prefetch_service.dart';
-import 'package:crafty_bay/core/widgets/circular_loading.dart';
 import 'package:crafty_bay/core/utils/app_assets.dart';
 import 'package:crafty_bay/core/utils/app_routes.dart';
 import 'package:crafty_bay/core/utils/app_strings.dart';
+import 'package:crafty_bay/core/widgets/circular_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
