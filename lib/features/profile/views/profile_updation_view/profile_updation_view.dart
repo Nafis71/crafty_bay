@@ -1,6 +1,5 @@
 import 'package:crafty_bay/core/services/internet_service_error.dart';
 import 'package:crafty_bay/core/services/response/failure.dart';
-import 'package:crafty_bay/core/view_model/profile_view_model.dart';
 import 'package:crafty_bay/core/widgets/circular_loading.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/features/profile/models/profile_updation_model.dart';
@@ -9,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
+import '../../../../core/state_holders/profile_view_model.dart';
 import '../../../../core/wrappers/app_snack_bar.dart';
 
 class ProfileUpdationView extends StatefulWidget {
@@ -69,14 +69,14 @@ class _ProfileUpdationViewState extends State<ProfileUpdationView> {
                     Gap(20),
                     SizedBox(
                       width: size.width * 0.9,
-                      child: GetBuilder<ProfileViewModel>(
-                        builder: (profileViewModel) {
-                          if (profileViewModel.isBusy) {
+                      child: GetBuilder<ProfileState>(
+                        builder: (profileState) {
+                          if (profileState.isBusy) {
                             return Center(child: CircularLoading());
                           }
                           return ElevatedButton(
                             onPressed: () {
-                              updateProfile(profileViewModel);
+                              updateProfile(profileState);
                             },
                             child: Text(AppStrings.updateButtonText),
                           );
@@ -93,7 +93,7 @@ class _ProfileUpdationViewState extends State<ProfileUpdationView> {
     );
   }
 
-  Future<void> updateProfile(ProfileViewModel profileViewModel) async {
+  Future<void> updateProfile(ProfileState profileViewModel) async {
     bool status = await profileViewModel.updateProfile(
       widget.profileUpdationModel.profileUpdationType,
       _textEditingController.text.trim(),

@@ -1,6 +1,4 @@
 import 'package:crafty_bay/core/services/prefetch_service.dart';
-import 'package:crafty_bay/core/view_model/connection_view_model.dart';
-import 'package:crafty_bay/core/view_model/profile_view_model.dart';
 import 'package:crafty_bay/core/widgets/circular_loading.dart';
 import 'package:crafty_bay/core/utils/app_assets.dart';
 import 'package:crafty_bay/core/utils/app_routes.dart';
@@ -10,6 +8,8 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:widget_and_text_animator/widget_and_text_animator.dart';
 
+import '../../../../core/state_holders/connection_view_model.dart';
+import '../../../../core/state_holders/profile_view_model.dart';
 import '../../../../core/wrappers/app_snack_bar.dart';
 import '../../../../core/wrappers/svg_image_loader.dart';
 
@@ -93,12 +93,12 @@ class _SplashViewState extends State<SplashView> {
       return;
     }
     isLoading = true;
-    if (!await Get.find<ProfileViewModel>().isTokenExpired()) {
+    if (!await Get.find<ProfileState>().isTokenExpired()) {
       await PrefetchService.prefetchProductWishList(
-        Get.find<ProfileViewModel>().token,
+        Get.find<ProfileState>().token,
       );
     }
-    await Get.find<ProfileViewModel>().loadUserDataFromStorage();
+    await Get.find<ProfileState>().loadUserDataFromStorage();
     await Future.delayed(Duration(seconds: 3));
     Navigator.pushNamed(context, AppRoutes.baseNavigationView);
   }

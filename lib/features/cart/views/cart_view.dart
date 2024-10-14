@@ -1,7 +1,6 @@
 import 'package:crafty_bay/core/services/internet_service_error.dart';
 import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/utils/app_strings.dart';
-import 'package:crafty_bay/core/view_model/profile_view_model.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/core/widgets/login_prompt.dart';
 import 'package:crafty_bay/core/widgets/shimmer_generator.dart';
@@ -14,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
+import '../../../core/state_holders/profile_view_model.dart';
 import '../../../core/utils/app_assets.dart';
 import '../../../core/widgets/alternative_widget.dart';
 import '../../../core/wrappers/app_snack_bar.dart';
@@ -43,7 +43,7 @@ class _CartViewState extends State<CartView> {
       ),
       body: GetBuilder<CartViewState>(
         builder: (cartViewModel) {
-          if (Get.find<ProfileViewModel>().token.isEmpty) {
+          if (Get.find<ProfileState>().token.isEmpty) {
             return LoginPrompt(
               subtitle: AppStrings.cartLoginText,
               futureExecution: (token) async {
@@ -135,7 +135,7 @@ class _CartViewState extends State<CartView> {
     CartViewState cartViewModel = Get.find<CartViewState>();
     bool status = await cartViewModel.deleteCartItem(
       cartId: cartId,
-      token: Get.find<ProfileViewModel>().token,
+      token: Get.find<ProfileState>().token,
       deleteIndex: index,
     );
     if (status && mounted) {
@@ -162,18 +162,18 @@ class _CartViewState extends State<CartView> {
 
   Future<void> getCartList() async {
     CartViewState cartViewModel = Get.find<CartViewState>();
-    ProfileViewModel profileViewModel = Get.find<ProfileViewModel>();
-    if (await profileViewModel.isTokenExpired()) {
-      profileViewModel.setToken = "";
+    ProfileState profileState = Get.find<ProfileState>();
+    if (await profileState.isTokenExpired()) {
+      profileState.setToken = "";
       cartViewModel.update();
       return;
     }
     if (cartViewModel.cartList.isNotEmpty ||
-        Get.find<ProfileViewModel>().token.isEmpty) {
+        Get.find<ProfileState>().token.isEmpty) {
       return;
     }
     bool status = await cartViewModel.getCartList(
-      Get.find<ProfileViewModel>().token,
+      Get.find<ProfileState>().token,
     );
     if (!status && mounted) {
       Failure failure = cartViewModel.response as Failure;

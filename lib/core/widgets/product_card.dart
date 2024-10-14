@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:crafty_bay/core/utils/product_rating_calculator.dart';
-import 'package:crafty_bay/core/view_model/profile_view_model.dart';
 import 'package:crafty_bay/core/widgets/circular_loading.dart';
 import 'package:crafty_bay/core/widgets/product_rating.dart';
 import 'package:crafty_bay/core/widgets/small_icon_card.dart';
@@ -11,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
+import '../state_holders/profile_view_model.dart';
 import '../themes/app_color.dart';
 import '../themes/theme_switcher.dart';
 
@@ -119,14 +119,14 @@ class ProductCard extends StatelessWidget {
                                       if (wishListViewModel.wishListProductId
                                           .contains(productList.id)) {
                                         wishListViewModel.removeWishList(
-                                          Get.find<ProfileViewModel>().token,
+                                          Get.find<ProfileState>().token,
                                           productList.id,
                                         );
                                         return;
                                       }
                                       wishListViewModel.createWishList(
                                         productList.id,
-                                        Get.find<ProfileViewModel>().token,
+                                        Get.find<ProfileState>().token,
                                       );
                                     },
                                     child: SmallIconCard(

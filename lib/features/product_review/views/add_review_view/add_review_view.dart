@@ -1,6 +1,5 @@
 import 'package:crafty_bay/core/services/internet_service_error.dart';
 import 'package:crafty_bay/core/services/response/failure.dart';
-import 'package:crafty_bay/core/view_model/profile_view_model.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/features/product_review/view_model/product_review_view_model.dart';
 import 'package:crafty_bay/features/product_review/widgets/product_review_rating_bar.dart';
@@ -10,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
+import '../../../../core/state_holders/profile_view_model.dart';
 import '../../../../core/widgets/circular_loading.dart';
 import '../../../../core/wrappers/app_snack_bar.dart';
 
@@ -115,7 +115,7 @@ class _AddReviewViewState extends State<AddReviewView> {
       ProductReviewViewModel productReviewViewModel) async {
     bool status = await productReviewViewModel.createProductReview(
       productId: widget.productId,
-      token: Get.find<ProfileViewModel>().token,
+      token: Get.find<ProfileState>().token,
       review: _reviewTEController.text.trim(),
     );
     if (status && mounted) {

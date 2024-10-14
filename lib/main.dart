@@ -3,8 +3,8 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'core/state_holders/connection_view_model.dart';
 import 'core/themes/theme_switcher.dart';
-import 'core/view_model/connection_view_model.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();

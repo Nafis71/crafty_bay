@@ -1,5 +1,4 @@
 import 'package:crafty_bay/core/utils/product_rating_calculator.dart';
-import 'package:crafty_bay/core/view_model/profile_view_model.dart';
 import 'package:crafty_bay/core/widgets/small_icon_card.dart';
 import 'package:crafty_bay/features/product_details/models/product.dart';
 import 'package:crafty_bay/features/product_review/views/product_review_view/product_review_view.dart';
@@ -9,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
+import '../../../core/state_holders/profile_view_model.dart';
 import '../../../core/themes/app_color.dart';
 import '../state_holders/product_state.dart';
 
@@ -127,7 +127,7 @@ class ProductBody extends StatelessWidget {
                     }
                     wishListViewModel.createWishList(
                       product.id!,
-                      Get.find<ProfileViewModel>().token,
+                      Get.find<ProfileState>().token,
                     );
                   },
                   child: SmallIconCard(

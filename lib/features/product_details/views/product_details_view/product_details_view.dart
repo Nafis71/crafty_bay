@@ -5,7 +5,6 @@ import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/services/user_auth_service/user_auth_service.dart';
 import 'package:crafty_bay/core/utils/app_assets.dart';
 import 'package:crafty_bay/core/utils/app_strings.dart';
-import 'package:crafty_bay/core/view_model/profile_view_model.dart';
 import 'package:crafty_bay/core/widgets/alternative_widget.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/core/widgets/shimmer_generator.dart';
@@ -19,6 +18,7 @@ import 'package:crafty_bay/features/product_details/widgets/product_variation.da
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import '../../../../core/state_holders/profile_view_model.dart';
 import '../../../../core/wrappers/svg_image_loader.dart';
 import '../../../cart/state_holders/cart_view_state.dart';
 import '../../state_holders/product_state.dart';
@@ -150,7 +150,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
     }
     bool status = await cartViewModel.createCartList(
       productId: widget.productId,
-      token: Get.find<ProfileViewModel>().token,
+      token: Get.find<ProfileState>().token,
     );
     if (!status && mounted) {
       Failure failure = cartViewModel.response as Failure;

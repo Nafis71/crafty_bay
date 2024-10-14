@@ -1,10 +1,10 @@
-import 'package:crafty_bay/core/view_model/profile_view_model.dart';
 import 'package:crafty_bay/core/widgets/circular_loading.dart';
-import 'package:crafty_bay/features/authentication/view_model/auth_view_model.dart';
+import 'package:crafty_bay/features/authentication/state_holders/auth_state.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
+import '../state_holders/profile_view_model.dart';
 import '../utils/app_assets.dart';
 import '../utils/app_strings.dart';
 import '../wrappers/svg_image_loader.dart';
@@ -52,7 +52,7 @@ class AuthenticationLayout extends StatelessWidget {
           child: SizedBox(
             width: double.infinity,
             child: (isProfileDetailView == null)
-                ? GetBuilder<AuthViewModel>(builder: (authViewModel) {
+                ? GetBuilder<AuthState>(builder: (authViewModel) {
                     if (authViewModel.isBusy) {
                       return const Center(
                         child: CircularLoading(),
@@ -60,8 +60,8 @@ class AuthenticationLayout extends StatelessWidget {
                     }
                     return elevatedButton();
                   })
-                : GetBuilder<ProfileViewModel>(builder: (profileViewModel) {
-                    if (profileViewModel.isBusy) {
+                : GetBuilder<ProfileState>(builder: (profileState) {
+                    if (profileState.isBusy) {
                       return const Center(
                         child: CircularLoading(),
                       );

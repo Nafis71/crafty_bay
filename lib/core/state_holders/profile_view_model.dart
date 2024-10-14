@@ -9,7 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../services/response/success.dart';
 
-class ProfileViewModel extends GetxController {
+class ProfileState extends GetxController {
   UserModel? _userModel;
   Object? response;
   bool _responseStatus = false;

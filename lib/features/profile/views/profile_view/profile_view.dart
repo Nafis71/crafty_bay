@@ -1,4 +1,3 @@
-import 'package:crafty_bay/core/view_model/profile_view_model.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/features/profile/models/profile_updation_model.dart';
 import 'package:crafty_bay/features/profile/widgets/profile_options.dart';
@@ -10,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
+import '../../../../core/state_holders/profile_view_model.dart';
 import '../../../../core/themes/theme_switcher.dart';
 
 class ProfileView extends StatefulWidget {
@@ -26,14 +26,14 @@ class _ProfileViewState extends State<ProfileView> {
     return Scaffold(
       appBar:
           craftyAppBar(title: AppStrings.profileScreenTitle, context: context),
-      body: GetBuilder<ProfileViewModel>(
-        builder: (profileViewModel) {
+      body: GetBuilder<ProfileState>(
+        builder: (profileState) {
           return SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Gap(30),
-                ProfileOverview(profileViewModel: profileViewModel),
+                ProfileOverview(profileState: profileState),
                 Gap(30),
                 ProfileOptions(
                   optionLeadingWidget: Text(AppStrings.changeNameText),
@@ -44,7 +44,7 @@ class _ProfileViewState extends State<ProfileView> {
                         AppRoutes.profileUpdationView,
                         arguments: ProfileUpdationModel(
                           profileUpdationType: AppStrings.changeNameText,
-                          value: profileViewModel.userModel!.cusName.toString(),
+                          value: profileState.userModel!.cusName.toString(),
                         ),
                       );
                     },
@@ -67,7 +67,7 @@ class _ProfileViewState extends State<ProfileView> {
                         child: Text(
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          profileViewModel.userModel!.shipAdd.toString(),
+                          profileState.userModel!.shipAdd.toString(),
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
                       ),
@@ -80,7 +80,7 @@ class _ProfileViewState extends State<ProfileView> {
                         AppRoutes.profileUpdationView,
                         arguments: ProfileUpdationModel(
                           profileUpdationType: AppStrings.changeShipAddressText,
-                          value: profileViewModel.userModel!.shipAdd.toString(),
+                          value: profileState.userModel!.shipAdd.toString(),
                         ),
                       );
                     },
@@ -98,7 +98,7 @@ class _ProfileViewState extends State<ProfileView> {
                         arguments: ProfileUpdationModel(
                           profileUpdationType:
                               AppStrings.changeContactNumberText,
-                          value: profileViewModel.userModel!.cusPhone.toString(),
+                          value: profileState.userModel!.cusPhone.toString(),
                         ),
                       );
                     },
@@ -118,7 +118,7 @@ class _ProfileViewState extends State<ProfileView> {
                   width: size.width * 0.9,
                   child: ElevatedButton(
                     onPressed: () {
-                      profileViewModel.logout();
+                      profileState.logout();
                       navigator!.pop();
                     },
                     child: Text(AppStrings.logoutButtonText),

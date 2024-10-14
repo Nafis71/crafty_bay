@@ -1,20 +1,23 @@
 import 'package:crafty_bay/core/services/response/success.dart';
-import 'package:crafty_bay/core/view_model/profile_view_model.dart';
 import 'package:crafty_bay/features/authentication/services/auth_service.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/services/prefetch_service.dart';
+import '../../../core/state_holders/profile_view_model.dart';
 
-class AuthViewModel extends GetxController {
+class AuthState extends GetxController {
   bool _isBusy = false;
   bool _responseStatus = false;
   bool _hasUserData = false;
   Object? response;
+  ProfileState profileState;
 
   bool get isBusy => _isBusy;
 
   bool get hasUserData => _hasUserData;
+
+  AuthState(this.profileState);
 
   set setIsBusy(bool value) {
     _isBusy = value;
@@ -54,10 +57,10 @@ class AuthViewModel extends GetxController {
     String token = jsonData['data'];
     SharedPreferences localStorage = await SharedPreferences.getInstance();
     localStorage.setString("token", token);
-    Get.find<ProfileViewModel>().setToken = token;
+    profileState.setToken = token;
     await Future.delayed(const Duration(milliseconds: 2500));
     bool status =
-        await Get.find<ProfileViewModel>().readProfile(response!, token);
+        await profileState.readProfile(response!, token);
     _hasUserData = status;
     localStorage.setBool("hasUserData", status);
     await PrefetchService.prefetchProductWishList(token);

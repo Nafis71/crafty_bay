@@ -3,7 +3,7 @@ import 'package:crafty_bay/core/services/response/success.dart';
 import 'package:crafty_bay/core/widgets/authentication_layout.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/core/wrappers/app_snack_bar.dart';
-import 'package:crafty_bay/features/authentication/view_model/auth_view_model.dart';
+import 'package:crafty_bay/features/authentication/state_holders/auth_state.dart';
 import 'package:crafty_bay/core/utils/app_routes.dart';
 import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:crafty_bay/core/utils/form_validation.dart';
@@ -70,7 +70,7 @@ class _LoginViewState extends State<LoginView> {
               deviceOrientation: deviceOrientation,
               onButtonPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  _sendOTP(Get.find<AuthViewModel>());
+                  _sendOTP(Get.find<AuthState>());
                 }
               },
             ),
@@ -80,8 +80,8 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 
-  Future<void> _sendOTP(AuthViewModel authViewModel) async {
-    bool status = await authViewModel.sendOTP(_emailTEController.text.trim());
+  Future<void> _sendOTP(AuthState authState) async {
+    bool status = await authState.sendOTP(_emailTEController.text.trim());
     if (status && mounted) {
       Map<String, dynamic> viewData = {
         "email": _emailTEController.text.trim(),
@@ -93,14 +93,14 @@ class _LoginViewState extends State<LoginView> {
       );
       return;
     }
-    if (!status && mounted && authViewModel.response is Success) {
+    if (!status && mounted && authState.response is Success) {
       AppSnackBar.show(
         message: AppStrings.otpSendError,
         context: context,
         isError: true,
       );
     }
-    Failure failure = authViewModel.response as Failure;
+    Failure failure = authState.response as Failure;
     if (mounted) {
       InternetServiceError.showErrorSnackBar(
         failure: failure,

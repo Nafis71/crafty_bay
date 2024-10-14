@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:crafty_bay/core/services/internet_service_error.dart';
 import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/widgets/authentication_layout.dart';
-import 'package:crafty_bay/features/authentication/view_model/auth_view_model.dart';
+import 'package:crafty_bay/features/authentication/state_holders/auth_state.dart';
 import 'package:crafty_bay/core/utils/form_validation.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -82,7 +82,7 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
                         pinTheme: PinCodeTheme.getPinTheme(context),
                         onCompleted: (pin) {
                           if (_formKey.currentState!.validate()) {
-                            _verifyOTP(Get.find<AuthViewModel>());
+                            _verifyOTP(Get.find<AuthState>());
                           }
                         },
                         cursorColor: AppColor.appPrimaryColor,
@@ -124,7 +124,7 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
                                 return;
                               }
                               initiateTimer();
-                              Get.find<AuthViewModel>().sendOTP(
+                              Get.find<AuthState>().sendOTP(
                                 widget.viewData['email'],
                                 isResending: true,
                               );
@@ -145,7 +145,7 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
                   deviceOrientation: deviceOrientation,
                   onButtonPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      _verifyOTP(Get.find<AuthViewModel>());
+                      _verifyOTP(Get.find<AuthState>());
                     }
                   },
                 ),
@@ -157,23 +157,23 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
     );
   }
 
-  Future<void> _verifyOTP(AuthViewModel authViewModel) async {
+  Future<void> _verifyOTP(AuthState authState) async {
     if (Get.find<CountdownTimerState>().timeLeft == 0) {
       AppSnackBar.show(
           message: AppStrings.invalidOTP, context: context, isError: true);
       return;
     }
-    bool status = await authViewModel.verifyOTP(widget.viewData['email'],
+    bool status = await authState.verifyOTP(widget.viewData['email'],
         _otpTEController.text, widget.viewData['futureExecution']);
-    if (status && mounted && !authViewModel.hasUserData) {
+    if (status && mounted && !authState.hasUserData) {
       navigator!.pushReplacementNamed(AppRoutes.profileDetailView);
       return;
     }
-    if (status && mounted && authViewModel.hasUserData) {
+    if (status && mounted && authState.hasUserData) {
       navigator!.pop();
       return;
     }
-    Failure failure = authViewModel.response as Failure;
+    Failure failure = authState.response as Failure;
     if (!status &&
         mounted &&
         (failure.statusCode != 600 ||

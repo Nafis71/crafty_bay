@@ -1,18 +1,18 @@
-import 'package:crafty_bay/core/view_model/profile_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../../core/state_holders/profile_view_model.dart';
 import '../../../core/utils/app_assets.dart';
 import '../../base_navigation/state_holders/base_navigation_state.dart';
 import '../../cart/state_holders/cart_view_state.dart';
 import '../../wish_list/view_model/wish_list_view_model.dart';
 
 class ProfileOverview extends StatelessWidget {
-  final ProfileViewModel profileViewModel;
+  final ProfileState profileState;
 
-  const ProfileOverview({super.key, required this.profileViewModel});
+  const ProfileOverview({super.key, required this.profileState});
 
   @override
   Widget build(BuildContext context) {
@@ -37,11 +37,11 @@ class ProfileOverview extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                profileViewModel.userModel!.cusName.toString(),
+                profileState.userModel!.cusName.toString(),
                 style: Theme.of(context).textTheme.labelSmall,
               ),
               Text(
-                profileViewModel.userModel!.user?.email ?? "NA",
+                profileState.userModel!.user?.email ?? "NA",
                 style: Theme.of(context)
                     .textTheme
                     .bodySmall!

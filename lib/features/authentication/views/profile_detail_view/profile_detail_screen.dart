@@ -1,5 +1,4 @@
 import 'package:crafty_bay/core/services/response/failure.dart';
-import 'package:crafty_bay/core/view_model/profile_view_model.dart';
 import 'package:crafty_bay/core/widgets/authentication_layout.dart';
 import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:crafty_bay/core/utils/form_validation.dart';
@@ -7,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/services/internet_service_error.dart';
+import '../../../../core/state_holders/profile_view_model.dart';
 import '../../../../core/themes/app_color.dart';
 
 class ProfileDetailView extends StatefulWidget {
@@ -176,7 +176,7 @@ class _ProfileDetailViewState extends State<ProfileDetailView> {
             buttonText: AppStrings.profileDetailsButtonText,
             onButtonPressed: () {
               if (_formKey.currentState!.validate()) {
-                createProfile(Get.find<ProfileViewModel>());
+                createProfile(Get.find<ProfileState>());
               }
             },
           ),
@@ -185,8 +185,8 @@ class _ProfileDetailViewState extends State<ProfileDetailView> {
     );
   }
 
-  Future<void> createProfile(ProfileViewModel profileViewModel) async {
-    bool status = await profileViewModel.createProfile(
+  Future<void> createProfile(ProfileState profileState) async {
+    bool status = await profileState.createProfile(
       firstName: _firstNameTEController.text.trim(),
       lastName: _lastNameTEController.text.trim(),
       mobile: _mobileTEController.text.trim(),
@@ -195,7 +195,7 @@ class _ProfileDetailViewState extends State<ProfileDetailView> {
       postCode: _postCodeTEController.text.trim(),
     );
     if (!status && mounted) {
-      Failure failure = profileViewModel.response as Failure;
+      Failure failure = profileState.response as Failure;
       if (mounted) {
         InternetServiceError.showErrorSnackBar(
           failure: failure,
