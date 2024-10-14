@@ -3,7 +3,6 @@ import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/core/widgets/shimmer_generator.dart';
 import 'package:crafty_bay/core/widgets/view_footer.dart';
-import 'package:crafty_bay/features/product_review/view_model/product_review_view_model.dart';
 import 'package:crafty_bay/features/product_review/widgets/product_review_card.dart';
 import 'package:crafty_bay/features/product_review/widgets/product_review_footer_button.dart';
 import 'package:crafty_bay/features/product_review/widgets/product_review_footer_text.dart';
@@ -17,6 +16,7 @@ import '../../../../core/services/user_auth_service/user_auth_service.dart';
 import '../../../../core/widgets/alternative_widget.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/wrappers/svg_image_loader.dart';
+import '../../state_holders/product_review_state.dart';
 import '../add_review_view/add_review_view.dart';
 
 class ProductReviewView extends StatefulWidget {
@@ -44,12 +44,12 @@ class _ProductReviewViewState extends State<ProductReviewView> {
         title: AppStrings.productReviewHeader,
         context: context,
       ),
-      body: GetBuilder<ProductReviewViewModel>(
-        builder: (productReviewViewModel) {
-          if (productReviewViewModel.isBusy) {
+      body: GetBuilder<ProductReviewState>(
+        builder: (productReviewState) {
+          if (productReviewState.isBusy) {
             return ShimmerGenerator(shimmer: ProductReviewShimmer(), axis: Axis.vertical, itemCount: 7, shimmerHeight: size.height);
           }
-          if (productReviewViewModel.response is Failure) {
+          if (productReviewState.response is Failure) {
             return AlternativeWidget(
               onRefresh: getProductReview,
               child: const SvgImageLoader(
@@ -58,7 +58,7 @@ class _ProductReviewViewState extends State<ProductReviewView> {
               ),
             );
           }
-          if (productReviewViewModel.productReviewList.isEmpty) {
+          if (productReviewState.productReviewList.isEmpty) {
             return AlternativeWidget(
               onRefresh: getProductReview,
               child: Column(
@@ -83,11 +83,11 @@ class _ProductReviewViewState extends State<ProductReviewView> {
                 child: ListView.separated(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-                  itemCount: productReviewViewModel.productReviewList.length,
+                  itemCount: productReviewState.productReviewList.length,
                   itemBuilder: (context, index) {
                     return ProductReviewCard(
                       productReviewData:
-                          productReviewViewModel.productReviewList[index],
+                          productReviewState.productReviewList[index],
                     );
                   },
                   separatorBuilder: (context, index) {
@@ -99,11 +99,11 @@ class _ProductReviewViewState extends State<ProductReviewView> {
                 child: ViewFooter(
                   leftWidget: ProductReviewFooterText(
                     text:
-                        "Reviews (${productReviewViewModel.productReviewList.length})",
+                        "Reviews (${productReviewState.productReviewList.length})",
                   ),
                   rightWidget: FooterButtonWidget(
                     productId:
-                        productReviewViewModel.productReviewList[0].productId!,
+                        productReviewState.productReviewList[0].productId!,
                     navigateToAddProductReview: (productId) {
                       navigateToAddProductReview(productId);
                     },
@@ -134,12 +134,12 @@ class _ProductReviewViewState extends State<ProductReviewView> {
   }
 
   Future<void> getProductReview() async {
-    bool status = await Get.find<ProductReviewViewModel>().getProductReview(
+    bool status = await Get.find<ProductReviewState>().getProductReview(
       widget.productId.toString(),
     );
     if (!status && mounted) {
       InternetServiceError.showErrorSnackBar(
-        failure: Get.find<ProductReviewViewModel>().response as Failure,
+        failure: Get.find<ProductReviewState>().response as Failure,
         context: context,
       );
     }

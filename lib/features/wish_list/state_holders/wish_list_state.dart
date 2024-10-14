@@ -6,7 +6,7 @@ import 'package:crafty_bay/features/wish_list/services/wish_list_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
-class WishListViewModel extends GetxController {
+class WishListState extends GetxController {
   Object? response;
   final List<int> _wishListProductId = [];
   final List<WishListProductData> _wishListProductData = [];

@@ -8,8 +8,8 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:widget_and_text_animator/widget_and_text_animator.dart';
 
-import '../../../../core/state_holders/connection_view_model.dart';
-import '../../../../core/state_holders/profile_view_model.dart';
+import '../../../../core/state_holders/connection_state.dart';
+import '../../../../core/state_holders/profile_state.dart';
 import '../../../../core/wrappers/app_snack_bar.dart';
 import '../../../../core/wrappers/svg_image_loader.dart';
 
@@ -32,8 +32,8 @@ class _SplashViewState extends State<SplashView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GetBuilder<ConnectionViewModel>(builder: (connectionViewModel) {
-        if (connectionViewModel.hasInternet) {
+      body: GetBuilder<NetworkState>(builder: (networkState) {
+        if (networkState.hasInternet) {
           _prefetchData();
         } else {
           if (!hasShownSnackBar) {
@@ -41,7 +41,7 @@ class _SplashViewState extends State<SplashView> {
             Future.delayed(
               const Duration(seconds: 3),
               () {
-                if (context.mounted && !connectionViewModel.hasInternet) {
+                if (context.mounted && !networkState.hasInternet) {
                   AppSnackBar.show(
                     message: AppStrings.networkError,
                     context: context,

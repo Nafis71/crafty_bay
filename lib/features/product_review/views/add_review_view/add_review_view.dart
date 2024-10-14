@@ -1,7 +1,6 @@
 import 'package:crafty_bay/core/services/internet_service_error.dart';
 import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
-import 'package:crafty_bay/features/product_review/view_model/product_review_view_model.dart';
 import 'package:crafty_bay/features/product_review/widgets/product_review_rating_bar.dart';
 import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:crafty_bay/core/utils/form_validation.dart';
@@ -9,9 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/state_holders/profile_view_model.dart';
+import '../../../../core/state_holders/profile_state.dart';
 import '../../../../core/widgets/circular_loading.dart';
 import '../../../../core/wrappers/app_snack_bar.dart';
+import '../../state_holders/product_review_state.dart';
 
 class AddReviewView extends StatefulWidget {
   final int productId;
@@ -83,7 +83,7 @@ class _AddReviewViewState extends State<AddReviewView> {
                     const Gap(10),
                     ProductReviewRatingBar.show(),
                     const Gap(30),
-                    GetBuilder<ProductReviewViewModel>(
+                    GetBuilder<ProductReviewState>(
                         builder: (productReviewViewModel) {
                       if (productReviewViewModel.isCreatingReview) {
                         return const Center(
@@ -112,8 +112,8 @@ class _AddReviewViewState extends State<AddReviewView> {
   }
 
   Future<void> createReview(
-      ProductReviewViewModel productReviewViewModel) async {
-    bool status = await productReviewViewModel.createProductReview(
+      ProductReviewState productReviewState) async {
+    bool status = await productReviewState.createProductReview(
       productId: widget.productId,
       token: Get.find<ProfileState>().token,
       review: _reviewTEController.text.trim(),
@@ -127,7 +127,7 @@ class _AddReviewViewState extends State<AddReviewView> {
       Navigator.pop(context);
       return;
     }
-    Failure failure = productReviewViewModel.response as Failure;
+    Failure failure = productReviewState.response as Failure;
     if ((failure.statusCode != 600 ||
             failure.statusCode != 601 ||
             failure.statusCode != 500) &&

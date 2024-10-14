@@ -1,7 +1,7 @@
 import 'package:crafty_bay/core/utils/app_routes.dart';
 import 'package:get/get.dart';
 
-import '../../state_holders/profile_view_model.dart';
+import '../../state_holders/profile_state.dart';
 
 
 class UserAuthService {

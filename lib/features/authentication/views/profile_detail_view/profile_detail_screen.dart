@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/services/internet_service_error.dart';
-import '../../../../core/state_holders/profile_view_model.dart';
+import '../../../../core/state_holders/profile_state.dart';
 import '../../../../core/themes/app_color.dart';
 
 class ProfileDetailView extends StatefulWidget {

@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/state_holders/profile_view_model.dart';
+import '../../../../core/state_holders/profile_state.dart';
 import '../../../../core/themes/theme_switcher.dart';
 
 class ProfileView extends StatefulWidget {

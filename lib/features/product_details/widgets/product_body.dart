@@ -2,14 +2,14 @@ import 'package:crafty_bay/core/utils/product_rating_calculator.dart';
 import 'package:crafty_bay/core/widgets/small_icon_card.dart';
 import 'package:crafty_bay/features/product_details/models/product.dart';
 import 'package:crafty_bay/features/product_review/views/product_review_view/product_review_view.dart';
-import 'package:crafty_bay/features/wish_list/view_model/wish_list_view_model.dart';
 import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../../core/state_holders/profile_view_model.dart';
+import '../../../core/state_holders/profile_state.dart';
 import '../../../core/themes/app_color.dart';
+import '../../wish_list/state_holders/wish_list_state.dart';
 import '../state_holders/product_state.dart';
 
 class ProductBody extends StatelessWidget {
@@ -118,20 +118,20 @@ class ProductBody extends StatelessWidget {
                 ),
               ),
               const Gap(15),
-              GetBuilder<WishListViewModel>(builder: (wishListViewModel) {
+              GetBuilder<WishListState>(builder: (wishListState) {
                 return InkWell(
                   onTap: () {
-                    if (wishListViewModel.wishListProductId
+                    if (wishListState.wishListProductId
                         .contains(product.id!)) {
                       return;
                     }
-                    wishListViewModel.createWishList(
+                    wishListState.createWishList(
                       product.id!,
                       Get.find<ProfileState>().token,
                     );
                   },
                   child: SmallIconCard(
-                    icon: (!wishListViewModel.wishListProductId
+                    icon: (!wishListState.wishListProductId
                             .contains(product.id!))
                         ? Icons.favorite_outline_rounded
                         : Icons.favorite,

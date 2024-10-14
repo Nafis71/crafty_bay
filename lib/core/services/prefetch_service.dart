@@ -1,8 +1,8 @@
-import 'package:crafty_bay/features/wish_list/view_model/wish_list_view_model.dart';
 import 'package:get/get.dart';
 
 import '../../features/category/state_holders/category_view_state.dart';
 import '../../features/home/state_holders/home_state.dart';
+import '../../features/wish_list/state_holders/wish_list_state.dart';
 
 class PrefetchService {
   static Future<bool> prefetchProductSliderList() async {
@@ -41,7 +41,7 @@ class PrefetchService {
   }
 
   static Future<void> prefetchProductWishList(String token) async {
-    await Get.find<WishListViewModel>().getWishList(token);
+    await Get.find<WishListState>().getWishList(token);
   }
 
   static Future<List<bool>> fetchHomeData() async {

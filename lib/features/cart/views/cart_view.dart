@@ -13,7 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../../core/state_holders/profile_view_model.dart';
+import '../../../core/state_holders/profile_state.dart';
 import '../../../core/utils/app_assets.dart';
 import '../../../core/widgets/alternative_widget.dart';
 import '../../../core/wrappers/app_snack_bar.dart';

@@ -1,16 +1,16 @@
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/core/widgets/grid_view_layout.dart';
-import 'package:crafty_bay/features/wish_list/view_model/wish_list_view_model.dart';
 import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import '../../../core/state_holders/profile_view_model.dart';
+import '../../../core/state_holders/profile_state.dart';
 import '../../../core/widgets/alternative_widget.dart';
 import '../../../core/widgets/circular_loading.dart';
 import '../../../core/widgets/login_prompt.dart';
 import '../../../core/widgets/product_card.dart';
 import '../../cart/state_holders/cart_view_state.dart';
+import '../state_holders/wish_list_state.dart';
 
 class WishListView extends StatefulWidget {
   const WishListView({super.key});
@@ -24,8 +24,8 @@ class _WishListViewState extends State<WishListView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: craftyAppBar(title: AppStrings.wishListViewHeader),
-      body: GetBuilder<WishListViewModel>(
-        builder: (wishListViewModel) {
+      body: GetBuilder<WishListState>(
+        builder: (wishListState) {
           if (Get.find<ProfileState>().token.isEmpty) {
             return LoginPrompt(
               subtitle: AppStrings.wishListLoginText,
@@ -34,7 +34,7 @@ class _WishListViewState extends State<WishListView> {
               },
             );
           }
-          if (wishListViewModel.isBusy) {
+          if (wishListState.isBusy) {
             return const Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -43,7 +43,7 @@ class _WishListViewState extends State<WishListView> {
               ],
             );
           }
-          if (wishListViewModel.productWishList.isEmpty) {
+          if (wishListState.productWishList.isEmpty) {
             return AlternativeWidget(
               onRefresh: () {},
               child: Column(
@@ -62,12 +62,12 @@ class _WishListViewState extends State<WishListView> {
             );
           }
           return GridViewLayout(
-            length: wishListViewModel.productWishList.length,
+            length: wishListState.productWishList.length,
             mainAxisExtent: 200,
             crossAxisExtent: 200,
             child: (index) {
               return ProductCard(
-                productList: wishListViewModel.productWishList[index],
+                productList: wishListState.productWishList[index],
                 isWishListCard: true,
               );
             },

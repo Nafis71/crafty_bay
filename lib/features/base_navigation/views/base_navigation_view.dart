@@ -1,10 +1,10 @@
+import 'package:crafty_bay/core/state_holders/connection_state.dart';
 import 'package:crafty_bay/features/base_navigation/state_holders/base_navigation_state.dart';
 import 'package:crafty_bay/features/base_navigation/views/tab_view.dart';
 import 'package:crafty_bay/features/base_navigation/widgets/bottom_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import '../../../core/state_holders/connection_view_model.dart';
 import '../../../core/utils/app_strings.dart';
 import '../../../core/wrappers/app_snack_bar.dart';
 
@@ -42,8 +42,8 @@ class _BaseNavigationViewState extends State<BaseNavigationView> {
         },
         canPop: false,
         child: Scaffold(
-          body: GetBuilder<ConnectionViewModel>(builder: (connectionViewModel) {
-            if (connectionViewModel.hasInternet) {
+          body: GetBuilder<NetworkState>(builder: (networkState) {
+            if (networkState.hasInternet) {
               _hasShownSnackBar = false;
             } else {
               if (!_hasShownSnackBar) {

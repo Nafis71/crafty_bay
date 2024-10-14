@@ -3,11 +3,11 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../../core/state_holders/profile_view_model.dart';
+import '../../../core/state_holders/profile_state.dart';
 import '../../../core/utils/app_assets.dart';
 import '../../base_navigation/state_holders/base_navigation_state.dart';
 import '../../cart/state_holders/cart_view_state.dart';
-import '../../wish_list/view_model/wish_list_view_model.dart';
+import '../../wish_list/state_holders/wish_list_state.dart';
 
 class ProfileOverview extends StatelessWidget {
   final ProfileState profileState;
@@ -56,7 +56,7 @@ class ProfileOverview extends StatelessWidget {
                       Get.find<BaseNavigationState>().setIndex = 3;
                     },
                     child: Text(
-                      "${Get.find<WishListViewModel>().productWishList.length} Wishlist",
+                      "${Get.find<WishListState>().productWishList.length} Wishlist",
                       style: Theme.of(context).textTheme.labelSmall!.copyWith(
                             color: Theme.of(context).primaryColor,
                             fontSize: 14,

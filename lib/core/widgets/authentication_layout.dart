@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../state_holders/profile_view_model.dart';
+import '../state_holders/profile_state.dart';
 import '../utils/app_assets.dart';
 import '../utils/app_strings.dart';
 import '../wrappers/svg_image_loader.dart';

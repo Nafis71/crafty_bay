@@ -4,13 +4,13 @@ import 'package:crafty_bay/core/widgets/circular_loading.dart';
 import 'package:crafty_bay/core/widgets/product_rating.dart';
 import 'package:crafty_bay/core/widgets/small_icon_card.dart';
 import 'package:crafty_bay/features/product_details/views/product_details_view/product_details_view.dart';
-import 'package:crafty_bay/features/wish_list/view_model/wish_list_view_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../state_holders/profile_view_model.dart';
+import '../../features/wish_list/state_holders/wish_list_state.dart';
+import '../state_holders/profile_state.dart';
 import '../themes/app_color.dart';
 import '../themes/theme_switcher.dart';
 
@@ -112,25 +112,25 @@ class ProductCard extends StatelessWidget {
                                 iconSize: 18,
                                 fontSize: 12,
                               ),
-                              GetBuilder<WishListViewModel>(
-                                builder: (wishListViewModel) {
+                              GetBuilder<WishListState>(
+                                builder: (wishListState) {
                                   return InkWell(
                                     onTap: () {
-                                      if (wishListViewModel.wishListProductId
+                                      if (wishListState.wishListProductId
                                           .contains(productList.id)) {
-                                        wishListViewModel.removeWishList(
+                                        wishListState.removeWishList(
                                           Get.find<ProfileState>().token,
                                           productList.id,
                                         );
                                         return;
                                       }
-                                      wishListViewModel.createWishList(
+                                      wishListState.createWishList(
                                         productList.id,
                                         Get.find<ProfileState>().token,
                                       );
                                     },
                                     child: SmallIconCard(
-                                      icon: getWishListIcon(wishListViewModel),
+                                      icon: getWishListIcon(wishListState),
                                       applyPrimaryColor: true,
                                       cardInsidePadding: 3.0,
                                     ),
@@ -152,7 +152,7 @@ class ProductCard extends StatelessWidget {
     );
   }
 
-  IconData getWishListIcon(WishListViewModel wishListViewModel) {
+  IconData getWishListIcon(WishListState wishListViewModel) {
     if (wishListViewModel.wishListProductId.contains(productList.id) &&
         isWishListCard) {
       return CupertinoIcons.delete_simple;

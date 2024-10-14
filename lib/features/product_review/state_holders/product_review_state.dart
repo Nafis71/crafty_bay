@@ -3,7 +3,7 @@ import 'package:crafty_bay/features/product_review/models/product_review_model/p
 import 'package:crafty_bay/features/product_review/services/product_review_service.dart';
 import 'package:get/get.dart';
 
-class ProductReviewViewModel extends GetxController {
+class ProductReviewState extends GetxController {
   bool _isBusy = false;
   bool _isCreatingReview = false;
   bool _responseStatus = false;

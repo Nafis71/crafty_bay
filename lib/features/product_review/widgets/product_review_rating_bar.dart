@@ -1,7 +1,8 @@
-import 'package:crafty_bay/features/product_review/view_model/product_review_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
+
+import '../state_holders/product_review_state.dart';
 
 class ProductReviewRatingBar {
   static RatingBar show() {
@@ -19,7 +20,7 @@ class ProductReviewRatingBar {
         color: Colors.amber,
       ),
       onRatingUpdate: (rating) {
-        Get.find<ProductReviewViewModel>().setProductRating = rating.ceil();
+        Get.find<ProductReviewState>().setProductRating = rating.ceil();
       },
     );
   }
