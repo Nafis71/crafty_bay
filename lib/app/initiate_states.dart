@@ -1,5 +1,6 @@
 import 'package:crafty_bay/features/authentication/state_holders/auth_state.dart';
 import 'package:crafty_bay/features/home/state_holders/offer_carousel_state.dart';
+import 'package:crafty_bay/features/payment/invoice_creation/state_holders/invoice_creation_state.dart';
 import 'package:get/get.dart';
 
 import '../core/state_holders/profile_state.dart';
@@ -26,5 +27,6 @@ class InitiateViewModel extends Bindings {
     Get.put(WishListState());
     Get.put(ProfileState());
     Get.put(AuthState(Get.find<ProfileState>()));
+    Get.put(InvoiceCreationState());
   }
 }
