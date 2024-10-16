@@ -48,7 +48,6 @@ class _InvoiceCreationViewState extends State<InvoiceCreationView> {
                     overlayColor:
                         WidgetStateProperty.resolveWith<Color>((state) {
                       return AppColor.appSecondaryColor;
-                      ;
                     }),
                     labelPadding: const EdgeInsets.all(2),
                     splashBorderRadius: BorderRadius.circular(5),
@@ -82,24 +81,23 @@ class _InvoiceCreationViewState extends State<InvoiceCreationView> {
               ),
               Expanded(
                 child: GetBuilder<InvoiceCreationState>(
-                  builder: (invoiceCreationState) {
-                    return Container(
-                      height: 20,
-                      width: size.width,
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).primaryColor,
-                      ),
-                      alignment: Alignment.center,
-                      child: Text(
-                        "Pay \$${invoiceCreationState.totalPayable}",
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelMedium!
-                            .copyWith(fontSize: 18),
-                      ),
-                    );
-                  }
-                ),
+                    builder: (invoiceCreationState) {
+                  return Container(
+                    height: 20,
+                    width: size.width,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor,
+                    ),
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Pay \$${invoiceCreationState.totalPayable}",
+                      style: Theme.of(context)
+                          .textTheme
+                          .labelMedium!
+                          .copyWith(fontSize: 18),
+                    ),
+                  );
+                }),
               ),
             ],
           ),
