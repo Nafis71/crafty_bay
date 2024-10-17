@@ -34,6 +34,9 @@ class InvoiceCreationState extends GetxController {
     setIsBusy = true;
     _response = await InvoiceService().createInvoice(token);
     if (_response is Success) {
+      _paymentMethodsMobile.clear();
+      _paymentMethodsInternet.clear();
+      _paymentMethodsCard.clear();
       Map<String,dynamic> jsonData = (_response as Success).response as Map<String,dynamic>;
       CreateInvoiceModel createInvoiceModel = CreateInvoiceModel.fromJson(jsonData);
       _totalPayable = createInvoiceModel.invoiceCreateData![0].payable!;

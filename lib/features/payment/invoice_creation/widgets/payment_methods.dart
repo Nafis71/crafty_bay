@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/widgets/grid_view_layout.dart';
@@ -25,18 +26,19 @@ class PaymentMethods extends StatelessWidget {
           imageBuilder: (context, imageProvider) {
             return Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                image: DecorationImage(
-                  image: imageProvider,
-                  fit: BoxFit.contain,
-                ),
+                  borderRadius: BorderRadius.circular(5),
+                  image: DecorationImage(
+                    image: imageProvider,
+                    fit: BoxFit.fill,
+                  ),
+                  border: Border.fromBorderSide(BorderSide(color: Colors.grey.shade200))
               ),
             );
           },
         );
       },
       mainAxisExtent: 60,
-      crossAxisExtent: 150,
+      crossAxisExtent: 60,
     );
   }
 }
