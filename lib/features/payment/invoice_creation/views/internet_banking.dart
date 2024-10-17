@@ -3,6 +3,7 @@ import 'package:get/get_state_manager/src/simple/get_state.dart';
 
 import '../models/payment_type_enum.dart';
 import '../state_holders/invoice_creation_state.dart';
+import '../utils/invoice_creation_strings.dart';
 import '../widgets/payment_methods.dart';
 
 class InternetBanking extends StatelessWidget {
@@ -21,7 +22,7 @@ class InternetBanking extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      "Pay with",
+                      InvoiceCreationStrings.payWithText,
                       style: Theme.of(context)
                           .textTheme
                           .titleSmall!
