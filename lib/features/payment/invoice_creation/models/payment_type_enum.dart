@@ -1,4 +1,5 @@
 enum PaymentType{
   mobileBanking,
-  internetBanking
+  internetBanking,
+  card
 }

@@ -1,5 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:crafty_bay/core/widgets/grid_view_layout.dart';
+import 'package:crafty_bay/features/payment/invoice_creation/models/payment_type_enum.dart';
 import 'package:crafty_bay/features/payment/invoice_creation/state_holders/invoice_creation_state.dart';
 import 'package:crafty_bay/features/payment/invoice_creation/widgets/payment_methods.dart';
 import 'package:flutter/material.dart';
@@ -19,19 +18,32 @@ class _MobileBankingState extends State<MobileBanking> {
       body: GetBuilder<InvoiceCreationState>(
         builder: (invoiceCreationState) {
           return Padding(
-            padding: const EdgeInsets.only(top: 5,left: 5,right: 5,bottom: 5),
+            padding:
+                const EdgeInsets.only(top: 5, left: 5, right: 5, bottom: 5),
             child: Column(
               children: [
                 Row(
                   children: [
-                    Text("Pay with",style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                        fontSize: 14
-                    ),),
+                    Text(
+                      "Pay with",
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleSmall!
+                          .copyWith(fontSize: 14),
+                    ),
                   ],
                 ),
                 Expanded(
                   child: PaymentMethods(
                     paymentMethods: invoiceCreationState.paymentMethodsMobile,
+                    selectedIndex: invoiceCreationState
+                        .getSelectedPaymentIndex(PaymentType.mobileBanking),
+                    onTap: (index) {
+                      invoiceCreationState.setSelectedPaymentIndex(
+                        index,
+                        PaymentType.mobileBanking,
+                      );
+                    },
                   ),
                 ),
               ],

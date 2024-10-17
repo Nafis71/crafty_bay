@@ -13,19 +13,36 @@ class InvoiceCreationState extends GetxController {
   bool _isBusy = false;
   int _vat = 0;
   int _totalPayable = 0;
+  Map<PaymentType, int> _selectedPaymentIndex = {};
 
   bool get isBusy => _isBusy;
 
   Object get response => _response;
 
+  int getSelectedPaymentIndex(PaymentType paymentType) {
+    return _selectedPaymentIndex[paymentType] ?? -1;
+  }
+
+  bool isSelectedPaymentIndexEmpty() => _selectedPaymentIndex.isEmpty;
+
   List<PaymentMethod> get paymentMethodsMobile => _paymentMethodsMobile;
+
   List<PaymentMethod> get paymentMethodsInternet => _paymentMethodsInternet;
+
   List<PaymentMethod> get paymentMethodsCard => _paymentMethodsCard;
+
   int get totalPayable => _totalPayable;
+
   int get vat => _vat;
 
-  set setIsBusy(bool isBusy){
+  set setIsBusy(bool isBusy) {
     _isBusy = isBusy;
+    update();
+  }
+
+  void setSelectedPaymentIndex(int index, PaymentType paymentType) {
+    _selectedPaymentIndex.clear();
+    _selectedPaymentIndex[paymentType] = index;
     update();
   }
 
@@ -41,24 +58,28 @@ class InvoiceCreationState extends GetxController {
     return _responseStatus;
   }
 
-  Future<void> loadPaymentMethods(Object response)async{
+  Future<void> loadPaymentMethods(Object response) async {
     clearAllPaymentMethods();
-    Map<String,dynamic> jsonData = (response as Success).response as Map<String,dynamic>;
-    CreateInvoiceModel createInvoiceModel = CreateInvoiceModel.fromJson(jsonData);
+    Map<String, dynamic> jsonData =
+        (response as Success).response as Map<String, dynamic>;
+    CreateInvoiceModel createInvoiceModel =
+        CreateInvoiceModel.fromJson(jsonData);
     _totalPayable = createInvoiceModel.invoiceCreateData![0].payable!;
     _vat = createInvoiceModel.invoiceCreateData![0].vat!;
-    for(PaymentMethod paymentMethod in createInvoiceModel.invoiceCreateData![0].paymentMethod!){
-      if(paymentMethod.type == PaymentType.mobileBanking.name.toLowerCase()){
+    for (PaymentMethod paymentMethod
+        in createInvoiceModel.invoiceCreateData![0].paymentMethod!) {
+      if (paymentMethod.type == PaymentType.mobileBanking.name.toLowerCase()) {
         _paymentMethodsMobile.add(paymentMethod);
-      } else if(paymentMethod.type == PaymentType.internetBanking.name.toLowerCase()){
+      } else if (paymentMethod.type ==
+          PaymentType.internetBanking.name.toLowerCase()) {
         _paymentMethodsInternet.add(paymentMethod);
-      } else{
+      } else {
         _paymentMethodsCard.add(paymentMethod);
       }
     }
   }
 
-  void clearAllPaymentMethods(){
+  void clearAllPaymentMethods() {
     _paymentMethodsMobile.clear();
     _paymentMethodsInternet.clear();
     _paymentMethodsCard.clear();
