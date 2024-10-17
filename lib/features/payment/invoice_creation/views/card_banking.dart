@@ -12,8 +12,24 @@ class CardBanking extends StatelessWidget {
     return Scaffold(
       body: GetBuilder<InvoiceCreationState>(
         builder: (invoiceCreationState) {
-          return PaymentMethods(
-            paymentMethods: invoiceCreationState.paymentMethodsCard,
+          return Padding(
+            padding: const EdgeInsets.only(top: 5,left: 5,right: 5,bottom: 5),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Text("Pay with",style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                        fontSize: 14
+                    ),),
+                  ],
+                ),
+                Expanded(
+                  child: PaymentMethods(
+                    paymentMethods: invoiceCreationState.paymentMethodsCard,
+                  ),
+                ),
+              ],
+            ),
           );
         },
       ),

@@ -18,8 +18,24 @@ class _MobileBankingState extends State<MobileBanking> {
     return Scaffold(
       body: GetBuilder<InvoiceCreationState>(
         builder: (invoiceCreationState) {
-          return PaymentMethods(
-            paymentMethods: invoiceCreationState.paymentMethodsMobile,
+          return Padding(
+            padding: const EdgeInsets.only(top: 5,left: 5,right: 5,bottom: 5),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Text("Pay with",style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                        fontSize: 14
+                    ),),
+                  ],
+                ),
+                Expanded(
+                  child: PaymentMethods(
+                    paymentMethods: invoiceCreationState.paymentMethodsMobile,
+                  ),
+                ),
+              ],
+            ),
           );
         },
       ),

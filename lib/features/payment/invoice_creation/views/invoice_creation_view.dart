@@ -43,10 +43,14 @@ class _InvoiceCreationViewState extends State<InvoiceCreationView> {
                       width: 100,
                     ),
                     Gap(10),
+                    Divider(
+                      thickness: 0.2,
+                    ),
                     TabBar(
                       indicatorColor: Theme.of(context).primaryColor,
                       indicatorWeight: 0.5,
                       dividerColor: Colors.grey.shade100,
+                      dividerHeight: 0.2,
                       automaticIndicatorColorAdjustment: true,
                       labelColor: Theme.of(context).primaryColor,
                       unselectedLabelColor: Colors.grey,
