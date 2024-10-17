@@ -34,25 +34,33 @@ class InvoiceCreationState extends GetxController {
     setIsBusy = true;
     _response = await InvoiceService().createInvoice(token);
     if (_response is Success) {
-      _paymentMethodsMobile.clear();
-      _paymentMethodsInternet.clear();
-      _paymentMethodsCard.clear();
-      Map<String,dynamic> jsonData = (_response as Success).response as Map<String,dynamic>;
-      CreateInvoiceModel createInvoiceModel = CreateInvoiceModel.fromJson(jsonData);
-      _totalPayable = createInvoiceModel.invoiceCreateData![0].payable!;
-      _vat = createInvoiceModel.invoiceCreateData![0].vat!;
-      for(PaymentMethod paymentMethod in createInvoiceModel.invoiceCreateData![0].paymentMethod!){
-        if(paymentMethod.type == PaymentType.mobileBanking.name.toLowerCase()){
-          _paymentMethodsMobile.add(paymentMethod);
-        } else if(paymentMethod.type == PaymentType.internetBanking.name.toLowerCase()){
-          _paymentMethodsInternet.add(paymentMethod);
-        } else{
-          _paymentMethodsCard.add(paymentMethod);
-        }
-      }
+      await loadPaymentMethods(_response);
       _responseStatus = true;
     }
     setIsBusy = false;
     return _responseStatus;
+  }
+
+  Future<void> loadPaymentMethods(Object response)async{
+    clearAllPaymentMethods();
+    Map<String,dynamic> jsonData = (response as Success).response as Map<String,dynamic>;
+    CreateInvoiceModel createInvoiceModel = CreateInvoiceModel.fromJson(jsonData);
+    _totalPayable = createInvoiceModel.invoiceCreateData![0].payable!;
+    _vat = createInvoiceModel.invoiceCreateData![0].vat!;
+    for(PaymentMethod paymentMethod in createInvoiceModel.invoiceCreateData![0].paymentMethod!){
+      if(paymentMethod.type == PaymentType.mobileBanking.name.toLowerCase()){
+        _paymentMethodsMobile.add(paymentMethod);
+      } else if(paymentMethod.type == PaymentType.internetBanking.name.toLowerCase()){
+        _paymentMethodsInternet.add(paymentMethod);
+      } else{
+        _paymentMethodsCard.add(paymentMethod);
+      }
+    }
+  }
+
+  void clearAllPaymentMethods(){
+    _paymentMethodsMobile.clear();
+    _paymentMethodsInternet.clear();
+    _paymentMethodsCard.clear();
   }
 }
