@@ -1,7 +1,6 @@
 import 'package:crafty_bay/core/themes/app_color.dart';
 import 'package:crafty_bay/core/utils/app_assets.dart';
 import 'package:crafty_bay/core/wrappers/svg_image_loader.dart';
-import 'package:crafty_bay/features/payment/invoice_creation/state_holders/invoice_creation_state.dart';
 import 'package:crafty_bay/features/payment/invoice_creation/utils/invoice_creation_strings.dart';
 import 'package:crafty_bay/features/payment/invoice_creation/views/card_banking.dart';
 import 'package:crafty_bay/features/payment/invoice_creation/views/internet_banking.dart';
@@ -9,7 +8,6 @@ import 'package:crafty_bay/features/payment/invoice_creation/views/mobile_bankin
 import 'package:crafty_bay/features/payment/invoice_creation/widgets/invoice_creation_footer.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:get/get.dart';
 
 class InvoiceCreationView extends StatefulWidget {
   const InvoiceCreationView({super.key});
@@ -21,7 +19,6 @@ class InvoiceCreationView extends StatefulWidget {
 class _InvoiceCreationViewState extends State<InvoiceCreationView> {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.sizeOf(context);
     return DefaultTabController(
       length: 3,
       child: SafeArea(
@@ -41,7 +38,10 @@ class _InvoiceCreationViewState extends State<InvoiceCreationView> {
                     ),
                     Text(InvoiceCreationStrings.paymentGatewayHeaderText),
                     Gap(6),
-                    Image.asset(AppAssets.sslCommerce,width: 100,),
+                    Image.asset(
+                      AppAssets.sslCommerce,
+                      width: 100,
+                    ),
                     Gap(10),
                     TabBar(
                       indicatorColor: Theme.of(context).primaryColor,
@@ -86,9 +86,7 @@ class _InvoiceCreationViewState extends State<InvoiceCreationView> {
                   ],
                 ),
               ),
-              Expanded(
-                child: InvoiceCreationFooter()
-              ),
+              Expanded(child: InvoiceCreationFooter()),
             ],
           ),
         ),
