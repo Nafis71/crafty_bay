@@ -7,8 +7,6 @@ import 'package:crafty_bay/features/payment/invoice_creation/state_holders/invoi
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../state_holders/cart_view_state.dart';
-
 class CartFooterButton extends StatelessWidget {
   const CartFooterButton({super.key});
 
@@ -29,10 +27,10 @@ class CartFooterButton extends StatelessWidget {
             },
             child: Text(
               "Checkout",
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyMedium!
-                  .copyWith(fontSize: 13, color: Colors.white),
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                    fontSize: 13,
+                    color: Colors.white,
+                  ),
             ),
           ),
         );
