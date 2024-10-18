@@ -1,7 +1,9 @@
+import 'package:crafty_bay/core/utils/app_routes.dart';
 import 'package:crafty_bay/core/wrappers/app_snack_bar.dart';
+import 'package:crafty_bay/features/payment/invoice_creation/models/payment_method.dart';
 import 'package:crafty_bay/features/payment/invoice_creation/utils/invoice_creation_strings.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:get/get.dart';
 
 import '../state_holders/invoice_creation_state.dart';
 
@@ -20,7 +22,9 @@ class InvoiceCreationFooter extends StatelessWidget {
               context: context,
               isError: true,
             );
+            return;
           }
+          navigateToPaymentWebView(invoiceCreationState);
         },
         child: Container(
           height: 20,
@@ -67,10 +71,11 @@ class InvoiceCreationFooter extends StatelessWidget {
                         width: 60,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                              overlayColor: Colors.transparent,
-                              elevation: 0,
-                              disabledForegroundColor: Colors.white,
-                              disabledBackgroundColor: Colors.transparent),
+                            overlayColor: Colors.transparent,
+                            elevation: 0,
+                            disabledForegroundColor: Colors.white,
+                            disabledBackgroundColor: Colors.transparent,
+                          ),
                           onPressed: null,
                           child: Icon(
                             Icons.arrow_circle_right_rounded,
@@ -87,5 +92,10 @@ class InvoiceCreationFooter extends StatelessWidget {
         ),
       );
     });
+  }
+
+  void navigateToPaymentWebView(InvoiceCreationState invoiceCreationState) {
+    PaymentMethod paymentMethod = invoiceCreationState.getSelectedPaymentInfo();
+    navigator!.pushNamed(AppRoutes.paymentWebView, arguments: paymentMethod);
   }
 }

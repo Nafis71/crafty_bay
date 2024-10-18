@@ -2,7 +2,9 @@ import 'package:crafty_bay/features/authentication/views/login_view/login_view.d
 import 'package:crafty_bay/features/authentication/views/otp_verification_view/otp_verification_view.dart';
 import 'package:crafty_bay/features/authentication/views/profile_detail_view/profile_detail_screen.dart';
 import 'package:crafty_bay/features/base_navigation/views/base_navigation_view.dart';
+import 'package:crafty_bay/features/payment/invoice_creation/models/payment_method.dart';
 import 'package:crafty_bay/features/payment/invoice_creation/views/invoice_creation_view.dart';
+import 'package:crafty_bay/features/payment/payment_webView/views/payment_webView.dart';
 import 'package:crafty_bay/features/profile/models/profile_updation_model.dart';
 import 'package:crafty_bay/features/profile/views/profile_updation_view/profile_updation_view.dart';
 import 'package:crafty_bay/features/profile/views/profile_view/profile_view.dart';
@@ -21,6 +23,7 @@ class AppRoutes {
   static const String wishListView = "/wishListView";
   static const String profileUpdationView = "/profileUpdationView";
   static const String invoiceCreationView = "/invoiceCreationView";
+  static const String paymentWebView = "paymentWebView";
 
   static PageRoute? generateRoutes(RouteSettings routeSettings) {
     Map<String, WidgetBuilder> routes = {
@@ -51,6 +54,10 @@ class AppRoutes {
         );
       },
       AppRoutes.invoiceCreationView : (context) => InvoiceCreationView(),
+      AppRoutes.paymentWebView : (context){
+        PaymentMethod paymentMethod = routeSettings.arguments as PaymentMethod;
+        return PaymentWebView(paymentMethod: paymentMethod);
+      }
     };
     WidgetBuilder? builder = routes[routeSettings.name];
     return (builder != null) ? MaterialPageRoute(builder: builder) : null;

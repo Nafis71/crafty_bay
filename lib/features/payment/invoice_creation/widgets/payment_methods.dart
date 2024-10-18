@@ -33,14 +33,14 @@ class PaymentMethods extends StatelessWidget {
                   borderRadius: BorderRadius.circular(5),
                   image: DecorationImage(
                     image: imageProvider,
-                    fit: BoxFit.fill,
+                    fit: BoxFit.contain,
                   ),
                   border: Border.fromBorderSide(
                     BorderSide(
                       color: (selectedIndex == index)
                           ? Theme.of(context).primaryColor
-                          : Colors.grey.shade100,
-                      width: 1.5
+                          : Colors.white,
+                      width: 1.6
                     ),
                   ),
                 ),
@@ -49,8 +49,8 @@ class PaymentMethods extends StatelessWidget {
           },
         );
       },
-      mainAxisExtent: 60,
-      crossAxisExtent: 60,
+      mainAxisExtent: 65,
+      crossAxisExtent: 65,
     );
   }
 }

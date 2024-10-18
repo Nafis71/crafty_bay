@@ -11,7 +11,6 @@ class InvoiceCreationState extends GetxController {
   List<PaymentMethod> _paymentMethodsInternet = [];
   List<PaymentMethod> _paymentMethodsCard = [];
   bool _isBusy = false;
-  int _vat = 0;
   int _totalPayable = 0;
   Map<PaymentType, int> _selectedPaymentIndex = {};
 
@@ -23,6 +22,21 @@ class InvoiceCreationState extends GetxController {
     return _selectedPaymentIndex[paymentType] ?? -1;
   }
 
+  PaymentMethod getSelectedPaymentInfo(){
+    late PaymentType paymentType;
+    late int index;
+    _selectedPaymentIndex.forEach((key,value){
+      paymentType = key;
+      index = value;
+    });
+    if(paymentType == PaymentType.mobileBanking){
+      return _paymentMethodsMobile[index];
+    } else if(paymentType == PaymentType.internetBanking){
+      return _paymentMethodsInternet[index];
+    }
+    return _paymentMethodsCard[index];
+  }
+
   bool isSelectedPaymentIndexEmpty() => _selectedPaymentIndex.isEmpty;
 
   List<PaymentMethod> get paymentMethodsMobile => _paymentMethodsMobile;
@@ -32,8 +46,6 @@ class InvoiceCreationState extends GetxController {
   List<PaymentMethod> get paymentMethodsCard => _paymentMethodsCard;
 
   int get totalPayable => _totalPayable;
-
-  int get vat => _vat;
 
   set setIsBusy(bool isBusy) {
     _isBusy = isBusy;
@@ -65,7 +77,6 @@ class InvoiceCreationState extends GetxController {
     CreateInvoiceModel createInvoiceModel =
         CreateInvoiceModel.fromJson(jsonData);
     _totalPayable = createInvoiceModel.invoiceCreateData![0].payable!;
-    _vat = createInvoiceModel.invoiceCreateData![0].vat!;
     for (PaymentMethod paymentMethod
         in createInvoiceModel.invoiceCreateData![0].paymentMethod!) {
       if (paymentMethod.type == PaymentType.mobileBanking.name.toLowerCase()) {
