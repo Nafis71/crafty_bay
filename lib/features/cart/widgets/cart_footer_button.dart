@@ -55,6 +55,10 @@ class CartFooterButton extends StatelessWidget {
       );
       return;
     }
-    navigator!.pushNamed(AppRoutes.invoiceCreationView);
+    navigator!.pushNamed(AppRoutes.invoiceCreationView).then(
+      (value) {
+        invoiceCreationState.resetPaymentSelection();
+      },
+    );
   }
 }

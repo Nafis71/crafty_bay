@@ -22,16 +22,16 @@ class InvoiceCreationState extends GetxController {
     return _selectedPaymentIndex[paymentType] ?? -1;
   }
 
-  PaymentMethod getSelectedPaymentInfo(){
+  PaymentMethod getSelectedPaymentInfo() {
     late PaymentType paymentType;
     late int index;
-    _selectedPaymentIndex.forEach((key,value){
+    _selectedPaymentIndex.forEach((key, value) {
       paymentType = key;
       index = value;
     });
-    if(paymentType == PaymentType.mobileBanking){
+    if (paymentType == PaymentType.mobileBanking) {
       return _paymentMethodsMobile[index];
-    } else if(paymentType == PaymentType.internetBanking){
+    } else if (paymentType == PaymentType.internetBanking) {
       return _paymentMethodsInternet[index];
     }
     return _paymentMethodsCard[index];
@@ -53,9 +53,13 @@ class InvoiceCreationState extends GetxController {
   }
 
   void setSelectedPaymentIndex(int index, PaymentType paymentType) {
-    _selectedPaymentIndex.clear();
+    resetPaymentSelection();
     _selectedPaymentIndex[paymentType] = index;
     update();
+  }
+
+  void resetPaymentSelection() {
+    _selectedPaymentIndex.clear();
   }
 
   Future<bool> createInvoice(String token) async {
