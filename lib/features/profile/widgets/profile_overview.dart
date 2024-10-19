@@ -1,8 +1,7 @@
+import 'package:crafty_bay/core/wrappers/animation_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
-
 import '../../../core/state_holders/profile_state.dart';
 import '../../../core/utils/app_assets.dart';
 import '../../base_navigation/state_holders/base_navigation_state.dart';
@@ -23,9 +22,10 @@ class ProfileOverview extends StatelessWidget {
             radius: 35,
             backgroundColor: Colors.grey.shade100,
             child: Center(
-              child: Lottie.asset(
-                AppAssets.userPlaceHolderLottie,
-                fit: BoxFit.fill,
+              child: AnimationLoader(
+                asset: AppAssets.userPlaceHolderLottie,
+                boxFit: BoxFit.fill,
+                repeat: true,
                 width: 65,
               ),
             ),

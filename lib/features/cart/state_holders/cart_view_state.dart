@@ -1,4 +1,5 @@
 import 'package:crafty_bay/core/services/response/success.dart';
+import 'package:crafty_bay/core/state_holders/profile_state.dart';
 import 'package:crafty_bay/features/cart/models/cart_list_model/cart_data.dart';
 import 'package:crafty_bay/features/cart/models/cart_list_model/cart_list_model.dart';
 import 'package:crafty_bay/features/cart/services/cart_service.dart';
@@ -135,6 +136,18 @@ class CartViewState extends GetxController {
     totalPrice = 0;
     for (CartData cartData in cartList) {
       totalPrice += int.parse(cartData.price!);
+    }
+  }
+
+  Future<void> removeAllCartProduct() async {
+    for (int i = 0; i < cartList.length; i++) {
+      await deleteCartItem(
+        cartId: cartList[i].productId!,
+        token: Get.find<ProfileState>().token,
+        deleteIndex: i,
+      );
+      i=-1;
+      print("Deleted");
     }
   }
 }

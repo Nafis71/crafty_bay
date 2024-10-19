@@ -29,6 +29,6 @@ class InitiateViewModel extends Bindings {
     Get.put(ProfileState());
     Get.put(AuthState(Get.find<ProfileState>()));
     Get.put(InvoiceCreationState());
-    Get.put(PaymentWebViewState());
+    Get.put(PaymentWebViewState(Get.find<CartViewState>()));
   }
 }
