@@ -493,6 +493,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.28.0"
+  selectable_container:
+    dependency: "direct main"
+    description:
+      name: selectable_container
+      sha256: "5ef6966f868a8e88939ba5a975d488733a516513a181454fa24016d71737a63b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.7"
   shared_preferences:
     dependency: "direct main"
     description:

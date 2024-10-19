@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:selectable_container/selectable_container.dart';
 
 import '../../../../core/widgets/grid_view_layout.dart';
 import '../models/payment_method.dart';
@@ -10,7 +11,10 @@ class PaymentMethods extends StatelessWidget {
   final Function(int) onTap;
 
   const PaymentMethods(
-      {super.key, required this.paymentMethods, required this.selectedIndex, required this.onTap});
+      {super.key,
+      required this.paymentMethods,
+      required this.selectedIndex,
+      required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -26,31 +30,30 @@ class PaymentMethods extends StatelessWidget {
             );
           },
           imageBuilder: (context, imageProvider) {
-            return InkWell(
-              onTap: ()=> onTap(index),
+            return SelectableContainer(
+              selected: (selectedIndex == index),
+              selectedBackgroundColor: Colors.white,
+              selectedBorderColor: Colors.transparent,
+              unselectedBackgroundColor: Colors.white,
+              unselectedBorderColor: Colors.transparent,
+              onValueChanged: (bool value) {
+                if(value){
+                  onTap(index);
+                }
+              },
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   image: DecorationImage(
-                    image: imageProvider,
-                    fit: BoxFit.contain,
-                  ),
-                  border: Border.fromBorderSide(
-                    BorderSide(
-                      color: (selectedIndex == index)
-                          ? Theme.of(context).primaryColor
-                          : Colors.white,
-                      width: 1.6
-                    ),
-                  ),
+                      image: imageProvider, fit: BoxFit.contain),
                 ),
               ),
             );
           },
         );
       },
-      mainAxisExtent: 65,
-      crossAxisExtent: 65,
+      mainAxisExtent: 120,
+      crossAxisExtent: 120,
     );
   }
 }

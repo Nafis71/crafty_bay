@@ -1,6 +1,7 @@
 import 'package:crafty_bay/features/cart/state_holders/cart_view_state.dart';
 import 'package:crafty_bay/features/payment/invoice_creation/models/payment_method.dart';
 import 'package:crafty_bay/features/payment/payment_webView/utils/payment_webView_strings.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -20,30 +21,42 @@ class PaymentWebViewState extends GetxController {
   PaymentWebViewState(this.cartViewState);
 
   WebViewController configureController(PaymentMethod paymentMethod) {
-    return WebViewController()
-      ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..setNavigationDelegate(
-        NavigationDelegate(
-          onHttpError: (HttpResponseError error) {},
-          onWebResourceError: (WebResourceError error) {},
-          onPageFinished: (String url) {
-            if (url.startsWith(PaymentWebViewStrings.paymentSuccessfulUrl)) {
-              paymentSuccessTask();
-            }
-            if (url.startsWith(PaymentWebViewStrings.paymentFailureUrl)) {
-              paymentFailureTask();
-            }
-          },
-          onNavigationRequest: (NavigationRequest navigationRequest) {
-            return NavigationDecision.navigate;
-          },
-        ),
-      )
-      ..loadRequest(
-        Uri.parse(
-          paymentMethod.redirectGatewayURL.toString(),
-        ),
-      );
+    try{
+      return WebViewController()
+        ..setJavaScriptMode(JavaScriptMode.unrestricted)
+        ..setNavigationDelegate(
+          NavigationDelegate(
+            onHttpError: (HttpResponseError error) {},
+            onWebResourceError: (WebResourceError error) {},
+            onPageFinished: (String url) {
+              if (url.startsWith(PaymentWebViewStrings.paymentSuccessfulUrl)) {
+                paymentSuccessTask();
+              }
+              if (url.startsWith(PaymentWebViewStrings.paymentFailureUrl)) {
+                paymentFailureTask();
+              }
+            },
+            onNavigationRequest: (NavigationRequest navigationRequest) {
+              if(navigationRequest.url.startsWith("null")){
+                paymentFailureTask();
+                return NavigationDecision.prevent;
+              }
+              return NavigationDecision.navigate;
+            },
+          ),
+        )
+        ..loadRequest(
+          Uri.parse(
+            paymentMethod.redirectGatewayURL.toString(),
+          ),
+        );
+    }catch(exception){
+      if(kDebugMode){
+        debugPrint("Browser Exception Occurred - ${exception.toString()}");
+        paymentFailureTask();
+      }
+    }
+    return WebViewController();
   }
 
   Future<void> paymentSuccessTask() async {
@@ -59,11 +72,11 @@ class PaymentWebViewState extends GetxController {
   Future<void> paymentFailureTask() async {
     _isPaymentSuccess = false;
     _isPaymentPending = false;
+    await Future.delayed(Duration(seconds: 2));
     update();
   }
 
   void resetPaymentWebViewState(){
-    print('Reset Called');
      _isPaymentSuccess = false;
      _isPaymentPending = true;
   }
