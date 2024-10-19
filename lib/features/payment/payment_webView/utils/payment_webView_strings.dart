@@ -5,4 +5,5 @@ class PaymentWebViewStrings{
   static const paymentFailureSubtitleText = "Please try again later...";
   static const paymentSuccessfulUrl = "https://ecommerce-api.codesilicon.com/api/PaymentSuccess";
   static const paymentFailureUrl = "https://ecommerce-api.codesilicon.com/api/PaymentFail";
+  static const paymentFailureButtonText = "Go to cart";
 }

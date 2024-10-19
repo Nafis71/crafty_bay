@@ -2,6 +2,7 @@ import 'package:crafty_bay/core/utils/app_routes.dart';
 import 'package:crafty_bay/core/wrappers/app_snack_bar.dart';
 import 'package:crafty_bay/features/payment/invoice_creation/models/payment_method.dart';
 import 'package:crafty_bay/features/payment/invoice_creation/utils/invoice_creation_strings.dart';
+import 'package:crafty_bay/features/payment/payment_webView/state_holders/payment_webView_state.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -96,6 +97,13 @@ class InvoiceCreationFooter extends StatelessWidget {
 
   void navigateToPaymentWebView(InvoiceCreationState invoiceCreationState) {
     PaymentMethod paymentMethod = invoiceCreationState.getSelectedPaymentInfo();
-    navigator!.pushNamed(AppRoutes.paymentWebView, arguments: paymentMethod);
+    navigator!
+        .pushReplacementNamed(AppRoutes.paymentWebView,
+            arguments: paymentMethod)
+        .then(
+      (value) {
+        Get.find<PaymentWebViewState>().resetPaymentWebViewState();
+      },
+    );
   }
 }

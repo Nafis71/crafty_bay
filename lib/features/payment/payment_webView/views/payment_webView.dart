@@ -40,16 +40,26 @@ class _PaymentWebViewState extends State<PaymentWebView> {
                 child: Lottie.asset(AppAssets.cartLottie, width: 80),
               );
             }
-            return PaymentStatus( //payment success
+            return PaymentStatus(
+              //payment success
               animationAsset: AppAssets.paymentSuccess,
               headerText: PaymentWebViewStrings.paymentSuccessfulHeaderText,
               subtitleText: PaymentWebViewStrings.paymentSuccessfulSubtitleText,
             );
           }
-          return PaymentStatus( //payment failed
+          return PaymentStatus(
+            //payment failed
             animationAsset: AppAssets.paymentFailure,
             headerText: PaymentWebViewStrings.paymentFailureHeaderText,
             subtitleText: PaymentWebViewStrings.paymentFailureSubtitleText,
+            buttonWidget: ElevatedButton(
+              onPressed: () {
+                navigator!.pop();
+              },
+              child: Text(
+                PaymentWebViewStrings.paymentFailureButtonText,
+              ),
+            ),
           );
         },
       ),

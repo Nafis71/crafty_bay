@@ -1,24 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../core/wrappers/animation_loader.dart';
 
 class PaymentStatus extends StatelessWidget {
   final String animationAsset;
   final String headerText, subtitleText;
+  final Widget? buttonWidget;
 
   const PaymentStatus(
       {super.key,
       required this.animationAsset,
       required this.headerText,
-      required this.subtitleText});
+      required this.subtitleText,
+      this.buttonWidget});
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.sizeOf(context);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
-          width: MediaQuery.of(context).size.width,
+          width: size.width,
           child: Center(
             child: Stack(
               alignment: Alignment.center,
@@ -37,7 +41,10 @@ class PaymentStatus extends StatelessWidget {
                       Text(
                         textAlign: TextAlign.center,
                         headerText,
-                        style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineMedium!
+                            .copyWith(
                               fontWeight: FontWeight.bold,
                             ),
                       ),
@@ -52,6 +59,12 @@ class PaymentStatus extends StatelessWidget {
           subtitleText,
           style: Theme.of(context).textTheme.bodyMedium,
         ),
+        Gap(30),
+        if (buttonWidget != null)
+          SizedBox(
+            width: size.width * 0.4,
+            child: buttonWidget!,
+          )
       ],
     );
   }

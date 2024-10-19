@@ -61,4 +61,11 @@ class PaymentWebViewState extends GetxController {
     _isPaymentPending = false;
     update();
   }
+
+  void resetPaymentWebViewState(){
+    print('Reset Called');
+     _isPaymentSuccess = false;
+     _isPaymentPending = true;
+  }
+
 }
