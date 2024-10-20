@@ -19,6 +19,7 @@ class InvoiceCreationView extends StatefulWidget {
 class _InvoiceCreationViewState extends State<InvoiceCreationView> {
   @override
   Widget build(BuildContext context) {
+    Orientation orientation = MediaQuery.orientationOf(context);
     return DefaultTabController(
       length: 3,
       child: SafeArea(
@@ -26,23 +27,20 @@ class _InvoiceCreationViewState extends State<InvoiceCreationView> {
           appBar: AppBar(
             automaticallyImplyLeading: false,
             bottom: PreferredSize(
-              preferredSize: Size.fromHeight(200),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 8, right: 8, top: 0),
+              preferredSize: Size.fromHeight(100),
+              child: SingleChildScrollView(
                 child: Column(
                   children: [
                     SvgImageLoader(
                       assetLocation: AppAssets.appLogo,
                       boxFit: BoxFit.contain,
-                      width: 90,
+                      width: 60,
                     ),
                     Text(InvoiceCreationStrings.paymentGatewayHeaderText),
-                    Gap(6),
                     Image.asset(
                       AppAssets.sslCommerce,
-                      width: 100,
+                      width: 90,
                     ),
-                    Gap(10),
                     Divider(
                       thickness: 0.2,
                     ),
@@ -81,7 +79,7 @@ class _InvoiceCreationViewState extends State<InvoiceCreationView> {
           body: Column(
             children: [
               Expanded(
-                flex: 8,
+                flex: (orientation == Orientation.portrait) ? 8 : 2,
                 child: TabBarView(
                   children: [
                     MobileBanking(),

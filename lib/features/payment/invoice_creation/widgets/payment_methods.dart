@@ -18,42 +18,48 @@ class PaymentMethods extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridViewLayout(
-      length: paymentMethods.length,
-      child: (index) {
-        return CachedNetworkImage(
-          imageUrl: paymentMethods[index].logo.toString().toString(),
-          errorWidget: (context, string, _) {
-            return Icon(
-              Icons.error,
-              color: Colors.red,
-            );
-          },
-          imageBuilder: (context, imageProvider) {
-            return SelectableContainer(
-              selected: (selectedIndex == index),
-              selectedBackgroundColor: Colors.white,
-              selectedBorderColor: Colors.transparent,
-              unselectedBackgroundColor: Colors.white,
-              unselectedBorderColor: Colors.transparent,
-              onValueChanged: (bool value) {
-                if(value){
-                  onTap(index);
-                }
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  image: DecorationImage(
-                      image: imageProvider, fit: BoxFit.contain),
+    return SingleChildScrollView(
+      child: GridViewLayout(
+        length: paymentMethods.length,
+        shrinkWrap: true,
+        disableScroll: true,
+        child: (index) {
+          return CachedNetworkImage(
+            imageUrl: paymentMethods[index].logo.toString().toString(),
+            errorWidget: (context, string, _) {
+              return Icon(
+                Icons.error,
+                color: Colors.red,
+              );
+            },
+            imageBuilder: (context, imageProvider) {
+              return SelectableContainer(
+                selected: (selectedIndex == index),
+                selectedBackgroundColor: Colors.transparent,
+                selectedBorderColor: Colors.transparent,
+                unselectedBackgroundColor: Colors.transparent,
+                unselectedBorderColor: Colors.transparent,
+                onValueChanged: (bool value) {
+                  if (value) {
+                    onTap(index);
+                  }
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    image: DecorationImage(
+                      image: imageProvider,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
                 ),
-              ),
-            );
-          },
-        );
-      },
-      mainAxisExtent: 120,
-      crossAxisExtent: 120,
+              );
+            },
+          );
+        },
+        mainAxisExtent: 120,
+        crossAxisExtent: 120,
+      ),
     );
   }
 }

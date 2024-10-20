@@ -4,6 +4,7 @@ class GridViewLayout extends StatelessWidget {
   final int length;
   final Function(dynamic) child;
   final double mainAxisExtent, crossAxisExtent;
+  final bool shrinkWrap, disableScroll;
 
   const GridViewLayout({
     super.key,
@@ -11,11 +12,15 @@ class GridViewLayout extends StatelessWidget {
     required this.child,
     required this.mainAxisExtent,
     required this.crossAxisExtent,
+    this.shrinkWrap = false,
+    this.disableScroll = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
+      shrinkWrap: shrinkWrap,
+      physics: (disableScroll) ? NeverScrollableScrollPhysics() : null,
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
       itemCount: length,
       gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
