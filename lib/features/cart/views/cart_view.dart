@@ -37,6 +37,7 @@ class _CartViewState extends State<CartView> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
+    Orientation orientation = MediaQuery.orientationOf(context);
     return Scaffold(
       appBar: craftyAppBar(
         title: AppStrings.cartViewHeader,
@@ -93,7 +94,7 @@ class _CartViewState extends State<CartView> {
           return Column(
             children: [
               Expanded(
-                flex: 6,
+                flex: (orientation == Orientation.portrait) ? 6 : 2,
                 child: ListView.separated(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
