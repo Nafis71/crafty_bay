@@ -124,6 +124,7 @@ class _ProfileViewState extends State<ProfileView> {
                     child: Text(AppStrings.logoutButtonText),
                   ),
                 ),
+                Gap(10)
               ],
             ),
           );
