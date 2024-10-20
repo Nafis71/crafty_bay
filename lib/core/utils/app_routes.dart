@@ -1,6 +1,6 @@
 import 'package:crafty_bay/features/authentication/views/login_view/login_view.dart';
 import 'package:crafty_bay/features/authentication/views/otp_verification_view/otp_verification_view.dart';
-import 'package:crafty_bay/features/authentication/views/profile_detail_view/profile_detail_screen.dart';
+import 'package:crafty_bay/features/complete_profile/views/complete_profile_view.dart';
 import 'package:crafty_bay/features/base_navigation/views/base_navigation_view.dart';
 import 'package:crafty_bay/features/payment/invoice_creation/models/payment_method.dart';
 import 'package:crafty_bay/features/payment/invoice_creation/views/invoice_creation_view.dart';
@@ -42,7 +42,7 @@ class AppRoutes {
           viewData: viewData,
         );
       },
-      AppRoutes.profileDetailView: (context) => const ProfileDetailView(),
+      AppRoutes.profileDetailView: (context) => const CompleteProfileView(),
       AppRoutes.baseNavigationView: (context) => const BaseNavigationView(),
       AppRoutes.profileView: (context) => const ProfileView(),
       AppRoutes.wishListView: (context) => const WishListView(),

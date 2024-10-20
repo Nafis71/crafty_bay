@@ -2,6 +2,7 @@ import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:crafty_bay/core/utils/reg_ex.dart';
 
 class FormValidation {
+
   static String? validateEmail(String? emailAddress) {
     if (emailAddress == null || emailAddress.isEmpty) {
       return AppStrings.emptyEmailAddress;
@@ -69,6 +70,25 @@ class FormValidation {
     return null;
   }
 
+  static String? validateState(String? state){
+    if (state == null || state.isEmpty) {
+      return AppStrings.emptyState;
+    }
+    if (!RegEx.alphabetRegEx.hasMatch(state)) {
+      return AppStrings.invalidState;
+    }
+    return null;
+  }
+  static String? validateCountry(String? country){
+    if (country == null || country.isEmpty) {
+      return AppStrings.emptyCountry;
+    }
+    if (!RegEx.alphabetRegEx.hasMatch(country)) {
+      return AppStrings.invalidCountry;
+    }
+    return null;
+  }
+
   static String? validatePostCode(String? postCode) {
     if (postCode == null || postCode.isEmpty) {
       return AppStrings.emptyPostCode;
@@ -85,6 +105,15 @@ class FormValidation {
     }
     if (!RegEx.shippingAddressRegEx.hasMatch(shippingAddress)) {
       return AppStrings.invalidShippingAddress;
+    }
+    return null;
+  }
+  static String? validateCustomerAddress(String? customerAddress) {
+    if (customerAddress == null || customerAddress.isEmpty) {
+      return AppStrings.emptyCustomerAddress;
+    }
+    if (!RegEx.shippingAddressRegEx.hasMatch(customerAddress)) {
+      return AppStrings.invalidCustomerAddress;
     }
     return null;
   }

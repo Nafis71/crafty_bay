@@ -42,16 +42,25 @@ class AppStrings {
   static const String emptyMobile = "Mobile number is required";
   static const String cityHintText = "City";
   static const String emptyCity = "City is required";
+  static const String stateHintText = "State";
+  static const String emptyState = "State is required";
   static const String postCodeHintText = "Post Code";
   static const String emptyPostCode = "Post Code is required";
+  static const String countryHintText = "Country";
+  static const String emptyCountry = "Country is required";
   static const String shippingAddressHintText = "Shipping Address";
   static const String emptyShippingAddress = "Shipping address is required";
+  static const String customerAddressHintText = "Address";
+  static const String emptyCustomerAddress = "Address is required";
   static const String invalidFirstNameText = "Invalid First Name";
   static const String invalidLastNameText = "Invalid Last Name";
   static const String invalidMobileText = "Invalid Mobile Number";
   static const String invalidCityText = "Invalid City Name";
   static const String invalidShippingAddress = "Invalid Shipping Address";
   static const String invalidPostCode = "Invalid Post Code";
+  static const String invalidState = "Invalid State";
+  static const String invalidCountry = "Invalid Country";
+  static const String invalidCustomerAddress = "Invalid Address";
   static const String profileDetailsButtonText = "Complete";
 
   //base navigation screen

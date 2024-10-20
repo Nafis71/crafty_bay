@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:crafty_bay/core/models/user_model/user_model.dart';
 import 'package:crafty_bay/core/services/profile_detail_service.dart';
@@ -84,31 +85,36 @@ class ProfileState extends GetxController {
   }
 
   Future<bool> createProfile(
-      {required String firstName,
-      required String lastName,
+      {required String name,
       required String mobile,
       required String city,
+      required String customerAddress,
+      required String state,
+      required String country,
       required String shippingAddress,
       required String postCode}) async {
+    print(shippingAddress);
     _responseStatus = false;
     setIsBusy = true;
     Map<String, String> json = {
-      "cus_name": "${firstName} ${lastName}",
-      "cus_add": shippingAddress,
+      "cus_name": name,
+      "cus_add": customerAddress,
       "cus_city": city,
-      "cus_state": city,
-      "cus_postcode": "1207",
-      "cus_country": "Bangladesh",
+      "cus_state": state,
+      "cus_postcode": postCode,
+      "cus_country": country,
       "cus_phone": mobile,
       "cus_fax": mobile,
-      "ship_name": firstName + lastName,
-      "ship_add": shippingAddress,
+      "ship_name": name,
+      "ship_add":
+          (shippingAddress.isNotEmpty) ? shippingAddress : customerAddress,
       "ship_city": city,
-      "ship_state": city,
+      "ship_state": state,
       "ship_postcode": postCode,
-      "ship_country": "Bangladesh",
+      "ship_country": country,
       "ship_phone": mobile
     };
+    log(json.toString());
     response = await ProfileDetailService().createProfile(_token, json);
     if (response is Success) {
       bool readStatus = await readProfile(response!, token);
