@@ -28,9 +28,12 @@ class _PaymentWebViewState extends State<PaymentWebView> {
       body: GetBuilder<PaymentWebViewState>(
         builder: (paymentWebViewState) {
           if (paymentWebViewState.isPaymentPending) {
-            return WebViewWidget(
-              controller: paymentWebViewState.configureController(
-                widget.paymentMethod,
+            return PopScope(
+              canPop: false,
+              child: WebViewWidget(
+                controller: paymentWebViewState.configureController(
+                  widget.paymentMethod,
+                ),
               ),
             );
           }
@@ -52,14 +55,6 @@ class _PaymentWebViewState extends State<PaymentWebView> {
             animationAsset: AppAssets.paymentFailure,
             headerText: PaymentWebViewStrings.paymentFailureHeaderText,
             subtitleText: PaymentWebViewStrings.paymentFailureSubtitleText,
-            buttonWidget: ElevatedButton(
-              onPressed: () {
-                navigator!.pop();
-              },
-              child: Text(
-                PaymentWebViewStrings.paymentFailureButtonText,
-              ),
-            ),
           );
         },
       ),

@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 
 import '../../../../core/wrappers/animation_loader.dart';
+import '../utils/payment_webView_strings.dart';
 
 class PaymentStatus extends StatelessWidget {
   final String animationAsset;
   final String headerText, subtitleText;
-  final Widget? buttonWidget;
 
-  const PaymentStatus(
-      {super.key,
-      required this.animationAsset,
-      required this.headerText,
-      required this.subtitleText,
-      this.buttonWidget});
+  const PaymentStatus({
+    super.key,
+    required this.animationAsset,
+    required this.headerText,
+    required this.subtitleText,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -60,11 +61,17 @@ class PaymentStatus extends StatelessWidget {
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         Gap(30),
-        if (buttonWidget != null)
-          SizedBox(
-            width: size.width * 0.4,
-            child: buttonWidget!,
-          )
+        SizedBox(
+          width: size.width * 0.4,
+          child: ElevatedButton(
+            onPressed: () {
+              navigator!.pop();
+            },
+            child: Text(
+              PaymentWebViewStrings.paymentFailureButtonText,
+            ),
+          ),
+        )
       ],
     );
   }
