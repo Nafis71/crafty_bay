@@ -39,8 +39,8 @@ class ProfileState extends GetxController {
   Future<bool> isTokenExpired() async {
     SharedPreferences localStorage = await SharedPreferences.getInstance();
     String? token = localStorage.getString("token");
-    if (token == null || JwtDecoder.isExpired(token)) {
-      localStorage.clear();
+    if (token == null || token.isEmpty || JwtDecoder.isExpired(token)) {
+      clearUserDataFromStorage(localStorage);
       return true;
     }
     _token = token;
@@ -159,8 +159,15 @@ class ProfileState extends GetxController {
 
   Future<void> logout() async {
     SharedPreferences localStorage = await SharedPreferences.getInstance();
-    localStorage.clear();
+    clearUserDataFromStorage(localStorage);
     _userModel = null;
     _token = "";
   }
+
+  void clearUserDataFromStorage(SharedPreferences localStorage){
+    localStorage.setString("token", "");
+    localStorage.setString("userData", "");
+    localStorage.setBool("hasUserData", false);
+  }
+
 }
