@@ -3,13 +3,13 @@ import 'package:crafty_bay/core/utils/app_routes.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../core/themes/app_theme.dart';
 import '../core/themes/theme_switcher.dart';
 
 class CraftyBay extends StatefulWidget {
-  const CraftyBay({super.key});
+  final bool? isDarkModeEnabled;
+  const CraftyBay({super.key, this.isDarkModeEnabled});
 
   @override
   State<CraftyBay> createState() => _CraftyBayState();
@@ -21,7 +21,7 @@ class _CraftyBayState extends State<CraftyBay> {
   @override
   void initState() {
     navigatorState = GlobalKey<NavigatorState>();
-    loadTheme();
+    loadTheme(widget.isDarkModeEnabled);
     super.initState();
   }
 
@@ -45,9 +45,7 @@ class _CraftyBayState extends State<CraftyBay> {
     });
   }
 
-  Future<void> loadTheme() async {
-    SharedPreferences localStorage = await SharedPreferences.getInstance();
-    bool? isDarkModeEnabled = localStorage.getBool("isDarkModeEnabled");
+  Future<void> loadTheme(bool? isDarkModeEnabled) async {
     if (isDarkModeEnabled != null && isDarkModeEnabled) {
       Get.find<ThemeSwitcher>().setThemeModeSilently = ThemeMode.dark;
     }

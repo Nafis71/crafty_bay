@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "com.example.crafty_bay"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "25.1.8"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
