@@ -13,7 +13,6 @@ import '../../../../core/state_holders/connection_state.dart';
 import '../../../../core/state_holders/profile_state.dart';
 import '../../../../core/wrappers/app_snack_bar.dart';
 import '../../../../core/wrappers/svg_image_loader.dart';
-import '../../../authentication/login_view/utils/login_view_strings.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -77,7 +76,7 @@ class _SplashViewState extends State<SplashView> {
                     const CircularLoading(),
                     const Gap(20),
                     Text(
-                      LoginViewStrings.appVersion,
+                      AppStrings.appVersion,
                       style: Theme.of(context).textTheme.bodyMedium,
                     )
                   ],

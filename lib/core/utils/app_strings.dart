@@ -8,4 +8,5 @@ class AppStrings {
 
   //core
   static const String loginButtonText = "Login Now";
+  static const String appVersion = "Version 1.0";
 }
