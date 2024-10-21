@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:crafty_bay/features/product_details/views/product_details_view/product_details_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
@@ -9,6 +8,7 @@ import 'package:get/get.dart';
 import '../../product_details/state_holders/product_state.dart';
 import '../state_holders/home_state.dart';
 import '../state_holders/offer_carousel_state.dart';
+import '../utils/home_view_strings.dart';
 
 class OfferCarousel extends StatefulWidget {
   const OfferCarousel({super.key});
@@ -107,7 +107,7 @@ class _OfferCarouselState extends State<OfferCarousel> {
                                       });
                                     },
                                     child: Text(
-                                      AppStrings.offerCarouselButtonText,
+                                      HomeViewStrings.offerCarouselButtonText,
                                       style: Theme.of(context)
                                           .textTheme
                                           .labelSmall!

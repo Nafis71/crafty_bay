@@ -1,6 +1,7 @@
-import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+
+import '../../utils/home_view_strings.dart';
 
 class SectionHeader extends StatelessWidget {
   final String sectionTitle;
@@ -24,7 +25,7 @@ class SectionHeader extends StatelessWidget {
               splashColor: Colors.transparent,
               onTap: () => onTap(),
               child: Text(
-                AppStrings.homeSeeAllButtonText,
+                HomeViewStrings.homeSeeAllButtonText,
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: Theme.of(context).primaryColor,
                       fontSize: 15,

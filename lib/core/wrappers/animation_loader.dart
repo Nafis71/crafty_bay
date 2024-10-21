@@ -6,11 +6,13 @@ class AnimationLoader extends StatelessWidget {
   final BoxFit boxFit;
   final bool repeat;
   final double width;
+
   const AnimationLoader({
     super.key,
     required this.asset,
     required this.boxFit,
-    required this.repeat, required this.width,
+    required this.repeat,
+    required this.width,
   });
 
   @override

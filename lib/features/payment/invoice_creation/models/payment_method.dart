@@ -8,11 +8,11 @@ class PaymentMethod {
 
   PaymentMethod(
       {this.name,
-        this.type,
-        this.logo,
-        this.gw,
-        this.rFlag,
-        this.redirectGatewayURL});
+      this.type,
+      this.logo,
+      this.gw,
+      this.rFlag,
+      this.redirectGatewayURL});
 
   PaymentMethod.fromJson(Map<String, dynamic> json) {
     name = json['name'];

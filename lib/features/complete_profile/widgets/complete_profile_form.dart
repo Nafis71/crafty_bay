@@ -3,9 +3,9 @@ import 'package:gap/gap.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 
 import '../../../core/themes/app_color.dart';
-import '../../../core/utils/app_strings.dart';
 import '../../../core/utils/form_validation.dart';
 import '../state_holders/complete_profile_view_state.dart';
+import '../utils/complete_profile_strings.dart';
 
 class CompleteProfileForm extends StatelessWidget {
   final TextEditingController nameTEController,
@@ -57,7 +57,7 @@ class CompleteProfileForm extends StatelessWidget {
               keyboardType: TextInputType.text,
               cursorColor: AppColor.appPrimaryColor,
               decoration: const InputDecoration(
-                hintText: AppStrings.firstNameHintText,
+                hintText: CompleteProfileStrings.firstNameHintText,
               ),
               onFieldSubmitted: (value) {
                 FocusScope.of(context).requestFocus(mobileFocusNode);
@@ -72,7 +72,7 @@ class CompleteProfileForm extends StatelessWidget {
               keyboardType: TextInputType.number,
               cursorColor: AppColor.appPrimaryColor,
               decoration: const InputDecoration(
-                hintText: AppStrings.mobileHintText,
+                hintText: CompleteProfileStrings.mobileHintText,
               ),
               onFieldSubmitted: (value) {
                 FocusScope.of(context).requestFocus(cityFocusNode);
@@ -87,7 +87,7 @@ class CompleteProfileForm extends StatelessWidget {
               keyboardType: TextInputType.text,
               cursorColor: AppColor.appPrimaryColor,
               decoration: const InputDecoration(
-                hintText: AppStrings.cityHintText,
+                hintText: CompleteProfileStrings.cityHintText,
               ),
               onFieldSubmitted: (value) {
                 FocusScope.of(context).requestFocus(stateFocusNode);
@@ -102,7 +102,7 @@ class CompleteProfileForm extends StatelessWidget {
               keyboardType: TextInputType.text,
               cursorColor: AppColor.appPrimaryColor,
               decoration: const InputDecoration(
-                hintText: AppStrings.stateHintText,
+                hintText: CompleteProfileStrings.stateHintText,
               ),
               onFieldSubmitted: (value) {
                 FocusScope.of(context).requestFocus(postCodeFocusNode);
@@ -117,7 +117,7 @@ class CompleteProfileForm extends StatelessWidget {
               keyboardType: TextInputType.number,
               cursorColor: AppColor.appPrimaryColor,
               decoration: const InputDecoration(
-                hintText: AppStrings.postCodeHintText,
+                hintText: CompleteProfileStrings.postCodeHintText,
               ),
               onFieldSubmitted: (value) {
                 FocusScope.of(context).requestFocus(countryFocusNode);
@@ -132,7 +132,7 @@ class CompleteProfileForm extends StatelessWidget {
               keyboardType: TextInputType.text,
               cursorColor: AppColor.appPrimaryColor,
               decoration: const InputDecoration(
-                hintText: AppStrings.countryHintText,
+                hintText: CompleteProfileStrings.countryHintText,
               ),
               onFieldSubmitted: (value) {
                 FocusScope.of(context).requestFocus(shippingAddressFocusNode);
@@ -148,7 +148,7 @@ class CompleteProfileForm extends StatelessWidget {
               cursorColor: AppColor.appPrimaryColor,
               maxLines: 3,
               decoration: const InputDecoration(
-                hintText: AppStrings.customerAddressHintText,
+                hintText: CompleteProfileStrings.customerAddressHintText,
               ),
               onFieldSubmitted: (value) {
                 FocusScope.of(context).unfocus();
@@ -163,7 +163,7 @@ class CompleteProfileForm extends StatelessWidget {
                   Checkbox(
                       value: completeProfileViewState.useSameShippingAddress,
                       onChanged: (bool? value) {
-                        if(value!= null && value){
+                        if (value != null && value) {
                           shippingAddressTEController.text = "";
                         }
                         completeProfileViewState.toggleUseSameShippingAddress();
@@ -190,7 +190,7 @@ class CompleteProfileForm extends StatelessWidget {
                 cursorColor: AppColor.appPrimaryColor,
                 maxLines: 3,
                 decoration: const InputDecoration(
-                  hintText: AppStrings.shippingAddressHintText,
+                  hintText: CompleteProfileStrings.shippingAddressHintText,
                 ),
                 onFieldSubmitted: (value) {
                   FocusScope.of(context).unfocus();

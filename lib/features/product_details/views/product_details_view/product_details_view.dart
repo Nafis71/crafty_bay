@@ -4,11 +4,11 @@ import 'package:crafty_bay/core/services/internet_service_error.dart';
 import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/services/user_auth_service/user_auth_service.dart';
 import 'package:crafty_bay/core/utils/app_assets.dart';
-import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:crafty_bay/core/widgets/alternative_widget.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/core/widgets/shimmer_generator.dart';
 import 'package:crafty_bay/core/widgets/view_footer.dart';
+import 'package:crafty_bay/features/product_details/utils/product_details_strings.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_body.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_description.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_details_footer_button.dart';
@@ -48,7 +48,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
     print(widget.productId);
     return Scaffold(
       appBar: craftyAppBar(
-        title: AppStrings.productDetailsHeader,
+        title: ProductDetailStrings.productDetailsHeader,
         context: context,
       ),
       body: SafeArea(
@@ -83,7 +83,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                     ),
                     const Gap(15),
                     const Text(
-                      AppStrings.noProductFoundText,
+                      ProductDetailStrings.noProductFoundText,
                     ),
                   ],
                 ),

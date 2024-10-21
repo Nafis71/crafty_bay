@@ -114,8 +114,8 @@ class CartListCard extends StatelessWidget {
                     Text(
                       "Unit price: \$${cartData.cartProductData!.price}",
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        fontSize: 11,
-                      ),
+                            fontSize: 11,
+                          ),
                     ),
                     const Gap(30),
                     Row(

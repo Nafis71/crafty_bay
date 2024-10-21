@@ -1,5 +1,4 @@
 import 'package:crafty_bay/core/services/response/failure.dart';
-import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:crafty_bay/core/widgets/authentication_layout.dart';
 import 'package:crafty_bay/features/complete_profile/widgets/complete_profile_form.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +6,7 @@ import 'package:get/get.dart';
 
 import '../../../core/services/internet_service_error.dart';
 import '../../../core/state_holders/profile_state.dart';
+import '../utils/complete_profile_strings.dart';
 
 class CompleteProfileView extends StatefulWidget {
   const CompleteProfileView({super.key});
@@ -67,8 +67,9 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
       body: SingleChildScrollView(
         child: AuthenticationLayout(
           isProfileDetailView: true,
-          titleText: AppStrings.profileDetailsScreenTitle,
-          descriptionText: AppStrings.profileDetailsScreenDescription,
+          titleText: CompleteProfileStrings.profileDetailsScreenTitle,
+          descriptionText:
+              CompleteProfileStrings.profileDetailsScreenDescription,
           formWidget: CompleteProfileForm(
             nameTEController: _nameTEController,
             mobileTEController: _mobileTEController,
@@ -88,7 +89,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
             formKey: _formKey,
           ),
           deviceOrientation: deviceOrientation,
-          buttonText: AppStrings.profileDetailsButtonText,
+          buttonText: CompleteProfileStrings.profileDetailsButtonText,
           onButtonPressed: () {
             if (_formKey.currentState!.validate()) {
               createProfile(Get.find<ProfileState>());

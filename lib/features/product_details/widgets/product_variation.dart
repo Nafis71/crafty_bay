@@ -1,4 +1,3 @@
-import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:crafty_bay/features/product_details/widgets/color_selection_widget.dart';
 import 'package:crafty_bay/features/product_details/widgets/size_selection_widget.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +5,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 import '../state_holders/product_state.dart';
+import '../utils/product_details_strings.dart';
 
 class ProductVariation extends StatelessWidget {
   final List<String> productSizes;
@@ -25,7 +25,7 @@ class ProductVariation extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            AppStrings.productColorHeader,
+            ProductDetailStrings.productColorHeader,
             style: Theme.of(context).textTheme.titleMedium!.copyWith(
                   fontWeight: FontWeight.w600,
                   fontSize: 17,
@@ -49,7 +49,7 @@ class ProductVariation extends StatelessWidget {
           }),
           const Gap(15),
           Text(
-            AppStrings.productSizeHeader,
+            ProductDetailStrings.productSizeHeader,
             style: Theme.of(context)
                 .textTheme
                 .titleMedium!

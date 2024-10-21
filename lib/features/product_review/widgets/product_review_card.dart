@@ -1,4 +1,3 @@
-import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:crafty_bay/core/utils/product_rating_calculator.dart';
 import 'package:crafty_bay/features/product_review/models/product_review_model/product_review_model.dart';
 import 'package:crafty_bay/features/product_review/widgets/product_review_rating_bar.dart';
@@ -9,6 +8,7 @@ import 'package:get/get.dart';
 
 import '../../../core/themes/app_color.dart';
 import '../../../core/themes/theme_switcher.dart';
+import '../utils/product_review_strings.dart';
 
 class ProductReviewCard extends StatelessWidget {
   final ProductReviewModel productReviewData;
@@ -50,7 +50,7 @@ class ProductReviewCard extends StatelessWidget {
                 Text(
                   (productReviewData.profile!.cusName != null)
                       ? "${productReviewData.profile!.cusName}"
-                      : AppStrings.unknownUserText,
+                      : ProductReviewStrings.unknownUserText,
                   style: Theme.of(context)
                       .textTheme
                       .titleMedium!
@@ -71,10 +71,9 @@ class ProductReviewCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ProductReviewRatingBar.show(
-                  initialRating: ProductRatingCalculator()
-                      .getProductRating(productReviewData.rating!),
-                  onlyReadable: true
-                ),
+                    initialRating: ProductRatingCalculator()
+                        .getProductRating(productReviewData.rating!),
+                    onlyReadable: true),
               ],
             )
           ],

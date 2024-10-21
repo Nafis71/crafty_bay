@@ -1,17 +1,17 @@
 import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/services/response/success.dart';
 import 'package:crafty_bay/core/utils/app_routes.dart';
-import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:crafty_bay/core/utils/form_validation.dart';
 import 'package:crafty_bay/core/widgets/authentication_layout.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/core/wrappers/app_snack_bar.dart';
+import 'package:crafty_bay/features/authentication/login_view/utils/login_view_strings.dart';
 import 'package:crafty_bay/features/authentication/state_holders/auth_state.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/services/internet_service_error.dart';
-import '../../../../core/themes/app_color.dart';
+import '../../../../../core/services/internet_service_error.dart';
+import '../../../../../core/themes/app_color.dart';
 
 class LoginView extends StatefulWidget {
   final Function(dynamic) futureExecution;
@@ -44,8 +44,8 @@ class _LoginViewState extends State<LoginView> {
         child: Center(
           child: SingleChildScrollView(
             child: AuthenticationLayout(
-              titleText: AppStrings.loginScreenTitle,
-              descriptionText: AppStrings.loginScreenDescription,
+              titleText: LoginViewStrings.loginScreenTitle,
+              descriptionText: LoginViewStrings.loginScreenDescription,
               formWidget: Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -58,7 +58,7 @@ class _LoginViewState extends State<LoginView> {
                         keyboardType: TextInputType.emailAddress,
                         cursorColor: AppColor.appPrimaryColor,
                         decoration: const InputDecoration(
-                          hintText: AppStrings.emailTextFieldHintText,
+                          hintText: LoginViewStrings.emailTextFieldHintText,
                         ),
                         validator: FormValidation.validateEmail,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -95,7 +95,7 @@ class _LoginViewState extends State<LoginView> {
     }
     if (!status && mounted && authState.response is Success) {
       AppSnackBar.show(
-        message: AppStrings.otpSendError,
+        message: LoginViewStrings.otpSendError,
         context: context,
         isError: true,
       );

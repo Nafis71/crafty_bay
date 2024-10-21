@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../core/utils/app_strings.dart';
 import '../../../core/widgets/circular_loading.dart';
 import '../../cart/state_holders/cart_view_state.dart';
 import '../state_holders/product_state.dart';
+import '../utils/product_details_strings.dart';
 
 class ProductDetailsFooterButton extends StatelessWidget {
   final Function(dynamic) addToCart;
@@ -55,7 +55,7 @@ class ProductDetailsFooterButton extends StatelessWidget {
                         ),
                       ),
                       child: Text(
-                        AppStrings.addToCartButtonText,
+                        ProductDetailStrings.addToCartButtonText,
                         style: Theme.of(context)
                             .textTheme
                             .labelMedium!
@@ -68,7 +68,7 @@ class ProductDetailsFooterButton extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      AppStrings.stockOutText,
+                      ProductDetailStrings.stockOutText,
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             color: Colors.redAccent,
                             fontSize: 16,

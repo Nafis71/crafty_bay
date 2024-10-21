@@ -2,10 +2,10 @@ class Profile {
   int? id;
   String? cusName;
 
-  Profile(
-      {this.id,
-      this.cusName,
-     });
+  Profile({
+    this.id,
+    this.cusName,
+  });
 
   Profile.fromJson(Map<String, dynamic> json) {
     id = json['id'];

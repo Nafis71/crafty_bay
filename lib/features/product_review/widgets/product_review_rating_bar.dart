@@ -5,7 +5,8 @@ import 'package:get/get.dart';
 import '../state_holders/product_review_state.dart';
 
 class ProductReviewRatingBar {
-  static RatingBar show({required double initialRating, bool onlyReadable = false}) {
+  static RatingBar show(
+      {required double initialRating, bool onlyReadable = false}) {
     return RatingBar.builder(
       initialRating: initialRating,
       minRating: 1,

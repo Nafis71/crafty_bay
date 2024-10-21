@@ -1,7 +1,5 @@
-import 'package:crafty_bay/features/authentication/views/login_view/login_view.dart';
-import 'package:crafty_bay/features/authentication/views/otp_verification_view/otp_verification_view.dart';
-import 'package:crafty_bay/features/complete_profile/views/complete_profile_view.dart';
 import 'package:crafty_bay/features/base_navigation/views/base_navigation_view.dart';
+import 'package:crafty_bay/features/complete_profile/views/complete_profile_view.dart';
 import 'package:crafty_bay/features/payment/invoice_creation/models/payment_method.dart';
 import 'package:crafty_bay/features/payment/invoice_creation/views/invoice_creation_view.dart';
 import 'package:crafty_bay/features/payment/payment_webView/views/payment_webView.dart';
@@ -11,6 +9,8 @@ import 'package:crafty_bay/features/profile/views/profile_view/profile_view.dart
 import 'package:crafty_bay/features/wish_list/views/wish_list_view.dart';
 import 'package:flutter/material.dart';
 
+import '../../features/authentication/login_view/views/login_view.dart';
+import '../../features/authentication/otp_verification_view/views/otp_verification_view.dart';
 import '../../features/onboarding/views/splash_view/splash_view.dart';
 
 class AppRoutes {
@@ -53,8 +53,8 @@ class AppRoutes {
           profileUpdationModel: profileUpdationModel,
         );
       },
-      AppRoutes.invoiceCreationView : (context) => InvoiceCreationView(),
-      AppRoutes.paymentWebView : (context){
+      AppRoutes.invoiceCreationView: (context) => InvoiceCreationView(),
+      AppRoutes.paymentWebView: (context) {
         PaymentMethod paymentMethod = routeSettings.arguments as PaymentMethod;
         return PaymentWebView(paymentMethod: paymentMethod);
       }

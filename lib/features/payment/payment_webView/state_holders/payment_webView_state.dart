@@ -21,7 +21,7 @@ class PaymentWebViewState extends GetxController {
   PaymentWebViewState(this.cartViewState);
 
   WebViewController configureController(PaymentMethod paymentMethod) {
-    try{
+    try {
       return WebViewController()
         ..setJavaScriptMode(JavaScriptMode.unrestricted)
         ..setNavigationDelegate(
@@ -37,7 +37,7 @@ class PaymentWebViewState extends GetxController {
               }
             },
             onNavigationRequest: (NavigationRequest navigationRequest) {
-              if(navigationRequest.url.startsWith("null")){
+              if (navigationRequest.url.startsWith("null")) {
                 paymentFailureTask();
                 return NavigationDecision.prevent;
               }
@@ -50,8 +50,8 @@ class PaymentWebViewState extends GetxController {
             paymentMethod.redirectGatewayURL.toString(),
           ),
         );
-    }catch(exception){
-      if(kDebugMode){
+    } catch (exception) {
+      if (kDebugMode) {
         debugPrint("Browser Exception Occurred - ${exception.toString()}");
         paymentFailureTask();
       }
@@ -76,9 +76,8 @@ class PaymentWebViewState extends GetxController {
     update();
   }
 
-  void resetPaymentWebViewState(){
-     _isPaymentSuccess = false;
-     _isPaymentPending = true;
+  void resetPaymentWebViewState() {
+    _isPaymentSuccess = false;
+    _isPaymentPending = true;
   }
-
 }

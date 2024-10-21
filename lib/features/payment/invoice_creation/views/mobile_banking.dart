@@ -1,6 +1,5 @@
 import 'package:crafty_bay/features/payment/invoice_creation/models/payment_type_enum.dart';
 import 'package:crafty_bay/features/payment/invoice_creation/state_holders/invoice_creation_state.dart';
-import 'package:crafty_bay/features/payment/invoice_creation/utils/invoice_creation_strings.dart';
 import 'package:crafty_bay/features/payment/invoice_creation/widgets/payment_methods.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

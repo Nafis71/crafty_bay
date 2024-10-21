@@ -1,5 +1,4 @@
 import 'package:crafty_bay/core/utils/app_routes.dart';
-import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/features/profile/models/profile_updation_model.dart';
 import 'package:crafty_bay/features/profile/widgets/profile_options.dart';
@@ -11,6 +10,7 @@ import 'package:get/get.dart';
 
 import '../../../../core/state_holders/profile_state.dart';
 import '../../../../core/themes/theme_switcher.dart';
+import '../../utils/profile_view_strings.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
@@ -24,8 +24,8 @@ class _ProfileViewState extends State<ProfileView> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
     return Scaffold(
-      appBar:
-          craftyAppBar(title: AppStrings.profileScreenTitle, context: context),
+      appBar: craftyAppBar(
+          title: ProfileViewStrings.profileScreenTitle, context: context),
       body: GetBuilder<ProfileState>(
         builder: (profileState) {
           return SingleChildScrollView(
@@ -36,14 +36,15 @@ class _ProfileViewState extends State<ProfileView> {
                 ProfileOverview(profileState: profileState),
                 Gap(30),
                 ProfileOptions(
-                  optionLeadingWidget: Text(AppStrings.changeNameText),
+                  optionLeadingWidget: Text(ProfileViewStrings.changeNameText),
                   optionTrailingWidget: IconButton(
                     color: Theme.of(context).primaryColor,
                     onPressed: () {
                       navigator!.pushNamed(
                         AppRoutes.profileUpdationView,
                         arguments: ProfileUpdationModel(
-                          profileUpdationType: AppStrings.changeNameText,
+                          profileUpdationType:
+                              ProfileViewStrings.changeNameText,
                           value: profileState.userModel!.cusName.toString(),
                         ),
                       );
@@ -57,7 +58,7 @@ class _ProfileViewState extends State<ProfileView> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        AppStrings.changeShipAddressText,
+                        ProfileViewStrings.changeShipAddressText,
                         style: Theme.of(context).textTheme.labelSmall!.copyWith(
                               fontSize: 14,
                             ),
@@ -79,7 +80,8 @@ class _ProfileViewState extends State<ProfileView> {
                       navigator!.pushNamed(
                         AppRoutes.profileUpdationView,
                         arguments: ProfileUpdationModel(
-                          profileUpdationType: AppStrings.changeShipAddressText,
+                          profileUpdationType:
+                              ProfileViewStrings.changeShipAddressText,
                           value: profileState.userModel!.shipAdd.toString(),
                         ),
                       );
@@ -89,7 +91,8 @@ class _ProfileViewState extends State<ProfileView> {
                 ),
                 Gap(5),
                 ProfileOptions(
-                  optionLeadingWidget: Text(AppStrings.changeContactNumberText),
+                  optionLeadingWidget:
+                      Text(ProfileViewStrings.changeContactNumberText),
                   optionTrailingWidget: IconButton(
                     color: Theme.of(context).primaryColor,
                     onPressed: () {
@@ -97,7 +100,7 @@ class _ProfileViewState extends State<ProfileView> {
                         AppRoutes.profileUpdationView,
                         arguments: ProfileUpdationModel(
                           profileUpdationType:
-                              AppStrings.changeContactNumberText,
+                              ProfileViewStrings.changeContactNumberText,
                           value: profileState.userModel!.cusPhone.toString(),
                         ),
                       );
@@ -108,7 +111,8 @@ class _ProfileViewState extends State<ProfileView> {
                 Gap(5),
                 GetBuilder<ThemeSwitcher>(builder: (themeSwitcher) {
                   return ProfileOptions(
-                      optionLeadingWidget: Text(AppStrings.darkModeText),
+                      optionLeadingWidget:
+                          Text(ProfileViewStrings.darkModeText),
                       optionTrailingWidget: ThemeSwitch(
                         themeSwitcher: themeSwitcher,
                       ));
@@ -121,7 +125,7 @@ class _ProfileViewState extends State<ProfileView> {
                       profileState.logout();
                       navigator!.pop();
                     },
-                    child: Text(AppStrings.logoutButtonText),
+                    child: Text(ProfileViewStrings.logoutButtonText),
                   ),
                 ),
                 Gap(10)

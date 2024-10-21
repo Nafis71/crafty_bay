@@ -1,6 +1,7 @@
-import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+
+import '../utils/product_details_strings.dart';
 
 class ProductDescription extends StatelessWidget {
   final String description;
@@ -15,7 +16,7 @@ class ProductDescription extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            AppStrings.productDescriptionHeader,
+            ProductDetailStrings.productDescriptionHeader,
             style: Theme.of(context)
                 .textTheme
                 .titleMedium!

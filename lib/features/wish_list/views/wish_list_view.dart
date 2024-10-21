@@ -1,6 +1,6 @@
-import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/core/widgets/grid_view_layout.dart';
+import 'package:crafty_bay/features/wish_list/utils/wish_list_view_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -24,12 +24,12 @@ class _WishListViewState extends State<WishListView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: craftyAppBar(title: AppStrings.wishListViewHeader),
+      appBar: craftyAppBar(title: WishListViewStrings.wishListViewHeader),
       body: GetBuilder<WishListState>(
         builder: (wishListState) {
           if (Get.find<ProfileState>().token.isEmpty) {
             return LoginPrompt(
-              subtitle: AppStrings.wishListLoginText,
+              subtitle: WishListViewStrings.wishListLoginText,
               futureExecution: (token) async {
                 await Get.find<CartViewState>().getCartList(token);
               },
@@ -56,7 +56,7 @@ class _WishListViewState extends State<WishListView> {
                   ),
                   const Gap(15),
                   const Text(
-                    AppStrings.noWishListFoundText,
+                    WishListViewStrings.noWishListFoundText,
                   ),
                 ],
               ),

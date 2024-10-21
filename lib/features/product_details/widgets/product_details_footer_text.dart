@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../core/utils/app_strings.dart';
 import '../state_holders/product_state.dart';
+import '../utils/product_details_strings.dart';
 
 class ProductDetailsFooterText extends StatelessWidget {
   const ProductDetailsFooterText({super.key});
@@ -15,7 +15,7 @@ class ProductDetailsFooterText extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              AppStrings.productPriceHeader,
+              ProductDetailStrings.productPriceHeader,
               style: Theme.of(context)
                   .textTheme
                   .labelSmall!

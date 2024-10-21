@@ -7,7 +7,6 @@ import 'package:crafty_bay/features/payment/invoice_creation/views/internet_bank
 import 'package:crafty_bay/features/payment/invoice_creation/views/mobile_banking.dart';
 import 'package:crafty_bay/features/payment/invoice_creation/widgets/invoice_creation_footer.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 
 class InvoiceCreationView extends StatefulWidget {
   const InvoiceCreationView({super.key});

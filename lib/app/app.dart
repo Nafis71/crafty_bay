@@ -9,6 +9,7 @@ import '../core/themes/theme_switcher.dart';
 
 class CraftyBay extends StatefulWidget {
   final bool? isDarkModeEnabled;
+
   const CraftyBay({super.key, this.isDarkModeEnabled});
 
   @override

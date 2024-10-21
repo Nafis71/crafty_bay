@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../../core/themes/app_color.dart';
-import '../../../core/themes/theme_switcher.dart';
-import '../../../core/widgets/product_rating.dart';
-import '../../product_details/views/product_details_view/product_details_view.dart';
+import '../../../../core/themes/app_color.dart';
+import '../../../../core/themes/theme_switcher.dart';
+import '../../../../core/widgets/product_rating.dart';
+import '../../../product_details/views/product_details_view/product_details_view.dart';
 
 class SearchResult extends StatelessWidget {
   final List<RemarkProductData> matchQuery;

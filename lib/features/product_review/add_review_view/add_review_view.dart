@@ -1,8 +1,9 @@
 import 'package:crafty_bay/core/services/internet_service_error.dart';
 import 'package:crafty_bay/core/services/response/failure.dart';
-import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:crafty_bay/core/utils/form_validation.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
+import 'package:crafty_bay/features/product_review/add_review_view/utils/add_review_view_strings.dart';
+
 import 'package:crafty_bay/features/product_review/widgets/product_review_rating_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -11,7 +12,7 @@ import 'package:get/get.dart';
 import '../../../../core/state_holders/profile_state.dart';
 import '../../../../core/widgets/circular_loading.dart';
 import '../../../../core/wrappers/app_snack_bar.dart';
-import '../../state_holders/product_review_state.dart';
+import '../state_holders/product_review_state.dart';
 
 class AddReviewView extends StatefulWidget {
   final int productId;
@@ -24,14 +25,10 @@ class AddReviewView extends StatefulWidget {
 
 class _AddReviewViewState extends State<AddReviewView> {
   late final GlobalKey<FormState> _formKey;
-  late final TextEditingController _firstNameTEController;
-  late final TextEditingController _lastNameTEController;
   late final TextEditingController _reviewTEController;
 
   @override
   void initState() {
-    _firstNameTEController = TextEditingController();
-    _lastNameTEController = TextEditingController();
     _reviewTEController = TextEditingController();
     _formKey = GlobalKey<FormState>();
     super.initState();
@@ -40,7 +37,8 @@ class _AddReviewViewState extends State<AddReviewView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: craftyAppBar(title: AppStrings.addReviewHeader, context: context),
+      appBar: craftyAppBar(
+          title: AddReviewViewStrings.addReviewHeader, context: context),
       body: SingleChildScrollView(
         child: Padding(
           padding:
@@ -52,35 +50,17 @@ class _AddReviewViewState extends State<AddReviewView> {
                 child: Column(
                   children: [
                     TextFormField(
-                      controller: _firstNameTEController,
-                      decoration: const InputDecoration(
-                        hintText: AppStrings.firstNameHintText,
-                      ),
-                      validator: FormValidation.validateFirstName,
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                    ),
-                    const Gap(20),
-                    TextFormField(
-                      controller: _lastNameTEController,
-                      decoration: const InputDecoration(
-                        hintText: AppStrings.lastNameHintText,
-                      ),
-                      validator: FormValidation.validateFirstName,
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                    ),
-                    const Gap(20),
-                    TextFormField(
                       controller: _reviewTEController,
                       maxLines: 10,
                       keyboardType: TextInputType.multiline,
                       decoration: const InputDecoration(
-                        hintText: AppStrings.writeReviewHintText,
+                        hintText: AddReviewViewStrings.writeReviewHintText,
                       ),
                       validator: FormValidation.validateReview,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                     ),
                     const Gap(20),
-                    Text(AppStrings.ratingBarHeaderText),
+                    Text(AddReviewViewStrings.ratingBarHeaderText),
                     const Gap(10),
                     ProductReviewRatingBar.show(initialRating: 3),
                     const Gap(30),
@@ -97,8 +77,8 @@ class _AddReviewViewState extends State<AddReviewView> {
                             createReview(productReviewViewModel);
                           }
                         },
-                        child: const Text(
-                          AppStrings.reviewSubmitButtonText,
+                        child: Text(
+                          AddReviewViewStrings.reviewSubmitButtonText,
                         ),
                       );
                     })
@@ -120,7 +100,7 @@ class _AddReviewViewState extends State<AddReviewView> {
     );
     if (status && mounted) {
       AppSnackBar.show(
-        message: AppStrings.reviewCreationSuccessMessage,
+        message: AddReviewViewStrings.reviewCreationSuccessMessage,
         context: context,
         isError: false,
       );
@@ -133,7 +113,7 @@ class _AddReviewViewState extends State<AddReviewView> {
             failure.statusCode != 500) &&
         mounted) {
       AppSnackBar.show(
-        message: AppStrings.reviewCreationFailedMessage,
+        message: AddReviewViewStrings.reviewCreationFailedMessage,
         context: context,
         isError: true,
       );
@@ -149,8 +129,6 @@ class _AddReviewViewState extends State<AddReviewView> {
 
   @override
   void dispose() {
-    _firstNameTEController.dispose();
-    _lastNameTEController.dispose();
     _reviewTEController.dispose();
     super.dispose();
   }

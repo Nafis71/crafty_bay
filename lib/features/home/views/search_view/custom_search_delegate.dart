@@ -1,14 +1,14 @@
-import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:crafty_bay/features/home/models/remark_product_model/remark_product_data.dart';
+import 'package:crafty_bay/features/home/views/search_view/search_result.dart';
 import 'package:crafty_bay/features/home/widgets/search_alternative.dart';
-import 'package:crafty_bay/features/home/widgets/search_result.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../core/themes/search_bar_theme.dart';
-import '../../../core/themes/theme_switcher.dart';
-import '../state_holders/home_state.dart';
+import '../../../../core/themes/search_bar_theme.dart';
+import '../../../../core/themes/theme_switcher.dart';
+import '../../state_holders/home_state.dart';
+import '../../utils/search_strings.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
   @override
@@ -58,7 +58,7 @@ class CustomSearchDelegate extends SearchDelegate {
   Widget buildResults(BuildContext context) {
     if (query.isEmpty) {
       return const SearchAlternative(
-        message: AppStrings.searchWithNameText,
+        message: SearchStrings.searchWithNameText,
         icon: CupertinoIcons.search,
       );
     }
@@ -70,7 +70,7 @@ class CustomSearchDelegate extends SearchDelegate {
     }
     if (matchQuery.isEmpty) {
       return SearchAlternative(
-        message: AppStrings.noSearchResultText(query),
+        message: SearchStrings.noSearchResultText(query),
         icon: Icons.search_off_outlined,
       );
     }
@@ -80,7 +80,7 @@ class CustomSearchDelegate extends SearchDelegate {
   @override
   Widget buildSuggestions(BuildContext context) {
     return const SearchAlternative(
-      message: AppStrings.searchWithNameText,
+      message: SearchStrings.searchWithNameText,
       icon: CupertinoIcons.search,
     );
   }

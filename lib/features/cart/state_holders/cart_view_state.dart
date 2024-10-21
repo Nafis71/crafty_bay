@@ -146,7 +146,7 @@ class CartViewState extends GetxController {
         token: Get.find<ProfileState>().token,
         deleteIndex: i,
       );
-      i=-1;
+      i = -1;
       print("Deleted");
     }
   }

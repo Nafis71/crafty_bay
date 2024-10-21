@@ -13,6 +13,7 @@ import '../../../../core/state_holders/connection_state.dart';
 import '../../../../core/state_holders/profile_state.dart';
 import '../../../../core/wrappers/app_snack_bar.dart';
 import '../../../../core/wrappers/svg_image_loader.dart';
+import '../../../authentication/login_view/utils/login_view_strings.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -76,7 +77,7 @@ class _SplashViewState extends State<SplashView> {
                     const CircularLoading(),
                     const Gap(20),
                     Text(
-                      AppStrings.appVersion,
+                      LoginViewStrings.appVersion,
                       style: Theme.of(context).textTheme.bodyMedium,
                     )
                   ],
@@ -101,7 +102,7 @@ class _SplashViewState extends State<SplashView> {
       await Get.find<CartViewState>().getCartList(
         Get.find<ProfileState>().token,
       );
-    }else{
+    } else {
       await Future.delayed(Duration(seconds: 3));
     }
     await Get.find<ProfileState>().loadUserDataFromStorage();

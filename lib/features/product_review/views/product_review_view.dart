@@ -1,6 +1,5 @@
 import 'package:crafty_bay/core/services/internet_service_error.dart';
 import 'package:crafty_bay/core/services/response/failure.dart';
-import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/core/widgets/shimmer_generator.dart';
 import 'package:crafty_bay/core/widgets/view_footer.dart';
@@ -12,12 +11,14 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/services/user_auth_service/user_auth_service.dart';
-import '../../../../core/utils/app_assets.dart';
-import '../../../../core/widgets/alternative_widget.dart';
-import '../../../../core/wrappers/svg_image_loader.dart';
-import '../../state_holders/product_review_state.dart';
+import '../../../core/services/user_auth_service/user_auth_service.dart';
+import '../../../core/utils/app_assets.dart';
+import '../../../core/widgets/alternative_widget.dart';
+import '../../../core/wrappers/svg_image_loader.dart';
+import '../../product_details/utils/product_details_strings.dart';
 import '../add_review_view/add_review_view.dart';
+import '../state_holders/product_review_state.dart';
+import '../utils/product_review_strings.dart';
 
 class ProductReviewView extends StatefulWidget {
   final int productId;
@@ -41,7 +42,7 @@ class _ProductReviewViewState extends State<ProductReviewView> {
     Size size = MediaQuery.sizeOf(context);
     return Scaffold(
       appBar: craftyAppBar(
-        title: AppStrings.productReviewHeader,
+        title: ProductDetailStrings.productReviewHeader,
         context: context,
       ),
       body: GetBuilder<ProductReviewState>(
@@ -74,7 +75,7 @@ class _ProductReviewViewState extends State<ProductReviewView> {
                   ),
                   const Gap(15),
                   const Text(
-                    AppStrings.noReviewFoundText,
+                    ProductReviewStrings.noReviewFoundText,
                   ),
                 ],
               ),

@@ -1,4 +1,4 @@
-import 'package:crafty_bay/features/home/widgets/section_header.dart';
+import 'package:crafty_bay/features/home/views/search_view/section_header.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 

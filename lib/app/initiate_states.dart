@@ -6,7 +6,7 @@ import 'package:crafty_bay/features/payment/payment_webView/state_holders/paymen
 import 'package:get/get.dart';
 
 import '../core/state_holders/profile_state.dart';
-import '../features/authentication/views/otp_verification_view/state_holders/countdown_timer.dart';
+import '../features/authentication/otp_verification_view/state_holders/countdown_timer.dart';
 import '../features/base_navigation/state_holders/base_navigation_state.dart';
 import '../features/cart/state_holders/cart_view_state.dart';
 import '../features/category/state_holders/category_view_state.dart';

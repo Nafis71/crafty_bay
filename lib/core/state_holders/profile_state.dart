@@ -3,11 +3,11 @@ import 'dart:developer';
 
 import 'package:crafty_bay/core/models/user_model/user_model.dart';
 import 'package:crafty_bay/core/services/profile_detail_service.dart';
-import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:get/get.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../features/profile/utils/profile_view_strings.dart';
 import '../services/response/success.dart';
 
 class ProfileState extends GetxController {
@@ -130,11 +130,11 @@ class ProfileState extends GetxController {
     setIsBusy = true;
     _responseStatus = false;
     switch (profileUpdationType) {
-      case AppStrings.changeNameText:
+      case ProfileViewStrings.changeNameText:
         userModel!.cusName = value;
-      case AppStrings.changeShipAddressText:
+      case ProfileViewStrings.changeShipAddressText:
         userModel!.shipAdd = value;
-      case AppStrings.changeContactNumberText:
+      case ProfileViewStrings.changeContactNumberText:
         userModel!.cusPhone = value;
     }
     response =

@@ -1,10 +1,9 @@
 import 'package:crafty_bay/core/services/prefetch_service.dart';
-import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:crafty_bay/core/widgets/category_card_shimmer.dart';
 import 'package:crafty_bay/core/widgets/product_card.dart';
 import 'package:crafty_bay/core/widgets/shimmer_generator.dart';
 import 'package:crafty_bay/features/home/models/remark_product_model/remark_product_data.dart';
-import 'package:crafty_bay/features/home/views/all_product_view/all_product_view.dart';
+import 'package:crafty_bay/features/home/utils/home_view_strings.dart';
 import 'package:crafty_bay/features/home/widgets/app_search_bar.dart';
 import 'package:crafty_bay/features/home/widgets/carousel_indicator.dart';
 import 'package:crafty_bay/features/home/widgets/carousel_slider_shimmer.dart';
@@ -16,6 +15,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/widgets/crafty_app_bar.dart';
+import '../../../all_product_view/all_product_view.dart';
 import '../../../base_navigation/state_holders/base_navigation_state.dart';
 import '../../../category/state_holders/category_view_state.dart';
 import '../../../category/widgets/category_card.dart';
@@ -72,7 +72,7 @@ class _HomeViewState extends State<HomeView> {
               const Gap(30),
               (Get.find<CategoryViewState>().categoryList.isNotEmpty)
                   ? ProductLayoutSection(
-                      sectionTitle: AppStrings.homeCategoryHeader,
+                      sectionTitle: HomeViewStrings.homeCategoryHeader,
                       cardWidget: SizedBox(
                         height: 100,
                         child: ListView.separated(
@@ -103,7 +103,7 @@ class _HomeViewState extends State<HomeView> {
               const Gap(20),
               (homeState.popularProductList.isNotEmpty)
                   ? ProductLayoutSection(
-                      sectionTitle: AppStrings.homePopularHeader,
+                      sectionTitle: HomeViewStrings.homePopularHeader,
                       cardWidget: getProductCard(homeState.popularProductList),
                       onTap: () {
                         Navigator.push(
@@ -111,7 +111,7 @@ class _HomeViewState extends State<HomeView> {
                           MaterialPageRoute(
                             builder: (context) => AllProductView(
                               elementList: homeState.popularProductList,
-                              appBarTitle: AppStrings.homePopularHeader,
+                              appBarTitle: HomeViewStrings.homePopularHeader,
                             ),
                           ),
                         );
@@ -126,7 +126,7 @@ class _HomeViewState extends State<HomeView> {
               const Gap(20),
               (homeState.specialProductList.isNotEmpty)
                   ? ProductLayoutSection(
-                      sectionTitle: AppStrings.homeSpecialHeader,
+                      sectionTitle: HomeViewStrings.homeSpecialHeader,
                       cardWidget: getProductCard(homeState.specialProductList),
                       onTap: () {
                         Navigator.push(
@@ -134,7 +134,7 @@ class _HomeViewState extends State<HomeView> {
                           MaterialPageRoute(
                             builder: (context) => AllProductView(
                               elementList: homeState.specialProductList,
-                              appBarTitle: AppStrings.homeSpecialHeader,
+                              appBarTitle: HomeViewStrings.homeSpecialHeader,
                             ),
                           ),
                         );
@@ -149,7 +149,7 @@ class _HomeViewState extends State<HomeView> {
               const Gap(20),
               (homeState.newProductList.isNotEmpty)
                   ? ProductLayoutSection(
-                      sectionTitle: AppStrings.homeNewHeader,
+                      sectionTitle: HomeViewStrings.homeNewHeader,
                       cardWidget: getProductCard(homeState.newProductList),
                       onTap: () {
                         Navigator.push(
@@ -157,7 +157,7 @@ class _HomeViewState extends State<HomeView> {
                           MaterialPageRoute(
                             builder: (context) => AllProductView(
                               elementList: homeState.newProductList,
-                              appBarTitle: AppStrings.homeNewHeader,
+                              appBarTitle: HomeViewStrings.homeNewHeader,
                             ),
                           ),
                         );

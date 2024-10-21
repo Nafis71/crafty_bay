@@ -1,10 +1,10 @@
 import 'package:crafty_bay/core/services/internet_service_error.dart';
 import 'package:crafty_bay/core/services/response/failure.dart';
-import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/core/widgets/login_prompt.dart';
 import 'package:crafty_bay/core/widgets/shimmer_generator.dart';
 import 'package:crafty_bay/core/widgets/view_footer.dart';
+import 'package:crafty_bay/features/cart/utils/cart_view_strings.dart';
 import 'package:crafty_bay/features/cart/widgets/cart_footer_button.dart';
 import 'package:crafty_bay/features/cart/widgets/cart_footer_text.dart';
 import 'package:crafty_bay/features/cart/widgets/cart_list_card.dart';
@@ -40,13 +40,13 @@ class _CartViewState extends State<CartView> {
     Orientation orientation = MediaQuery.orientationOf(context);
     return Scaffold(
       appBar: craftyAppBar(
-        title: AppStrings.cartViewHeader,
+        title: CartViewStrings.cartViewHeader,
       ),
       body: GetBuilder<CartViewState>(
         builder: (cartViewModel) {
           if (Get.find<ProfileState>().token.isEmpty) {
             return LoginPrompt(
-              subtitle: AppStrings.cartLoginText,
+              subtitle: CartViewStrings.cartLoginText,
               futureExecution: (token) async {
                 await cartViewModel.getCartList(token);
               },
@@ -85,7 +85,7 @@ class _CartViewState extends State<CartView> {
                   ),
                   const Gap(15),
                   const Text(
-                    AppStrings.noCartListFoundText,
+                    CartViewStrings.noCartListFoundText,
                   ),
                 ],
               ),
@@ -148,7 +148,7 @@ class _CartViewState extends State<CartView> {
           failure.statusCode != 601 ||
           failure.statusCode != 500) {
         AppSnackBar.show(
-          message: AppStrings.cartDeletionFailureText,
+          message: CartViewStrings.cartDeletionFailureText,
           context: context,
           isError: true,
         );

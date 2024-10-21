@@ -1,6 +1,5 @@
 import 'package:crafty_bay/core/services/internet_service_error.dart';
 import 'package:crafty_bay/core/services/response/failure.dart';
-import 'package:crafty_bay/core/utils/app_strings.dart';
 import 'package:crafty_bay/core/widgets/circular_loading.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/features/profile/models/profile_updation_model.dart';
@@ -10,6 +9,7 @@ import 'package:get/get.dart';
 
 import '../../../../core/state_holders/profile_state.dart';
 import '../../../../core/wrappers/app_snack_bar.dart';
+import '../../utils/profile_view_strings.dart';
 
 class ProfileUpdationView extends StatefulWidget {
   final ProfileUpdationModel profileUpdationModel;
@@ -57,7 +57,7 @@ class _ProfileUpdationViewState extends State<ProfileUpdationView> {
                       keyboardType: TextInputType.multiline,
                       maxLines:
                           (widget.profileUpdationModel.profileUpdationType ==
-                                  AppStrings.changeShipAddressText)
+                                  ProfileViewStrings.changeShipAddressText)
                               ? 4
                               : 1,
                       decoration: InputDecoration(
@@ -78,7 +78,7 @@ class _ProfileUpdationViewState extends State<ProfileUpdationView> {
                             onPressed: () {
                               updateProfile(profileState);
                             },
-                            child: Text(AppStrings.updateButtonText),
+                            child: Text(ProfileViewStrings.updateButtonText),
                           );
                         },
                       ),
@@ -100,7 +100,7 @@ class _ProfileUpdationViewState extends State<ProfileUpdationView> {
     );
     if (status && mounted) {
       AppSnackBar.show(
-        message: AppStrings.profileUpdationSuccessText,
+        message: ProfileViewStrings.profileUpdationSuccessText,
         context: context,
         isError: false,
       );

@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 
 import '../../../core/themes/theme_switcher.dart';
 import '../state_holders/home_state.dart';
-import 'custom_search_delegate.dart';
+import '../views/search_view/custom_search_delegate.dart';
 
 class AppSearchBar extends StatelessWidget {
   const AppSearchBar({super.key});

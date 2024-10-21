@@ -1,5 +1,1 @@
-enum PaymentType{
-  mobileBanking,
-  internetBanking,
-  card
-}
+enum PaymentType { mobileBanking, internetBanking, card }

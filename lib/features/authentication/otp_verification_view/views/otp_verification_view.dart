@@ -4,18 +4,18 @@ import 'package:crafty_bay/core/services/internet_service_error.dart';
 import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/utils/form_validation.dart';
 import 'package:crafty_bay/core/widgets/authentication_layout.dart';
+import 'package:crafty_bay/features/authentication/otp_verification_view/utils/otp_verification_strings.dart';
 import 'package:crafty_bay/features/authentication/state_holders/auth_state.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-import '../../../../core/themes/app_color.dart';
-import '../../../../core/themes/pin_code_theme.dart';
-import '../../../../core/utils/app_routes.dart';
-import '../../../../core/utils/app_strings.dart';
-import '../../../../core/wrappers/app_snack_bar.dart';
-import 'state_holders/countdown_timer.dart';
+import '../../../../../core/themes/app_color.dart';
+import '../../../../../core/themes/pin_code_theme.dart';
+import '../../../../../core/utils/app_routes.dart';
+import '../../../../../core/wrappers/app_snack_bar.dart';
+import '../state_holders/countdown_timer.dart';
 
 class OtpVerificationView extends StatefulWidget {
   final Map<String, dynamic> viewData;
@@ -66,8 +66,9 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 AuthenticationLayout(
-                  titleText: AppStrings.otpVerificationScreenTitle,
-                  descriptionText: AppStrings.otpVerificationScreenDescription,
+                  titleText: OtpVerificationStrings.otpVerificationScreenTitle,
+                  descriptionText:
+                      OtpVerificationStrings.otpVerificationScreenDescription,
                   formWidget: Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal:
@@ -100,7 +101,8 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
                             text: TextSpan(
                               children: [
                                 TextSpan(
-                                  text: AppStrings.otpExpirationText,
+                                  text:
+                                      OtpVerificationStrings.otpExpirationText,
                                   style: Theme.of(context).textTheme.bodyMedium,
                                 ),
                                 TextSpan(
@@ -130,7 +132,7 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
                               );
                             },
                             child: Text(
-                              AppStrings.otpResendButtonText,
+                              OtpVerificationStrings.otpResendButtonText,
                               style: TextStyle(
                                 color: (timer.timeLeft == 0)
                                     ? AppColor.appPrimaryColor
@@ -160,7 +162,9 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
   Future<void> _verifyOTP(AuthState authState) async {
     if (Get.find<CountdownTimerState>().timeLeft == 0) {
       AppSnackBar.show(
-          message: AppStrings.invalidOTP, context: context, isError: true);
+          message: OtpVerificationStrings.invalidOTP,
+          context: context,
+          isError: true);
       return;
     }
     bool status = await authState.verifyOTP(widget.viewData['email'],
@@ -180,7 +184,9 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
             failure.statusCode != 601 ||
             failure.statusCode != 500)) {
       AppSnackBar.show(
-          message: AppStrings.invalidOTP, context: context, isError: true);
+          message: OtpVerificationStrings.invalidOTP,
+          context: context,
+          isError: true);
       return;
     }
     if (mounted) {
