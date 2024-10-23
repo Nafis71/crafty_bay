@@ -1,6 +1,7 @@
 import 'package:crafty_bay/features/authentication/state_holders/auth_state.dart';
 import 'package:crafty_bay/features/complete_profile/state_holders/complete_profile_view_state.dart';
 import 'package:crafty_bay/features/home/state_holders/offer_carousel_state.dart';
+import 'package:crafty_bay/features/onboarding/splash_view/state_holders/splash_view_state.dart';
 import 'package:crafty_bay/features/payment/invoice_creation/state_holders/invoice_creation_state.dart';
 import 'package:crafty_bay/features/payment/payment_webView/state_holders/payment_webView_state.dart';
 import 'package:get/get.dart';
@@ -18,6 +19,7 @@ import '../features/wish_list/state_holders/wish_list_state.dart';
 class InitiateViewModel extends Bindings {
   @override
   void dependencies() {
+    Get.lazyPut(() => SplashViewState());
     Get.lazyPut(() => CountdownTimerState());
     Get.lazyPut(() => BaseNavigationState());
     Get.lazyPut(() => CategoryViewState());

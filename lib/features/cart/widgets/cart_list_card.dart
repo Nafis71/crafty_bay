@@ -4,7 +4,7 @@ import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/features/cart/models/cart_list_model/cart_data.dart';
 import 'package:crafty_bay/features/cart/models/cart_list_model/cart_product_data.dart';
 import 'package:crafty_bay/features/cart/widgets/loading_dialog.dart';
-import 'package:crafty_bay/features/product_details/views/product_details_view/product_details_view.dart';
+import 'package:crafty_bay/features/product_details/views/product_details_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';

@@ -19,11 +19,11 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/state_holders/profile_state.dart';
-import '../../../../core/wrappers/svg_image_loader.dart';
-import '../../../cart/state_holders/cart_view_state.dart';
-import '../../state_holders/product_state.dart';
-import '../../widgets/product_image_carousel.dart';
+import '../../../core/state_holders/profile_state.dart';
+import '../../../core/wrappers/svg_image_loader.dart';
+import '../../cart/state_holders/cart_view_state.dart';
+import '../state_holders/product_state.dart';
+import '../widgets/product_image_carousel.dart';
 
 class ProductDetailsView extends StatefulWidget {
   final int productId;

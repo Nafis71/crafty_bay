@@ -164,10 +164,9 @@ class ProfileState extends GetxController {
     _token = "";
   }
 
-  void clearUserDataFromStorage(SharedPreferences localStorage){
+  void clearUserDataFromStorage(SharedPreferences localStorage) {
     localStorage.setString("token", "");
     localStorage.setString("userData", "");
     localStorage.setBool("hasUserData", false);
   }
-
 }

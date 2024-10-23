@@ -3,7 +3,7 @@ import 'package:crafty_bay/core/utils/product_rating_calculator.dart';
 import 'package:crafty_bay/core/widgets/circular_loading.dart';
 import 'package:crafty_bay/core/widgets/product_rating.dart';
 import 'package:crafty_bay/core/widgets/small_icon_card.dart';
-import 'package:crafty_bay/features/product_details/views/product_details_view/product_details_view.dart';
+import 'package:crafty_bay/features/product_details/views/product_details_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';

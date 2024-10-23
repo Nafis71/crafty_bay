@@ -15,11 +15,11 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/widgets/crafty_app_bar.dart';
-import '../../../all_product_view/all_product_view.dart';
 import '../../../base_navigation/state_holders/base_navigation_state.dart';
 import '../../../category/state_holders/category_view_state.dart';
 import '../../../category/widgets/category_card.dart';
 import '../../state_holders/home_state.dart';
+import '../all_product_view/all_product_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});

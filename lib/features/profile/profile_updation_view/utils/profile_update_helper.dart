@@ -7,19 +7,19 @@ import '../../../../core/services/internet_service_error.dart';
 import '../../../../core/services/response/failure.dart';
 import '../../../../core/wrappers/app_snack_bar.dart';
 
-class ProfileUpdateHelper{
+class ProfileUpdateHelper {
   static ProfileUpdateHelper? _instance;
 
   ProfileUpdateHelper._();
 
   factory ProfileUpdateHelper() => _instance ??= ProfileUpdateHelper._();
 
-  Future<void> initiateProfileUpdate(
-      {required String profileUpdationType,
-      required String changedValue,
-      required BuildContext context,
-      required ProfileState profileState,
-      }) async {
+  Future<void> initiateProfileUpdate({
+    required String profileUpdationType,
+    required String changedValue,
+    required BuildContext context,
+    required ProfileState profileState,
+  }) async {
     bool status = await profileState.updateProfile(
       profileUpdationType,
       changedValue,
