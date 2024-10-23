@@ -10,8 +10,8 @@ import '../../features/authentication/login_view/views/login_view.dart';
 import '../../features/authentication/otp_verification_view/views/otp_verification_view.dart';
 import '../../features/onboarding/splash_view/views/splash_view.dart';
 import '../../features/profile/profile_updation_view/models/profile_updation_model.dart';
-import '../../features/profile/profile_updation_view/profile_updation_view.dart';
-import '../../features/profile/profile_view/profile_view.dart';
+import '../../features/profile/profile_updation_view/views/profile_updation_view.dart';
+import '../../features/profile/profile_view/views/profile_view.dart';
 
 class AppRoutes {
   static const String splashView = "/";

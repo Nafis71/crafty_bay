@@ -2,13 +2,12 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:crafty_bay/core/models/user_model/user_model.dart';
-import 'package:crafty_bay/core/services/profile_detail_service.dart';
+import 'package:crafty_bay/features/profile/shared/services/profile_detail_service.dart';
 import 'package:get/get.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../features/profile/utils/profile_view_strings.dart';
-import '../services/response/success.dart';
+import '../../profile_view/utils/profile_view_strings.dart';
+import '../../../../core/services/response/success.dart';
 
 class ProfileState extends GetxController {
   UserModel? _userModel;

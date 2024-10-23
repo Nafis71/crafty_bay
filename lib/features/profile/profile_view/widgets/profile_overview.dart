@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/state_holders/profile_state.dart';
+import '../../shared/state_holders/profile_state.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../base_navigation/state_holders/base_navigation_state.dart';
 import '../../../cart/state_holders/cart_view_state.dart';

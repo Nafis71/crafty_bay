@@ -10,7 +10,7 @@ import 'package:crafty_bay/features/authentication/state_holders/auth_state.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../core/services/internet_service_error.dart';
+import '../../../../core/services/network_service/internet_service_error.dart';
 import '../../../../../core/themes/app_color.dart';
 
 class LoginView extends StatefulWidget {

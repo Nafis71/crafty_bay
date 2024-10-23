@@ -3,8 +3,8 @@ import 'package:crafty_bay/features/authentication/services/auth_service.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../core/services/prefetch_service.dart';
-import '../../../core/state_holders/profile_state.dart';
+import '../../../core/services/prefetch_service/prefetch_service.dart';
+import '../../profile/shared/state_holders/profile_state.dart';
 
 class AuthState extends GetxController {
   bool _isBusy = false;

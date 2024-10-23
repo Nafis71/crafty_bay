@@ -1,4 +1,4 @@
-import 'package:crafty_bay/features/product_review/models/product_review_model/profile.dart';
+import 'package:crafty_bay/features/product_review/shared/models/product_review_model/profile.dart';
 
 class ProductReviewModel {
   int? id;

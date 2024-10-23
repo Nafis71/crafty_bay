@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'core/state_holders/connection_state.dart';
+import 'core/services/network_service/network_state.dart';
 import 'core/themes/theme_switcher.dart';
 
 void main() async {

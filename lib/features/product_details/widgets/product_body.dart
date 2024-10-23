@@ -1,12 +1,12 @@
 import 'package:crafty_bay/core/utils/product_rating_calculator.dart';
 import 'package:crafty_bay/core/widgets/small_icon_card.dart';
 import 'package:crafty_bay/features/product_details/models/product.dart';
-import 'package:crafty_bay/features/product_review/views/product_review_view.dart';
+import 'package:crafty_bay/features/product_review/show_product_review_view/views/show_product_review_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../../core/state_holders/profile_state.dart';
+import '../../profile/shared/state_holders/profile_state.dart';
 import '../../../core/themes/app_color.dart';
 import '../../wish_list/state_holders/wish_list_state.dart';
 import '../state_holders/product_state.dart';
@@ -103,7 +103,7 @@ class ProductBody extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ProductReviewView(
+                      builder: (context) => ShowProductReviewView(
                         productId: product.id!,
                       ),
                     ),

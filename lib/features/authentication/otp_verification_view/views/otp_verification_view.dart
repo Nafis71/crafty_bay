@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:crafty_bay/core/services/internet_service_error.dart';
+import 'package:crafty_bay/core/services/network_service/internet_service_error.dart';
 import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/utils/form_validation.dart';
 import 'package:crafty_bay/core/widgets/authentication_layout.dart';

@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/state_holders/profile_state.dart';
-import '../utils/profile_view_strings.dart';
-import 'models/profile_updation_model.dart';
+import '../../shared/state_holders/profile_state.dart';
+import '../../profile_view/utils/profile_view_strings.dart';
+import '../models/profile_updation_model.dart';
 
 class ProfileUpdationView extends StatefulWidget {
   final ProfileUpdationModel profileUpdationModel;

@@ -1,6 +1,6 @@
-import 'package:crafty_bay/core/services/network_repository.dart';
+import 'package:crafty_bay/core/services/network_service/network_repository.dart';
 
-import '../../../core/services/network_urls/network_urls.dart';
+import '../../../core/utils/network_urls.dart';
 
 class CategoryService extends NetworkRepository {
   static CategoryService? _instance;

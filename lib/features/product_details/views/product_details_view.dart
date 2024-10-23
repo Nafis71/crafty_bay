@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:crafty_bay/core/services/internet_service_error.dart';
+import 'package:crafty_bay/core/services/network_service/internet_service_error.dart';
 import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/services/user_auth_service/user_auth_service.dart';
 import 'package:crafty_bay/core/utils/app_assets.dart';
@@ -19,7 +19,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../../core/state_holders/profile_state.dart';
+import '../../profile/shared/state_holders/profile_state.dart';
 import '../../../core/wrappers/svg_image_loader.dart';
 import '../../cart/state_holders/cart_view_state.dart';
 import '../state_holders/product_state.dart';

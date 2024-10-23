@@ -1,13 +1,12 @@
 import 'package:crafty_bay/core/utils/product_rating_calculator.dart';
-import 'package:crafty_bay/features/product_review/models/product_review_model/product_review_model.dart';
-import 'package:crafty_bay/features/product_review/widgets/product_review_rating_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-
-import '../../../core/themes/app_color.dart';
-import '../../../core/themes/theme_switcher.dart';
+import '../../../../core/themes/app_color.dart';
+import '../../../../core/themes/theme_switcher.dart';
+import '../../shared/models/product_review_model/product_review_model.dart';
+import '../../shared/widgets/product_review_rating_bar.dart';
 import '../utils/product_review_strings.dart';
 
 class ProductReviewCard extends StatelessWidget {

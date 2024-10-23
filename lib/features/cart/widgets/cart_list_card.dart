@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:crafty_bay/core/services/internet_service_error.dart';
+import 'package:crafty_bay/core/services/network_service/internet_service_error.dart';
 import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/features/cart/models/cart_list_model/cart_data.dart';
 import 'package:crafty_bay/features/cart/models/cart_list_model/cart_product_data.dart';
@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../../core/state_holders/profile_state.dart';
+import '../../profile/shared/state_holders/profile_state.dart';
 import '../../../core/themes/theme_switcher.dart';
 import '../../../core/widgets/small_icon_card.dart';
 import '../state_holders/cart_view_state.dart';

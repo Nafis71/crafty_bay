@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 
-import '../../features/category/state_holders/category_view_state.dart';
-import '../../features/home/state_holders/home_state.dart';
-import '../../features/wish_list/state_holders/wish_list_state.dart';
+import '../../../features/category/state_holders/category_view_state.dart';
+import '../../../features/home/state_holders/home_state.dart';
+import '../../../features/wish_list/state_holders/wish_list_state.dart';
 
 class PrefetchService {
   static Future<bool> prefetchProductSliderList() async {

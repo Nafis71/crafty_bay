@@ -1,5 +1,6 @@
-import 'package:crafty_bay/core/services/network_repository.dart';
-import 'package:crafty_bay/core/services/network_urls/network_urls.dart';
+import 'package:crafty_bay/core/services/network_service/network_repository.dart';
+
+import '../../../core/utils/network_urls.dart';
 
 class WishListService extends NetworkRepository {
   static WishListService? _instance;

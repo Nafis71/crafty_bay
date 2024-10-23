@@ -1,6 +1,6 @@
-import 'package:crafty_bay/core/services/internet_service_error.dart';
+import 'package:crafty_bay/core/services/network_service/internet_service_error.dart';
 import 'package:crafty_bay/core/services/response/failure.dart';
-import 'package:crafty_bay/core/state_holders/profile_state.dart';
+import 'package:crafty_bay/features/profile/shared/state_holders/profile_state.dart';
 import 'package:crafty_bay/core/utils/app_routes.dart';
 import 'package:crafty_bay/core/widgets/circular_loading.dart';
 import 'package:crafty_bay/features/payment/invoice_creation/state_holders/invoice_creation_state.dart';

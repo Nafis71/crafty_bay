@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../../core/state_holders/profile_state.dart';
+import '../../profile/shared/state_holders/profile_state.dart';
 import '../../../core/widgets/alternative_widget.dart';
 import '../../../core/widgets/circular_loading.dart';
 import '../../../core/widgets/login_prompt.dart';

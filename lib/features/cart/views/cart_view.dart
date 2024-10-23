@@ -1,4 +1,4 @@
-import 'package:crafty_bay/core/services/internet_service_error.dart';
+import 'package:crafty_bay/core/services/network_service/internet_service_error.dart';
 import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/core/widgets/login_prompt.dart';
@@ -13,7 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../../core/state_holders/profile_state.dart';
+import '../../profile/shared/state_holders/profile_state.dart';
 import '../../../core/utils/app_assets.dart';
 import '../../../core/widgets/alternative_widget.dart';
 import '../../../core/wrappers/app_snack_bar.dart';

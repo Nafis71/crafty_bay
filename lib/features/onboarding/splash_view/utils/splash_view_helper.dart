@@ -2,8 +2,8 @@ import 'package:crafty_bay/features/onboarding/splash_view/state_holders/splash_
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/services/prefetch_service.dart';
-import '../../../../core/state_holders/profile_state.dart';
+import '../../../../core/services/prefetch_service/prefetch_service.dart';
+import '../../../profile/shared/state_holders/profile_state.dart';
 import '../../../../core/utils/app_routes.dart';
 import '../../../cart/state_holders/cart_view_state.dart';
 

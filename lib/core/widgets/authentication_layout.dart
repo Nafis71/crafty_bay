@@ -5,7 +5,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 import '../../features/authentication/login_view/utils/login_view_strings.dart';
-import '../state_holders/profile_state.dart';
+import '../../features/profile/shared/state_holders/profile_state.dart';
 import '../utils/app_assets.dart';
 import '../wrappers/svg_image_loader.dart';
 

@@ -1,6 +1,6 @@
-import 'package:crafty_bay/core/services/network_repository.dart';
+import 'package:crafty_bay/core/services/network_service/network_repository.dart';
 
-import 'network_urls/network_urls.dart';
+import '../../../../core/utils/network_urls.dart';
 
 class ProfileDetailService extends NetworkRepository {
   Future<Object> readProfile(String token) async {

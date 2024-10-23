@@ -1,7 +1,7 @@
 import 'package:crafty_bay/core/utils/app_routes.dart';
 import 'package:get/get.dart';
 
-import '../../state_holders/profile_state.dart';
+import '../../../features/profile/shared/state_holders/profile_state.dart';
 
 class UserAuthService {
   static Future<bool> isUserAuthenticated(

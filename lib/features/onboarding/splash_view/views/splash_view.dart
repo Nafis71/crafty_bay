@@ -8,7 +8,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:widget_and_text_animator/widget_and_text_animator.dart';
 
-import '../../../../../core/state_holders/connection_state.dart';
+import '../../../../core/services/network_service/network_state.dart';
 import '../../../../../core/wrappers/app_snack_bar.dart';
 import '../../../../../core/wrappers/svg_image_loader.dart';
 

@@ -1,35 +1,35 @@
-import 'package:crafty_bay/core/services/internet_service_error.dart';
+import 'package:crafty_bay/core/services/network_service/internet_service_error.dart';
 import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/core/widgets/shimmer_generator.dart';
 import 'package:crafty_bay/core/widgets/view_footer.dart';
-import 'package:crafty_bay/features/product_review/widgets/product_review_card.dart';
-import 'package:crafty_bay/features/product_review/widgets/product_review_footer_button.dart';
-import 'package:crafty_bay/features/product_review/widgets/product_review_footer_text.dart';
-import 'package:crafty_bay/features/product_review/widgets/product_review_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../../core/services/user_auth_service/user_auth_service.dart';
-import '../../../core/utils/app_assets.dart';
-import '../../../core/widgets/alternative_widget.dart';
-import '../../../core/wrappers/svg_image_loader.dart';
-import '../../product_details/utils/product_details_strings.dart';
-import '../add_review_view/add_review_view.dart';
-import '../state_holders/product_review_state.dart';
+import '../../../../core/services/user_auth_service/user_auth_service.dart';
+import '../../../../core/utils/app_assets.dart';
+import '../../../../core/widgets/alternative_widget.dart';
+import '../../../../core/wrappers/svg_image_loader.dart';
+import '../../../product_details/utils/product_details_strings.dart';
+import '../../add_review_view/views/add_review_view.dart';
+import '../../shared/state_holders/product_review_state.dart';
 import '../utils/product_review_strings.dart';
+import '../widgets/product_review_card.dart';
+import '../widgets/product_review_footer_button.dart';
+import '../widgets/product_review_footer_text.dart';
+import '../widgets/product_review_shimmer.dart';
 
-class ProductReviewView extends StatefulWidget {
+class ShowProductReviewView extends StatefulWidget {
   final int productId;
 
-  const ProductReviewView({super.key, required this.productId});
+  const ShowProductReviewView({super.key, required this.productId});
 
   @override
-  State<ProductReviewView> createState() => _ProductReviewViewState();
+  State<ShowProductReviewView> createState() => _ShowProductReviewViewState();
 }
 
-class _ProductReviewViewState extends State<ProductReviewView> {
+class _ShowProductReviewViewState extends State<ShowProductReviewView> {
   @override
   void initState() {
     getProductReview();

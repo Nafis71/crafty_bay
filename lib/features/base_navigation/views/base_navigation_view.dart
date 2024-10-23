@@ -1,4 +1,4 @@
-import 'package:crafty_bay/core/state_holders/connection_state.dart';
+import 'package:crafty_bay/core/services/network_service/network_state.dart';
 import 'package:crafty_bay/features/base_navigation/state_holders/base_navigation_state.dart';
 import 'package:crafty_bay/features/base_navigation/views/tab_view.dart';
 import 'package:crafty_bay/features/base_navigation/widgets/bottom_navigation.dart';

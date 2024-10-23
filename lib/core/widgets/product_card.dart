@@ -10,7 +10,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 import '../../features/wish_list/state_holders/wish_list_state.dart';
-import '../state_holders/profile_state.dart';
+import '../../features/profile/shared/state_holders/profile_state.dart';
 import '../themes/app_color.dart';
 import '../themes/theme_switcher.dart';
 

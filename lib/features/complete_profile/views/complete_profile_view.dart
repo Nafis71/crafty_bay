@@ -4,8 +4,8 @@ import 'package:crafty_bay/features/complete_profile/widgets/complete_profile_fo
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../core/services/internet_service_error.dart';
-import '../../../core/state_holders/profile_state.dart';
+import '../../../core/services/network_service/internet_service_error.dart';
+import '../../profile/shared/state_holders/profile_state.dart';
 import '../utils/complete_profile_strings.dart';
 
 class CompleteProfileView extends StatefulWidget {

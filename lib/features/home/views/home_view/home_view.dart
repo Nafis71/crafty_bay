@@ -1,4 +1,4 @@
-import 'package:crafty_bay/core/services/prefetch_service.dart';
+import 'package:crafty_bay/core/services/prefetch_service/prefetch_service.dart';
 import 'package:crafty_bay/core/widgets/category_card_shimmer.dart';
 import 'package:crafty_bay/core/widgets/product_card.dart';
 import 'package:crafty_bay/core/widgets/shimmer_generator.dart';

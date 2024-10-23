@@ -1,4 +1,4 @@
-import 'package:crafty_bay/core/services/internet_service_error.dart';
+import 'package:crafty_bay/core/services/network_service/internet_service_error.dart';
 import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/services/response/success.dart';
 import 'package:crafty_bay/core/utils/app_assets.dart';

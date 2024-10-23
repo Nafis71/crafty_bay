@@ -1,5 +1,5 @@
 import 'package:crafty_bay/core/services/response/success.dart';
-import 'package:crafty_bay/core/state_holders/profile_state.dart';
+import 'package:crafty_bay/features/profile/shared/state_holders/profile_state.dart';
 import 'package:crafty_bay/features/cart/models/cart_list_model/cart_data.dart';
 import 'package:crafty_bay/features/cart/models/cart_list_model/cart_list_model.dart';
 import 'package:crafty_bay/features/cart/services/cart_service.dart';

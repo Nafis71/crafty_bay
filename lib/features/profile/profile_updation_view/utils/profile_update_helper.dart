@@ -1,11 +1,11 @@
-import 'package:crafty_bay/core/state_holders/profile_state.dart';
-import 'package:crafty_bay/features/profile/utils/profile_view_strings.dart';
+import 'package:crafty_bay/features/profile/shared/state_holders/profile_state.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 
-import '../../../../core/services/internet_service_error.dart';
+import '../../../../core/services/network_service/internet_service_error.dart';
 import '../../../../core/services/response/failure.dart';
 import '../../../../core/wrappers/app_snack_bar.dart';
+import '../../profile_view/utils/profile_view_strings.dart';
 
 class ProfileUpdateHelper {
   static ProfileUpdateHelper? _instance;
