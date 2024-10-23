@@ -4,17 +4,16 @@ import 'package:crafty_bay/features/onboarding/splash_view/state_holders/splash_
 import 'package:crafty_bay/features/payment/invoice_creation/state_holders/invoice_creation_state.dart';
 import 'package:crafty_bay/features/payment/payment_webView/state_holders/payment_webView_state.dart';
 import 'package:get/get.dart';
-
-import '../features/authentication/shared/state_holders/auth_state.dart';
-import '../features/profile/shared/state_holders/profile_state.dart';
-import '../features/authentication/otp_verification_view/state_holders/countdown_timer.dart';
-import '../features/base_navigation/state_holders/base_navigation_state.dart';
-import '../features/cart/state_holders/cart_view_state.dart';
-import '../features/category/state_holders/category_view_state.dart';
-import '../features/home/state_holders/home_state.dart';
-import '../features/product_details/state_holders/product_state.dart';
-import '../features/product_review/shared/state_holders/product_review_state.dart';
-import '../features/wish_list/state_holders/wish_list_state.dart';
+import 'package:crafty_bay/features/authentication/shared/state_holders/auth_state.dart';
+import 'package:crafty_bay/features/profile/shared/state_holders/profile_state.dart';
+import 'package:crafty_bay/features/authentication/otp_verification_view/state_holders/countdown_timer.dart';
+import 'package:crafty_bay/features/base_navigation/state_holders/base_navigation_state.dart';
+import 'package:crafty_bay/features/cart/state_holders/cart_view_state.dart';
+import 'package:crafty_bay/features/category/state_holders/category_view_state.dart';
+import 'package:crafty_bay/features/home/state_holders/home_state.dart';
+import 'package:crafty_bay/features/product_details/state_holders/product_state.dart';
+import 'package:crafty_bay/features/product_review/shared/state_holders/product_review_state.dart';
+import 'package:crafty_bay/features/wish_list/state_holders/wish_list_state.dart';
 
 class InitiateViewModel extends Bindings {
   @override
