@@ -1,17 +1,13 @@
-import 'package:crafty_bay/core/services/response/failure.dart';
-import 'package:crafty_bay/core/services/response/success.dart';
-import 'package:crafty_bay/core/utils/app_routes.dart';
 import 'package:crafty_bay/core/utils/form_validation.dart';
 import 'package:crafty_bay/core/widgets/authentication_layout.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
-import 'package:crafty_bay/core/wrappers/app_snack_bar.dart';
+import 'package:crafty_bay/features/authentication/login_view/utils/login_view_helper.dart';
 import 'package:crafty_bay/features/authentication/login_view/utils/login_view_strings.dart';
-import 'package:crafty_bay/features/authentication/state_holders/auth_state.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/services/network_service/internet_service_error.dart';
 import '../../../../../core/themes/app_color.dart';
+import '../../shared/state_holders/auth_state.dart';
 
 class LoginView extends StatefulWidget {
   final Function(dynamic) futureExecution;
@@ -70,7 +66,12 @@ class _LoginViewState extends State<LoginView> {
               deviceOrientation: deviceOrientation,
               onButtonPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  _sendOTP(Get.find<AuthState>());
+                  LoginViewHelper.sendOTP(
+                    authState: Get.find<AuthState>(),
+                    email: _emailTEController.text,
+                    context: context,
+                    futureExecution: widget.futureExecution,
+                  );
                 }
               },
             ),
@@ -78,35 +79,6 @@ class _LoginViewState extends State<LoginView> {
         ),
       ),
     );
-  }
-
-  Future<void> _sendOTP(AuthState authState) async {
-    bool status = await authState.sendOTP(_emailTEController.text.trim());
-    if (status && mounted) {
-      Map<String, dynamic> viewData = {
-        "email": _emailTEController.text.trim(),
-        "futureExecution": widget.futureExecution
-      };
-      navigator!.pushReplacementNamed(
-        AppRoutes.otpVerificationView,
-        arguments: viewData,
-      );
-      return;
-    }
-    if (!status && mounted && authState.response is Success) {
-      AppSnackBar.show(
-        message: LoginViewStrings.otpSendError,
-        context: context,
-        isError: true,
-      );
-    }
-    Failure failure = authState.response as Failure;
-    if (mounted) {
-      InternetServiceError.showErrorSnackBar(
-        failure: failure,
-        context: context,
-      );
-    }
   }
 
   @override

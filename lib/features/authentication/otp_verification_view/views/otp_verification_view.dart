@@ -5,7 +5,6 @@ import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/utils/form_validation.dart';
 import 'package:crafty_bay/core/widgets/authentication_layout.dart';
 import 'package:crafty_bay/features/authentication/otp_verification_view/utils/otp_verification_strings.dart';
-import 'package:crafty_bay/features/authentication/state_holders/auth_state.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -15,6 +14,7 @@ import '../../../../../core/themes/app_color.dart';
 import '../../../../../core/themes/pin_code_theme.dart';
 import '../../../../../core/utils/app_routes.dart';
 import '../../../../../core/wrappers/app_snack_bar.dart';
+import '../../shared/state_holders/auth_state.dart';
 import '../state_holders/countdown_timer.dart';
 
 class OtpVerificationView extends StatefulWidget {

@@ -1,4 +1,3 @@
-import 'package:crafty_bay/features/authentication/state_holders/auth_state.dart';
 import 'package:crafty_bay/features/complete_profile/state_holders/complete_profile_view_state.dart';
 import 'package:crafty_bay/features/home/state_holders/offer_carousel_state.dart';
 import 'package:crafty_bay/features/onboarding/splash_view/state_holders/splash_view_state.dart';
@@ -6,6 +5,7 @@ import 'package:crafty_bay/features/payment/invoice_creation/state_holders/invoi
 import 'package:crafty_bay/features/payment/payment_webView/state_holders/payment_webView_state.dart';
 import 'package:get/get.dart';
 
+import '../features/authentication/shared/state_holders/auth_state.dart';
 import '../features/profile/shared/state_holders/profile_state.dart';
 import '../features/authentication/otp_verification_view/state_holders/countdown_timer.dart';
 import '../features/base_navigation/state_holders/base_navigation_state.dart';

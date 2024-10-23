@@ -1,10 +1,10 @@
 import 'package:crafty_bay/core/widgets/circular_loading.dart';
-import 'package:crafty_bay/features/authentication/state_holders/auth_state.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 import '../../features/authentication/login_view/utils/login_view_strings.dart';
+import '../../features/authentication/shared/state_holders/auth_state.dart';
 import '../../features/profile/shared/state_holders/profile_state.dart';
 import '../utils/app_assets.dart';
 import '../wrappers/svg_image_loader.dart';
