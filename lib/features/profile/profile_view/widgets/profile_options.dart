@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../core/themes/theme_switcher.dart';
+import '../../../../core/themes/theme_switcher.dart';
+
 
 class ProfileOptions extends StatelessWidget {
   final Widget optionTrailingWidget, optionLeadingWidget;

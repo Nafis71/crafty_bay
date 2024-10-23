@@ -78,7 +78,7 @@ class _InvoiceCreationViewState extends State<InvoiceCreationView> {
           body: Column(
             children: [
               Expanded(
-                flex: (orientation == Orientation.portrait) ? 8 : 2,
+                flex: (orientation == Orientation.portrait) ? 9 : 2,
                 child: TabBarView(
                   children: [
                     MobileBanking(),

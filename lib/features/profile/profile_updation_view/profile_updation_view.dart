@@ -1,15 +1,12 @@
-import 'package:crafty_bay/core/services/internet_service_error.dart';
-import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/widgets/circular_loading.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
-import 'package:crafty_bay/features/profile/models/profile_updation_model.dart';
+import 'package:crafty_bay/features/profile/profile_updation_view/utils/profile_update_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-
 import '../../../../core/state_holders/profile_state.dart';
-import '../../../../core/wrappers/app_snack_bar.dart';
-import '../../utils/profile_view_strings.dart';
+import '../utils/profile_view_strings.dart';
+import 'models/profile_updation_model.dart';
 
 class ProfileUpdationView extends StatefulWidget {
   final ProfileUpdationModel profileUpdationModel;
@@ -76,7 +73,14 @@ class _ProfileUpdationViewState extends State<ProfileUpdationView> {
                           }
                           return ElevatedButton(
                             onPressed: () {
-                              updateProfile(profileState);
+                              ProfileUpdateHelper().initiateProfileUpdate(
+                                profileUpdationType: widget
+                                    .profileUpdationModel.profileUpdationType,
+                                changedValue:
+                                    _textEditingController.text.trim(),
+                                context: context,
+                                profileState: profileState,
+                              );
                             },
                             child: Text(ProfileViewStrings.updateButtonText),
                           );
@@ -91,29 +95,6 @@ class _ProfileUpdationViewState extends State<ProfileUpdationView> {
         ),
       ),
     );
-  }
-
-  Future<void> updateProfile(ProfileState profileViewModel) async {
-    bool status = await profileViewModel.updateProfile(
-      widget.profileUpdationModel.profileUpdationType,
-      _textEditingController.text.trim(),
-    );
-    if (status && mounted) {
-      AppSnackBar.show(
-        message: ProfileViewStrings.profileUpdationSuccessText,
-        context: context,
-        isError: false,
-      );
-      navigator!.pop();
-      return;
-    }
-    if (mounted) {
-      Failure failure = profileViewModel.response as Failure;
-      InternetServiceError.showErrorSnackBar(
-        failure: failure,
-        context: context,
-      );
-    }
   }
 
   @override

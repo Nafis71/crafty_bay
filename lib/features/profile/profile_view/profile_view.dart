@@ -1,16 +1,16 @@
 import 'package:crafty_bay/core/utils/app_routes.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
-import 'package:crafty_bay/features/profile/models/profile_updation_model.dart';
-import 'package:crafty_bay/features/profile/widgets/profile_options.dart';
-import 'package:crafty_bay/features/profile/widgets/profile_overview.dart';
-import 'package:crafty_bay/features/profile/widgets/theme_switch.dart';
+import 'package:crafty_bay/features/profile/profile_view/widgets/profile_options.dart';
+import 'package:crafty_bay/features/profile/profile_view/widgets/profile_overview.dart';
+import 'package:crafty_bay/features/profile/profile_view/widgets/theme_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/state_holders/profile_state.dart';
 import '../../../../core/themes/theme_switcher.dart';
-import '../../utils/profile_view_strings.dart';
+import '../profile_updation_view/models/profile_updation_model.dart';
+import '../utils/profile_view_strings.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({super.key});

@@ -3,15 +3,15 @@ import 'package:crafty_bay/features/complete_profile/views/complete_profile_view
 import 'package:crafty_bay/features/payment/invoice_creation/models/payment_method.dart';
 import 'package:crafty_bay/features/payment/invoice_creation/views/invoice_creation_view.dart';
 import 'package:crafty_bay/features/payment/payment_webView/views/payment_webView.dart';
-import 'package:crafty_bay/features/profile/models/profile_updation_model.dart';
-import 'package:crafty_bay/features/profile/views/profile_updation_view/profile_updation_view.dart';
-import 'package:crafty_bay/features/profile/views/profile_view/profile_view.dart';
 import 'package:crafty_bay/features/wish_list/views/wish_list_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../features/authentication/login_view/views/login_view.dart';
 import '../../features/authentication/otp_verification_view/views/otp_verification_view.dart';
 import '../../features/onboarding/views/splash_view/splash_view.dart';
+import '../../features/profile/profile_updation_view/models/profile_updation_model.dart';
+import '../../features/profile/profile_updation_view/profile_updation_view.dart';
+import '../../features/profile/profile_view/profile_view.dart';
 
 class AppRoutes {
   static const String splashView = "/";
