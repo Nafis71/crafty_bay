@@ -1,9 +1,9 @@
-import 'package:crafty_bay/core/services/network_service/internet_service_error.dart';
 import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/core/widgets/login_prompt.dart';
 import 'package:crafty_bay/core/widgets/shimmer_generator.dart';
 import 'package:crafty_bay/core/widgets/view_footer.dart';
+import 'package:crafty_bay/features/cart/utils/cart_view_helper.dart';
 import 'package:crafty_bay/features/cart/utils/cart_view_strings.dart';
 import 'package:crafty_bay/features/cart/widgets/cart_footer_button.dart';
 import 'package:crafty_bay/features/cart/widgets/cart_footer_text.dart';
@@ -13,11 +13,10 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../profile/shared/state_holders/profile_state.dart';
 import '../../../core/utils/app_assets.dart';
 import '../../../core/widgets/alternative_widget.dart';
-import '../../../core/wrappers/app_snack_bar.dart';
 import '../../../core/wrappers/svg_image_loader.dart';
+import '../../profile/shared/state_holders/profile_state.dart';
 import '../state_holders/cart_view_state.dart';
 
 class CartView extends StatefulWidget {
@@ -30,7 +29,11 @@ class CartView extends StatefulWidget {
 class _CartViewState extends State<CartView> {
   @override
   void initState() {
-    getCartList();
+    CartViewHelper.getCartList(
+      cartViewState: Get.find<CartViewState>(),
+      profileState: Get.find<ProfileState>(),
+      context: context,
+    );
     super.initState();
   }
 
@@ -63,7 +66,11 @@ class _CartViewState extends State<CartView> {
           if (cartViewModel.response is Failure) {
             return AlternativeWidget(
               onRefresh: () {
-                getCartList();
+                CartViewHelper.getCartList(
+                  cartViewState: Get.find<CartViewState>(),
+                  profileState: Get.find<ProfileState>(),
+                  context: context,
+                );
               },
               child: const SvgImageLoader(
                 assetLocation: AppAssets.noInternet,
@@ -74,7 +81,11 @@ class _CartViewState extends State<CartView> {
           if (cartViewModel.cartList.isEmpty) {
             return AlternativeWidget(
               onRefresh: () {
-                getCartList();
+                CartViewHelper.getCartList(
+                  cartViewState: Get.find<CartViewState>(),
+                  profileState: Get.find<ProfileState>(),
+                  context: context,
+                );
               },
               child: Column(
                 children: [
@@ -98,14 +109,20 @@ class _CartViewState extends State<CartView> {
                 child: ListView.separated(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-                  itemBuilder: (context, index) {
+                  itemBuilder: (_, index) {
                     return CartListCard(
                       cartData: cartViewModel.cartList[index],
                       productData:
                           cartViewModel.cartList[index].cartProductData!,
                       index: index,
                       onDeletePressed: (int cardId, int index) {
-                        deleteCartItem(cardId, index);
+                        CartViewHelper.deleteCartItem(
+                          cartId: cardId,
+                          index: index,
+                          cartViewState: Get.find<CartViewState>(),
+                          profileState: Get.find<ProfileState>(),
+                          context: context,
+                        );
                       },
                     );
                   },
@@ -130,58 +147,5 @@ class _CartViewState extends State<CartView> {
         },
       ),
     );
-  }
-
-  Future<void> deleteCartItem(int cartId, int index) async {
-    CartViewState cartViewModel = Get.find<CartViewState>();
-    bool status = await cartViewModel.deleteCartItem(
-      cartId: cartId,
-      token: Get.find<ProfileState>().token,
-      deleteIndex: index,
-    );
-    if (status && mounted) {
-      return;
-    }
-    Failure failure = cartViewModel.deleteResponse as Failure;
-    if (mounted) {
-      if (failure.statusCode != 600 ||
-          failure.statusCode != 601 ||
-          failure.statusCode != 500) {
-        AppSnackBar.show(
-          message: CartViewStrings.cartDeletionFailureText,
-          context: context,
-          isError: true,
-        );
-        return;
-      }
-      InternetServiceError.showErrorSnackBar(
-        failure: failure,
-        context: context,
-      );
-    }
-  }
-
-  Future<void> getCartList() async {
-    CartViewState cartViewModel = Get.find<CartViewState>();
-    ProfileState profileState = Get.find<ProfileState>();
-    if (await profileState.isTokenExpired()) {
-      profileState.setToken = "";
-      cartViewModel.update();
-      return;
-    }
-    if (cartViewModel.cartList.isNotEmpty ||
-        Get.find<ProfileState>().token.isEmpty) {
-      return;
-    }
-    bool status = await cartViewModel.getCartList(
-      Get.find<ProfileState>().token,
-    );
-    if (!status && mounted) {
-      Failure failure = cartViewModel.response as Failure;
-      InternetServiceError.showErrorSnackBar(
-        failure: failure,
-        context: context,
-      );
-    }
   }
 }
