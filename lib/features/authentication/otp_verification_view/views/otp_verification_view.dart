@@ -1,10 +1,9 @@
 import 'dart:async';
 
-import 'package:crafty_bay/core/services/network_service/internet_service_error.dart';
-import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/utils/form_validation.dart';
 import 'package:crafty_bay/core/widgets/authentication_layout.dart';
 import 'package:crafty_bay/features/authentication/otp_verification_view/utils/otp_verification_strings.dart';
+import 'package:crafty_bay/features/authentication/otp_verification_view/utils/otp_verification_view_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -12,8 +11,6 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../../../../core/themes/app_color.dart';
 import '../../../../../core/themes/pin_code_theme.dart';
-import '../../../../../core/utils/app_routes.dart';
-import '../../../../../core/wrappers/app_snack_bar.dart';
 import '../../shared/state_holders/auth_state.dart';
 import '../state_holders/countdown_timer.dart';
 
@@ -83,7 +80,14 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
                         pinTheme: PinCodeTheme.getPinTheme(context),
                         onCompleted: (pin) {
                           if (_formKey.currentState!.validate()) {
-                            _verifyOTP(Get.find<AuthState>());
+                            OtpVerificationViewHelper.verifyOTP(
+                              authState: Get.find<AuthState>(),
+                              context: context,
+                              email: widget.viewData['email'],
+                              otp: _otpTEController.text,
+                              futureExecution:
+                                  widget.viewData['futureExecution'],
+                            );
                           }
                         },
                         cursorColor: AppColor.appPrimaryColor,
@@ -147,7 +151,13 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
                   deviceOrientation: deviceOrientation,
                   onButtonPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      _verifyOTP(Get.find<AuthState>());
+                      OtpVerificationViewHelper.verifyOTP(
+                        authState: Get.find<AuthState>(),
+                        context: context,
+                        email: widget.viewData['email'],
+                        otp: _otpTEController.text,
+                        futureExecution: widget.viewData['futureExecution'],
+                      );
                     }
                   },
                 ),
@@ -157,44 +167,6 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
         ),
       ),
     );
-  }
-
-  Future<void> _verifyOTP(AuthState authState) async {
-    if (Get.find<CountdownTimerState>().timeLeft == 0) {
-      AppSnackBar.show(
-          message: OtpVerificationStrings.invalidOTP,
-          context: context,
-          isError: true);
-      return;
-    }
-    bool status = await authState.verifyOTP(widget.viewData['email'],
-        _otpTEController.text, widget.viewData['futureExecution']);
-    if (status && mounted && !authState.hasUserData) {
-      navigator!.pushReplacementNamed(AppRoutes.profileDetailView);
-      return;
-    }
-    if (status && mounted && authState.hasUserData) {
-      navigator!.pop();
-      return;
-    }
-    Failure failure = authState.response as Failure;
-    if (!status &&
-        mounted &&
-        (failure.statusCode != 600 ||
-            failure.statusCode != 601 ||
-            failure.statusCode != 500)) {
-      AppSnackBar.show(
-          message: OtpVerificationStrings.invalidOTP,
-          context: context,
-          isError: true);
-      return;
-    }
-    if (mounted) {
-      InternetServiceError.showErrorSnackBar(
-        failure: failure,
-        context: context,
-      );
-    }
   }
 
   @override

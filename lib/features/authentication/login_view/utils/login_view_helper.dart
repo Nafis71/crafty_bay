@@ -17,6 +17,7 @@ class LoginViewHelper {
       required BuildContext context,
       required Function(dynamic) futureExecution}) async {
     bool status = await authState.sendOTP(email.trim());
+    print(status);
     if (status && context.mounted) {
       Map<String, dynamic> viewData = {
         "email": email.trim(),
@@ -28,12 +29,14 @@ class LoginViewHelper {
       );
       return;
     }
+    print(context.mounted);
     if (!status && context.mounted && authState.response is Success) {
       AppSnackBar.show(
         message: LoginViewStrings.otpSendError,
         context: context,
         isError: true,
       );
+      return;
     }
     Failure failure = authState.response as Failure;
     if (context.mounted) {
