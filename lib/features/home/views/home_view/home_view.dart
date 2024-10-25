@@ -147,6 +147,7 @@ class _HomeViewState extends State<HomeView> {
                       shimmerHeight: 150,
                     ),
               const Gap(20),
+              const Gap(20),
               (homeState.newProductList.isNotEmpty)
                   ? ProductLayoutSection(
                       sectionTitle: HomeViewStrings.homeNewHeader,

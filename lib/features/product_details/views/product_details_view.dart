@@ -45,7 +45,6 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
   Widget build(BuildContext context) {
     Orientation deviceOrientation = MediaQuery.of(context).orientation;
     Size size = MediaQuery.sizeOf(context);
-    print(widget.productId);
     return Scaffold(
       appBar: craftyAppBar(
         title: ProductDetailStrings.productDetailsHeader,

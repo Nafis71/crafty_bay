@@ -1,6 +1,6 @@
 import 'package:crafty_bay/features/Home/views/home_view/home_view.dart';
 import 'package:crafty_bay/features/cart/views/cart_view.dart';
-import 'package:crafty_bay/features/category/views/category_view/category_view.dart';
+import 'package:crafty_bay/features/category/views/category_view.dart';
 import 'package:crafty_bay/features/wish_list/views/wish_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

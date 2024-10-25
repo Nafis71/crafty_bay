@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:crafty_bay/features/category/models/category_model/category_data.dart';
-import 'package:crafty_bay/features/category/views/category_product_view/category_product_view.dart';
+import 'package:crafty_bay/features/category/views/category_product_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 

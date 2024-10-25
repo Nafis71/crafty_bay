@@ -2,11 +2,12 @@ import 'package:crafty_bay/core/widgets/category_card_shimmer.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/core/widgets/grid_view_layout.dart';
 import 'package:crafty_bay/core/widgets/shimmer_generator.dart';
+import 'package:crafty_bay/features/category/utils/category_view_strings.dart';
 import 'package:crafty_bay/features/category/widgets/category_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../state_holders/category_view_state.dart';
+import '../state_holders/category_view_state.dart';
 
 class CategoryView extends StatefulWidget {
   final bool? fromHome;
@@ -20,10 +21,9 @@ class CategoryView extends StatefulWidget {
 class _CategoryViewState extends State<CategoryView> {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.sizeOf(context);
     return Scaffold(
       appBar: craftyAppBar(
-          title: "Categories",
+          title: categoryViewStrings.categoryViewAppBarTitle,
           context: (widget.fromHome == null) ? null : context),
       body: GetBuilder<CategoryViewState>(
         builder: (categoryViewModel) {

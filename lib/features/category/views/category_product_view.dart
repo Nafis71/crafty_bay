@@ -1,4 +1,3 @@
-import 'package:crafty_bay/core/services/network_service/internet_service_error.dart';
 import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/services/response/success.dart';
 import 'package:crafty_bay/core/utils/app_assets.dart';
@@ -6,14 +5,15 @@ import 'package:crafty_bay/core/widgets/alternative_widget.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/core/widgets/grid_view_layout.dart';
 import 'package:crafty_bay/core/widgets/shimmer_generator.dart';
+import 'package:crafty_bay/features/category/utils/category_view_helper.dart';
 import 'package:crafty_bay/features/category/widgets/category_product_view_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/widgets/product_card.dart';
-import '../../../../core/wrappers/svg_image_loader.dart';
-import '../../state_holders/category_view_state.dart';
+import '../../../core/widgets/product_card.dart';
+import '../../../core/wrappers/svg_image_loader.dart';
+import '../state_holders/category_view_state.dart';
 
 class CategoryProductView extends StatefulWidget {
   final int categoryId;
@@ -29,7 +29,11 @@ class CategoryProductView extends StatefulWidget {
 class _CategoryProductViewState extends State<CategoryProductView> {
   @override
   void initState() {
-    getProductByCategory();
+    CategoryViewHelper.getProductByCategory(
+      categoryViewState: Get.find<CategoryViewState>(),
+      categoryId: widget.categoryId,
+      context: context,
+    );
     super.initState();
   }
 
@@ -50,7 +54,13 @@ class _CategoryProductViewState extends State<CategoryProductView> {
           if (categoryViewModel.categoryProductData.isEmpty &&
               categoryViewModel.response is Success) {
             return AlternativeWidget(
-              onRefresh: getProductByCategory,
+              onRefresh: () {
+                CategoryViewHelper.getProductByCategory(
+                  categoryViewState: Get.find<CategoryViewState>(),
+                  categoryId: widget.categoryId,
+                  context: context,
+                );
+              },
               child: Column(
                 children: [
                   Icon(
@@ -68,7 +78,13 @@ class _CategoryProductViewState extends State<CategoryProductView> {
           }
           if (categoryViewModel.response is Failure) {
             return AlternativeWidget(
-              onRefresh: getProductByCategory,
+              onRefresh: () {
+                CategoryViewHelper.getProductByCategory(
+                  categoryViewState: Get.find<CategoryViewState>(),
+                  categoryId: widget.categoryId,
+                  context: context,
+                );
+              },
               child: const SvgImageLoader(
                 assetLocation: AppAssets.noInternet,
                 boxFit: BoxFit.contain,
@@ -89,17 +105,5 @@ class _CategoryProductViewState extends State<CategoryProductView> {
         },
       ),
     );
-  }
-
-  Future<void> getProductByCategory() async {
-    bool status = await Get.find<CategoryViewState>().getProductByCategory(
-      widget.categoryId.toString(),
-    );
-    if (!status && mounted) {
-      InternetServiceError.showErrorSnackBar(
-        failure: Get.find<CategoryViewState>().response as Failure,
-        context: context,
-      );
-    }
   }
 }
