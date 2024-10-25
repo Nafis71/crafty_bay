@@ -1,14 +1,11 @@
-import 'dart:async';
-
-import 'package:crafty_bay/core/services/network_service/internet_service_error.dart';
 import 'package:crafty_bay/core/services/response/failure.dart';
-import 'package:crafty_bay/core/services/user_auth_service/user_auth_service.dart';
 import 'package:crafty_bay/core/utils/app_assets.dart';
 import 'package:crafty_bay/core/widgets/alternative_widget.dart';
 import 'package:crafty_bay/core/widgets/crafty_app_bar.dart';
 import 'package:crafty_bay/core/widgets/shimmer_generator.dart';
 import 'package:crafty_bay/core/widgets/view_footer.dart';
 import 'package:crafty_bay/features/product_details/utils/product_details_strings.dart';
+import 'package:crafty_bay/features/product_details/utils/product_details_view_helper.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_body.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_description.dart';
 import 'package:crafty_bay/features/product_details/widgets/product_details_footer_button.dart';
@@ -19,9 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../../profile/shared/state_holders/profile_state.dart';
 import '../../../core/wrappers/svg_image_loader.dart';
-import '../../cart/state_holders/cart_view_state.dart';
 import '../state_holders/product_state.dart';
 import '../widgets/product_image_carousel.dart';
 
@@ -37,7 +32,11 @@ class ProductDetailsView extends StatefulWidget {
 class _ProductDetailsViewState extends State<ProductDetailsView> {
   @override
   void initState() {
-    loadProductDetails();
+    ProductDetailsViewHelper.loadProductDetails(
+      productState: Get.find<ProductState>(),
+      context: context,
+      productId: widget.productId,
+    );
     super.initState();
   }
 
@@ -63,7 +62,13 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
             }
             if (productState.response is Failure) {
               return AlternativeWidget(
-                onRefresh: loadProductDetails,
+                onRefresh: () {
+                  ProductDetailsViewHelper.loadProductDetails(
+                    productState: productState,
+                    context: context,
+                    productId: widget.productId,
+                  );
+                },
                 child: const SvgImageLoader(
                   assetLocation: AppAssets.noInternet,
                   boxFit: BoxFit.contain,
@@ -72,7 +77,13 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
             }
             if (productState.productData == null) {
               return AlternativeWidget(
-                onRefresh: loadProductDetails,
+                onRefresh: () {
+                  ProductDetailsViewHelper.loadProductDetails(
+                    productState: productState,
+                    context: context,
+                    productId: widget.productId,
+                  );
+                },
                 child: Column(
                   children: [
                     Icon(
@@ -124,7 +135,14 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                     child: ViewFooter(
                       leftWidget: const ProductDetailsFooterText(),
                       rightWidget: ProductDetailsFooterButton(
-                        addToCart: (cartViewState) => addToCart(cartViewState),
+                        addToCart: (cartViewState) {
+                          ProductDetailsViewHelper.addToCart(
+                            cartViewState: cartViewState,
+                            productState: productState,
+                            productId: widget.productId,
+                            context: context,
+                          );
+                        },
                       ),
                     ),
                   )
@@ -135,43 +153,5 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
         ),
       ),
     );
-  }
-
-  Future<void> addToCart(CartViewState cartViewModel) async {
-    bool isAuthenticated =
-        await UserAuthService.isUserAuthenticated(futureExecution: (token) {
-      addToCart(cartViewModel);
-    });
-    if (!isAuthenticated) {
-      return;
-    }
-    bool status = await cartViewModel.createCartList(
-      productId: widget.productId,
-      token: Get.find<ProfileState>().token,
-    );
-    if (!status && mounted) {
-      Failure failure = cartViewModel.response as Failure;
-      InternetServiceError.showErrorSnackBar(
-        failure: failure,
-        context: context,
-      );
-      return;
-    }
-    Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (timer.tick == 3) {
-        Get.find<ProductState>().setIsItemAddedToCart = false;
-      }
-    });
-  }
-
-  Future<void> loadProductDetails() async {
-    bool status =
-        await Get.find<ProductState>().getProductDetails(widget.productId);
-    if (!status && mounted && Get.find<ProductState>().response is Failure) {
-      InternetServiceError.showErrorSnackBar(
-        failure: Get.find<ProductState>().response as Failure,
-        context: context,
-      );
-    }
   }
 }

@@ -1,10 +1,8 @@
-import 'package:crafty_bay/core/services/response/failure.dart';
 import 'package:crafty_bay/core/widgets/authentication_layout.dart';
+import 'package:crafty_bay/features/complete_profile/utils/complete_profile_view_helper.dart';
 import 'package:crafty_bay/features/complete_profile/widgets/complete_profile_form.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../../core/services/network_service/internet_service_error.dart';
 import '../../profile/shared/state_holders/profile_state.dart';
 import '../utils/complete_profile_strings.dart';
 
@@ -24,16 +22,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
   final TextEditingController _postCodeTEController = TextEditingController();
   final TextEditingController _stateTEController = TextEditingController();
   final TextEditingController _countryTEController = TextEditingController();
-  final TextEditingController _faxTEController = TextEditingController();
   final TextEditingController _customerAddressTEController =
-      TextEditingController();
-  final TextEditingController _shippingCityTEController =
-      TextEditingController();
-  final TextEditingController _shippingPhoneTEController =
-      TextEditingController();
-  final TextEditingController _shippingStateTEController =
-      TextEditingController();
-  final TextEditingController _shippingPostCodeTEController =
       TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -44,12 +33,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
   final FocusNode _postCodeFocusNode = FocusNode();
   final FocusNode _stateFocusNode = FocusNode();
   final FocusNode _countryFocusNode = FocusNode();
-  final FocusNode _faxTEFocusNode = FocusNode();
   final FocusNode _customerAddressFocusNode = FocusNode();
-  final FocusNode _shippingCityFocusNode = FocusNode();
-  final FocusNode _shippingPhoneFocusNode = FocusNode();
-  final FocusNode _shippingStateFocusNode = FocusNode();
-  final FocusNode _shippingPostCodeFocusNode = FocusNode();
 
   @override
   void initState() {
@@ -92,38 +76,23 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
           buttonText: CompleteProfileStrings.profileDetailsButtonText,
           onButtonPressed: () {
             if (_formKey.currentState!.validate()) {
-              createProfile(Get.find<ProfileState>());
+              CompleteProfileViewHelper.createProfile(
+                profileState: Get.find<ProfileState>(),
+                name: _nameTEController.text.trim(),
+                mobile: _mobileTEController.text.trim(),
+                city: _cityTEController.text.trim(),
+                shippingAddress: _shippingAddressTEController.text.trim(),
+                postCode: _postCodeTEController.text.trim(),
+                customerAddress: _customerAddressTEController.text.trim(),
+                state: _stateTEController.text.trim(),
+                country: _countryTEController.text.trim(),
+                context: context,
+              );
             }
           },
         ),
       ),
     );
-  }
-
-  Future<void> createProfile(ProfileState profileState) async {
-    bool status = await profileState.createProfile(
-      name: _nameTEController.text.trim(),
-      mobile: _mobileTEController.text.trim(),
-      city: _cityTEController.text.trim(),
-      shippingAddress: _shippingAddressTEController.text.trim(),
-      postCode: _postCodeTEController.text.trim(),
-      customerAddress: _customerAddressTEController.text.trim(),
-      state: _stateTEController.text.trim(),
-      country: _countryTEController.text.trim(),
-    );
-    if (!status && mounted) {
-      Failure failure = profileState.response as Failure;
-      if (mounted) {
-        InternetServiceError.showErrorSnackBar(
-          failure: failure,
-          context: context,
-        );
-      }
-      return;
-    }
-    if (mounted) {
-      navigator!.pop();
-    }
   }
 
   @override
@@ -139,20 +108,10 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
     _postCodeFocusNode.dispose();
     _stateTEController.dispose();
     _stateFocusNode.dispose();
-    _faxTEController.dispose();
-    _faxTEFocusNode.dispose();
     _countryTEController.dispose();
     _countryFocusNode.dispose();
     _customerAddressTEController.dispose();
     _customerAddressFocusNode.dispose();
-    _shippingCityTEController.dispose();
-    _shippingCityFocusNode.dispose();
-    _shippingPhoneFocusNode.dispose();
-    _shippingPhoneTEController.dispose();
-    _shippingStateTEController.dispose();
-    _shippingStateFocusNode.dispose();
-    _shippingPostCodeTEController.dispose();
-    _shippingPostCodeFocusNode.dispose();
     super.dispose();
   }
 }

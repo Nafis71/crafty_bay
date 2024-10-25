@@ -1,8 +1,9 @@
-import 'package:crafty_bay/core/services/prefetch_service/prefetch_service.dart';
 import 'package:crafty_bay/core/widgets/category_card_shimmer.dart';
 import 'package:crafty_bay/core/widgets/product_card.dart';
 import 'package:crafty_bay/core/widgets/shimmer_generator.dart';
 import 'package:crafty_bay/features/home/models/remark_product_model/remark_product_data.dart';
+import 'package:crafty_bay/features/home/state_holders/home_view_state.dart';
+import 'package:crafty_bay/features/home/utils/home_view_helper.dart';
 import 'package:crafty_bay/features/home/utils/home_view_strings.dart';
 import 'package:crafty_bay/features/home/widgets/app_search_bar.dart';
 import 'package:crafty_bay/features/home/widgets/carousel_indicator.dart';
@@ -18,7 +19,6 @@ import '../../../../core/widgets/crafty_app_bar.dart';
 import '../../../base_navigation/state_holders/base_navigation_state.dart';
 import '../../../category/state_holders/category_view_state.dart';
 import '../../../category/widgets/category_card.dart';
-import '../../state_holders/home_state.dart';
 import '../all_product_view/all_product_view.dart';
 
 class HomeView extends StatefulWidget {
@@ -29,11 +29,10 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  late HomeState homeState;
 
   @override
   void initState() {
-    fetchHomeData();
+    HomeViewHelper.fetchHomeData();
     super.initState();
   }
 
@@ -41,7 +40,7 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: craftyAppBar(),
-      body: GetBuilder<HomeState>(builder: (homeState) {
+      body: GetBuilder<HomeViewState>(builder: (homeState) {
         return Container(
           margin: const EdgeInsets.only(left: 8, right: 8, top: 8),
           child: ListView(
@@ -175,15 +174,6 @@ class _HomeViewState extends State<HomeView> {
         );
       }),
     );
-  }
-
-  Future<void> fetchHomeData() async {
-    List<bool> responses = await PrefetchService.fetchHomeData();
-    if (responses.contains(false)) {
-      fetchHomeData();
-    } else {
-      Get.find<HomeState>().update();
-    }
   }
 
   Widget getProductCard(List<RemarkProductData> productList) {

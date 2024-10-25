@@ -1,15 +1,15 @@
 import 'package:get/get.dart';
 
 import '../../../features/category/state_holders/category_view_state.dart';
-import '../../../features/home/state_holders/home_state.dart';
+import '../../../features/home/state_holders/home_view_state.dart';
 import '../../../features/wish_list/state_holders/wish_list_state.dart';
 
 class PrefetchService {
   static Future<bool> prefetchProductSliderList() async {
-    if (Get.find<HomeState>().productSliderList.isNotEmpty) {
+    if (Get.find<HomeViewState>().productSliderList.isNotEmpty) {
       return true;
     }
-    return await Get.find<HomeState>().getProductSliderList();
+    return await Get.find<HomeViewState>().getProductSliderList();
   }
 
   static Future<bool> prefetchCategoryList() async {
@@ -20,24 +20,24 @@ class PrefetchService {
   }
 
   static Future<bool> prefetchPopularProductData() async {
-    if (Get.find<HomeState>().popularProductList.isNotEmpty) {
+    if (Get.find<HomeViewState>().popularProductList.isNotEmpty) {
       return true;
     }
-    return await Get.find<HomeState>().getPopularProduct();
+    return await Get.find<HomeViewState>().getPopularProduct();
   }
 
   static Future<bool> prefetchSpecialProductData() async {
-    if (Get.find<HomeState>().specialProductList.isNotEmpty) {
+    if (Get.find<HomeViewState>().specialProductList.isNotEmpty) {
       return true;
     }
-    return await Get.find<HomeState>().getSpecialProduct();
+    return await Get.find<HomeViewState>().getSpecialProduct();
   }
 
   static Future<bool> prefetchNewProductData() async {
-    if (Get.find<HomeState>().newProductList.isNotEmpty) {
+    if (Get.find<HomeViewState>().newProductList.isNotEmpty) {
       return true;
     }
-    return await Get.find<HomeState>().getNewProduct();
+    return await Get.find<HomeViewState>().getNewProduct();
   }
 
   static Future<void> prefetchProductWishList(String token) async {

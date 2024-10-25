@@ -6,7 +6,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 import '../../product_details/state_holders/product_state.dart';
-import '../state_holders/home_state.dart';
+import '../state_holders/home_view_state.dart';
 import '../state_holders/offer_carousel_state.dart';
 import '../utils/home_view_strings.dart';
 
@@ -21,10 +21,10 @@ class _OfferCarouselState extends State<OfferCarousel> {
   @override
   Widget build(BuildContext context) {
     return FlutterCarousel.builder(
-      itemCount: Get.find<HomeState>().productSliderList.length,
+      itemCount: Get.find<HomeViewState>().productSliderList.length,
       itemBuilder: (context, index, pageViewIndex) {
         return CachedNetworkImage(
-          imageUrl: Get.find<HomeState>().productSliderList[index].image!,
+          imageUrl: Get.find<HomeViewState>().productSliderList[index].image!,
           imageBuilder: (context, imageProvider) {
             return Container(
               margin:
@@ -63,7 +63,7 @@ class _OfferCarouselState extends State<OfferCarousel> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  Get.find<HomeState>()
+                                  Get.find<HomeViewState>()
                                       .productSliderList[index]
                                       .title!,
                                   style: Theme.of(context)
@@ -96,7 +96,7 @@ class _OfferCarouselState extends State<OfferCarousel> {
                                         MaterialPageRoute(
                                           builder: (context) =>
                                               ProductDetailsView(
-                                            productId: Get.find<HomeState>()
+                                            productId: Get.find<HomeViewState>()
                                                 .productSliderList[index]
                                                 .productId!,
                                           ),

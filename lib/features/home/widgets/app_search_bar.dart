@@ -4,7 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 import '../../../core/themes/theme_switcher.dart';
-import '../state_holders/home_state.dart';
+import '../state_holders/home_view_state.dart';
 import '../views/search_view/custom_search_delegate.dart';
 
 class AppSearchBar extends StatelessWidget {
@@ -14,7 +14,7 @@ class AppSearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        if (Get.find<HomeState>().searchProductList.isEmpty) {
+        if (Get.find<HomeViewState>().searchProductList.isEmpty) {
           return;
         }
         showSearch(

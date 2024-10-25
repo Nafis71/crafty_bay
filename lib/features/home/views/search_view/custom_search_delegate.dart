@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 
 import '../../../../core/themes/search_bar_theme.dart';
 import '../../../../core/themes/theme_switcher.dart';
-import '../../state_holders/home_state.dart';
+import '../../state_holders/home_view_state.dart';
 import '../../utils/search_strings.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
@@ -19,7 +19,7 @@ class CustomSearchDelegate extends SearchDelegate {
     return AppSearchBarTheme.getSearchBarThemeLight(context);
   }
 
-  List<RemarkProductData> searchTerms = Get.find<HomeState>().searchProductList;
+  List<RemarkProductData> searchTerms = Get.find<HomeViewState>().searchProductList;
 
   @override
   List<Widget>? buildActions(BuildContext context) {

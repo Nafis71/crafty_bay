@@ -6,7 +6,7 @@ import 'package:crafty_bay/features/home/models/remark_product_model/remark_prod
 import 'package:crafty_bay/features/home/services/home_product_service.dart';
 import 'package:get/get.dart';
 
-class HomeState extends GetxController {
+class HomeViewState extends GetxController {
   Object? response;
   final List<ProductSliderData> _productSliderList = [];
   List<RemarkProductData> _popularProductList = [];
