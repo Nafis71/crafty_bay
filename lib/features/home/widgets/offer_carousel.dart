@@ -31,12 +31,7 @@ class _OfferCarouselState extends State<OfferCarousel> {
                   const EdgeInsets.only(left: 5, right: 5, bottom: 10, top: 7),
               decoration: BoxDecoration(
                 image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(15),
-                  topRight: Radius.circular(45),
-                  bottomLeft: Radius.circular(15),
-                  bottomRight: Radius.circular(45),
-                ),
+                borderRadius: BorderRadius.circular(10),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.04),
