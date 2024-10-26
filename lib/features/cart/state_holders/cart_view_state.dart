@@ -147,7 +147,6 @@ class CartViewState extends GetxController {
         deleteIndex: i,
       );
       i = -1;
-      print("Deleted");
     }
   }
 }
