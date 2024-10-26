@@ -1,11 +1,11 @@
 import 'package:crafty_bay/core/utils/app_assets.dart';
+import 'package:crafty_bay/core/wrappers/animation_loader.dart';
 import 'package:crafty_bay/features/payment/invoice_creation/models/payment_method.dart';
 import 'package:crafty_bay/features/payment/payment_webView/state_holders/payment_webView_state.dart';
 import 'package:crafty_bay/features/payment/payment_webView/utils/payment_webView_strings.dart';
 import 'package:crafty_bay/features/payment/payment_webView/widgets/payment_status.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class PaymentWebView extends StatefulWidget {
@@ -40,7 +40,12 @@ class _PaymentWebViewState extends State<PaymentWebView> {
           if (paymentWebViewState.isPaymentSuccess) {
             if (paymentWebViewState.isBusy) {
               return Center(
-                child: Lottie.asset(AppAssets.cartLottie, width: 80),
+                child: AnimationLoader(
+                  asset: AppAssets.cartLottie,
+                  boxFit: BoxFit.contain,
+                  repeat: true,
+                  width: 80,
+                ),
               );
             }
             return PaymentStatus(
